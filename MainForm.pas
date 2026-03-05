@@ -12,9 +12,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, Winapi.ShellAPI,
-  System.SysUtils, System.Classes,
+  System.SysUtils, System.Classes, System.IOUtils,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
+  Vcl.FileCtrl,
   Vcl.Graphics,
   Vcl.Themes,
   DatabaseManager, LapTimeModels, AppSettings,
@@ -72,11 +73,16 @@ type
     LblModel: TLabel;
     LblGetKey: TLabel;
     LblTestResult: TLabel;
+    LblTelemetrySource: TLabel;
+    LblTelemetrySourceInfo: TLabel;
     EdtAPIKey: TEdit;
+    EdtTelemetryFolder: TEdit;
     BtnShowKey: TButton;
     CboAIModel: TComboBox;
     BtnSaveSettings: TButton;
     BtnTestAPI: TButton;
+    BtnBrowseTelemetryFolder: TButton;
+    BtnRescanTelemetry: TButton;
 
     // ---- Events ----
     procedure FormCreate(Sender: TObject);
@@ -105,6 +111,8 @@ type
     procedure BtnSaveSettingsClick(Sender: TObject);
     procedure BtnTestAPIClick(Sender: TObject);
     procedure LblGetKeyClick(Sender: TObject);
+    procedure BtnBrowseTelemetryFolderClick(Sender: TObject);
+    procedure BtnRescanTelemetryClick(Sender: TObject);
 
   private
     FDB: TDatabaseManager;
@@ -125,6 +133,7 @@ type
     function SelectedSessionInfo(out ATrackName, ACarName, AClassName: string): Boolean;
 
     procedure SetStatus(const AMsg: string);
+    procedure RefreshTelemetrySourceInfo;
   end;
 
 var
@@ -160,6 +169,9 @@ begin
 
   if FSettings.WindowMaximized then
     WindowState := wsMaximized;
+
+  EdtTelemetryFolder.Text := FSettings.TelemetrySourceFolder;
+  RefreshTelemetrySourceInfo;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -176,6 +188,32 @@ end;
 procedure TMainForm.SetStatus(const AMsg: string);
 begin
   StatusBar.Panels[0].Text := AMsg;
+end;
+
+procedure TMainForm.RefreshTelemetrySourceInfo;
+var
+  Folder: string;
+  Files: TArray<string>;
+begin
+  Folder := Trim(EdtTelemetryFolder.Text);
+  if Folder = '' then
+  begin
+    LblTelemetrySourceInfo.Caption := 'No LMU telemetry folder configured.';
+    Exit;
+  end;
+
+  if not TDirectory.Exists(Folder) then
+  begin
+    LblTelemetrySourceInfo.Caption := 'Folder not found: ' + Folder;
+    Exit;
+  end;
+
+  Files := TDirectory.GetFiles(Folder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
+  if Length(Files) = 0 then
+    LblTelemetrySourceInfo.Caption := 'No .duckdb files found in telemetry folder.'
+  else
+    LblTelemetrySourceInfo.Caption := Format('%d .duckdb telemetry file(s) detected. Latest: %s',
+      [Length(Files), ExtractFileName(Files[High(Files)])]);
 end;
 
 procedure TMainForm.LoadTrackCombo;
@@ -499,7 +537,7 @@ var
 begin
   Dlg := TImportTelemetryForm.Create(Self);
   try
-    Dlg.Initialize(FDB);
+    Dlg.Initialize(FDB, FSettings.TelemetrySourceFolder);
     if Dlg.ShowModal = mrOk then
     begin
       RefreshSessions;
@@ -670,6 +708,7 @@ end;
 procedure TMainForm.BtnSaveSettingsClick(Sender: TObject);
 begin
   FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
+  FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
 
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
@@ -729,6 +768,23 @@ end;
 procedure TMainForm.LblGetKeyClick(Sender: TObject);
 begin
   ShellExecute(0, 'open', 'https://aistudio.google.com/app/apikey', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMainForm.BtnBrowseTelemetryFolderClick(Sender: TObject);
+var
+  SelectedDir: string;
+begin
+  SelectedDir := Trim(EdtTelemetryFolder.Text);
+  if SelectDirectory('Select LMU telemetry folder', '', SelectedDir) then
+  begin
+    EdtTelemetryFolder.Text := SelectedDir;
+    RefreshTelemetrySourceInfo;
+  end;
+end;
+
+procedure TMainForm.BtnRescanTelemetryClick(Sender: TObject);
+begin
+  RefreshTelemetrySourceInfo;
 end;
 
 end.

@@ -42,13 +42,14 @@ type
     FDB: TDatabaseManager;
     FTracks: TTrackArray;
     FCars: TCarArray;
+    FInitialTelemetryFolder: string;
 
     procedure LoadTracks;
     procedure LoadCars;
     function ImportCSV(const AFilePath: string; ASessionID: Integer): Integer;
   public
     { Call Initialize(DB) after Create and before ShowModal. }
-    procedure Initialize(ADB: TDatabaseManager);
+    procedure Initialize(ADB: TDatabaseManager; const AInitialTelemetryFolder: string = '');
     property DB: TDatabaseManager read FDB write FDB;
   end;
 
@@ -62,9 +63,11 @@ begin
   // Nothing to do at create time – call Initialize(DB) before ShowModal
 end;
 
-procedure TImportTelemetryForm.Initialize(ADB: TDatabaseManager);
+procedure TImportTelemetryForm.Initialize(ADB: TDatabaseManager;
+  const AInitialTelemetryFolder: string = '');
 begin
   FDB := ADB;
+  FInitialTelemetryFolder := Trim(AInitialTelemetryFolder);
   LoadTracks;
   LoadCars;
 end;
@@ -111,6 +114,8 @@ begin
   try
     OD.Title  := 'Select Telemetry CSV File';
     OD.Filter := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
+    if TDirectory.Exists(FInitialTelemetryFolder) then
+      OD.InitialDir := FInitialTelemetryFolder;
     if OD.Execute then
       EdtCSVFile.Text := OD.FileName;
   finally

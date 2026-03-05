@@ -24,6 +24,8 @@ type
     procedure SetLastExportFolder(const Value: string);
     function GetWindowMaximized: Boolean;
     procedure SetWindowMaximized(const Value: Boolean);
+    function GetTelemetrySourceFolder: string;
+    procedure SetTelemetrySourceFolder(const Value: string);
   public
     constructor Create;
     destructor Destroy; override;
@@ -34,6 +36,7 @@ type
     property AIModel: string read GetAIModel write SetAIModel;
     property LastExportFolder: string read GetLastExportFolder write SetLastExportFolder;
     property WindowMaximized: Boolean read GetWindowMaximized write SetWindowMaximized;
+    property TelemetrySourceFolder: string read GetTelemetrySourceFolder write SetTelemetrySourceFolder;
   end;
 
 implementation
@@ -151,6 +154,23 @@ end;
 procedure TAppSettings.SetWindowMaximized(const Value: Boolean);
 begin
   FIniFile.WriteBool('UI', 'Maximized', Value);
+end;
+
+function TAppSettings.GetTelemetrySourceFolder: string;
+var
+  StoredPath: string;
+begin
+  StoredPath := Trim(FIniFile.ReadString('Telemetry', 'SourceFolder', ''));
+  if StoredPath <> '' then
+    Exit(StoredPath);
+
+  Result := TPath.Combine(TPath.GetHomePath,
+    'SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
+end;
+
+procedure TAppSettings.SetTelemetrySourceFolder(const Value: string);
+begin
+  FIniFile.WriteString('Telemetry', 'SourceFolder', Trim(Value));
 end;
 
 end.
