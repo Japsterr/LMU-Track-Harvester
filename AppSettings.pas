@@ -176,7 +176,7 @@ begin
     'Steam\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
   SteamPFPath := TPath.Combine(ProgramFilesPath,
     'Steam\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
-  SteamCDrivePath := 'C:\SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry';
+  SteamCDrivePath := TPath.Combine('C:\SteamLibrary', 'steamapps\common\Le Mans Ultimate\UserData\Telemetry');
   SteamHomePath := TPath.Combine(TPath.GetHomePath,
     'SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
 

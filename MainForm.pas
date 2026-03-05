@@ -120,6 +120,7 @@ type
     FTracks: TTrackArray;
     FClasses: TCarClassArray;
     FSessions: TTelemetrySessionArray;
+    FSourceTelemetryFiles: TArray<string>;
 
     procedure LoadTrackCombo;
     procedure LoadClassCombo;
@@ -500,11 +501,14 @@ procedure TMainForm.RefreshSessions;
 var
   I: Integer;
   Item: TListItem;
+  SourceFolder: string;
+  SourceFile: string;
 begin
   LvwSessions.Items.BeginUpdate;
   try
     LvwSessions.Items.Clear;
     FSessions := FDB.GetTelemetrySessions;
+    FSourceTelemetryFiles := nil;
 
     for I := 0 to High(FSessions) do
     begin
@@ -513,13 +517,28 @@ begin
       Item.SubItems.Add(FSessions[I].TrackName);
       Item.SubItems.Add(FSessions[I].CarName);
     end;
+
+    SourceFolder := Trim(FSettings.TelemetrySourceFolder);
+    if (SourceFolder <> '') and TDirectory.Exists(SourceFolder) then
+    begin
+      FSourceTelemetryFiles :=
+        TDirectory.GetFiles(SourceFolder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
+      for SourceFile in FSourceTelemetryFiles do
+      begin
+        Item := LvwSessions.Items.Add;
+        Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', TFile.GetLastWriteTime(SourceFile));
+        Item.SubItems.Add('[LMU Source]');
+        Item.SubItems.Add(ExtractFileName(SourceFile));
+      end;
+    end;
   finally
     LvwSessions.Items.EndUpdate;
   end;
 
   MemoSessionInfo.Clear;
   MemoAIResponse.Clear;
-  StatusBar.Panels[1].Text := Format('%d session(s)', [Length(FSessions)]);
+  StatusBar.Panels[1].Text := Format('%d session(s), %d source file(s)',
+    [Length(FSessions), Length(FSourceTelemetryFiles)]);
 end;
 
 procedure TMainForm.LvwSessionsSelectItem(Sender: TObject; Item: TListItem;
@@ -536,7 +555,18 @@ begin
 
   Idx := LvwSessions.Selected.Index;
   if Idx > High(FSessions) then
+  begin
+    Idx := Idx - Length(FSessions);
+    MemoSessionInfo.Lines.Clear;
+    if (Idx >= 0) and (Idx <= High(FSourceTelemetryFiles)) then
+    begin
+      MemoSessionInfo.Lines.Add('LMU telemetry source file selected:');
+      MemoSessionInfo.Lines.Add(FSourceTelemetryFiles[Idx]);
+      MemoSessionInfo.Lines.Add('');
+      MemoSessionInfo.Lines.Add('Use "Import Telemetry (CSV)" to import telemetry data into the app database.');
+    end;
     Exit;
+  end;
 
   S := FSessions[Idx];
   MemoSessionInfo.Lines.Clear;
@@ -732,6 +762,8 @@ begin
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
 
   FSettings.Save;
+  RefreshTelemetrySourceInfo;
+  RefreshSessions;
   SetStatus('Settings saved.');
   ShowMessage('Settings saved successfully.');
 end;
@@ -797,12 +829,14 @@ begin
   begin
     EdtTelemetryFolder.Text := SelectedDir;
     RefreshTelemetrySourceInfo;
+    RefreshSessions;
   end;
 end;
 
 procedure TMainForm.BtnRescanTelemetryClick(Sender: TObject);
 begin
   RefreshTelemetrySourceInfo;
+  RefreshSessions;
 end;
 
 end.
