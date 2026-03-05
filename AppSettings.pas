@@ -1,7 +1,8 @@
 unit AppSettings;
 
-{ Manages persistent application settings stored in an INI file located next
-  to the executable (or in Documents\LMUTrackHarvester\ when deployed). }
+{ Manages persistent application settings stored in an INI file.
+  Preferred location is Documents\LMUTrackHarvester\, with writable
+  fallback locations if Documents is unavailable. }
 
 interface
 
@@ -39,17 +40,51 @@ implementation
 constructor TAppSettings.Create;
 var
   AppDir: string;
+  function EnsureWritableDir(const APath: string): Boolean;
+  var
+    ProbeFile: string;
+  begin
+    Result := (APath <> '') and (DirectoryExists(APath) or ForceDirectories(APath));
+    if not Result then
+      Exit;
+
+    ProbeFile := TPath.Combine(APath, '.write_test.tmp');
+    try
+      TFile.WriteAllText(ProbeFile, 'ok');
+      TFile.Delete(ProbeFile);
+      Result := True;
+    except
+      Result := False;
+    end;
+  end;
 begin
   inherited;
   AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
-  ForceDirectories(AppDir);
+  if not EnsureWritableDir(AppDir) then
+  begin
+    AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
+    if not EnsureWritableDir(AppDir) then
+    begin
+      AppDir := TPath.Combine(ExtractFilePath(ParamStr(0)), 'LMUTrackHarvester');
+      if not EnsureWritableDir(AppDir) then
+        raise Exception.CreateFmt(
+          'Unable to create writable settings directory after trying fallback locations. Last attempt: %s',
+          [AppDir]
+        );
+    end;
+  end;
+
   FSettingsPath := TPath.Combine(AppDir, 'settings.ini');
   FIniFile := TIniFile.Create(FSettingsPath);
 end;
 
 destructor TAppSettings.Destroy;
 begin
-  Save;
+  try
+    Save;
+  except
+    // Ignore shutdown-time save failures to avoid surfacing exceptions on close.
+  end;
   FIniFile.Free;
   inherited;
 end;

@@ -122,6 +122,8 @@ Settings are stored in (default location):
 %DOCUMENTS%\LMUTrackHarvester\settings.ini
 ```
 
+If the Documents folder is unavailable/unwritable, settings storage falls back to another user-writable location.
+
 Your Gemini API key is **never** transmitted anywhere except to
 `generativelanguage.googleapis.com` when you click *Analyse with Gemini AI*.
 
