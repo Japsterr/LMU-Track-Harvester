@@ -48,7 +48,7 @@ var
     if not Result then
       Exit;
 
-    ProbeFile := TPath.Combine(APath, '.write_test.tmp');
+    ProbeFile := TPath.Combine(APath, TPath.GetRandomFileName);
     try
       TFile.WriteAllText(ProbeFile, 'ok');
       TFile.Delete(ProbeFile);
@@ -83,7 +83,8 @@ begin
   try
     Save;
   except
-    // Ignore shutdown-time save failures to avoid surfacing exceptions on close.
+    on EIniFileException do
+      // Ignore shutdown-time INI write failures to avoid surfacing exceptions on close.
   end;
   FIniFile.Free;
   inherited;
