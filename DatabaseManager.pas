@@ -117,15 +117,32 @@ begin
   if ADatabasePath = '' then
   begin
     AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
-    ForceDirectories(AppDir);
+    if (AppDir = '') or
+       ((not DirectoryExists(AppDir)) and (not ForceDirectories(AppDir))) then
+    begin
+      AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
+      if (AppDir = '') or
+         ((not DirectoryExists(AppDir)) and (not ForceDirectories(AppDir))) then
+      begin
+        AppDir := TPath.Combine(ExtractFilePath(ParamStr(0)), 'LMUTrackHarvester');
+        if (not DirectoryExists(AppDir)) and (not ForceDirectories(AppDir)) then
+          raise Exception.CreateFmt('Unable to create application data directory: %s', [AppDir]);
+      end;
+    end;
     FDatabasePath := TPath.Combine(AppDir, 'data.db');
   end
   else
+  begin
     FDatabasePath := ADatabasePath;
+    AppDir := ExtractFileDir(FDatabasePath);
+    if (AppDir <> '') and (not DirectoryExists(AppDir)) and (not ForceDirectories(AppDir)) then
+      raise Exception.CreateFmt('Unable to create database directory: %s', [AppDir]);
+  end;
 
   FConnection := TFDConnection.Create(nil);
   FConnection.DriverName := 'SQLite';
   FConnection.Params.Add('Database=' + FDatabasePath);
+  FConnection.Params.Add('OpenMode=CreateUTF8');
   FConnection.Params.Add('LockingMode=Normal');
   FConnection.Params.Add('Synchronous=Normal');
   FConnection.LoginPrompt := False;

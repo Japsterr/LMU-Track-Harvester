@@ -108,13 +108,15 @@ round-tripped or shared.
 
 ## Data Storage
 
-All data is stored in a local SQLite database:
+All data is stored in a local SQLite database (default location):
 
 ```
 %DOCUMENTS%\LMUTrackHarvester\data.db
 ```
 
-Settings are stored in:
+If the Documents folder is unavailable/unwritable, database creation falls back to another user-writable location.
+
+Settings are stored in (default location):
 
 ```
 %DOCUMENTS%\LMUTrackHarvester\settings.ini
