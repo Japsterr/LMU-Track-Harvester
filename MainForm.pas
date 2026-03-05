@@ -194,6 +194,10 @@ procedure TMainForm.RefreshTelemetrySourceInfo;
 var
   Folder: string;
   Files: TArray<string>;
+  LatestFile: string;
+  LatestTime: TDateTime;
+  FileTime: TDateTime;
+  F: string;
 begin
   Folder := Trim(EdtTelemetryFolder.Text);
   if Folder = '' then
@@ -212,8 +216,22 @@ begin
   if Length(Files) = 0 then
     LblTelemetrySourceInfo.Caption := 'No .duckdb files found in telemetry folder.'
   else
+  begin
+    LatestFile := '';
+    LatestTime := 0;
+    for F in Files do
+    begin
+      FileTime := TFile.GetLastWriteTime(F);
+      if (LatestFile = '') or (FileTime > LatestTime) then
+      begin
+        LatestTime := FileTime;
+        LatestFile := F;
+      end;
+    end;
+
     LblTelemetrySourceInfo.Caption := Format('%d .duckdb telemetry file(s) detected. Latest: %s',
-      [Length(Files), ExtractFileName(Files[High(Files)])]);
+      [Length(Files), ExtractFileName(LatestFile)]);
+  end;
 end;
 
 procedure TMainForm.LoadTrackCombo;

@@ -159,13 +159,44 @@ end;
 function TAppSettings.GetTelemetrySourceFolder: string;
 var
   StoredPath: string;
+  ProgramFilesX86Path, ProgramFilesPath: string;
+  SteamPFx86Path: string;
+  SteamPFPath: string;
+  SteamCDrivePath: string;
+  SteamHomePath: string;
 begin
   StoredPath := Trim(FIniFile.ReadString('Telemetry', 'SourceFolder', ''));
   if StoredPath <> '' then
     Exit(StoredPath);
 
-  Result := TPath.Combine(TPath.GetHomePath,
+  ProgramFilesX86Path := Trim(GetEnvironmentVariable('ProgramFiles(x86)'));
+  ProgramFilesPath := Trim(GetEnvironmentVariable('ProgramFiles'));
+
+  SteamPFx86Path := TPath.Combine(ProgramFilesX86Path,
+    'Steam\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
+  SteamPFPath := TPath.Combine(ProgramFilesPath,
+    'Steam\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
+  SteamCDrivePath := 'C:\SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry';
+  SteamHomePath := TPath.Combine(TPath.GetHomePath,
     'SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry');
+
+  if (SteamPFx86Path <> '') and TDirectory.Exists(SteamPFx86Path) then
+    Exit(SteamPFx86Path);
+  if (SteamPFPath <> '') and TDirectory.Exists(SteamPFPath) then
+    Exit(SteamPFPath);
+  if (SteamCDrivePath <> '') and TDirectory.Exists(SteamCDrivePath) then
+    Exit(SteamCDrivePath);
+  if (SteamHomePath <> '') and TDirectory.Exists(SteamHomePath) then
+    Exit(SteamHomePath);
+
+  if SteamCDrivePath <> '' then
+    Result := SteamCDrivePath
+  else if SteamPFx86Path <> '' then
+    Result := SteamPFx86Path
+  else if SteamHomePath <> '' then
+    Result := SteamHomePath
+  else
+    Result := SteamPFPath;
 end;
 
 procedure TAppSettings.SetTelemetrySourceFolder(const Value: string);
