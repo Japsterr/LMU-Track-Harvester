@@ -36,6 +36,10 @@ analysing telemetry in the racing simulation game
   `SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry`)
   so telemetry import browsing opens in the correct location and `.duckdb`
   source files are discoverable in the Telemetry list
+* Configure the **LMU results source folder** (auto-defaults to
+  `SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Log\Results`)
+  so `.xml` results files are scanned and new lap records are imported into
+  the local database for display in Lap Times grids
 * One-click **Test Connection** button to verify your API key works
 * Link to get a free API key at [aistudio.google.com](https://aistudio.google.com/app/apikey)
 
