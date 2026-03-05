@@ -32,6 +32,10 @@ analysing telemetry in the racing simulation game
 * Store your **Google Gemini API key** (saved locally in `settings.ini`)
 * Choose the AI model (`gemini-1.5-flash`, `gemini-1.5-pro`,
   `gemini-2.0-flash`, etc.)
+* Configure the **LMU telemetry source folder** (auto-defaults to
+  `SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry`)
+  so telemetry import browsing opens in the correct location and `.duckdb`
+  source files are discoverable in the Telemetry list
 * One-click **Test Connection** button to verify your API key works
 * Link to get a free API key at [aistudio.google.com](https://aistudio.google.com/app/apikey)
 

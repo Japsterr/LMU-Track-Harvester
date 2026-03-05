@@ -12,9 +12,10 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, Winapi.ShellAPI,
-  System.SysUtils, System.Classes,
+  System.SysUtils, System.Classes, System.IOUtils,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
+  Vcl.FileCtrl,
   Vcl.Graphics,
   Vcl.Themes,
   DatabaseManager, LapTimeModels, AppSettings,
@@ -72,11 +73,16 @@ type
     LblModel: TLabel;
     LblGetKey: TLabel;
     LblTestResult: TLabel;
+    LblTelemetrySource: TLabel;
+    LblTelemetrySourceInfo: TLabel;
     EdtAPIKey: TEdit;
+    EdtTelemetryFolder: TEdit;
     BtnShowKey: TButton;
     CboAIModel: TComboBox;
     BtnSaveSettings: TButton;
     BtnTestAPI: TButton;
+    BtnBrowseTelemetryFolder: TButton;
+    BtnRescanTelemetry: TButton;
 
     // ---- Events ----
     procedure FormCreate(Sender: TObject);
@@ -105,6 +111,8 @@ type
     procedure BtnSaveSettingsClick(Sender: TObject);
     procedure BtnTestAPIClick(Sender: TObject);
     procedure LblGetKeyClick(Sender: TObject);
+    procedure BtnBrowseTelemetryFolderClick(Sender: TObject);
+    procedure BtnRescanTelemetryClick(Sender: TObject);
 
   private
     FDB: TDatabaseManager;
@@ -112,6 +120,7 @@ type
     FTracks: TTrackArray;
     FClasses: TCarClassArray;
     FSessions: TTelemetrySessionArray;
+    FSourceTelemetryFiles: TArray<string>;
 
     procedure LoadTrackCombo;
     procedure LoadClassCombo;
@@ -125,6 +134,7 @@ type
     function SelectedSessionInfo(out ATrackName, ACarName, AClassName: string): Boolean;
 
     procedure SetStatus(const AMsg: string);
+    procedure RefreshTelemetrySourceInfo;
   end;
 
 var
@@ -160,6 +170,9 @@ begin
 
   if FSettings.WindowMaximized then
     WindowState := wsMaximized;
+
+  EdtTelemetryFolder.Text := FSettings.TelemetrySourceFolder;
+  RefreshTelemetrySourceInfo;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -176,6 +189,50 @@ end;
 procedure TMainForm.SetStatus(const AMsg: string);
 begin
   StatusBar.Panels[0].Text := AMsg;
+end;
+
+procedure TMainForm.RefreshTelemetrySourceInfo;
+var
+  Folder: string;
+  Files: TArray<string>;
+  LatestFile: string;
+  LatestTime: TDateTime;
+  FileTime: TDateTime;
+  F: string;
+begin
+  Folder := Trim(EdtTelemetryFolder.Text);
+  if Folder = '' then
+  begin
+    LblTelemetrySourceInfo.Caption := 'No LMU telemetry folder configured.';
+    Exit;
+  end;
+
+  if not TDirectory.Exists(Folder) then
+  begin
+    LblTelemetrySourceInfo.Caption := 'Folder not found: ' + Folder;
+    Exit;
+  end;
+
+  Files := TDirectory.GetFiles(Folder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
+  if Length(Files) = 0 then
+    LblTelemetrySourceInfo.Caption := 'No .duckdb files found in telemetry folder.'
+  else
+  begin
+    LatestFile := '';
+    LatestTime := 0;
+    for F in Files do
+    begin
+      FileTime := TFile.GetLastWriteTime(F);
+      if (LatestFile = '') or (FileTime > LatestTime) then
+      begin
+        LatestTime := FileTime;
+        LatestFile := F;
+      end;
+    end;
+
+    LblTelemetrySourceInfo.Caption := Format('%d .duckdb telemetry file(s) detected. Latest: %s',
+      [Length(Files), ExtractFileName(LatestFile)]);
+  end;
 end;
 
 procedure TMainForm.LoadTrackCombo;
@@ -444,11 +501,14 @@ procedure TMainForm.RefreshSessions;
 var
   I: Integer;
   Item: TListItem;
+  SourceFolder: string;
+  SourceFile: string;
 begin
   LvwSessions.Items.BeginUpdate;
   try
     LvwSessions.Items.Clear;
     FSessions := FDB.GetTelemetrySessions;
+    FSourceTelemetryFiles := nil;
 
     for I := 0 to High(FSessions) do
     begin
@@ -457,13 +517,28 @@ begin
       Item.SubItems.Add(FSessions[I].TrackName);
       Item.SubItems.Add(FSessions[I].CarName);
     end;
+
+    SourceFolder := Trim(FSettings.TelemetrySourceFolder);
+    if (SourceFolder <> '') and TDirectory.Exists(SourceFolder) then
+    begin
+      FSourceTelemetryFiles :=
+        TDirectory.GetFiles(SourceFolder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
+      for SourceFile in FSourceTelemetryFiles do
+      begin
+        Item := LvwSessions.Items.Add;
+        Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', TFile.GetLastWriteTime(SourceFile));
+        Item.SubItems.Add('[LMU Source]');
+        Item.SubItems.Add(ExtractFileName(SourceFile));
+      end;
+    end;
   finally
     LvwSessions.Items.EndUpdate;
   end;
 
   MemoSessionInfo.Clear;
   MemoAIResponse.Clear;
-  StatusBar.Panels[1].Text := Format('%d session(s)', [Length(FSessions)]);
+  StatusBar.Panels[1].Text := Format('%d session(s), %d source file(s)',
+    [Length(FSessions), Length(FSourceTelemetryFiles)]);
 end;
 
 procedure TMainForm.LvwSessionsSelectItem(Sender: TObject; Item: TListItem;
@@ -480,7 +555,18 @@ begin
 
   Idx := LvwSessions.Selected.Index;
   if Idx > High(FSessions) then
+  begin
+    Idx := Idx - Length(FSessions);
+    MemoSessionInfo.Lines.Clear;
+    if (Idx >= 0) and (Idx <= High(FSourceTelemetryFiles)) then
+    begin
+      MemoSessionInfo.Lines.Add('LMU telemetry source file selected:');
+      MemoSessionInfo.Lines.Add(FSourceTelemetryFiles[Idx]);
+      MemoSessionInfo.Lines.Add('');
+      MemoSessionInfo.Lines.Add('Use "Import Telemetry (CSV)" to import telemetry data into the app database.');
+    end;
     Exit;
+  end;
 
   S := FSessions[Idx];
   MemoSessionInfo.Lines.Clear;
@@ -499,7 +585,7 @@ var
 begin
   Dlg := TImportTelemetryForm.Create(Self);
   try
-    Dlg.Initialize(FDB);
+    Dlg.Initialize(FDB, FSettings.TelemetrySourceFolder);
     if Dlg.ShowModal = mrOk then
     begin
       RefreshSessions;
@@ -670,11 +756,14 @@ end;
 procedure TMainForm.BtnSaveSettingsClick(Sender: TObject);
 begin
   FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
+  FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
 
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
 
   FSettings.Save;
+  RefreshTelemetrySourceInfo;
+  RefreshSessions;
   SetStatus('Settings saved.');
   ShowMessage('Settings saved successfully.');
 end;
@@ -729,6 +818,25 @@ end;
 procedure TMainForm.LblGetKeyClick(Sender: TObject);
 begin
   ShellExecute(0, 'open', 'https://aistudio.google.com/app/apikey', nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TMainForm.BtnBrowseTelemetryFolderClick(Sender: TObject);
+var
+  SelectedDir: string;
+begin
+  SelectedDir := Trim(EdtTelemetryFolder.Text);
+  if SelectDirectory('Select LMU telemetry folder', '', SelectedDir) then
+  begin
+    EdtTelemetryFolder.Text := SelectedDir;
+    RefreshTelemetrySourceInfo;
+    RefreshSessions;
+  end;
+end;
+
+procedure TMainForm.BtnRescanTelemetryClick(Sender: TObject);
+begin
+  RefreshTelemetrySourceInfo;
+  RefreshSessions;
 end;
 
 end.

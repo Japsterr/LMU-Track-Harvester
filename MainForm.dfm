@@ -482,6 +482,28 @@ object FrmMain: TMainForm
           Height = 17
           Caption = ''
         end
+        object LblTelemetrySource: TLabel
+          Left = 24
+          Top = 278
+          Width = 161
+          Height = 17
+          Caption = 'LMU Telemetry Source Folder:'
+        end
+        object LblTelemetrySourceInfo: TLabel
+          Left = 24
+          Top = 334
+          Width = 600
+          Height = 34
+          AutoSize = False
+          Caption = ''
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGrayText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          WordWrap = True
+        end
         object EdtAPIKey: TEdit
           Left = 90
           Top = 68
@@ -535,6 +557,31 @@ object FrmMain: TMainForm
           Caption = 'Test Connection'
           TabOrder = 4
           OnClick = BtnTestAPIClick
+        end
+        object EdtTelemetryFolder: TEdit
+          Left = 24
+          Top = 302
+          Width = 546
+          Height = 25
+          TabOrder = 5
+        end
+        object BtnBrowseTelemetryFolder: TButton
+          Left = 578
+          Top = 302
+          Width = 60
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 6
+          OnClick = BtnBrowseTelemetryFolderClick
+        end
+        object BtnRescanTelemetry: TButton
+          Left = 646
+          Top = 302
+          Width = 75
+          Height = 25
+          Caption = 'Rescan'
+          TabOrder = 7
+          OnClick = BtnRescanTelemetryClick
         end
       end
     end
