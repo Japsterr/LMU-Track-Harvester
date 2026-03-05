@@ -30,6 +30,7 @@ uses
   FireDAC.Phys.Intf,
   FireDAC.Phys.SQLite,
   FireDAC.Phys.SQLiteDef,
+  FireDAC.DApt,
   FireDAC.UI.Intf,
   FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI,
