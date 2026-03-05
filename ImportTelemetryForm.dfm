@@ -117,7 +117,7 @@ object ImportTelemetryForm: TImportTelemetryForm
     Height = 30
     Cancel = True
     Caption = 'Cancel'
-    ModalResult = mrCancel
+    ModalResult = 2
     TabOrder = 6
   end
 end

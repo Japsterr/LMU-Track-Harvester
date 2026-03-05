@@ -50,10 +50,8 @@ type
     property DB: TDatabaseManager read FDB write FDB;
   end;
 
-var
-  AddLapForm: TAddLapForm;
-
-implementation
+  // No global form variable: the dialog is created locally where needed.
+  implementation
 
 {$R *.dfm}
 

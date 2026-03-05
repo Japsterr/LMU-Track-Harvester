@@ -1,4 +1,4 @@
-object MainForm: TMainForm
+object FrmMain: TMainForm
   Left = 0
   Top = 0
   Caption = 'LMU Track Harvester'

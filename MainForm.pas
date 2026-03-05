@@ -15,6 +15,7 @@ uses
   System.SysUtils, System.Classes,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
+  Vcl.Graphics,
   Vcl.Themes,
   DatabaseManager, LapTimeModels, AppSettings,
   CSVExporter, GeminiAPI,
@@ -127,7 +128,7 @@ type
   end;
 
 var
-  MainForm: TMainForm;
+  FrmMain: TMainForm;
 
 implementation
 
@@ -593,7 +594,7 @@ begin
   end;
 
   APIKey := FSettings.GeminiAPIKey;
-  if APIKey.Trim = '' then
+  if Trim(APIKey) = '' then
   begin
     ShowMessage('No Gemini API key found. Please add your API key in the Settings tab.');
     PageControl.ActivePage := TabSettings;
@@ -609,7 +610,7 @@ begin
   Application.ProcessMessages;
 
   CSVData := TCSVExporter.TelemetrySessionToCSV(FDB, SessionID);
-  if CSVData.Trim = '' then
+  if Trim(CSVData) = '' then
   begin
     ShowMessage('No telemetry data found for this session.');
     MemoAIResponse.Clear;
@@ -668,7 +669,7 @@ end;
 
 procedure TMainForm.BtnSaveSettingsClick(Sender: TObject);
 begin
-  FSettings.GeminiAPIKey := EdtAPIKey.Text.Trim;
+  FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
 
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
@@ -684,7 +685,7 @@ var
   Gemini: TGeminiAPI;
   Response: string;
 begin
-  Key := EdtAPIKey.Text.Trim;
+  Key := Trim(EdtAPIKey.Text);
   if Key = '' then
   begin
     ShowMessage('Please enter an API key first.');

@@ -52,10 +52,8 @@ type
     property DB: TDatabaseManager read FDB write FDB;
   end;
 
-var
-  ImportTelemetryForm: TImportTelemetryForm;
-
-implementation
+  // No global form variable: the dialog is created locally where needed.
+  implementation
 
 {$R *.dfm}
 
@@ -139,7 +137,7 @@ begin
     // Skip header row
     for I := 1 to Lines.Count - 1 do
     begin
-      if Lines[I].Trim = '' then
+      if Trim(Lines[I]) = '' then
         Continue;
 
       Parts := Lines[I].Split([',']);
@@ -186,7 +184,7 @@ begin
     CboCar.SetFocus;
     Exit;
   end;
-  if EdtCSVFile.Text.Trim = '' then
+  if Trim(EdtCSVFile.Text) = '' then
   begin
     ShowMessage('Please choose a CSV file.');
     BtnBrowse.SetFocus;
@@ -200,7 +198,7 @@ begin
 
   TrackID := FTracks[CboTrack.ItemIndex].ID;
   CarID   := FCars[CboCar.ItemIndex].ID;
-  Notes   := EdtNotes.Text.Trim;
+  Notes   := Trim(EdtNotes.Text);
 
   try
     SessionID := FDB.AddTelemetrySession(TrackID, CarID, Notes, Now);

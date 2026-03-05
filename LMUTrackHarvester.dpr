@@ -17,6 +17,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.Title := 'LMU Track Harvester';
-  Application.CreateForm(TMainForm, MainForm);
+  Application.CreateForm(TMainForm, FrmMain);
   Application.Run;
 end.
