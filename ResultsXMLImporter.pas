@@ -400,8 +400,9 @@ begin
       end;
     except
       Inc(Result.FilesFailed);
+    finally
+      Candidates.Free;
     end;
-    Candidates.Free;
   end;
 end;
 
