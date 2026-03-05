@@ -504,6 +504,28 @@ object FrmMain: TMainForm
           ParentFont = False
           WordWrap = True
         end
+        object LblResultsSource: TLabel
+          Left = 24
+          Top = 382
+          Width = 145
+          Height = 17
+          Caption = 'LMU Results XML Folder:'
+        end
+        object LblResultsSourceInfo: TLabel
+          Left = 24
+          Top = 438
+          Width = 600
+          Height = 34
+          AutoSize = False
+          Caption = ''
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGrayText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          WordWrap = True
+        end
         object EdtAPIKey: TEdit
           Left = 90
           Top = 68
@@ -582,6 +604,31 @@ object FrmMain: TMainForm
           Caption = 'Rescan'
           TabOrder = 7
           OnClick = BtnRescanTelemetryClick
+        end
+        object EdtResultsFolder: TEdit
+          Left = 24
+          Top = 406
+          Width = 546
+          Height = 25
+          TabOrder = 8
+        end
+        object BtnBrowseResultsFolder: TButton
+          Left = 578
+          Top = 406
+          Width = 60
+          Height = 25
+          Caption = 'Browse'
+          TabOrder = 9
+          OnClick = BtnBrowseResultsFolderClick
+        end
+        object BtnRescanResults: TButton
+          Left = 646
+          Top = 406
+          Width = 75
+          Height = 25
+          Caption = 'Rescan'
+          TabOrder = 10
+          OnClick = BtnRescanResultsClick
         end
       end
     end

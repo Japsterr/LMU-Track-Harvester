@@ -26,6 +26,8 @@ type
     procedure SetWindowMaximized(const Value: Boolean);
     function GetTelemetrySourceFolder: string;
     procedure SetTelemetrySourceFolder(const Value: string);
+    function GetResultsSourceFolder: string;
+    procedure SetResultsSourceFolder(const Value: string);
   public
     constructor Create;
     destructor Destroy; override;
@@ -37,6 +39,7 @@ type
     property LastExportFolder: string read GetLastExportFolder write SetLastExportFolder;
     property WindowMaximized: Boolean read GetWindowMaximized write SetWindowMaximized;
     property TelemetrySourceFolder: string read GetTelemetrySourceFolder write SetTelemetrySourceFolder;
+    property ResultsSourceFolder: string read GetResultsSourceFolder write SetResultsSourceFolder;
   end;
 
 implementation
@@ -202,6 +205,54 @@ end;
 procedure TAppSettings.SetTelemetrySourceFolder(const Value: string);
 begin
   FIniFile.WriteString('Telemetry', 'SourceFolder', Trim(Value));
+end;
+
+function TAppSettings.GetResultsSourceFolder: string;
+var
+  StoredPath: string;
+  ProgramFilesX86Path, ProgramFilesPath: string;
+  SteamPFx86Path: string;
+  SteamPFPath: string;
+  SteamCDrivePath: string;
+  SteamHomePath: string;
+begin
+  StoredPath := Trim(FIniFile.ReadString('Results', 'SourceFolder', ''));
+  if StoredPath <> '' then
+    Exit(StoredPath);
+
+  ProgramFilesX86Path := Trim(GetEnvironmentVariable('ProgramFiles(x86)'));
+  ProgramFilesPath := Trim(GetEnvironmentVariable('ProgramFiles'));
+
+  SteamPFx86Path := TPath.Combine(ProgramFilesX86Path,
+    'Steam\steamapps\common\Le Mans Ultimate\UserData\Log\Results');
+  SteamPFPath := TPath.Combine(ProgramFilesPath,
+    'Steam\steamapps\common\Le Mans Ultimate\UserData\Log\Results');
+  SteamCDrivePath := TPath.Combine('C:\SteamLibrary', 'steamapps\common\Le Mans Ultimate\UserData\Log\Results');
+  SteamHomePath := TPath.Combine(TPath.GetHomePath,
+    'SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Log\Results');
+
+  if (SteamPFx86Path <> '') and TDirectory.Exists(SteamPFx86Path) then
+    Exit(SteamPFx86Path);
+  if (SteamPFPath <> '') and TDirectory.Exists(SteamPFPath) then
+    Exit(SteamPFPath);
+  if (SteamCDrivePath <> '') and TDirectory.Exists(SteamCDrivePath) then
+    Exit(SteamCDrivePath);
+  if (SteamHomePath <> '') and TDirectory.Exists(SteamHomePath) then
+    Exit(SteamHomePath);
+
+  if SteamCDrivePath <> '' then
+    Result := SteamCDrivePath
+  else if SteamPFx86Path <> '' then
+    Result := SteamPFx86Path
+  else if SteamHomePath <> '' then
+    Result := SteamHomePath
+  else
+    Result := SteamPFPath;
+end;
+
+procedure TAppSettings.SetResultsSourceFolder(const Value: string);
+begin
+  FIniFile.WriteString('Results', 'SourceFolder', Trim(Value));
 end;
 
 end.

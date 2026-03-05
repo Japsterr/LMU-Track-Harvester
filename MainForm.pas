@@ -18,9 +18,10 @@ uses
   Vcl.FileCtrl,
   Vcl.Graphics,
   Vcl.Themes,
+  FireDAC.Comp.Client,
   DatabaseManager, LapTimeModels, AppSettings,
   CSVExporter, GeminiAPI,
-  AddLapForm, ImportTelemetryForm;
+  AddLapForm, ImportTelemetryForm, ResultsXMLImporter;
 
 type
   TMainForm = class(TForm)
@@ -75,14 +76,19 @@ type
     LblTestResult: TLabel;
     LblTelemetrySource: TLabel;
     LblTelemetrySourceInfo: TLabel;
+    LblResultsSource: TLabel;
+    LblResultsSourceInfo: TLabel;
     EdtAPIKey: TEdit;
     EdtTelemetryFolder: TEdit;
+    EdtResultsFolder: TEdit;
     BtnShowKey: TButton;
     CboAIModel: TComboBox;
     BtnSaveSettings: TButton;
     BtnTestAPI: TButton;
     BtnBrowseTelemetryFolder: TButton;
     BtnRescanTelemetry: TButton;
+    BtnBrowseResultsFolder: TButton;
+    BtnRescanResults: TButton;
 
     // ---- Events ----
     procedure FormCreate(Sender: TObject);
@@ -113,6 +119,8 @@ type
     procedure LblGetKeyClick(Sender: TObject);
     procedure BtnBrowseTelemetryFolderClick(Sender: TObject);
     procedure BtnRescanTelemetryClick(Sender: TObject);
+    procedure BtnBrowseResultsFolderClick(Sender: TObject);
+    procedure BtnRescanResultsClick(Sender: TObject);
 
   private
     FDB: TDatabaseManager;
@@ -135,6 +143,9 @@ type
 
     procedure SetStatus(const AMsg: string);
     procedure RefreshTelemetrySourceInfo;
+    procedure RefreshResultsSourceInfo;
+    procedure ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
+    procedure DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
   end;
 
 var
@@ -172,7 +183,11 @@ begin
     WindowState := wsMaximized;
 
   EdtTelemetryFolder.Text := FSettings.TelemetrySourceFolder;
+  EdtResultsFolder.Text := FSettings.ResultsSourceFolder;
   RefreshTelemetrySourceInfo;
+  RefreshResultsSourceInfo;
+  ImportResultsFromConfiguredFolder(False);
+  RefreshLapTimes;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -233,6 +248,70 @@ begin
     LblTelemetrySourceInfo.Caption := Format('%d .duckdb telemetry file(s) detected. Latest: %s',
       [Length(Files), ExtractFileName(LatestFile)]);
   end;
+end;
+
+procedure TMainForm.RefreshResultsSourceInfo;
+var
+  Folder: string;
+  Files: TArray<string>;
+  LatestFile: string;
+  LatestTime: TDateTime;
+  FileTime: TDateTime;
+  F: string;
+begin
+  Folder := Trim(EdtResultsFolder.Text);
+  if Folder = '' then
+  begin
+    LblResultsSourceInfo.Caption := 'No LMU results folder configured.';
+    Exit;
+  end;
+
+  if not TDirectory.Exists(Folder) then
+  begin
+    LblResultsSourceInfo.Caption := 'Folder not found: ' + Folder;
+    Exit;
+  end;
+
+  Files := TDirectory.GetFiles(Folder, '*.xml', TSearchOption.soTopDirectoryOnly);
+  if Length(Files) = 0 then
+    LblResultsSourceInfo.Caption := 'No .xml result files found in results folder.'
+  else
+  begin
+    LatestFile := '';
+    LatestTime := 0;
+    for F in Files do
+    begin
+      FileTime := TFile.GetLastWriteTime(F);
+      if (LatestFile = '') or (FileTime > LatestTime) then
+      begin
+        LatestTime := FileTime;
+        LatestFile := F;
+      end;
+    end;
+    LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s',
+      [Length(Files), ExtractFileName(LatestFile)]);
+  end;
+end;
+
+procedure TMainForm.ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
+var
+  Folder: string;
+  Summary: TResultsImportSummary;
+begin
+  Folder := Trim(EdtResultsFolder.Text);
+  Summary := TResultsXMLImporter.ImportFolder(FDB, Folder);
+
+  if AShowStatus then
+    ShowMessage(Format(
+      'Results scan completed.' + sLineBreak +
+      'Files scanned: %d' + sLineBreak +
+      'Files failed: %d' + sLineBreak +
+      'Laps inserted: %d' + sLineBreak +
+      'Laps skipped: %d',
+      [Summary.FilesScanned, Summary.FilesFailed, Summary.LapsInserted, Summary.LapsSkipped]));
+
+  if Summary.LapsInserted > 0 then
+    SetStatus(Format('Imported %d lap record(s) from LMU results XML.', [Summary.LapsInserted]));
 end;
 
 procedure TMainForm.LoadTrackCombo;
@@ -563,6 +642,8 @@ begin
       MemoSessionInfo.Lines.Add('LMU telemetry source file selected:');
       MemoSessionInfo.Lines.Add(FSourceTelemetryFiles[Idx]);
       MemoSessionInfo.Lines.Add('');
+      DescribeTelemetrySourceFile(FSourceTelemetryFiles[Idx], MemoSessionInfo.Lines);
+      MemoSessionInfo.Lines.Add('');
       MemoSessionInfo.Lines.Add('Use "Import Telemetry (CSV)" to import telemetry data into the app database.');
     end;
     Exit;
@@ -757,12 +838,16 @@ procedure TMainForm.BtnSaveSettingsClick(Sender: TObject);
 begin
   FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
   FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
+  FSettings.ResultsSourceFolder := Trim(EdtResultsFolder.Text);
 
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
 
   FSettings.Save;
   RefreshTelemetrySourceInfo;
+  RefreshResultsSourceInfo;
+  ImportResultsFromConfiguredFolder(False);
+  RefreshLapTimes;
   RefreshSessions;
   SetStatus('Settings saved.');
   ShowMessage('Settings saved successfully.');
@@ -837,6 +922,99 @@ procedure TMainForm.BtnRescanTelemetryClick(Sender: TObject);
 begin
   RefreshTelemetrySourceInfo;
   RefreshSessions;
+end;
+
+procedure TMainForm.BtnBrowseResultsFolderClick(Sender: TObject);
+var
+  SelectedDir: string;
+begin
+  SelectedDir := Trim(EdtResultsFolder.Text);
+  if SelectDirectory('Select LMU results folder', '', SelectedDir) then
+  begin
+    EdtResultsFolder.Text := SelectedDir;
+    RefreshResultsSourceInfo;
+    ImportResultsFromConfiguredFolder(False);
+    RefreshLapTimes;
+  end;
+end;
+
+procedure TMainForm.BtnRescanResultsClick(Sender: TObject);
+begin
+  RefreshResultsSourceInfo;
+  ImportResultsFromConfiguredFolder(True);
+  RefreshLapTimes;
+end;
+
+procedure TMainForm.DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
+var
+  FileSize: Int64;
+  Header: TBytes;
+  HeaderHex: string;
+  I: Integer;
+  Stream: TFileStream;
+  Conn: TFDConnection;
+  Q: TFDQuery;
+begin
+  if not TFile.Exists(AFilePath) then
+  begin
+    ALines.Add('File no longer exists.');
+    Exit;
+  end;
+
+  FileSize := TFile.GetSize(AFilePath);
+  ALines.Add(Format('Modified: %s', [DateTimeToStr(TFile.GetLastWriteTime(AFilePath))]));
+  ALines.Add(Format('Size: %.2f MB', [FileSize / (1024 * 1024)]));
+
+  SetLength(Header, 16);
+  HeaderHex := '';
+  Stream := TFileStream.Create(AFilePath, fmOpenRead or fmShareDenyNone);
+  try
+    I := Stream.Read(Header, Length(Header));
+    SetLength(Header, I);
+  finally
+    Stream.Free;
+  end;
+  for I := 0 to High(Header) do
+    HeaderHex := HeaderHex + IntToHex(Header[I], 2) + ' ';
+  if HeaderHex <> '' then
+    ALines.Add('Header bytes: ' + Trim(HeaderHex));
+  if (Length(Header) >= 4) and
+     (Header[0] = Ord('D')) and
+     (Header[1] = Ord('U')) and
+     (Header[2] = Ord('C')) and
+     (Header[3] = Ord('K')) then
+    ALines.Add('Detected file signature: DuckDB');
+
+  Conn := TFDConnection.Create(nil);
+  Q := TFDQuery.Create(nil);
+  try
+    Conn.DriverName := 'SQLite';
+    Conn.LoginPrompt := False;
+    Conn.Params.Add('Database=' + AFilePath);
+    Conn.Params.Add('OpenMode=ReadOnly');
+    Conn.Connected := True;
+
+    Q.Connection := Conn;
+    Q.SQL.Text := 'SELECT name FROM sqlite_master WHERE type = ''table'' ORDER BY name';
+    Q.Open;
+    if Q.Eof then
+      ALines.Add('SQLite probe: opened, but no tables found.')
+    else
+    begin
+      ALines.Add('SQLite probe: file opened. Tables:');
+      while not Q.Eof do
+      begin
+        ALines.Add('  - ' + Q.Fields[0].AsString);
+        Q.Next;
+      end;
+    end;
+  except
+    on E: Exception do
+      ALines.Add('SQLite probe failed (likely DuckDB-only format): ' + E.Message);
+  finally
+    Q.Free;
+    Conn.Free;
+  end;
 end;
 
 end.
