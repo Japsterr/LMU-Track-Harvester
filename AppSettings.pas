@@ -7,6 +7,7 @@ unit AppSettings;
 interface
 
 uses
+  Winapi.Windows,
   System.SysUtils, System.IniFiles, System.IOUtils;
 
 type
@@ -37,21 +38,30 @@ type
 
 implementation
 
+const
+  CWriteProbePrefix = '.__lth_writeprobe_';
+
 constructor TAppSettings.Create;
 var
   AppDir: string;
   function EnsureWritableDir(const APath: string): Boolean;
   var
     ProbeFile: string;
+    ProbeGuid: string;
   begin
     Result := (APath <> '') and (DirectoryExists(APath) or ForceDirectories(APath));
     if not Result then
       Exit;
 
-    ProbeFile := TPath.Combine(APath, TPath.GetRandomFileName);
+    ProbeGuid := GUIDToString(TGUID.NewGuid).Replace('{', '').Replace('}', '');
+    ProbeFile := TPath.Combine(APath, CWriteProbePrefix + ProbeGuid + '.tmp');
     try
       TFile.WriteAllText(ProbeFile, 'ok');
-      TFile.Delete(ProbeFile);
+      try
+        TFile.Delete(ProbeFile);
+      except
+        // Ignore cleanup failures for temporary writability probe file.
+      end;
       Result := True;
     except
       Result := False;
@@ -83,8 +93,8 @@ begin
   try
     Save;
   except
-    on EIniFileException do
-      // Ignore shutdown-time INI write failures to avoid surfacing exceptions on close.
+    on E: Exception do
+      OutputDebugString(PChar('LMU Track Harvester: Failed to persist settings during shutdown: ' + E.Message));
   end;
   FIniFile.Free;
   inherited;
