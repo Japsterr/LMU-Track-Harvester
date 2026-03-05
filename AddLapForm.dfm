@@ -109,8 +109,6 @@ object AddLapForm: TAddLapForm
     Top = 178
     Width = 200
     Height = 25
-    Date = 45000.0
-    Time = 0.0
     TabOrder = 4
   end
   object CboSessionType: TComboBox
