@@ -1,0 +1,100 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <MainSource>LMUTrackHarvester.dpr</MainSource>
+    <Base>True</Base>
+    <Config Condition="'$(Config)'==''">Debug</Config>
+    <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    <FrameworkType>VCL</FrameworkType>
+    <ProjectVersion>19.2</ProjectVersion>
+    <AppType>Application</AppType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
+    <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+    <DCC_UnitSearchPath>$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+    <DCC_IncludePath>$(DCC_IncludePath)</DCC_IncludePath>
+    <DCC_ResourcePath>$(DCC_ResourcePath)</DCC_ResourcePath>
+    <DCC_ObjPath>$(DCC_ObjPath)</DCC_ObjPath>
+    <Icon_MainIcon>LMUTrackHarvester.ico</Icon_MainIcon>
+    <VerInfo_Keys>CompanyName=;FileDescription=LMU Track Harvester;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=LMUTrackHarvester.exe;ProductName=LMU Track Harvester;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+    <Cfg_1>True</Cfg_1>
+    <CfgParent>Base</CfgParent>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <DCC_DebugInformation>2</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>True</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>3</DCC_SymbolReferenceInfo>
+    <DCC_Optimize>False</DCC_Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+    <Cfg_2>True</Cfg_2>
+    <CfgParent>Base</CfgParent>
+    <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+    <DCC_DebugInformation>0</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Optimize>True</DCC_Optimize>
+    <DCC_MapFile>3</DCC_MapFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win32'">
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+    <VerInfo_Locale>1033</VerInfo_Locale>
+    <VerInfo_Keys>CompanyName=;FileDescription=LMU Track Harvester;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=LMUTrackHarvester.exe;ProductName=LMU Track Harvester;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win64'">
+    <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
+    <VerInfo_Locale>1033</VerInfo_Locale>
+  </PropertyGroup>
+  <ItemGroup>
+    <DelphiCompile Include="$(MainSource)">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="MainForm.pas">
+      <Form>MainForm</Form>
+    </DCCReference>
+    <DCCReference Include="AddLapForm.pas">
+      <Form>AddLapForm</Form>
+    </DCCReference>
+    <DCCReference Include="ImportTelemetryForm.pas">
+      <Form>ImportTelemetryForm</Form>
+    </DCCReference>
+    <DCCReference Include="DatabaseManager.pas"/>
+    <DCCReference Include="LapTimeModels.pas"/>
+    <DCCReference Include="AppSettings.pas"/>
+    <DCCReference Include="CSVExporter.pas"/>
+    <DCCReference Include="GeminiAPI.pas"/>
+    <BuildConfiguration Include="Base">
+      <Key>Base</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Debug">
+      <Key>Cfg_1</Key>
+      <CfgParent>Base</CfgParent>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release">
+      <Key>Cfg_2</Key>
+      <CfgParent>Base</CfgParent>
+    </BuildConfiguration>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+    <Borland.ProjectType>Application</Borland.ProjectType>
+    <BorlandProject>
+      <Delphi.Personality>
+        <Target>
+          <Node Name="LMUTrackHarvester.exe"/>
+        </Target>
+        <Platforms>
+          <Platform value="Win32">True</Platform>
+          <Platform value="Win64">False</Platform>
+        </Platforms>
+      </Delphi.Personality>
+    </BorlandProject>
+    <ProjectFileVersion>12</ProjectFileVersion>
+  </ProjectExtensions>
+  <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+  <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

@@ -1,0 +1,36 @@
+# Delphi build output
+Win32/
+Win64/
+__history/
+__recovery/
+*.dcu
+*.ddp
+*.dsk
+*.local
+*.stat
+*.identcache
+*.tvsconfig
+*.deployproj
+*.vlb
+*.bak
+
+# Compiled binary
+*.exe
+*.map
+*.drc
+
+# IDE project backup
+*.~dproj
+*.~bpg
+*.~dsk
+
+# Resource file (can be regenerated)
+*.res
+
+# Delphi package caches
+*.dcp
+*.bpl
+
+# User-specific settings
+*.suo
+*.user
