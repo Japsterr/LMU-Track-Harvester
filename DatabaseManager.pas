@@ -111,21 +111,43 @@ implementation
 constructor TDatabaseManager.Create(const ADatabasePath: string = '');
 var
   AppDir: string;
+  function EnsureDir(const APath: string): Boolean;
+  begin
+    Result := (APath <> '') and (DirectoryExists(APath) or ForceDirectories(APath));
+  end;
 begin
   inherited Create;
 
   if ADatabasePath = '' then
   begin
     AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
-    ForceDirectories(AppDir);
+    if not EnsureDir(AppDir) then
+    begin
+      AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
+      if not EnsureDir(AppDir) then
+      begin
+        AppDir := TPath.Combine(ExtractFilePath(ParamStr(0)), 'LMUTrackHarvester');
+        if not EnsureDir(AppDir) then
+          raise Exception.CreateFmt(
+            'Unable to create application data directory after trying fallback locations. Last attempt: %s',
+            [AppDir]
+          );
+      end;
+    end;
     FDatabasePath := TPath.Combine(AppDir, 'data.db');
   end
   else
+  begin
+    AppDir := ExtractFileDir(ADatabasePath);
+    if (AppDir <> '') and (not EnsureDir(AppDir)) then
+      raise Exception.CreateFmt('Unable to create database directory: %s', [AppDir]);
     FDatabasePath := ADatabasePath;
+  end;
 
   FConnection := TFDConnection.Create(nil);
   FConnection.DriverName := 'SQLite';
   FConnection.Params.Add('Database=' + FDatabasePath);
+  FConnection.Params.Add('OpenMode=CreateUTF8');
   FConnection.Params.Add('LockingMode=Normal');
   FConnection.Params.Add('Synchronous=Normal');
   FConnection.LoginPrompt := False;
