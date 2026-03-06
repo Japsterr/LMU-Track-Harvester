@@ -332,6 +332,52 @@ begin
   end;
 end;
 
+function StripDoctypeDeclaration(const AXml: string): string;
+var
+  UpperXML: string;
+  StartPos, I, BracketDepth: Integer;
+  InQuote: Char;
+  C: Char;
+begin
+  Result := AXml;
+  if Result = '' then
+    Exit;
+
+  UpperXML := UpperCase(Result);
+  StartPos := Pos('<!DOCTYPE', UpperXML);
+  if StartPos = 0 then
+    Exit;
+
+  I := StartPos + Length('<!DOCTYPE');
+  BracketDepth := 0;
+  InQuote := #0;
+
+  while I <= Length(Result) do
+  begin
+    C := Result[I];
+    if InQuote <> #0 then
+    begin
+      if C = InQuote then
+        InQuote := #0;
+    end
+    else
+    begin
+      if (C = '''') or (C = '"') then
+        InQuote := C
+      else if C = '[' then
+        Inc(BracketDepth)
+      else if (C = ']') and (BracketDepth > 0) then
+        Dec(BracketDepth)
+      else if (C = '>') and (BracketDepth = 0) then
+      begin
+        Delete(Result, StartPos, I - StartPos + 1);
+        Break;
+      end;
+    end;
+    Inc(I);
+  end;
+end;
+
 class function TResultsXMLImporter.ImportFolder(ADB: TDatabaseManager;
   const AFolder: string): TResultsImportSummary;
 var
@@ -343,6 +389,7 @@ var
   TrackID, CarID: Integer;
   LapDate: TDateTime;
   SessionType: string;
+  XmlText: string;
 begin
   Result.FilesScanned := 0;
   Result.FilesFailed := 0;
@@ -360,7 +407,9 @@ begin
     try
       XmlDoc := TXMLDocument.Create(nil);
       XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
-      XmlDoc.LoadFromFile(FilePath);
+      XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
+      XmlText := StripDoctypeDeclaration(XmlText);
+      XmlDoc.LoadFromXML(XmlText);
       XmlDoc.Active := True;
 
       if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
