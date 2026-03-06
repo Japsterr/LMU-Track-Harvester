@@ -11,7 +11,7 @@ unit CSVExporter;
 interface
 
 uses
-  System.SysUtils, System.Classes,
+  System.SysUtils, System.Classes, System.IOUtils,
   LapTimeModels, DatabaseManager;
 
 type
@@ -31,9 +31,25 @@ type
                                   ATrackID, AClassID: Integer;
                                   const AFilePath: string;
                                   ALimit: Integer = 100): Boolean;
+
+    { Export telemetry from a raw LMU DuckDB source file to CSV using Python.
+      Returns True on success; AError is populated on failure. }
+    class function ExportDuckDBSourceToCSV(const ASourcePath,
+                                           AFilePath: string;
+                                           out AError: string): Boolean;
+  private
+    { Locates a bundled script by name; returns '' if not found. }
+    class function ResolveScriptPath(const AScriptName: string): string;
+
+    { Runs an external process and returns its exit code.
+      Raises an exception if the process cannot be launched. }
+    class function RunProcessAndWait(const AExe, AParams: string): Integer;
   end;
 
 implementation
+
+uses
+  Winapi.Windows;
 
 class function TCSVExporter.TelemetrySessionToCSV(ADB: TDatabaseManager;
   ASessionID: Integer): string;
@@ -135,6 +151,132 @@ begin
   except
     Result := False;
   end;
+end;
+
+// ---------------------------------------------------------------------------
+// DuckDB source export helpers
+// ---------------------------------------------------------------------------
+
+class function TCSVExporter.ResolveScriptPath(const AScriptName: string): string;
+var
+  ExeDir: string;
+  Candidate: string;
+begin
+  ExeDir := ExtractFilePath(ParamStr(0));
+
+  // Look in the 'scripts' sub-folder next to the executable first
+  Candidate := TPath.Combine(TPath.Combine(ExeDir, 'scripts'), AScriptName);
+  if TFile.Exists(Candidate) then
+  begin
+    Result := Candidate;
+    Exit;
+  end;
+
+  // Fall back to the executable directory itself
+  Candidate := TPath.Combine(ExeDir, AScriptName);
+  if TFile.Exists(Candidate) then
+  begin
+    Result := Candidate;
+    Exit;
+  end;
+
+  Result := '';
+end;
+
+class function TCSVExporter.RunProcessAndWait(const AExe,
+  AParams: string): Integer;
+var
+  SI: TStartupInfo;
+  PI: TProcessInformation;
+  CmdLine: string;
+  ExitCode: DWORD;
+begin
+  Result := -1;
+  FillChar(SI, SizeOf(SI), 0);
+  SI.cb := SizeOf(SI);
+  SI.dwFlags := STARTF_USESHOWWINDOW;
+  SI.wShowWindow := SW_HIDE;
+  FillChar(PI, SizeOf(PI), 0);
+
+  // Build the full command line
+  CmdLine := '"' + AExe + '" ' + AParams;
+
+  if not CreateProcess(nil, PChar(CmdLine), nil, nil, False,
+    CREATE_NO_WINDOW, nil, nil, SI, PI) then
+    raise Exception.CreateFmt('Failed to launch "%s" (Windows error %d).',
+      [AExe, GetLastError]);
+
+  try
+    WaitForSingleObject(PI.hProcess, INFINITE);
+    if GetExitCodeProcess(PI.hProcess, ExitCode) then
+      Result := Integer(ExitCode);
+  finally
+    CloseHandle(PI.hProcess);
+    CloseHandle(PI.hThread);
+  end;
+end;
+
+class function TCSVExporter.ExportDuckDBSourceToCSV(const ASourcePath,
+  AFilePath: string; out AError: string): Boolean;
+var
+  ScriptPath: string;
+  ExitCode: Integer;
+  CommandLine: string;
+  Runners: array[0..2] of string;
+  R: string;
+  Launched: Boolean;
+begin
+  Result := False;
+  AError := '';
+
+  if not TFile.Exists(ASourcePath) then
+  begin
+    AError := 'DuckDB source file not found.';
+    Exit;
+  end;
+
+  ScriptPath := ResolveScriptPath('export_duckdb_csv.py');
+  if ScriptPath = '' then
+  begin
+    AError := 'Bundled export script not found. ' +
+      'Ensure export_duckdb_csv.py is present in the scripts\ folder next to the executable.';
+    Exit;
+  end;
+
+  // Try the Python Launcher for Windows first, then plain python3/python
+  Runners[0] := 'py';
+  Runners[1] := 'python3';
+  Runners[2] := 'python';
+
+  Launched := False;
+  ExitCode := -1;
+  for R in Runners do
+  begin
+    CommandLine := Format('-3 "%s" --input "%s" --output "%s"',
+      [ScriptPath, ASourcePath, AFilePath]);
+    // The '-3' flag is only valid for the 'py' launcher; omit it for python/python3
+    if R <> 'py' then
+      CommandLine := Format('"%s" --input "%s" --output "%s"',
+        [ScriptPath, ASourcePath, AFilePath]);
+    try
+      ExitCode := RunProcessAndWait(R, CommandLine);
+      Launched := True;
+      Break;
+    except
+      // Try next runner
+    end;
+  end;
+
+  if not Launched then
+  begin
+    AError := 'Could not launch Python. Ensure Python 3 is installed and on the system PATH.';
+    Exit;
+  end;
+
+  Result := (ExitCode = 0) and TFile.Exists(AFilePath);
+  if not Result then
+    AError := 'DuckDB export failed (exit code ' + IntToStr(ExitCode) + '). ' +
+      'Ensure Python 3 and the duckdb package are installed (pip install duckdb).';
 end;
 
 end.

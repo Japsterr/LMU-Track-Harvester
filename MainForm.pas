@@ -734,9 +734,66 @@ end;
 procedure TMainForm.BtnExportCSVClick(Sender: TObject);
 var
   SessionID: Integer;
+  SourceIdx: Integer;
+  SourcePath, ErrMsg: string;
   SD: TSaveDialog;
   TrackName, CarName, ClassName: string;
 begin
+  if LvwSessions.Selected = nil then
+  begin
+    ShowMessage('Please select a telemetry session or source file first.');
+    Exit;
+  end;
+
+  // Check whether a DuckDB source-file row is selected
+  SourceIdx := LvwSessions.Selected.Index - Length(FSessions);
+  if SourceIdx >= 0 then
+  begin
+    if SourceIdx > High(FSourceTelemetryFiles) then
+    begin
+      ShowMessage('Please select a telemetry session or source file first.');
+      Exit;
+    end;
+
+    SourcePath := FSourceTelemetryFiles[SourceIdx];
+    SD := TSaveDialog.Create(nil);
+    try
+      SD.Title      := 'Export DuckDB Telemetry to CSV';
+      SD.DefaultExt := 'csv';
+      SD.Filter     := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
+      SD.FileName   := ChangeFileExt(ExtractFileName(SourcePath), '.csv');
+      SD.InitialDir := FSettings.LastExportFolder;
+
+      if SD.Execute then
+      begin
+        FSettings.LastExportFolder := ExtractFilePath(SD.FileName);
+        SetStatus('Exporting DuckDB telemetry...');
+        Screen.Cursor := crHourGlass;
+        Application.ProcessMessages;
+        try
+          if TCSVExporter.ExportDuckDBSourceToCSV(SourcePath, SD.FileName, ErrMsg) then
+          begin
+            SetStatus('DuckDB telemetry exported to: ' + SD.FileName);
+            if MessageDlg('Export successful. Open the file?',
+                          mtInformation, [mbYes, mbNo], 0) = mrYes then
+              ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
+          end
+          else
+          begin
+            SetStatus('DuckDB export failed.');
+            ShowMessage('Export failed.' + sLineBreak + ErrMsg);
+          end;
+        finally
+          Screen.Cursor := crDefault;
+        end;
+      end;
+    finally
+      SD.Free;
+    end;
+    Exit;
+  end;
+
+  // Imported session export
   SessionID := SelectedSessionID;
   if SessionID = -1 then
   begin
