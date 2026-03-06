@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1771771233</DateTime>
+<TimeString>2026/02/22 16:40:33</TimeString>
+<TrackVenue>Circuit de la Sarthe</TrackVenue>
+<TrackCourse>Circuit de la Sarthe</TrackCourse>
+<TrackEvent>24 Heures du Mans</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\LeMans_2023\1.21\layoutLeMans.mas</TrackData>
+<TrackLength>13624.0</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>20</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>63</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Qualify>
+<DateTime>1771771364</DateTime>
+<TimeString>2026/02/22 16:42:44</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>5</Minutes>
+<Stream>
+<Penalty Driver="Iceossi Performance" ID="19" Penalty="Stop/Go" Time="10" Laps="0" Reason="Exiting Pits Under Red" et="28.3">Iceossi Performance received Stop/Go penalty, 10s, 0laps for Exiting Pits Under Red. Result: penalties=1, 1st=Stop/Go,10s</Penalty>
+<TrackLimits Driver="Maciej Batko" ID="7" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="50.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Jan Stange#8157" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="50.2">No Further Action</TrackLimits>
+<Incident et="55.4">Matthias Refior(1) reported contact (155.99) with Post</Incident>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="56.9">No Further Action</TrackLimits>
+<Score et="66.4">Iceossi Performance(19) lap=0 point=1 t=-1.000 et=66.100</Score>
+<Score et="67.7">Meinke Mathias(12) lap=0 point=1 t=-1.000 et=67.600</Score>
+<Score et="68.5">Jonas Sander#8782(16) lap=0 point=1 t=-1.000 et=68.340</Score>
+<Score et="68.6">Maciej Batko(7) lap=0 point=1 t=-1.000 et=68.420</Score>
+<Score et="70.9">Max Faoro(10) lap=0 point=1 t=-1.000 et=70.780</Score>
+<Score et="71.5">Enrico Sprenger(5) lap=0 point=1 t=-1.000 et=71.340</Score>
+<Score et="71.7">Dragore fr(15) lap=0 point=1 t=-1.000 et=71.520</Score>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="73.1">No Further Action</TrackLimits>
+<Score et="73.3">Jan Stange#8157(17) lap=0 point=1 t=-1.000 et=73.080</Score>
+<Score et="75.0">Matthias Refior(1) lap=0 point=1 t=-1.000 et=74.780</Score>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="75.2">No Further Action</TrackLimits>
+<Score et="76.9">Stephane COURTOIS(6) lap=0 point=1 t=-1.000 et=76.740</Score>
+<Score et="83.3">Liam Abrar(2) lap=0 point=1 t=-1.000 et=83.080</Score>
+<Score et="87.0">Peter Szego(14) lap=0 point=1 t=-1.000 et=86.760</Score>
+<Score et="88.4">oskar balus(3) lap=0 point=1 t=-1.000 et=88.280</Score>
+<TrackLimits Driver="Japie Bosman" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="91.3">No Further Action</TrackLimits>
+<Score et="94.1">Bruno Couto(4) lap=0 point=1 t=-1.000 et=93.720</Score>
+<Score et="97.9">Alexandr Karpov(9) lap=0 point=1 t=-1.000 et=97.700</Score>
+<Score et="99.0">Mad Monk(13) lap=0 point=1 t=-1.000 et=98.840</Score>
+<TrackLimits Driver="Meinke Mathias" ID="12" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="101.6">No Further Action</TrackLimits>
+<Score et="116.0">Japie Bosman(11) lap=0 point=1 t=-1.000 et=115.957</Score>
+<Score et="116.3">Andreu CH(8) lap=0 point=1 t=-1.000 et=116.160</Score>
+<Incident et="117.0">Aliaksandr Shybun(18) reported contact (26.36) with Post</Incident>
+<TrackLimits Driver="Aliaksandr Shybun" ID="18" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="119.4">No Further Action</TrackLimits>
+<Score et="125.0">Antonio Carretero(0) lap=0 point=1 t=-1.000 et=124.749</Score>
+<Score et="125.0">Antonio Carretero(0) lap=0 point=2 t=-1.000 et=124.749</Score>
+<Score et="125.0">Antonio Carretero(0) lap=1 point=0 t=-1.000 et=124.749</Score>
+<TrackLimits Driver="Iceossi Performance" ID="19" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="136.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Mad Monk" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="136.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="139.9">No Further Action</TrackLimits>
+<Score et="140.1">Aliaksandr Shybun(18) lap=0 point=1 t=-1.000 et=139.960</Score>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="142.3">No Further Action</TrackLimits>
+<Incident et="142.4">Matthias Refior(1) reported contact (345.79) with Post</Incident>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="144.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Japie Bosman" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="151.4">No Further Action</TrackLimits>
+<Score et="162.7">Jonas Sander#8782(16) lap=0 point=2 t=-1.000 et=162.580</Score>
+<Score et="162.8">Meinke Mathias(12) lap=0 point=2 t=-1.000 et=162.620</Score>
+<Score et="165.0">Iceossi Performance(19) lap=0 point=2 t=-1.000 et=164.840</Score>
+<Score et="165.2">Maciej Batko(7) lap=0 point=2 t=-1.000 et=164.960</Score>
+<Sector et="165.7">Andreu CH(8) reports new suspension damage</Sector>
+<Incident et="165.8">Andreu CH(8) reported contact (1757.23) with Immovable</Incident>
+<TrackLimits Driver="Jonas Sander#8782" ID="16" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="167.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Andreu CH" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="167.7">No Further Action</TrackLimits>
+<Score et="167.8">Max Faoro(10) lap=0 point=2 t=-1.000 et=167.600</Score>
+<Score et="168.4">Enrico Sprenger(5) lap=0 point=2 t=-1.000 et=168.260</Score>
+<Score et="169.0">Dragore fr(15) lap=0 point=2 t=-1.000 et=168.900</Score>
+<Score et="170.1">Jan Stange#8157(17) lap=0 point=2 t=-1.000 et=169.960</Score>
+<Score et="170.5">Matthias Refior(1) lap=0 point=2 t=-1.000 et=170.280</Score>
+<Score et="174.4">Stephane COURTOIS(6) lap=0 point=2 t=-1.000 et=174.340</Score>
+<Score et="176.3">Antonio Carretero(0) lap=1 point=1 t=-1.000 et=176.070</Score>
+<Score et="176.3">Antonio Carretero(0) lap=1 point=2 t=-1.000 et=176.070</Score>
+<Score et="176.3">Antonio Carretero(0) lap=2 point=0 t=-1.000 et=176.070</Score>
+<Score et="178.6">Liam Abrar(2) lap=0 point=2 t=-1.000 et=178.280</Score>
+<Score et="182.7">Peter Szego(14) lap=0 point=2 t=-1.000 et=182.500</Score>
+<Score et="184.5">oskar balus(3) lap=0 point=2 t=-1.000 et=184.360</Score>
+<Score et="190.4">Bruno Couto(4) lap=0 point=2 t=-1.000 et=190.000</Score>
+<Score et="194.7">Alexandr Karpov(9) lap=0 point=2 t=-1.000 et=194.540</Score>
+<TrackLimits Driver="Bruno Couto" ID="4" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="194.9">No Further Action</TrackLimits>
+<Score et="198.5">Mad Monk(13) lap=0 point=2 t=-1.000 et=198.260</Score>
+<Incident et="201.8">Max Faoro(10) reported contact (78.22) with Post</Incident>
+<Incident et="204.1">Max Faoro(10) reported contact (2161.33) with Immovable</Incident>
+<Incident et="210.4">Dragore fr(15) reported contact (2855.83) with Immovable</Incident>
+<TrackLimits Driver="Jonas Sander#8782" ID="16" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="210.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="212.4">No Further Action</TrackLimits>
+<Sector et="213.3">Liam Abrar(2) reports new suspension damage</Sector>
+<Incident et="213.4">Liam Abrar(2) reported contact (5966.55) with Immovable</Incident>
+<TrackLimits Driver="Dragore fr" ID="15" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="213.5">No Further Action</TrackLimits>
+<Score et="214.2">Andreu CH(8) lap=0 point=2 t=-1.000 et=214.020</Score>
+<Score et="217.6">Japie Bosman(11) lap=0 point=2 t=-1.000 et=217.621</Score>
+<Score et="218.1">Liam Abrar(2) lap=1 point=0 t=-1.000 et=217.674</Score>
+<TrackLimits Driver="Andreu CH" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="218.7">No Further Action</TrackLimits>
+<Sector et="224.1">Bruno Couto(4) reports new suspension damage</Sector>
+<Incident et="224.2">Bruno Couto(4) reported contact (3538.13) with Immovable</Incident>
+<Incident et="224.6">Bruno Couto(4) reported contact (23.04) with Post</Incident>
+<Sector et="224.9">Max Faoro(10) reports new suspension damage</Sector>
+<Incident et="224.9">Max Faoro(10) reported contact (3301.72) with Immovable</Incident>
+<Score et="225.2">Antonio Carretero(0) lap=2 point=1 t=-1.000 et=224.970</Score>
+<Score et="225.2">Antonio Carretero(0) lap=2 point=2 t=-1.000 et=224.970</Score>
+<Score et="225.2">Antonio Carretero(0) lap=3 point=0 t=-1.000 et=224.970</Score>
+<Sector et="225.8">Bruno Couto(4) reports new suspension damage</Sector>
+<Incident et="225.9">Bruno Couto(4) reported contact (5151.21) with Immovable</Incident>
+<Incident et="226.0">Max Faoro(10) reported contact (12.27) with Post</Incident>
+<Incident et="226.3">Max Faoro(10) reported contact (88.56) with Post</Incident>
+<Incident et="226.9">Max Faoro(10) reported contact (33.06) with Immovable</Incident>
+<Incident et="227.1">Max Faoro(10) reported contact (7.29) with Post</Incident>
+<Incident et="227.2">Max Faoro(10) reported contact (20.92) with Post</Incident>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="227.8">No Further Action</TrackLimits>
+<Incident et="229.2">Bruno Couto(4) reported contact (12.16) with Wing</Incident>
+<Incident et="229.3">Bruno Couto(4) reported contact (78.74) with Wing</Incident>
+<Incident et="229.3">Bruno Couto(4) reported contact (134.92) with Wing</Incident>
+<Incident et="229.3">Bruno Couto(4) reported contact (96.71) with Immovable</Incident>
+<Incident et="229.9">Bruno Couto(4) reported contact (130.62) with Wing</Incident>
+<Incident et="230.0">Bruno Couto(4) reported contact (115.10) with Immovable</Incident>
+<Incident et="232.6">Bruno Couto(4) reported contact (39.36) with Immovable</Incident>
+<Score et="235.2">Aliaksandr Shybun(18) lap=0 point=2 t=-1.000 et=235.100</Score>
+<Incident et="236.4">Bruno Couto(4) reported contact (1107.63) with Immovable</Incident>
+<Sector et="237.4">Jonas Sander#8782(16) reports new suspension damage</Sector>
+<Sector et="237.5">Jonas Sander#8782(16) reports new suspension damage</Sector>
+<Incident et="237.5">Jonas Sander#8782(16) reported contact (732.04) with Immovable</Incident>
+<Incident et="238.0">Bruno Couto(4) reported contact (41.51) with Immovable</Incident>
+<Incident et="238.5">Maciej Batko(7) reported contact (109.28) with Post</Incident>
+<TrackLimits Driver="Jonas Sander#8782" ID="16" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="239.4">No Further Action</TrackLimits>
+<Incident et="240.5">Bruno Couto(4) reported contact (75.73) with Wing</Incident>
+<Incident et="242.3">Jonas Sander#8782(16) reported contact (2573.45) with Immovable</Incident>
+<Incident et="244.9">Enrico Sprenger(5) reported contact (85.96) with Immovable</Incident>
+<Incident et="245.2">Jonas Sander#8782(16) reported contact (978.32) with Immovable</Incident>
+<Incident et="245.8">Jonas Sander#8782(16) reported contact (1022.68) with Immovable</Incident>
+<Incident et="247.2">Jonas Sander#8782(16) reported contact (1197.35) with Immovable</Incident>
+<Incident et="249.9">Meinke Mathias(12) reported contact (34.01) with Post</Incident>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="250.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Bruno Couto" ID="4" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="250.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="251.5">No Further Action</TrackLimits>
+<Score et="252.4">Jonas Sander#8782(16) lap=1 point=0 t=-1.000 et=252.245</Score>
+<TrackLimits Driver="Peter Szego" ID="14" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="252.8">No Further Action</TrackLimits>
+<Incident et="257.4">Enrico Sprenger(5) reported contact (180.23) with Post</Incident>
+<Incident et="258.0">Matthias Refior(1) reported contact (94.85) with Post</Incident>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="258.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="261.6">Invalid Lap Cut Track</TrackLimits>
+<Sector et="272.2">Peter Szego(14) reports new suspension damage</Sector>
+<Incident et="272.3">Peter Szego(14) reported contact (3648.64) with Immovable</Incident>
+<Score et="273.6">Meinke Mathias(12) lap=1 point=0 t=-1.000 et=273.440</Score>
+<TrackLimits Driver="Peter Szego" ID="14" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="273.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="273.6">No Further Action</TrackLimits>
+<Score et="274.7">Antonio Carretero(0) lap=3 point=1 t=-1.000 et=274.462</Score>
+<Score et="274.7">Antonio Carretero(0) lap=3 point=2 t=-1.000 et=274.462</Score>
+<Score et="274.7">Antonio Carretero(0) lap=4 point=0 t=-1.000 et=274.462</Score>
+<Score et="276.1">Maciej Batko(7) lap=1 point=0 t=-1.000 et=275.960</Score>
+<Score et="278.0">Iceossi Performance(19) lap=1 point=0 t=-1.000 et=277.820</Score>
+<Score et="279.4">Peter Szego(14) lap=1 point=0 t=-1.000 et=279.182</Score>
+<Incident et="279.5">Enrico Sprenger(5) reported contact (53.50) with Post</Incident>
+<TrackLimits Driver="Jan Stange#8157" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="279.7">No Further Action</TrackLimits>
+<Incident et="281.0">Stephane COURTOIS(6) reported contact (5507.07) with Immovable</Incident>
+<Score et="281.5">Matthias Refior(1) lap=1 point=0 t=-1.000 et=281.380</Score>
+<Score et="283.4">Enrico Sprenger(5) lap=1 point=0 t=-1.000 et=283.300</Score>
+<Score et="284.2">Jan Stange#8157(17) lap=1 point=0 t=-1.000 et=284.100</Score>
+<TrackLimits Driver="Stephane COURTOIS" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="286.2">No Further Action</TrackLimits>
+<Score et="288.2">Dragore fr(15) lap=1 point=0 t=-1.000 et=287.980</Score>
+<Incident et="289.3">Andreu CH(8) reported contact (418.63) with Immovable</Incident>
+<Incident et="290.4">Bruno Couto(4) reported contact (1367.11) with Immovable</Incident>
+<Incident et="290.8">Meinke Mathias(12) reported contact (25.60) with Post</Incident>
+<TrackLimits Driver="Andreu CH" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="291.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Meinke Mathias" ID="12" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="292.8">No Further Action</TrackLimits>
+<Score et="295.2">Max Faoro(10) lap=1 point=0 t=-1.000 et=294.960</Score>
+<Score et="295.2">Bruno Couto(4) lap=1 point=0 t=-1.000 et=294.948</Score>
+<TrackLimits Driver="Stephane COURTOIS" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="295.4">No Further Action</TrackLimits>
+<Score et="297.5">oskar balus(3) lap=1 point=0 t=-1.000 et=297.320</Score>
+<Score et="300.3">Stephane COURTOIS(6) lap=1 point=0 t=-1.000 et=300.140</Score>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="302.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Maciej Batko" ID="7" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="303.2">No Further Action</TrackLimits>
+<Score et="308.9">Alexandr Karpov(9) lap=1 point=0 t=-1.000 et=308.660</Score>
+<Sector Driver="Meinke Mathias" ID="12" Sector="1" Class="GT3" et="312.5">Meinke Mathias(12) set new best for sector 1</Sector>
+<Score et="312.6">Meinke Mathias(12) lap=1 point=1 t=38.913 et=312.360</Score>
+<Score et="314.3">Mad Monk(13) lap=1 point=0 t=-1.000 et=314.120</Score>
+<Score et="317.2">Iceossi Performance(19) lap=1 point=1 t=39.247 et=317.080</Score>
+<Incident et="317.8">oskar balus(3) reported contact (5.80) with Post</Incident>
+<Incident et="317.8">oskar balus(3) reported contact (17.24) with Post</Incident>
+<Incident et="318.2">oskar balus(3) reported contact (26.97) with Post</Incident>
+<TrackLimits Driver="oskar balus" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="318.7">No Further Action</TrackLimits>
+<Sector Driver="Matthias Refior" ID="1" Sector="1" Class="GT3" et="319.7">Matthias Refior(1) set new best for sector 1</Sector>
+<Score et="319.8">Matthias Refior(1) lap=1 point=1 t=38.213 et=319.580</Score>
+<Score et="322.7">Enrico Sprenger(5) lap=1 point=1 t=39.223 et=322.520</Score>
+<Score et="323.3">Antonio Carretero(0) lap=4 point=1 t=-1.000 et=323.171</Score>
+<Score et="323.3">Antonio Carretero(0) lap=4 point=2 t=-1.000 et=323.171</Score>
+<Score et="323.3">Antonio Carretero(0) lap=5 point=0 t=-1.000 et=323.171</Score>
+<Score et="324.4">Jan Stange#8157(17) lap=1 point=1 t=40.009 et=324.100</Score>
+<Incident et="324.6">Enrico Sprenger(5) reported contact (53.09) with Post</Incident>
+<Incident et="324.6">Enrico Sprenger(5) reported contact (114.17) with Post</Incident>
+<Score et="325.3">Maciej Batko(7) lap=1 point=1 t=49.176 et=325.120</Score>
+<Score et="325.3">Andreu CH(8) lap=1 point=0 t=-1.000 et=325.140</Score>
+<Incident et="325.9">Enrico Sprenger(5) reported contact (11.47) with Post</Incident>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="326.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Maciej Batko" ID="7" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="327.7">No Further Action</TrackLimits>
+<Score et="327.9">Dragore fr(15) lap=1 point=1 t=39.689 et=327.660</Score>
+<Score et="333.8">Max Faoro(10) lap=1 point=1 t=38.733 et=333.700</Score>
+<TrackLimits Driver="Mad Monk" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="335.5">No Further Action</TrackLimits>
+<Incident et="335.8">Max Faoro(10) reported contact (92.88) with Post</Incident>
+<Score et="336.9">oskar balus(3) lap=1 point=1 t=39.397 et=336.720</Score>
+<Score et="337.9">Japie Bosman(11) lap=1 point=0 t=-1.000 et=337.899</Score>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="340.0">No Further Action</TrackLimits>
+<Score et="340.7">Stephane COURTOIS(6) lap=1 point=1 t=40.443 et=340.580</Score>
+<Incident et="341.7">Aliaksandr Shybun(18) reported contact (82.77) with Post</Incident>
+<TrackLimits Driver="Andreu CH" ID="8" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="343.7">No Further Action</TrackLimits>
+<Score et="345.4">Aliaksandr Shybun(18) lap=1 point=0 t=-1.000 et=345.260</Score>
+<Score et="348.1">Alexandr Karpov(9) lap=1 point=1 t=39.262 et=347.920</Score>
+<Score et="355.3">Mad Monk(13) lap=1 point=1 t=41.077 et=355.200</Score>
+<Score et="357.4">Aliaksandr Shybun(18) lap=1 point=1 t=-1.000 et=357.101</Score>
+<Score et="357.4">Aliaksandr Shybun(18) lap=1 point=2 t=-1.000 et=357.101</Score>
+<Score et="357.4">Aliaksandr Shybun(18) lap=2 point=0 t=-1.000 et=357.101</Score>
+<Score et="363.8">Andreu CH(8) lap=1 point=1 t=-1.000 et=363.562</Score>
+<Score et="363.8">Andreu CH(8) lap=1 point=2 t=-1.000 et=363.562</Score>
+<Score et="363.8">Andreu CH(8) lap=2 point=0 t=-1.000 et=363.562</Score>
+<Incident et="366.4">Japie Bosman(11) reported contact (198.81) with Post</Incident>
+<Score et="379.9">Japie Bosman(11) lap=1 point=1 t=42.034 et=379.933</Score>
+<Incident et="383.1">Iceossi Performance(19) reported contact (95.73) with Immovable</Incident>
+<TrackLimits Driver="Iceossi Performance" ID="19" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="391.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="392.4">No Further Action</TrackLimits>
+<Sector Driver="Meinke Mathias" ID="12" Sector="2" Class="GT3" et="408.2">Meinke Mathias(12) set new best for sector 2</Sector>
+<Score et="408.2">Meinke Mathias(12) lap=1 point=2 t=134.571 et=408.020</Score>
+<TrackLimits Driver="oskar balus" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="408.8">No Further Action</TrackLimits>
+<Score et="415.5">Matthias Refior(1) lap=1 point=2 t=133.994 et=415.360</Score>
+<Incident et="415.9">Matthias Refior(1) reported contact (26.95) with Post</Incident>
+<Incident et="416.4">Alexandr Karpov(9) reported contact (21.59) with Post</Incident>
+<TrackLimits Driver="Alexandr Karpov" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="418.3">No Further Action</TrackLimits>
+<Score et="420.4">Enrico Sprenger(5) lap=1 point=2 t=136.881 et=420.180</Score>
+<Score et="420.6">Iceossi Performance(19) lap=1 point=2 t=142.613 et=420.440</Score>
+<Score et="420.7">Jan Stange#8157(17) lap=1 point=2 t=136.479 et=420.580</Score>
+<Score et="422.8">Maciej Batko(7) lap=1 point=2 t=146.627 et=422.580</Score>
+<Score et="426.2">Dragore fr(15) lap=1 point=2 t=138.032 et=426.020</Score>
+<Score et="431.6">Max Faoro(10) lap=1 point=2 t=136.546 et=431.520</Score>
+<Score et="434.1">oskar balus(3) lap=1 point=2 t=136.647 et=433.980</Score>
+<Score et="440.1">Stephane COURTOIS(6) lap=1 point=2 t=139.852 et=440.000</Score>
+<Score et="444.8">Alexandr Karpov(9) lap=1 point=2 t=136.048 et=444.700</Score>
+<Score et="453.3">Mad Monk(13) lap=1 point=2 t=138.971 et=453.100</Score>
+<Score et="480.2">Japie Bosman(11) lap=1 point=2 t=142.340 et=480.239</Score>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="1" WarningPoints="0.75" CurrentPoints="1" Resolution="5" et="506.9">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Enrico Sprenger" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="509.8">No Further Action</TrackLimits>
+<Sector et="509.9">oskar balus(3) reports new suspension damage</Sector>
+<Sector et="509.9">oskar balus(3) reports new suspension damage</Sector>
+<Incident et="509.9">oskar balus(3) reported contact (813.10) with Immovable</Incident>
+<TrackLimits Driver="oskar balus" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="513.8">No Further Action</TrackLimits>
+<Incident et="515.6">Matthias Refior(1) reported contact (28.12) with Post</Incident>
+<Incident et="516.4">Dragore fr(15) reported contact (8.24) with Post</Incident>
+<Sector Driver="Meinke Mathias" ID="12" Sector="3" Class="GT3" et="519.5">Meinke Mathias(12) set new best for sector 3</Sector>
+<Score et="519.6">Meinke Mathias(12) lap=2 point=0 t=245.906 et=519.340</Score>
+<TrackLimits Driver="Matthias Refior" ID="1" Lap="1" WarningPoints="0" CurrentPoints="1" Resolution="7" et="522.3">No Further Action</TrackLimits>
+<Score et="526.5">Matthias Refior(1) lap=2 point=0 t=-1.000 et=526.360</Score>
+<TrackLimits Driver="Jan Stange#8157" ID="17" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="529.2">No Further Action</TrackLimits>
+<Score et="531.9">Meinke Mathias(12) lap=2 point=1 t=-1.000 et=531.713</Score>
+<Score et="531.9">Meinke Mathias(12) lap=2 point=2 t=-1.000 et=531.713</Score>
+<Score et="531.9">Meinke Mathias(12) lap=3 point=0 t=-1.000 et=531.713</Score>
+<Sector Driver="Maciej Batko" ID="7" Sector="3" Class="GT3" et="533.6">Maciej Batko(7) set new best for sector 3</Sector>
+<Score et="533.6">Maciej Batko(7) lap=2 point=0 t=257.513 et=533.460</Score>
+<Score et="533.8">Jan Stange#8157(17) lap=2 point=0 t=249.609 et=533.700</Score>
+<Incident et="534.7">Alexandr Karpov(9) reported contact (94.73) with Post</Incident>
+<Score et="534.7">Matthias Refior(1) lap=2 point=1 t=-1.000 et=534.230</Score>
+<Score et="534.7">Matthias Refior(1) lap=2 point=2 t=-1.000 et=534.230</Score>
+<Score et="534.7">Matthias Refior(1) lap=3 point=0 t=-1.000 et=534.230</Score>
+<Score et="535.4">Iceossi Performance(19) lap=2 point=0 t=257.430 et=535.260</Score>
+<TrackLimits Driver="Dragore fr" ID="15" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="535.5">No Further Action</TrackLimits>
+<Score et="535.5">Enrico Sprenger(5) lap=2 point=0 t=252.045 et=535.340</Score>
+<TrackLimits Driver="Alexandr Karpov" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="536.0">No Further Action</TrackLimits>
+<Score et="539.9">Dragore fr(15) lap=2 point=0 t=251.823 et=539.800</Score>
+<Score et="542.2">Jan Stange#8157(17) lap=2 point=1 t=-1.000 et=542.004</Score>
+<Score et="542.2">Jan Stange#8157(17) lap=2 point=2 t=-1.000 et=542.004</Score>
+<Score et="542.2">Jan Stange#8157(17) lap=3 point=0 t=-1.000 et=542.004</Score>
+<TrackLimits Driver="Max Faoro" ID="10" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="544.3">No Further Action</TrackLimits>
+<Score et="544.4">Max Faoro(10) lap=2 point=0 t=-1.000 et=544.160</Score>
+<Score et="545.6">Dragore fr(15) lap=2 point=1 t=-1.000 et=545.474</Score>
+<Score et="545.6">Dragore fr(15) lap=2 point=2 t=-1.000 et=545.474</Score>
+<Score et="545.6">Dragore fr(15) lap=3 point=0 t=-1.000 et=545.474</Score>
+<Score et="547.4">Iceossi Performance(19) lap=2 point=1 t=-1.000 et=547.153</Score>
+<Score et="547.4">Iceossi Performance(19) lap=2 point=2 t=-1.000 et=547.153</Score>
+<Score et="547.4">Iceossi Performance(19) lap=3 point=0 t=-1.000 et=547.153</Score>
+<Score et="548.0">oskar balus(3) lap=2 point=0 t=250.530 et=547.860</Score>
+<Score et="548.6">Maciej Batko(7) lap=2 point=1 t=-1.000 et=548.399</Score>
+<Score et="548.6">Maciej Batko(7) lap=2 point=2 t=-1.000 et=548.399</Score>
+<Score et="548.6">Maciej Batko(7) lap=3 point=0 t=-1.000 et=548.399</Score>
+<Incident et="548.8">Alexandr Karpov(9) reported contact (73.93) with Post</Incident>
+<Score et="551.8">Max Faoro(10) lap=2 point=1 t=-1.000 et=551.606</Score>
+<Score et="551.8">Max Faoro(10) lap=2 point=2 t=-1.000 et=551.606</Score>
+<Score et="551.8">Max Faoro(10) lap=3 point=0 t=-1.000 et=551.606</Score>
+<Score et="555.1">Enrico Sprenger(5) lap=2 point=1 t=-1.000 et=554.915</Score>
+<Score et="555.1">Enrico Sprenger(5) lap=2 point=2 t=-1.000 et=554.915</Score>
+<Score et="555.1">Enrico Sprenger(5) lap=3 point=0 t=-1.000 et=554.915</Score>
+<Score et="556.6">Stephane COURTOIS(6) lap=2 point=0 t=256.216 et=556.360</Score>
+<Score et="557.9">oskar balus(3) lap=2 point=1 t=-1.000 et=557.620</Score>
+<Score et="557.9">oskar balus(3) lap=2 point=2 t=-1.000 et=557.620</Score>
+<Score et="557.9">oskar balus(3) lap=3 point=0 t=-1.000 et=557.620</Score>
+<Score et="558.5">Alexandr Karpov(9) lap=2 point=0 t=249.637 et=558.300</Score>
+<Score et="568.4">Mad Monk(13) lap=2 point=0 t=254.128 et=568.260</Score>
+</Stream>
+<MostLapsCompleted>5</MostLapsCompleted>
+<Driver>
+<Name>Meinke Mathias</Name>
+<Connected>1</Connected>
+<VehFile>63_25_IRON3E8BB8AD.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #63:ELMS</VehName>
+<Category>ELMS 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>13</CarNumber>
+<TeamName>Iron Lynx 2025 #63</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="--.---" topspeed="284.68" fuel="0.078" fuelUsed="0.705" ve="0.098" veUsed="0.902" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="273.4399" s1="38.9134" s2="95.6577" s3="111.3351" topspeed="284.68" fuel="0.012" fuelUsed="0.067" ve="0.004" veUsed="0.094" twfl="0.976" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">245.9062</Lap>
+<Lap num="3" p="1" et="519.3401" topspeed="186.03" fuel="0.784" fuelUsed="-0.773" ve="0.188" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>245.9062</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Jan Stange#8157</Name>
+<Connected>1</Connected>
+<VehFile>77_25_PROT192000D7.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #77:LM</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>18</CarNumber>
+<TeamName>Proton Competition 2025 #77</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="283.33" fuel="0.200" fuelUsed="0.574" ve="0.247" veUsed="0.753" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="284.1001" s1="40.0094" s2="96.4697" s3="113.1299" topspeed="283.78" fuel="0.141" fuelUsed="0.059" ve="0.149" veUsed="0.098" twfl="0.976" twfr="0.976" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">249.6090</Lap>
+<Lap num="3" p="2" et="533.7000" topspeed="174.32" fuel="0.773" fuelUsed="-0.631" ve="0.341" veUsed="-0.192" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>249.6090</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Alexandr Karpov</Name>
+<Connected>1</Connected>
+<VehFile>46_25_WRT_874F6E78.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2025 #46:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>10</CarNumber>
+<TeamName>Team WRT 2025 #46</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="16" et="--.---" topspeed="281.07" fuel="0.067" fuelUsed="0.642" ve="0.094" veUsed="0.906" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="308.6599" s1="39.2624" s2="96.7852" s3="113.5891" topspeed="281.52" fuel="0.008" fuelUsed="0.059" ve="0.008" veUsed="0.086" twfl="0.984" twfr="0.988" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">249.6367</Lap>
+<BestLapTime>249.6367</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>oskar balus</Name>
+<Connected>1</Connected>
+<VehFile>92_24_MANT5488007D.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Manthey PureRxcing 2024 #92:LM</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>4</CarNumber>
+<TeamName>Manthey PureRxcing 2024 #92</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="14" et="--.---" topspeed="285.13" fuel="0.173" fuelUsed="0.545" ve="0.239" veUsed="0.761" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="297.3201" s1="39.3974" s2="97.2497" s3="113.8829" topspeed="285.58" fuel="0.106" fuelUsed="0.067" ve="0.145" veUsed="0.094" twfl="0.973" twfr="0.000" twrl="0.980" twrr="0.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">250.5300</Lap>
+<Lap num="3" p="3" et="547.8601" topspeed="196.39" fuel="0.718" fuelUsed="-0.612" ve="0.329" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>250.5300</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Dragore fr</Name>
+<Connected>1</Connected>
+<VehFile>60_24_IRONDCDFC07B.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2024 #60:LM</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>16</CarNumber>
+<TeamName>Iron Lynx 2024 #60</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="285.13" fuel="0.184" fuelUsed="0.724" ve="0.196" veUsed="0.804" twfl="0.969" twfr="0.965" twrl="0.976" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="287.9800" s1="39.6892" s2="98.3428" s3="113.7913" topspeed="281.52" fuel="0.106" fuelUsed="0.078" ve="0.102" veUsed="0.094" twfl="0.941" twfr="0.937" twrl="0.969" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">251.8232</Lap>
+<Lap num="3" p="3" et="539.8000" topspeed="168.91" fuel="0.910" fuelUsed="-0.804" ve="0.290" veUsed="-0.188" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>251.8232</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,AutoShift=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Enrico Sprenger</Name>
+<Connected>1</Connected>
+<VehFile>397_25_BMW.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>BMW GT3 Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>6</CarNumber>
+<TeamName>Spencer and Hill Racing 1</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="281.98" fuel="0.361" fuelUsed="0.348" ve="0.506" veUsed="0.494" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="283.3000" s1="39.2234" s2="97.6573" s3="115.1647" topspeed="281.98" fuel="0.294" fuelUsed="0.067" ve="0.416" veUsed="0.090" twfl="0.984" twfr="0.984" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">252.0455</Lap>
+<Lap num="3" p="5" et="535.3401" topspeed="121.62" fuel="0.710" fuelUsed="-0.416" ve="0.600" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>252.0455</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Mad Monk</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>14</CarNumber>
+<TeamName>United Autosports 2025 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="17" et="--.---" topspeed="281.52" fuel="0.141" fuelUsed="0.575" ve="0.188" veUsed="0.812" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="7" et="314.1201" s1="41.0769" s2="97.8945" s3="115.1570" topspeed="281.07" fuel="0.078" fuelUsed="0.063" ve="0.098" veUsed="0.090" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">254.1284</Lap>
+<BestLapTime>254.1284</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Stephane COURTOIS</Name>
+<Connected>1</Connected>
+<VehFile>81_24_TFS_F0B5E0D0.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>TF Sport #81:LM</VehName>
+<Category>WEC 2024, GT3, Chevrolet Corvette Z06 LMGT3.R</Category>
+<CarType>Chevrolet Corvette Z06 LMGT3.R</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>7</CarNumber>
+<TeamName>TF Sport #81</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="15" et="--.---" topspeed="282.43" fuel="0.388" fuelUsed="0.245" ve="0.537" veUsed="0.463" twfl="0.984" twfr="0.984" twrl="0.992" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="6" et="300.1399" s1="40.4431" s2="99.4091" s3="116.3641" topspeed="275.67" fuel="0.322" fuelUsed="0.067" ve="0.443" veUsed="0.094" twfl="0.969" twfr="0.973" twrl="0.988" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">256.2162</Lap>
+<BestLapTime>256.2162</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=1,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Iceossi Performance</Name>
+<Connected>1</Connected>
+<VehFile>397_24_BMW.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>BMW GT3 Custom Team #397</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>20</CarNumber>
+<TeamName>Rouges Community Racing Team M4</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="281.52" fuel="0.094" fuelUsed="0.614" ve="0.129" veUsed="0.871" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="277.8201" s1="39.2470" s2="103.3660" s3="114.8172" topspeed="282.43" fuel="0.027" fuelUsed="0.067" ve="0.035" veUsed="0.094" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">257.4302</Lap>
+<Lap num="3" p="5" et="535.2600" topspeed="180.18" fuel="0.710" fuelUsed="-0.682" ve="0.220" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>257.4302</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Maciej Batko</Name>
+<Connected>1</Connected>
+<VehFile>57_25_KESS202D81B1.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Kessel Racing 2025 #57:LM</VehName>
+<Category>WEC 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>Kessel Racing 2025 #57</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="286.48" fuel="0.082" fuelUsed="0.651" ve="0.106" veUsed="0.894" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="275.9600" s1="49.1757" s2="97.4517" s3="110.8852" topspeed="284.68" fuel="0.016" fuelUsed="0.067" ve="0.012" veUsed="0.094" twfl="0.976" twfr="0.976" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">257.5126</Lap>
+<Lap num="3" p="7" et="533.4600" topspeed="175.67" fuel="0.733" fuelUsed="-0.718" ve="0.200" veUsed="-0.188" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>257.5126</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Antonio Carretero</Name>
+<Connected>1</Connected>
+<VehFile>397_25_BMW.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>BMW GT3 Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>1</CarNumber>
+<TeamName>Hellin Racing Team</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="20" et="--.---" topspeed="195.04" fuel="0.710" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="124.7493" topspeed="195.49" fuel="0.710" fuelUsed="0.000" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="1" et="176.0698" topspeed="194.59" fuel="0.710" fuelUsed="0.000" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="1" et="224.9700" topspeed="195.04" fuel="0.710" fuelUsed="0.000" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="1" et="274.4617" topspeed="194.59" fuel="0.710" fuelUsed="0.000" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>5</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="5">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Max Faoro</Name>
+<Connected>1</Connected>
+<VehFile>777_24_DST8B5349B6.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>D&apos;Station Racing 2024 #777:LM</VehName>
+<Category>WEC 2024, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>11</CarNumber>
+<TeamName>D&apos;Station Racing 2024 #777</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="12" et="--.---" topspeed="285.13" fuel="0.090" fuelUsed="0.610" ve="0.125" veUsed="0.875" twfl="0.984" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="11" et="294.9600" s1="38.7332" s2="97.8126" topspeed="272.52" fuel="0.024" fuelUsed="0.067" ve="0.031" veUsed="0.094" twfl="0.969" twfr="0.973" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="11" et="544.1599" topspeed="154.05" fuel="0.698" fuelUsed="-0.675" ve="0.220" veUsed="-0.188" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Matthias Refior</Name>
+<Connected>1</Connected>
+<VehFile>397_25_AMG.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Mercedes AMG Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>2</CarNumber>
+<TeamName>SOC Sport 2025 SOC</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="284.68" fuel="0.094" fuelUsed="0.689" ve="0.118" veUsed="0.882" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="281.3799" s1="38.2127" s2="95.7809" topspeed="285.13" fuel="0.027" fuelUsed="0.067" ve="0.027" veUsed="0.090" twfl="0.969" twfr="0.973" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="7" et="526.3601" topspeed="169.37" fuel="0.784" fuelUsed="-0.757" ve="0.212" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Aliaksandr Shybun</Name>
+<Connected>1</Connected>
+<VehFile>78_25_AKKOF71490E4.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Akkodis ASP Team 2025 #78:LM</VehName>
+<Category>WEC 2025, GT3, Lexus RCF LMGT3</Category>
+<CarType>Lexus RCF LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>19</CarNumber>
+<TeamName>Akkodis ASP Team 2025 #78</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>14</Position>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="20" et="--.---" topspeed="284.23" fuel="0.690" fuelUsed="0.075" ve="0.906" veUsed="0.094" twfl="0.976" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="16" et="345.2600" topspeed="204.05" fuel="0.765" fuelUsed="-0.075" ve="1.000" veUsed="-0.094" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=1,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Andreu CH</Name>
+<Connected>1</Connected>
+<VehFile>31_25_WRT_B619D040.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>The Bend Team WRT 2025 #31:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>9</CarNumber>
+<TeamName>The Bend Team WRT 2025 #31</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>15</Position>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="18" et="--.---" topspeed="281.52" fuel="0.647" fuelUsed="0.061" ve="0.914" veUsed="0.086" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="18" et="325.1399" topspeed="238.73" fuel="0.710" fuelUsed="-0.063" ve="1.000" veUsed="-0.086" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>12</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>16</Position>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="19" et="--.---" topspeed="273.87" fuel="0.651" fuelUsed="0.066" ve="0.902" veUsed="0.098" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Jonas Sander#8782</Name>
+<Connected>1</Connected>
+<VehFile>61_25_IRONCD7DD0C0.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #61:WEC</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>17</CarNumber>
+<TeamName>Iron Lynx 2025 #61</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>17</Position>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="285.13" fuel="0.784" fuelUsed="-0.001" ve="0.298" veUsed="0.702" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=1,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Peter Szego</Name>
+<Connected>1</Connected>
+<VehFile>46_24_WRT_8AEC83FD.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #46:WEC</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>15</CarNumber>
+<TeamName>Team WRT 2024 #46</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>18</Position>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="--.---" topspeed="281.52" fuel="0.710" fuelUsed="-0.001" ve="0.400" veUsed="0.600" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Bruno Couto</Name>
+<Connected>1</Connected>
+<VehFile>10_25_RSLM3C7CA220.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Racing Spirit of Léman 2025 #10:LM</VehName>
+<Category>WEC 2025, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>5</CarNumber>
+<TeamName>Racing Spirit of Léman 2025 #10</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>19</Position>
+<ClassPosition>19</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="13" et="--.---" topspeed="285.13" fuel="0.698" fuelUsed="0.002" ve="0.310" veUsed="0.690" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Liam Abrar</Name>
+<Connected>1</Connected>
+<VehFile>31_25_WRT_B619D040.VEH</VehFile>
+<UpgradeCode>84900400 00000000 00000000 00000000</UpgradeCode>
+<VehName>The Bend Team WRT 2025 #31:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>3</CarNumber>
+<TeamName>The Bend Team WRT 2025 #31</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>20</Position>
+<ClassPosition>20</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="282.88" fuel="0.710" fuelUsed="-0.001" ve="0.310" veUsed="0.690" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+</Qualify>
+</RaceResults>
+</rFactorXML>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1768126273</DateTime>
+<TimeString>2026/01/11 12:11:13</TimeString>
+<TrackVenue>Circuit de la Sarthe</TrackVenue>
+<TrackCourse>Circuit de la Sarthe</TrackCourse>
+<TrackEvent>24 Heures du Mans</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\LeMans_2023\1.21\layoutLeMans.mas</TrackData>
+<TrackLength>13624.0</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>2147483647</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Practice1>
+<DateTime>1768126277</DateTime>
+<TimeString>2026/01/11 12:11:17</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>10</Minutes>
+<Stream>
+<Incident et="114.3">Ronan FeeZi(0) reported contact (185.99) with Post</Incident>
+<Score et="127.8">Ronan FeeZi(0) lap=0 point=1 t=-1.000 et=127.240</Score>
+<Score et="178.4">Japie Bosman(1) lap=0 point=1 t=-1.000 et=178.360</Score>
+<TrackLimits Driver="Ronan FeeZi" ID="0" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="197.0">No Further Action</TrackLimits>
+<Score et="225.3">Ronan FeeZi(0) lap=0 point=2 t=-1.000 et=225.060</Score>
+<Score et="277.5">Japie Bosman(1) lap=0 point=2 t=-1.000 et=277.489</Score>
+<Sector et="296.3">Ronan FeeZi(0) reports new suspension damage</Sector>
+<Incident et="296.4">Ronan FeeZi(0) reported contact (9569.00) with Immovable</Incident>
+<Incident et="296.5">Ronan FeeZi(0) reported contact (25.96) with Wheel</Incident>
+<Incident et="296.8">Ronan FeeZi(0) reported contact (104.27) with Wheel</Incident>
+<Incident et="297.3">Ronan FeeZi(0) reported contact (1089.63) with Immovable</Incident>
+<Score et="300.4">Ronan FeeZi(0) lap=1 point=0 t=-1.000 et=300.226</Score>
+<Incident et="301.8">Al3x Iverson(4) reported contact (485.77) with Immovable</Incident>
+<Incident et="335.1">Al3x Iverson(4) reported contact (27.85) with Post</Incident>
+<Incident et="335.2">Al3x Iverson(4) reported contact (31.77) with Post</Incident>
+<Incident et="337.6">Al3x Iverson(4) reported contact (33.03) with Post</Incident>
+<Incident et="337.7">Al3x Iverson(4) reported contact (39.40) with Post</Incident>
+<TrackLimits Driver="Al3x Iverson" ID="4" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="338.5">No Further Action</TrackLimits>
+<Incident et="356.2">Japie Bosman(1) reported contact (176.71) with Immovable</Incident>
+<TrackLimits Driver="Japie Bosman" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="358.0">No Further Action</TrackLimits>
+<Score et="362.0">Al3x Iverson(4) lap=0 point=1 t=-1.000 et=360.936</Score>
+<Score et="362.0">Al3x Iverson(4) lap=0 point=2 t=-1.000 et=360.936</Score>
+<Score et="362.0">Al3x Iverson(4) lap=1 point=0 t=-1.000 et=360.936</Score>
+<TrackLimits Driver="Japie Bosman" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="377.2">No Further Action</TrackLimits>
+<Score et="411.8">Japie Bosman(1) lap=1 point=0 t=-1.000 et=411.828</Score>
+<Score et="411.8">Japie Bosman(1) lap=1 point=1 t=-1.000 et=411.828</Score>
+<Score et="411.8">Japie Bosman(1) lap=1 point=2 t=-1.000 et=411.828</Score>
+<Score et="411.8">Japie Bosman(1) lap=2 point=0 t=-1.000 et=411.828</Score>
+<Score et="428.8">Ike Tews(6) lap=0 point=1 t=-1.000 et=428.533</Score>
+<Score et="428.8">Ike Tews(6) lap=0 point=2 t=-1.000 et=428.533</Score>
+<Score et="428.8">Ike Tews(6) lap=1 point=0 t=-1.000 et=428.533</Score>
+<Score et="432.9">Robert Jonas(2) lap=0 point=1 t=-1.000 et=432.720</Score>
+<TrackLimits Driver="Al3x Iverson" ID="4" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="440.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Ricardo Morais" ID="7" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="463.0">No Further Action</TrackLimits>
+<Score et="463.9">Al3x Iverson(4) lap=1 point=1 t=-1.000 et=463.740</Score>
+<Incident et="476.6">Ricardo Morais(7) reported contact (133.37) with Post</Incident>
+<Incident et="476.8">Ricardo Morais(7) reported contact (53.99) with Post</Incident>
+<Score et="482.9">Cedric Faure(8) lap=0 point=1 t=-1.000 et=482.720</Score>
+<Score et="483.2">Ricardo Morais(7) lap=0 point=1 t=-1.000 et=483.080</Score>
+<Score et="494.9">Tino Vaquero(9) lap=0 point=1 t=-1.000 et=494.720</Score>
+<Incident et="500.5">Al3x Iverson(4) reported contact (74.21) with Post</Incident>
+<Incident et="500.6">Al3x Iverson(4) reported contact (76.64) with Post</Incident>
+<TrackLimits Driver="Al3x Iverson" ID="4" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="502.5">No Further Action</TrackLimits>
+<Incident et="508.3">aleix molina(5) reported contact (69.98) with Post</Incident>
+<Incident et="508.4">aleix molina(5) reported contact (71.23) with Post</Incident>
+<TrackLimits Driver="aleix molina" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="509.6">No Further Action</TrackLimits>
+</Stream>
+<MostLapsCompleted>2</MostLapsCompleted>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="283.33" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="411.8275" topspeed="0.00" fuel="0.718" fuelUsed="0.000" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+<ControlAndAids startLap="2" endLap="2">UnknownControl</ControlAndAids>
+<Swap startLap="1" endLap="1">Brendan Iribe</Swap>
+<Swap startLap="2" endLap="2">Japie Bosman</Swap>
+</Driver>
+<Driver>
+<Name>Al3x Iverson</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="189.64" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Robert Jonas</Name>
+<Connected>1</Connected>
+<VehFile>397_25_MCLAREN.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>McLaren Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>18</CarNumber>
+<TeamName>JORO18</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Ricardo Morais</Name>
+<Connected>1</Connected>
+<VehFile>95_24_UNIT39106F2C.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #95:EC</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Cedric Faure</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Tino Vaquero</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>aleix molina</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Arkiris Dfenixracingteam</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>9</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

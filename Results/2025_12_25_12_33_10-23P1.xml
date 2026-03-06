@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Race Weekend</Setting>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1766658059</DateTime>
+<TimeString>2025/12/25 12:20:59</TimeString>
+<TrackVenue>Silverstone Circuit</TrackVenue>
+<TrackCourse>Silverstone Grand Prix Circuit - ELMS</TrackCourse>
+<TrackEvent>4 Hours of Silverstone</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\Silverstone_2025\1.05\layoutELMS.mas</TrackData>
+<TrackLength>5869.2</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="10000" download="20000">ADSL2+ 16M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>1</MechFailRate>
+<DamageMult>50</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>11</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Practice1>
+<DateTime>1766658066</DateTime>
+<TimeString>2025/12/25 12:21:06</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>60</Minutes>
+<Stream>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="45.2">No Further Action</TrackLimits>
+<Score et="61.9">Japie Bosman(0) lap=0 point=1 t=-1.000 et=61.937</Score>
+<Score et="106.4">Japie Bosman(0) lap=0 point=2 t=-1.000 et=106.408</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="113.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="162.1">No Further Action</TrackLimits>
+<Score et="172.0">Japie Bosman(0) lap=1 point=0 t=-1.000 et=172.030</Score>
+<Score et="205.5">Japie Bosman(0) lap=1 point=1 t=33.436 et=205.466</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="205.5">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="245.2">Japie Bosman(0) lap=1 point=2 t=73.137 et=245.167</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="245.2">Japie Bosman(0) set new best for sector 2</Sector>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="252.1">No Further Action</TrackLimits>
+<Score et="307.1">Japie Bosman(0) lap=2 point=0 t=135.080 et=307.109</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="307.1">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="339.2">Japie Bosman(0) lap=2 point=1 t=32.073 et=339.182</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="339.2">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="377.1">Japie Bosman(0) lap=2 point=2 t=69.961 et=377.071</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="377.1">Japie Bosman(0) set new best for sector 2</Sector>
+<Score et="439.1">Japie Bosman(0) lap=3 point=0 t=131.931 et=439.040</Score>
+<Score et="471.8">Japie Bosman(0) lap=3 point=1 t=32.796 et=471.836</Score>
+<Score et="509.5">Japie Bosman(0) lap=3 point=2 t=70.425 et=509.466</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="509.5">Japie Bosman(0) set new best for sector 2</Sector>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="516.4">No Further Action</TrackLimits>
+<Score et="569.7">Japie Bosman(0) lap=4 point=0 t=130.626 et=569.666</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="569.7">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="601.2">Japie Bosman(0) lap=4 point=1 t=31.505 et=601.171</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="601.2">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="638.3">Japie Bosman(0) lap=4 point=2 t=68.663 et=638.330</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="638.3">Japie Bosman(0) set new best for sector 2</Sector>
+<Score et="698.3">Japie Bosman(0) lap=5 point=0 t=128.609 et=698.276</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="698.3">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="714.0">Japie Bosman(0) lap=5 point=1 t=-1.000 et=714.014</Score>
+<Score et="714.0">Japie Bosman(0) lap=5 point=2 t=-1.000 et=714.014</Score>
+<Score et="714.0">Japie Bosman(0) lap=6 point=0 t=-1.000 et=714.014</Score>
+</Stream>
+<MostLapsCompleted>6</MostLapsCompleted>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>28a51800 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>2</LapRankIncludingDiscos>
+<Lap num="1" p="1" et="--.---" topspeed="227.02" fuel="0.718" fuelUsed="0.024" ve="0.969" veUsed="0.031" twfl="0.984" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="172.0297" s1="33.4363" s2="39.7011" s3="61.9423" topspeed="242.86" fuel="0.690" fuelUsed="0.027" ve="0.933" veUsed="0.035" twfl="0.969" twfr="0.973" twrl="0.973" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">135.0797</Lap>
+<Lap num="3" p="1" et="307.1094" s1="32.0729" s2="37.8883" s3="61.9696" topspeed="242.81" fuel="0.663" fuelUsed="0.027" ve="0.890" veUsed="0.043" twfl="0.961" twfr="0.965" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">131.9308</Lap>
+<Lap num="4" p="1" et="439.0403" s1="32.7959" s2="37.6295" s3="60.2007" topspeed="242.07" fuel="0.631" fuelUsed="0.031" ve="0.851" veUsed="0.039" twfl="0.949" twfr="0.953" twrl="0.953" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">130.6260</Lap>
+<Lap num="5" p="1" et="569.6663" s1="31.5051" s2="37.1583" s3="59.9458" topspeed="244.59" fuel="0.604" fuelUsed="0.027" ve="0.812" veUsed="0.039" twfl="0.937" twfr="0.941" twrl="0.945" twrr="0.949" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.6093</Lap>
+<Lap num="6" p="1" et="698.2756" topspeed="233.51" fuel="0.741" fuelUsed="-0.137" ve="1.000" veUsed="-0.188" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>128.6093</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl,TC=2,ABS=2,Stability=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

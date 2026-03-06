@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Race Weekend</Setting>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1772707053</DateTime>
+<TimeString>2026/03/05 12:37:33</TimeString>
+<TrackVenue>Autodromo Nazionale Monza</TrackVenue>
+<TrackCourse>Autodromo Nazionale Monza</TrackCourse>
+<TrackEvent>6 Hours of Monza</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\Monza_2023\1.21\layoutMonza.mas</TrackData>
+<TrackLength>5780.6</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>1</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>Mercedes_AMG_GT3,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>11</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>1</TireWarmers>
+<Practice1>
+<DateTime>1772707071</DateTime>
+<TimeString>2026/03/05 12:37:51</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>180</Minutes>
+<Stream>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="3.5" CurrentPoints="3.5" Resolution="5" et="59.4">Invalid Lap Cut Track</TrackLimits>
+<Score et="74.0">Japie Bosman(0) lap=0 point=1 t=-1.000 et=73.955</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="2.25" CurrentPoints="5.75" Resolution="5" et="84.1">Invalid Lap Cut Track</TrackLimits>
+<Score et="113.3">Japie Bosman(0) lap=0 point=2 t=-1.000 et=113.326</Score>
+<Score et="133.1">Sarah Bovy(11) lap=0 point=1 t=-1.000 et=133.122</Score>
+<Score et="135.7">Matteo Cressoni(7) lap=0 point=1 t=-1.000 et=135.699</Score>
+<Score et="153.4">Japie Bosman(0) lap=1 point=0 t=-1.000 et=153.378</Score>
+<Score et="167.3">Duncan Cameron(4) lap=0 point=1 t=-1.000 et=167.301</Score>
+<Score et="167.4">Rui Andrade(10) lap=0 point=1 t=-1.000 et=167.349</Score>
+<Score et="170.9">Sarah Bovy(11) lap=0 point=2 t=-1.000 et=170.885</Score>
+<Score et="171.7">Riccardo Agostini(2) lap=0 point=1 t=-1.000 et=171.667</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="1" WarningPoints="0" CurrentPoints="5.75" Resolution="7" et="172.9">No Further Action</TrackLimits>
+<Score et="173.6">Matteo Cressoni(7) lap=0 point=2 t=-1.000 et=173.627</Score>
+<Score et="192.8">Japie Bosman(0) lap=1 point=1 t=-1.000 et=192.781</Score>
+<Score et="205.6">Rui Andrade(10) lap=0 point=2 t=-1.000 et=205.566</Score>
+<Score et="206.6">Duncan Cameron(4) lap=0 point=2 t=-1.000 et=206.588</Score>
+<Score et="207.1">Erwan Bastard(6) lap=0 point=1 t=-1.000 et=207.064</Score>
+<Score et="208.1">Sarah Bovy(11) lap=1 point=0 t=-1.000 et=208.044</Score>
+<Score et="209.7">Riccardo Agostini(2) lap=0 point=2 t=-1.000 et=209.674</Score>
+<Score et="210.7">Matteo Cressoni(7) lap=1 point=0 t=-1.000 et=210.660</Score>
+<Score et="232.8">Japie Bosman(0) lap=1 point=2 t=-1.000 et=232.767</Score>
+<Score et="242.4">Rui Andrade(10) lap=1 point=0 t=-1.000 et=242.341</Score>
+<Score et="243.8">Michael Birch(1) lap=0 point=1 t=-1.000 et=243.780</Score>
+<Score et="244.0">Duncan Cameron(4) lap=1 point=0 t=-1.000 et=244.018</Score>
+<Score et="245.1">Erwan Bastard(6) lap=0 point=2 t=-1.000 et=245.102</Score>
+<Score et="245.2">Sarah Bovy(11) lap=1 point=1 t=37.177 et=245.220</Score>
+<Sector Driver="Sarah Bovy" ID="11" Sector="1" Class="GT3" et="245.2">Sarah Bovy(11) set new best for sector 1</Sector>
+<Score et="246.9">Riccardo Agostini(2) lap=1 point=0 t=-1.000 et=246.867</Score>
+<Score et="247.8">Matteo Cressoni(7) lap=1 point=1 t=37.177 et=247.837</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="1" WarningPoints="0" CurrentPoints="5.75" Resolution="7" et="262.3">No Further Action</TrackLimits>
+<Score et="272.5">Japie Bosman(0) lap=2 point=0 t=-1.000 et=272.444</Score>
+<Score et="279.2">Rui Andrade(10) lap=1 point=1 t=36.843 et=279.184</Score>
+<Sector Driver="Rui Andrade" ID="10" Sector="1" Class="GT3" et="279.2">Rui Andrade(10) set new best for sector 1</Sector>
+<Score et="281.5">Duncan Cameron(4) lap=1 point=1 t=37.445 et=281.463</Score>
+<Score et="282.0">Michael Birch(1) lap=0 point=2 t=-1.000 et=281.989</Score>
+<Score et="282.1">Erwan Bastard(6) lap=1 point=0 t=-1.000 et=282.117</Score>
+<Score et="283.1">Sarah Bovy(11) lap=1 point=2 t=75.017 et=283.061</Score>
+<Sector Driver="Sarah Bovy" ID="11" Sector="2" Class="GT3" et="283.1">Sarah Bovy(11) set new best for sector 2</Sector>
+<Score et="284.2">Riccardo Agostini(2) lap=1 point=1 t=37.351 et=284.218</Score>
+<Score et="285.7">Matteo Cressoni(7) lap=1 point=2 t=75.049 et=285.709</Score>
+<Score et="311.5">Japie Bosman(0) lap=2 point=1 t=39.074 et=311.518</Score>
+<Score et="316.8">Rui Andrade(10) lap=1 point=2 t=74.414 et=316.755</Score>
+<Sector Driver="Rui Andrade" ID="10" Sector="2" Class="GT3" et="316.8">Rui Andrade(10) set new best for sector 2</Sector>
+<Score et="319.5">Michael Birch(1) lap=1 point=0 t=-1.000 et=319.471</Score>
+<Score et="319.5">Erwan Bastard(6) lap=1 point=1 t=37.404 et=319.521</Score>
+<Score et="319.8">Duncan Cameron(4) lap=1 point=2 t=75.748 et=319.766</Score>
+<Score et="320.2">Sarah Bovy(11) lap=2 point=0 t=112.147 et=320.191</Score>
+<Sector Driver="Sarah Bovy" ID="11" Sector="3" Class="GT3" et="320.2">Sarah Bovy(11) set new best for sector 3</Sector>
+<Score et="322.3">Riccardo Agostini(2) lap=1 point=2 t=75.402 et=322.269</Score>
+<Score et="322.9">Matteo Cressoni(7) lap=2 point=0 t=112.201 et=322.861</Score>
+<Score et="351.0">Japie Bosman(0) lap=2 point=2 t=78.500 et=350.944</Score>
+<Score et="353.6">Rui Andrade(10) lap=2 point=0 t=111.208 et=353.549</Score>
+<Sector Driver="Rui Andrade" ID="10" Sector="3" Class="GT3" et="353.6">Rui Andrade(10) set new best for sector 3</Sector>
+<Score et="357.1">Michael Birch(1) lap=1 point=1 t=37.588 et=357.059</Score>
+<Score et="357.2">Duncan Cameron(4) lap=2 point=0 t=113.214 et=357.232</Score>
+<Score et="357.4">Sarah Bovy(11) lap=2 point=1 t=37.246 et=357.437</Score>
+<Score et="357.8">Erwan Bastard(6) lap=1 point=2 t=75.653 et=357.770</Score>
+<Score et="359.5">Riccardo Agostini(2) lap=2 point=0 t=112.604 et=359.472</Score>
+<Score et="360.1">Matteo Cressoni(7) lap=2 point=1 t=37.187 et=360.048</Score>
+<Score et="389.9">Japie Bosman(0) lap=3 point=0 t=117.397 et=389.841</Score>
+<Score et="390.4">Rui Andrade(10) lap=2 point=1 t=36.861 et=390.410</Score>
+<Score et="394.7">Duncan Cameron(4) lap=2 point=1 t=37.484 et=394.717</Score>
+<Score et="394.8">Erwan Bastard(6) lap=2 point=0 t=112.694 et=394.811</Score>
+<Score et="395.3">Michael Birch(1) lap=1 point=2 t=75.810 et=395.282</Score>
+<Score et="395.4">Sarah Bovy(11) lap=2 point=2 t=75.220 et=395.411</Score>
+<Score et="396.9">Riccardo Agostini(2) lap=2 point=1 t=37.398 et=396.870</Score>
+<Score et="397.9">Matteo Cressoni(7) lap=2 point=2 t=75.052 et=397.913</Score>
+<Score et="405.7">Conrad Laursen(3) lap=0 point=1 t=-1.000 et=405.665</Score>
+<Score et="428.0">Rui Andrade(10) lap=2 point=2 t=74.393 et=427.943</Score>
+<Sector Driver="Rui Andrade" ID="10" Sector="2" Class="GT3" et="428.0">Rui Andrade(10) set new best for sector 2</Sector>
+<Score et="428.6">Japie Bosman(0) lap=3 point=1 t=38.736 et=428.578</Score>
+<Score et="432.2">Erwan Bastard(6) lap=2 point=1 t=37.412 et=432.223</Score>
+<Score et="433.1">Duncan Cameron(4) lap=2 point=2 t=75.839 et=433.072</Score>
+<Score et="433.1">Sarah Bovy(11) lap=3 point=0 t=112.934 et=433.125</Score>
+<Score et="433.3">Michael Birch(1) lap=2 point=0 t=113.778 et=433.249</Score>
+<Incident et="434.0">Japie Bosman(0) reported contact (225.67) with Immovable</Incident>
+<Score et="435.0">Riccardo Agostini(2) lap=2 point=2 t=75.533 et=435.004</Score>
+<Score et="435.1">Matteo Cressoni(7) lap=3 point=0 t=112.263 et=435.124</Score>
+<Score et="435.5">Gianmaria Bruni(8) lap=0 point=1 t=-1.000 et=435.468</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="3" WarningPoints="0" CurrentPoints="5.75" Resolution="7" et="436.4">No Further Action</TrackLimits>
+<Score et="443.7">Conrad Laursen(3) lap=0 point=2 t=-1.000 et=443.645</Score>
+<Score et="444.9">Tom Fleming(12) lap=0 point=1 t=-1.000 et=444.939</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="3" WarningPoints="0" CurrentPoints="5.75" Resolution="7" et="456.1">No Further Action</TrackLimits>
+<Score et="464.8">Rui Andrade(10) lap=3 point=0 t=111.192 et=464.741</Score>
+<Score et="469.5">Japie Bosman(0) lap=3 point=2 t=79.687 et=469.528</Score>
+<Score et="470.4">Sarah Bovy(11) lap=3 point=1 t=37.296 et=470.421</Score>
+<Score et="470.5">Erwan Bastard(6) lap=2 point=2 t=75.653 et=470.463</Score>
+<Score et="470.6">Duncan Cameron(4) lap=3 point=0 t=113.344 et=470.576</Score>
+<Score et="471.0">Michael Birch(1) lap=2 point=1 t=37.778 et=471.028</Score>
+<Score et="472.3">Riccardo Agostini(2) lap=3 point=0 t=112.807 et=472.279</Score>
+<Score et="472.3">Matteo Cressoni(7) lap=3 point=1 t=37.146 et=472.270</Score>
+<Score et="472.9">Gianmaria Bruni(8) lap=0 point=2 t=-1.000 et=472.909</Score>
+<Score et="480.9">Conrad Laursen(3) lap=1 point=0 t=-1.000 et=480.925</Score>
+<Score et="482.7">Tom Fleming(12) lap=0 point=2 t=-1.000 et=482.664</Score>
+<Score et="501.6">Rui Andrade(10) lap=3 point=1 t=36.874 et=501.615</Score>
+<Score et="507.6">Erwan Bastard(6) lap=3 point=0 t=112.819 et=507.630</Score>
+<Score et="508.1">Duncan Cameron(4) lap=3 point=1 t=37.507 et=508.084</Score>
+<Score et="508.4">Sarah Bovy(11) lap=3 point=2 t=75.290 et=508.415</Score>
+<Score et="508.8">Japie Bosman(0) lap=4 point=0 t=118.902 et=508.743</Score>
+<Score et="509.3">Michael Birch(1) lap=2 point=2 t=76.029 et=509.278</Score>
+<Score et="509.7">Riccardo Agostini(2) lap=3 point=1 t=37.401 et=509.680</Score>
+<Score et="509.7">Gianmaria Bruni(8) lap=1 point=0 t=-1.000 et=509.662</Score>
+<Score et="510.2">Matteo Cressoni(7) lap=3 point=2 t=75.078 et=510.201</Score>
+<Score et="518.3">Conrad Laursen(3) lap=1 point=1 t=37.327 et=518.252</Score>
+<Score et="519.6">Tom Fleming(12) lap=1 point=0 t=-1.000 et=519.638</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="4" WarningPoints="0" CurrentPoints="5.75" Resolution="7" et="531.1">No Further Action</TrackLimits>
+<Score et="539.2">Rui Andrade(10) lap=3 point=2 t=74.428 et=539.170</Score>
+<Score et="545.0">Erwan Bastard(6) lap=3 point=1 t=37.406 et=545.036</Score>
+<Score et="545.7">Sarah Bovy(11) lap=4 point=0 t=112.538 et=545.663</Score>
+<Score et="546.5">Duncan Cameron(4) lap=3 point=2 t=75.891 et=546.467</Score>
+<Score et="546.8">Michael Birch(1) lap=3 point=0 t=113.545 et=546.795</Score>
+<Score et="547.4">Matteo Cressoni(7) lap=4 point=0 t=112.303 et=547.427</Score>
+<Score et="547.5">Gianmaria Bruni(8) lap=1 point=1 t=37.857 et=547.520</Score>
+<Score et="547.8">Riccardo Agostini(2) lap=3 point=2 t=75.514 et=547.793</Score>
+<Score et="548.8">Japie Bosman(0) lap=4 point=1 t=40.051 et=548.795</Score>
+<Score et="556.3">Conrad Laursen(3) lap=1 point=2 t=75.346 et=556.272</Score>
+<Score et="556.7">Tom Fleming(12) lap=1 point=1 t=37.079 et=556.717</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="4" WarningPoints="1.75" CurrentPoints="7.5" Resolution="5" et="559.2">Invalid Lap Cut Track</TrackLimits>
+<Score et="576.0">Rui Andrade(10) lap=4 point=0 t=111.233 et=575.974</Score>
+<Score et="583.0">Sarah Bovy(11) lap=4 point=1 t=37.293 et=582.955</Score>
+<Score et="583.3">Erwan Bastard(6) lap=3 point=2 t=75.624 et=583.254</Score>
+<Score et="584.0">Duncan Cameron(4) lap=4 point=0 t=113.406 et=583.983</Score>
+<Score et="584.4">Michael Birch(1) lap=3 point=1 t=37.583 et=584.378</Score>
+<Score et="584.6">Matteo Cressoni(7) lap=4 point=1 t=37.145 et=584.572</Score>
+<Score et="585.0">Gianmaria Bruni(8) lap=1 point=2 t=75.279 et=584.942</Score>
+<Sector Driver="Gianmaria Bruni" ID="8" Sector="2" Class="GT3" et="585.0">Gianmaria Bruni(8) set new best for sector 2</Sector>
+<Score et="585.1">Riccardo Agostini(2) lap=4 point=0 t=112.776 et=585.055</Score>
+<Score et="587.6">Japie Bosman(0) lap=4 point=2 t=-1.000 et=587.616</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="4" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="592.8">No Further Action</TrackLimits>
+<Score et="593.6">Conrad Laursen(3) lap=2 point=0 t=112.639 et=593.564</Score>
+<Score et="594.4">Tom Fleming(12) lap=1 point=2 t=74.788 et=594.426</Score>
+<Score et="612.9">Rui Andrade(10) lap=4 point=1 t=36.874 et=612.848</Score>
+<Score et="620.4">Erwan Bastard(6) lap=4 point=0 t=112.720 et=620.350</Score>
+<Score et="621.0">Sarah Bovy(11) lap=4 point=2 t=75.369 et=621.031</Score>
+<Score et="621.5">Duncan Cameron(4) lap=4 point=1 t=37.555 et=621.538</Score>
+<Score et="621.8">Gianmaria Bruni(8) lap=2 point=0 t=112.083 et=621.746</Score>
+<Score et="622.5">Riccardo Agostini(2) lap=4 point=1 t=37.464 et=622.519</Score>
+<Score et="623.0">Michael Birch(1) lap=3 point=2 t=76.164 et=622.959</Score>
+<Score et="623.0">Matteo Cressoni(7) lap=4 point=2 t=75.589 et=623.016</Score>
+<Incident et="626.7">Michael Birch(1) reported contact (227.25) with another vehicle Matteo Cressoni(7)</Incident>
+<Score et="626.9">Japie Bosman(0) lap=5 point=0 t=-1.000 et=626.897</Score>
+<Score et="630.9">Conrad Laursen(3) lap=2 point=1 t=37.333 et=630.897</Score>
+<Score et="631.5">Tom Fleming(12) lap=2 point=0 t=111.806 et=631.444</Score>
+<Score et="650.4">Rui Andrade(10) lap=4 point=2 t=74.455 et=650.429</Score>
+<Score et="657.8">Erwan Bastard(6) lap=4 point=1 t=37.435 et=657.784</Score>
+<Score et="658.3">Sarah Bovy(11) lap=5 point=0 t=112.636 et=658.298</Score>
+<Score et="658.7">Gianmaria Bruni(8) lap=2 point=1 t=36.953 et=658.699</Score>
+<Score et="660.0">Duncan Cameron(4) lap=4 point=2 t=75.990 et=659.973</Score>
+<Score et="660.7">Riccardo Agostini(2) lap=4 point=2 t=75.662 et=660.717</Score>
+<Score et="661.2">Matteo Cressoni(7) lap=5 point=0 t=113.785 et=661.212</Score>
+<Score et="661.8">Michael Birch(1) lap=4 point=0 t=114.973 et=661.768</Score>
+<Score et="665.2">Japie Bosman(0) lap=5 point=1 t=38.267 et=665.163</Score>
+<Score et="668.5">Tom Fleming(12) lap=2 point=1 t=37.074 et=668.518</Score>
+<Score et="669.0">Conrad Laursen(3) lap=2 point=2 t=75.401 et=668.965</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="5" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="673.0">No Further Action</TrackLimits>
+<Score et="676.6">Andrew Gilbert(9) lap=0 point=1 t=-1.000 et=676.622</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="5" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="686.5">No Further Action</TrackLimits>
+<Score et="687.3">Rui Andrade(10) lap=5 point=0 t=111.279 et=687.253</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="5" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="693.4">No Further Action</TrackLimits>
+<Score et="695.6">Sarah Bovy(11) lap=5 point=1 t=37.295 et=695.593</Score>
+<Score et="696.1">Erwan Bastard(6) lap=4 point=2 t=75.779 et=696.128</Score>
+<Score et="696.2">Gianmaria Bruni(8) lap=2 point=2 t=74.431 et=696.176</Score>
+<Score et="697.5">Duncan Cameron(4) lap=5 point=0 t=113.544 et=697.526</Score>
+<Score et="698.0">Riccardo Agostini(2) lap=5 point=0 t=112.977 et=698.032</Score>
+<Score et="698.4">Matteo Cressoni(7) lap=5 point=1 t=37.177 et=698.389</Score>
+<Score et="699.5">Michael Birch(1) lap=4 point=1 t=37.673 et=699.440</Score>
+<Incident et="702.9">Japie Bosman(0) reported contact (36.73) with another vehicle Tom Fleming(12)</Incident>
+<Score et="706.3">Conrad Laursen(3) lap=3 point=0 t=112.709 et=706.273</Score>
+<Score et="706.7">Tom Fleming(12) lap=2 point=2 t=75.236 et=706.680</Score>
+<Score et="706.8">Japie Bosman(0) lap=5 point=2 t=79.846 et=706.743</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="5" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="712.1">No Further Action</TrackLimits>
+<Score et="714.4">Andrew Gilbert(9) lap=0 point=2 t=-1.000 et=714.362</Score>
+<Score et="724.1">Rui Andrade(10) lap=5 point=1 t=36.869 et=724.122</Score>
+<Score et="732.0">Takeshi Kimura(5) lap=0 point=1 t=-1.000 et=732.036</Score>
+<Score et="733.5">Gianmaria Bruni(8) lap=3 point=0 t=111.714 et=733.460</Score>
+<Score et="733.7">Sarah Bovy(11) lap=5 point=2 t=75.430 et=733.729</Score>
+<Score et="734.6">Erwan Bastard(6) lap=5 point=0 t=114.203 et=734.552</Score>
+<Score et="735.1">Duncan Cameron(4) lap=5 point=1 t=37.568 et=735.094</Score>
+<Score et="735.5">Riccardo Agostini(2) lap=5 point=1 t=37.434 et=735.466</Score>
+<Score et="736.4">Matteo Cressoni(7) lap=5 point=2 t=75.133 et=736.345</Score>
+<Score et="737.9">Michael Birch(1) lap=4 point=2 t=76.099 et=737.866</Score>
+<Score et="743.6">Conrad Laursen(3) lap=3 point=1 t=37.328 et=743.601</Score>
+<Score et="743.8">Tom Fleming(12) lap=3 point=0 t=112.307 et=743.752</Score>
+<Score et="745.5">Japie Bosman(0) lap=6 point=0 t=118.627 et=745.524</Score>
+<Score et="751.4">Andrew Gilbert(9) lap=1 point=0 t=-1.000 et=751.408</Score>
+<Score et="761.7">Rui Andrade(10) lap=5 point=2 t=74.432 et=761.686</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="6" WarningPoints="0" CurrentPoints="7.5" Resolution="7" et="766.0">No Further Action</TrackLimits>
+<Score et="767.6">Japie Bosman(0) lap=6 point=1 t=-1.000 et=767.699</Score>
+<Score et="767.6">Japie Bosman(0) lap=6 point=2 t=-1.000 et=767.699</Score>
+<Score et="767.6">Japie Bosman(0) lap=7 point=0 t=-1.000 et=767.699</Score>
+<Score et="770.5">Takeshi Kimura(5) lap=0 point=2 t=-1.000 et=770.500</Score>
+<Score et="771.1">Gianmaria Bruni(8) lap=3 point=1 t=37.623 et=771.083</Score>
+<Score et="771.7">Sarah Bovy(11) lap=6 point=0 t=113.419 et=771.718</Score>
+<Score et="772.7">Erwan Bastard(6) lap=5 point=1 t=38.104 et=772.656</Score>
+<Score et="774.2">Matteo Cressoni(7) lap=6 point=0 t=112.986 et=774.198</Score>
+<Score et="774.2">Duncan Cameron(4) lap=5 point=2 t=76.699 et=774.225</Score>
+<Score et="774.4">Riccardo Agostini(2) lap=5 point=2 t=76.370 et=774.402</Score>
+<Score et="776.1">Michael Birch(1) lap=5 point=0 t=114.362 et=776.129</Score>
+<Score et="781.5">Tom Fleming(12) lap=3 point=1 t=37.730 et=781.482</Score>
+<Score et="782.3">Conrad Laursen(3) lap=3 point=2 t=76.037 et=782.310</Score>
+<Score et="789.8">Andrew Gilbert(9) lap=1 point=1 t=38.336 et=789.744</Score>
+<Score et="806.5">Rui Andrade(10) lap=6 point=0 t=-1.000 et=806.513</Score>
+<Score et="809.3">Takeshi Kimura(5) lap=1 point=0 t=-1.000 et=809.278</Score>
+<Score et="810.3">Gianmaria Bruni(8) lap=3 point=2 t=76.803 et=810.263</Score>
+<Score et="810.8">Sarah Bovy(11) lap=6 point=1 t=39.054 et=810.771</Score>
+<Score et="812.7">Erwan Bastard(6) lap=5 point=2 t=78.153 et=812.705</Score>
+<Score et="813.1">Matteo Cressoni(7) lap=6 point=1 t=38.855 et=813.053</Score>
+<Score et="813.8">Riccardo Agostini(2) lap=6 point=0 t=115.734 et=813.766</Score>
+<Score et="813.9">Duncan Cameron(4) lap=6 point=0 t=116.362 et=813.888</Score>
+<Score et="815.5">Michael Birch(1) lap=5 point=1 t=39.392 et=815.521</Score>
+<Score et="820.9">Tom Fleming(12) lap=3 point=2 t=77.110 et=820.862</Score>
+<Score et="821.3">Conrad Laursen(3) lap=4 point=0 t=115.052 et=821.325</Score>
+<Score et="828.7">Andrew Gilbert(9) lap=1 point=2 t=77.272 et=828.679</Score>
+<Score et="846.4">Takeshi Kimura(5) lap=1 point=1 t=37.095 et=846.373</Score>
+<Score et="849.0">Sarah Bovy(11) lap=6 point=2 t=77.254 et=848.971</Score>
+<Score et="849.9">Erwan Bastard(6) lap=6 point=0 t=115.350 et=849.903</Score>
+<Score et="851.0">Matteo Cressoni(7) lap=6 point=2 t=76.782 et=850.980</Score>
+<Score et="851.4">Riccardo Agostini(2) lap=6 point=1 t=37.630 et=851.396</Score>
+<Score et="851.7">Duncan Cameron(4) lap=6 point=1 t=37.839 et=851.727</Score>
+<Score et="853.2">Gianmaria Bruni(8) lap=4 point=0 t=-1.000 et=853.195</Score>
+<Score et="854.0">Michael Birch(1) lap=5 point=2 t=77.881 et=854.010</Score>
+<Score et="857.9">Tom Fleming(12) lap=4 point=0 t=114.097 et=857.849</Score>
+<Score et="858.7">Conrad Laursen(3) lap=4 point=1 t=37.332 et=858.657</Score>
+<Score et="865.8">Andrew Gilbert(9) lap=2 point=0 t=114.376 et=865.784</Score>
+</Stream>
+<MostLapsCompleted>7</MostLapsCompleted>
+<Driver>
+<Name>Rui Andrade</Name>
+<Connected>1</Connected>
+<VehFile>82_25_TFS_745F4460.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>TF Sport 2025 #82:ELMS</VehName>
+<Category>ELMS 2025, GT3, Chevrolet Corvette Z06 LMGT3.R</Category>
+<CarType>Chevrolet Corvette Z06 LMGT3.R</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>82</CarNumber>
+<TeamName>TF Sport</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="--.---" topspeed="253.60" fuel="0.169" fuelUsed="0.556" ve="0.231" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="242.3410" s1="36.8434" s2="37.5710" s3="36.7940" topspeed="261.73" fuel="0.137" fuelUsed="0.031" ve="0.188" veUsed="0.043" twfl="0.973" twfr="0.980" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.2083</Lap>
+<Lap num="3" p="1" et="353.5493" s1="36.8607" s2="37.5327" s3="36.7987" topspeed="261.75" fuel="0.106" fuelUsed="0.031" ve="0.149" veUsed="0.039" twfl="0.961" twfr="0.973" twrl="0.957" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.1921</Lap>
+<Lap num="4" p="1" et="464.7414" s1="36.8740" s2="37.5544" s3="36.8045" topspeed="261.82" fuel="0.078" fuelUsed="0.027" ve="0.106" veUsed="0.043" twfl="0.949" twfr="0.961" twrl="0.941" twrr="0.949" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.2328</Lap>
+<Lap num="5" p="1" et="575.9742" s1="36.8735" s2="37.5814" s3="36.8243" topspeed="261.83" fuel="0.047" fuelUsed="0.031" ve="0.063" veUsed="0.043" twfl="0.937" twfr="0.953" twrl="0.925" twrr="0.933" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.2792</Lap>
+<Lap num="6" p="1" et="687.2535" s1="36.8688" s2="37.5634" topspeed="261.87" fuel="0.020" fuelUsed="0.027" ve="0.024" veUsed="0.039" twfl="0.925" twfr="0.941" twrl="0.914" twrr="0.922" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<BestLapTime>111.1921</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Gianmaria Bruni</Name>
+<Connected>1</Connected>
+<VehFile>66_25_JMW_C253BDB0.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>JMW Motorsport 2025 #66:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>66</CarNumber>
+<TeamName>JMW Motorsport</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="255.46" fuel="0.114" fuelUsed="0.636" ve="0.149" veUsed="0.041" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="509.6625" s1="37.8573" s2="37.4219" s3="36.8040" topspeed="265.97" fuel="0.082" fuelUsed="0.031" ve="0.110" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.0832</Lap>
+<Lap num="3" p="2" et="621.7457" s1="36.9532" s2="37.4775" s3="37.2835" topspeed="266.38" fuel="0.051" fuelUsed="0.031" ve="0.071" veUsed="0.039" twfl="0.961" twfr="0.969" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.7143</Lap>
+<Lap num="4" p="2" et="733.4600" s1="37.6227" s2="39.1807" topspeed="266.40" fuel="0.024" fuelUsed="0.027" ve="0.031" veUsed="0.039" twfl="0.949" twfr="0.957" twrl="0.949" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<BestLapTime>111.7143</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Tom Fleming</Name>
+<Connected>1</Connected>
+<VehFile>86_GRRACIN8BE3F08E.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>GR Racing 2025 #86:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>86</CarNumber>
+<TeamName>GR Racing</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="255.40" fuel="0.180" fuelUsed="0.570" ve="0.239" veUsed="0.041" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="519.6381" s1="37.0793" s2="37.7090" s3="37.0177" topspeed="266.21" fuel="0.149" fuelUsed="0.031" ve="0.200" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.8060</Lap>
+<Lap num="3" p="3" et="631.4442" s1="37.0737" s2="38.1624" s3="37.0714" topspeed="266.21" fuel="0.122" fuelUsed="0.027" ve="0.161" veUsed="0.039" twfl="0.961" twfr="0.969" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.3075</Lap>
+<Lap num="4" p="3" et="743.7516" s1="37.7303" s2="39.3798" s3="36.9869" topspeed="266.21" fuel="0.090" fuelUsed="0.031" ve="0.118" veUsed="0.043" twfl="0.949" twfr="0.957" twrl="0.949" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.0971</Lap>
+<BestLapTime>111.8060</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Sarah Bovy</Name>
+<Connected>1</Connected>
+<VehFile>85_25_IRON5675B0BB.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2025 #85:ELMS</VehName>
+<Category>ELMS 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>85</CarNumber>
+<TeamName>Iron Dames</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="252.84" fuel="0.706" fuelUsed="0.029" ve="0.961" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="208.0438" s1="37.1766" s2="37.8403" s3="37.1299" topspeed="263.07" fuel="0.675" fuelUsed="0.031" ve="0.922" veUsed="0.039" twfl="0.976" twfr="0.980" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.1469</Lap>
+<Lap num="3" p="2" et="320.1907" s1="37.2460" s2="37.9740" s3="37.7140" topspeed="263.28" fuel="0.647" fuelUsed="0.027" ve="0.878" veUsed="0.043" twfl="0.965" twfr="0.969" twrl="0.957" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.9339</Lap>
+<Lap num="4" p="2" et="433.1246" s1="37.2965" s2="37.9936" s3="37.2479" topspeed="262.37" fuel="0.616" fuelUsed="0.031" ve="0.839" veUsed="0.039" twfl="0.953" twfr="0.961" twrl="0.941" twrr="0.949" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.5380</Lap>
+<Lap num="5" p="4" et="545.6627" s1="37.2925" s2="38.0760" s3="37.2670" topspeed="261.91" fuel="0.588" fuelUsed="0.027" ve="0.800" veUsed="0.039" twfl="0.945" twfr="0.949" twrl="0.925" twrr="0.933" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.6356</Lap>
+<Lap num="6" p="4" et="658.2982" s1="37.2946" s2="38.1359" s3="37.9890" topspeed="261.39" fuel="0.561" fuelUsed="0.027" ve="0.761" veUsed="0.039" twfl="0.933" twfr="0.941" twrl="0.914" twrr="0.922" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.4194</Lap>
+<BestLapTime>112.1469</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Matteo Cressoni</Name>
+<Connected>1</Connected>
+<VehFile>60_25_PROTA8B000C7.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #60:ELMS</VehName>
+<Category>ELMS 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>60</CarNumber>
+<TeamName>Proton Competition</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="--.---" topspeed="253.15" fuel="0.706" fuelUsed="0.029" ve="0.961" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="210.6596" s1="37.1769" s2="37.8725" s3="37.1516" topspeed="263.23" fuel="0.678" fuelUsed="0.027" ve="0.922" veUsed="0.039" twfl="0.976" twfr="0.980" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.2010</Lap>
+<Lap num="3" p="3" et="322.8606" s1="37.1870" s2="37.8651" s3="37.2110" topspeed="263.11" fuel="0.647" fuelUsed="0.031" ve="0.878" veUsed="0.043" twfl="0.965" twfr="0.969" twrl="0.953" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.2632</Lap>
+<Lap num="4" p="3" et="435.1237" s1="37.1460" s2="37.9317" s3="37.2258" topspeed="263.18" fuel="0.616" fuelUsed="0.031" ve="0.839" veUsed="0.039" twfl="0.953" twfr="0.961" twrl="0.937" twrr="0.945" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.3035</Lap>
+<Lap num="5" p="5" et="547.4272" s1="37.1445" s2="38.4440" s3="38.1967" topspeed="263.71" fuel="0.588" fuelUsed="0.027" ve="0.800" veUsed="0.039" twfl="0.941" twfr="0.949" twrl="0.925" twrr="0.933" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.7852</Lap>
+<Lap num="6" p="5" et="661.2124" s1="37.1767" s2="37.9561" s3="37.8528" topspeed="263.24" fuel="0.557" fuelUsed="0.031" ve="0.761" veUsed="0.039" twfl="0.929" twfr="0.937" twrl="0.910" twrr="0.922" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.9857</Lap>
+<BestLapTime>112.2010</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Riccardo Agostini</Name>
+<Connected>1</Connected>
+<VehFile>50_25_AFCO4C7FFF1A.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Richard Mille AF Corse 2025 #50:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>50</CarNumber>
+<TeamName>Richard Mille AF Corse</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="253.72" fuel="0.722" fuelUsed="0.028" ve="0.961" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="246.8672" s1="37.3506" s2="38.0510" s3="37.2027" topspeed="263.96" fuel="0.690" fuelUsed="0.031" ve="0.922" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.6044</Lap>
+<Lap num="3" p="4" et="359.4716" s1="37.3982" s2="38.1343" s3="37.2749" topspeed="263.24" fuel="0.663" fuelUsed="0.027" ve="0.882" veUsed="0.039" twfl="0.961" twfr="0.965" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.8074</Lap>
+<Lap num="4" p="4" et="472.2789" s1="37.4009" s2="38.1133" s3="37.2620" topspeed="263.06" fuel="0.631" fuelUsed="0.031" ve="0.843" veUsed="0.039" twfl="0.949" twfr="0.957" twrl="0.949" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.7762</Lap>
+<Lap num="5" p="6" et="585.0552" s1="37.4641" s2="38.1979" s3="37.3147" topspeed="262.61" fuel="0.604" fuelUsed="0.027" ve="0.804" veUsed="0.039" twfl="0.937" twfr="0.945" twrl="0.933" twrr="0.941" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.9766</Lap>
+<Lap num="6" p="6" et="698.0318" s1="37.4342" s2="38.9357" s3="39.3639" topspeed="263.51" fuel="0.573" fuelUsed="0.031" ve="0.765" veUsed="0.039" twfl="0.922" twfr="0.933" twrl="0.922" twrr="0.929" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.7338</Lap>
+<BestLapTime>112.6044</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Conrad Laursen</Name>
+<Connected>1</Connected>
+<VehFile>51_25_AFCODD49435F.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>AF Corse 2025 #51:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>51</CarNumber>
+<TeamName>AF Corse</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="254.05" fuel="0.722" fuelUsed="0.028" ve="0.961" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="480.9254" s1="37.3267" s2="38.0195" s3="37.2924" topspeed="264.86" fuel="0.690" fuelUsed="0.031" ve="0.918" veUsed="0.043" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.6385</Lap>
+<Lap num="3" p="7" et="593.5639" s1="37.3333" s2="38.0676" s3="37.3085" topspeed="264.86" fuel="0.659" fuelUsed="0.031" ve="0.878" veUsed="0.039" twfl="0.961" twfr="0.965" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.7093</Lap>
+<Lap num="4" p="7" et="706.2732" s1="37.3279" s2="38.7094" s3="39.0147" topspeed="264.86" fuel="0.627" fuelUsed="0.031" ve="0.839" veUsed="0.039" twfl="0.949" twfr="0.957" twrl="0.945" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.0520</Lap>
+<BestLapTime>112.6385</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Erwan Bastard</Name>
+<Connected>1</Connected>
+<VehFile>59_25_RSL_DF69FBFB.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>Racing Spirit of Léman 2025 #59:ELMS</VehName>
+<Category>ELMS 2025, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>Racing Spirit of Léman</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="--.---" topspeed="254.58" fuel="0.690" fuelUsed="0.026" ve="0.961" veUsed="0.039" twfl="0.984" twfr="0.984" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="282.1170" s1="37.4038" s2="38.2493" s3="37.0405" topspeed="260.09" fuel="0.663" fuelUsed="0.027" ve="0.922" veUsed="0.039" twfl="0.969" twfr="0.973" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.6936</Lap>
+<Lap num="3" p="5" et="394.8105" s1="37.4124" s2="38.2405" s3="37.1666" topspeed="259.90" fuel="0.635" fuelUsed="0.027" ve="0.886" veUsed="0.035" twfl="0.953" twfr="0.961" twrl="0.961" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.8194</Lap>
+<Lap num="4" p="6" et="507.6300" s1="37.4064" s2="38.2175" s3="37.0956" topspeed="259.90" fuel="0.608" fuelUsed="0.027" ve="0.847" veUsed="0.039" twfl="0.937" twfr="0.949" twrl="0.949" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.7196</Lap>
+<Lap num="5" p="8" et="620.3495" s1="37.4348" s2="38.3437" s3="38.4244" topspeed="259.90" fuel="0.580" fuelUsed="0.027" ve="0.812" veUsed="0.035" twfl="0.922" twfr="0.937" twrl="0.937" twrr="0.945" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.2029</Lap>
+<Lap num="6" p="8" et="734.5524" s1="38.1036" s2="40.0491" s3="37.1978" topspeed="259.90" fuel="0.553" fuelUsed="0.027" ve="0.773" veUsed="0.039" twfl="0.906" twfr="0.925" twrl="0.925" twrr="0.937" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.3505</Lap>
+<BestLapTime>112.6936</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Duncan Cameron</Name>
+<Connected>1</Connected>
+<VehFile>55_25_SPIRFF701058.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Spirit of Race 2025 #55:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>55</CarNumber>
+<TeamName>Spirit of Race</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="253.60" fuel="0.722" fuelUsed="0.028" ve="0.961" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="244.0180" s1="37.4447" s2="38.3032" s3="37.4666" topspeed="263.96" fuel="0.690" fuelUsed="0.031" ve="0.922" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.2145</Lap>
+<Lap num="3" p="6" et="357.2324" s1="37.4844" s2="38.3550" s3="37.5045" topspeed="263.15" fuel="0.663" fuelUsed="0.027" ve="0.882" veUsed="0.039" twfl="0.961" twfr="0.969" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.3439</Lap>
+<Lap num="4" p="6" et="470.5764" s1="37.5072" s2="38.3835" s3="37.5155" topspeed="262.77" fuel="0.631" fuelUsed="0.031" ve="0.843" veUsed="0.039" twfl="0.949" twfr="0.957" twrl="0.949" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.4062</Lap>
+<Lap num="5" p="9" et="583.9825" s1="37.5552" s2="38.4352" s3="37.5531" topspeed="262.20" fuel="0.604" fuelUsed="0.027" ve="0.804" veUsed="0.039" twfl="0.937" twfr="0.945" twrl="0.933" twrr="0.941" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.5435</Lap>
+<Lap num="6" p="9" et="697.5261" s1="37.5678" s2="39.1307" s3="39.6635" topspeed="262.16" fuel="0.573" fuelUsed="0.031" ve="0.765" veUsed="0.039" twfl="0.922" twfr="0.933" twrl="0.922" twrr="0.929" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.3620</Lap>
+<BestLapTime>113.2145</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Michael Birch</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="250.46" fuel="0.678" fuelUsed="0.030" ve="0.961" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="7" et="319.4715" s1="37.5876" s2="38.2228" s3="37.9675" topspeed="260.35" fuel="0.651" fuelUsed="0.027" ve="0.918" veUsed="0.043" twfl="0.973" twfr="0.980" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.7779</Lap>
+<Lap num="3" p="7" et="433.2493" s1="37.7784" s2="38.2505" s3="37.5166" topspeed="263.66" fuel="0.620" fuelUsed="0.031" ve="0.875" veUsed="0.043" twfl="0.961" twfr="0.969" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.5455</Lap>
+<Lap num="4" p="10" et="546.7948" s1="37.5830" s2="38.5815" s3="38.8085" topspeed="260.35" fuel="0.592" fuelUsed="0.027" ve="0.835" veUsed="0.039" twfl="0.949" twfr="0.957" twrl="0.945" twrr="0.953" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.9730</Lap>
+<Lap num="5" p="10" et="661.7678" s1="37.6727" s2="38.4258" s3="38.2629" topspeed="260.80" fuel="0.561" fuelUsed="0.031" ve="0.792" veUsed="0.043" twfl="0.937" twfr="0.949" twrl="0.933" twrr="0.941" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.3615</Lap>
+<BestLapTime>113.5455</BestLapTime>
+<Laps>5</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="5">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Andrew Gilbert</Name>
+<Connected>1</Connected>
+<VehFile>74_25_KESS89876FD7.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Kessel Racing 2025 #74:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>74</CarNumber>
+<TeamName>Kessel Racing</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="12" et="--.---" topspeed="255.17" fuel="0.106" fuelUsed="0.644" ve="0.141" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="11" et="751.4077" s1="38.3359" s2="38.9357" s3="37.1044" topspeed="266.21" fuel="0.075" fuelUsed="0.031" ve="0.102" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.3760</Lap>
+<BestLapTime>114.3760</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">AIControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>63_25_IRON3E8BB8AD.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #63:ELMS</VehName>
+<Category>ELMS 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>63</CarNumber>
+<TeamName>Iron Lynx</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="1" et="--.---" topspeed="239.24" fuel="0.761" fuelUsed="0.031" ve="0.961" veUsed="0.039" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="153.3782" topspeed="253.67" fuel="0.729" fuelUsed="0.031" ve="0.922" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="6" et="272.4442" s1="39.0743" s2="39.4252" s3="38.8977" topspeed="256.33" fuel="0.702" fuelUsed="0.027" ve="0.878" veUsed="0.043" twfl="0.976" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.3972</Lap>
+<Lap num="4" p="8" et="389.8414" s1="38.7364" s2="40.9503" s3="39.2153" topspeed="263.06" fuel="0.671" fuelUsed="0.031" ve="0.839" veUsed="0.039" twfl="0.965" twfr="0.973" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">118.9020</Lap>
+<Lap num="5" p="10" et="508.7434" s1="40.0515" topspeed="258.29" fuel="0.643" fuelUsed="0.027" ve="0.800" veUsed="0.039" twfl="0.957" twfr="0.965" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="6" p="11" et="626.8968" s1="38.2665" s2="41.5795" s3="38.7813" topspeed="259.90" fuel="0.612" fuelUsed="0.031" ve="0.761" veUsed="0.039" twfl="0.937" twfr="0.957" twrl="0.976" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">118.6273</Lap>
+<Lap num="7" p="11" et="745.5241" topspeed="258.32" fuel="0.792" fuelUsed="-0.180" ve="1.000" veUsed="-0.239" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>117.3972</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,TC=2,ABS=1,Stability=1,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Takeshi Kimura</Name>
+<Connected>1</Connected>
+<VehFile>57_25_KESS76A94C8D.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Kessel Racing 2025 #57:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>57</CarNumber>
+<TeamName>Kessel Racing</TeamName>
+<isPlayer>0</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>14</LapRankIncludingDiscos>
+<Lap num="1" p="13" et="--.---" topspeed="255.15" fuel="0.106" fuelUsed="0.644" ve="0.141" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">AIControl</ControlAndAids>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

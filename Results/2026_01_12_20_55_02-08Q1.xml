@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1768242927</DateTime>
+<TimeString>2026/01/12 20:35:27</TimeString>
+<TrackVenue>Autodromo Nazionale Monza</TrackVenue>
+<TrackCourse>Autodromo Nazionale Monza</TrackCourse>
+<TrackEvent>6 Hours of Monza</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\Monza_2023\1.21\layoutMonza.mas</TrackData>
+<TrackLength>5780.6</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>40</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>63</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Qualify>
+<DateTime>1768243069</DateTime>
+<TimeString>2026/01/12 20:37:49</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>15</Minutes>
+<Stream>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="0" WarningPoints="1.5" CurrentPoints="1.5" Resolution="5" et="52.8">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="72.1">No Further Action</TrackLimits>
+<Score et="75.0">Kyle Pretorius(4) lap=0 point=1 t=-1.000 et=74.680</Score>
+<Score et="76.8">Japie Bosman(6) lap=0 point=1 t=-1.000 et=76.751</Score>
+<Score et="78.1">L Trichardt(7) lap=0 point=1 t=-1.000 et=77.820</Score>
+<Score et="85.5">Jaco Meintjes(8) lap=0 point=1 t=-1.000 et=85.200</Score>
+<Score et="86.4">Shaun Schutte(1) lap=0 point=1 t=-1.000 et=86.180</Score>
+<TrackLimits Driver="Anderton Smith" ID="2" Lap="0" WarningPoints="1.5" CurrentPoints="1.5" Resolution="5" et="89.1">Invalid Lap Cut Track</TrackLimits>
+<Score et="91.4">Andre Esterhuizen(9) lap=0 point=1 t=-1.000 et=91.020</Score>
+<Score et="94.3">Wimpie Meintjes(3) lap=0 point=1 t=-1.000 et=94.000</Score>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="97.6">No Further Action</TrackLimits>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="104.1">No Further Action</TrackLimits>
+<Score et="104.1">Anderton Smith(2) lap=0 point=1 t=-1.000 et=103.840</Score>
+<TrackLimits Driver="Jaco Meintjes" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="104.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="0" WarningPoints="2" CurrentPoints="2" Resolution="5" et="111.4">Invalid Lap Cut Track</TrackLimits>
+<Score et="115.1">Kyle Pretorius(4) lap=0 point=2 t=-1.000 et=114.740</Score>
+<Score et="116.8">L Trichardt(7) lap=0 point=2 t=-1.000 et=116.440</Score>
+<Score et="117.9">Japie Bosman(6) lap=0 point=2 t=-1.000 et=117.904</Score>
+<Score et="120.2">Hannes Kruger(5) lap=0 point=1 t=-1.000 et=119.940</Score>
+<Score et="124.2">Shaun Schutte(1) lap=0 point=2 t=-1.000 et=123.980</Score>
+<Score et="124.7">Gerry Esterhuizen(0) lap=0 point=1 t=-1.000 et=124.411</Score>
+<Score et="124.7">Gerry Esterhuizen(0) lap=0 point=2 t=-1.000 et=124.411</Score>
+<Score et="124.7">Gerry Esterhuizen(0) lap=1 point=0 t=-1.000 et=124.411</Score>
+<Score et="125.2">Jaco Meintjes(8) lap=0 point=2 t=-1.000 et=124.920</Score>
+<Score et="133.2">Andre Esterhuizen(9) lap=0 point=2 t=-1.000 et=132.820</Score>
+<Score et="134.2">Wimpie Meintjes(3) lap=0 point=2 t=-1.000 et=133.920</Score>
+<Score et="143.9">Anderton Smith(2) lap=0 point=2 t=-1.000 et=143.620</Score>
+<Score et="153.7">Kyle Pretorius(4) lap=1 point=0 t=-1.000 et=153.400</Score>
+<Incident et="155.5">Jaco Meintjes(8) reported contact (1807.48) with Immovable</Incident>
+<Score et="158.9">Hannes Kruger(5) lap=0 point=2 t=-1.000 et=158.560</Score>
+<Score et="159.1">Japie Bosman(6) lap=1 point=0 t=-1.000 et=159.070</Score>
+<Score et="161.1">Shaun Schutte(1) lap=1 point=0 t=-1.000 et=160.860</Score>
+<TrackLimits Driver="Jaco Meintjes" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="164.9">No Further Action</TrackLimits>
+<ChatMessage et="168.6">Z Esterhuizen: Slowing to pit</ChatMessage>
+<Score et="172.6">Jaco Meintjes(8) lap=1 point=0 t=-1.000 et=172.160</Score>
+<Score et="172.8">Wimpie Meintjes(3) lap=1 point=0 t=-1.000 et=172.480</Score>
+<Score et="175.4">Andre Esterhuizen(9) lap=1 point=0 t=-1.000 et=175.120</Score>
+<Score et="175.6">L Trichardt(7) lap=1 point=0 t=-1.000 et=175.280</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="1" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="177.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="1" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="179.3">No Further Action</TrackLimits>
+<Score et="181.9">Anderton Smith(2) lap=1 point=0 t=-1.000 et=181.680</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="1" WarningPoints="3" CurrentPoints="3" Resolution="5" et="186.5">Invalid Lap Cut Track</TrackLimits>
+<Sector Driver="Kyle Pretorius" ID="4" Sector="1" Class="GT3" et="191.6">Kyle Pretorius(4) set new best for sector 1</Sector>
+<Score et="191.7">Kyle Pretorius(4) lap=1 point=1 t=37.915 et=191.320</Score>
+<Score et="196.7">Hannes Kruger(5) lap=1 point=0 t=-1.000 et=196.360</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="197.4">No Further Action</TrackLimits>
+<Sector Driver="Shaun Schutte" ID="1" Sector="1" Class="GT3" et="197.9">Shaun Schutte(1) set new best for sector 1</Sector>
+<Score et="197.9">Shaun Schutte(1) lap=1 point=1 t=36.802 et=197.660</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="1" WarningPoints="0" CurrentPoints="3" Resolution="7" et="197.9">No Further Action</TrackLimits>
+<Score et="201.6">Japie Bosman(6) lap=1 point=1 t=42.518 et=201.589</Score>
+<Score et="210.1">Wimpie Meintjes(3) lap=1 point=1 t=37.303 et=209.780</Score>
+<Score et="211.0">Jaco Meintjes(8) lap=1 point=1 t=38.552 et=210.700</Score>
+<Score et="214.0">L Trichardt(7) lap=1 point=1 t=38.399 et=213.680</Score>
+<Score et="214.2">Andre Esterhuizen(9) lap=1 point=1 t=38.783 et=213.900</Score>
+<Score et="218.2">Gerry Esterhuizen(0) lap=1 point=1 t=-1.000 et=217.900</Score>
+<Score et="219.2">Anderton Smith(2) lap=1 point=1 t=37.307 et=218.980</Score>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="222.0">No Further Action</TrackLimits>
+<Sector Driver="Kyle Pretorius" ID="4" Sector="2" Class="GT3" et="231.5">Kyle Pretorius(4) set new best for sector 2</Sector>
+<Score et="231.6">Kyle Pretorius(4) lap=1 point=2 t=77.852 et=231.260</Score>
+<Score et="233.8">Hannes Kruger(5) lap=1 point=1 t=37.200 et=233.560</Score>
+<Sector Driver="Shaun Schutte" ID="1" Sector="2" Class="GT3" et="235.5">Shaun Schutte(1) set new best for sector 2</Sector>
+<Score et="235.6">Shaun Schutte(1) lap=1 point=2 t=74.354 et=235.220</Score>
+<Score et="242.9">Japie Bosman(6) lap=1 point=2 t=83.828 et=242.899</Score>
+<Score et="249.2">Wimpie Meintjes(3) lap=1 point=2 t=76.461 et=248.940</Score>
+<Score et="249.5">Jaco Meintjes(8) lap=1 point=2 t=76.993 et=249.140</Score>
+<Score et="253.5">L Trichardt(7) lap=1 point=2 t=77.843 et=253.140</Score>
+<Score et="255.2">Andre Esterhuizen(9) lap=1 point=2 t=79.731 et=254.840</Score>
+<Score et="258.4">Anderton Smith(2) lap=1 point=2 t=76.478 et=258.140</Score>
+<TrackLimits Driver="Hannes Kruger" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="258.8">No Further Action</TrackLimits>
+<Score et="259.8">Gerry Esterhuizen(0) lap=1 point=2 t=-1.000 et=259.480</Score>
+<Sector Driver="Kyle Pretorius" ID="4" Sector="3" Class="GT3" et="270.4">Kyle Pretorius(4) set new best for sector 3</Sector>
+<Score et="270.5">Kyle Pretorius(4) lap=2 point=0 t=116.775 et=270.180</Score>
+<Score et="272.3">Hannes Kruger(5) lap=1 point=2 t=75.604 et=271.980</Score>
+<Sector Driver="Shaun Schutte" ID="1" Sector="3" Class="GT3" et="272.6">Shaun Schutte(1) set new best for sector 3</Sector>
+<Score et="272.6">Shaun Schutte(1) lap=2 point=0 t=111.379 et=272.240</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="272.9">No Further Action</TrackLimits>
+<Score et="282.4">Japie Bosman(6) lap=2 point=0 t=123.290 et=282.361</Score>
+<Score et="287.6">Wimpie Meintjes(3) lap=2 point=0 t=114.938 et=287.420</Score>
+<Score et="288.2">Jaco Meintjes(8) lap=2 point=0 t=115.614 et=287.760</Score>
+<Score et="291.4">L Trichardt(7) lap=2 point=0 t=115.660 et=290.940</Score>
+<Score et="296.6">Anderton Smith(2) lap=2 point=0 t=114.557 et=296.220</Score>
+<Score et="297.2">Andre Esterhuizen(9) lap=2 point=0 t=121.751 et=296.860</Score>
+<Score et="299.9">Zander Esterhuizen(10) lap=0 point=1 t=-1.000 et=299.740</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="2" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="300.9">No Further Action</TrackLimits>
+<Score et="301.3">Gerry Esterhuizen(0) lap=2 point=0 t=-1.000 et=301.020</Score>
+<Score et="308.0">Kyle Pretorius(4) lap=2 point=1 t=37.461 et=307.640</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="309.0">No Further Action</TrackLimits>
+<Score et="309.4">Shaun Schutte(1) lap=2 point=1 t=36.836 et=309.080</Score>
+<Score et="309.7">Hannes Kruger(5) lap=2 point=0 t=113.026 et=309.400</Score>
+<Score et="321.1">Japie Bosman(6) lap=2 point=1 t=38.755 et=321.116</Score>
+<Score et="325.8">Jaco Meintjes(8) lap=2 point=1 t=37.702 et=325.480</Score>
+<Score et="326.0">Wimpie Meintjes(3) lap=2 point=1 t=38.274 et=325.680</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="2" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="327.4">No Further Action</TrackLimits>
+<Score et="328.5">L Trichardt(7) lap=2 point=1 t=37.274 et=328.220</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="2" WarningPoints="0" CurrentPoints="3" Resolution="7" et="328.6">No Further Action</TrackLimits>
+<Score et="333.6">Anderton Smith(2) lap=2 point=1 t=37.107 et=333.340</Score>
+<Score et="335.6">Andre Esterhuizen(9) lap=2 point=1 t=38.349 et=335.220</Score>
+<Score et="344.4">Zander Esterhuizen(10) lap=0 point=2 t=-1.000 et=344.260</Score>
+<Score et="346.6">Hannes Kruger(5) lap=2 point=1 t=36.882 et=346.280</Score>
+<Score et="346.9">Shaun Schutte(1) lap=2 point=2 t=74.413 et=346.660</Score>
+<Score et="347.0">Kyle Pretorius(4) lap=2 point=2 t=76.579 et=346.760</Score>
+<Score et="349.6">Gerry Esterhuizen(0) lap=2 point=1 t=48.238 et=349.260</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="354.9">No Further Action</TrackLimits>
+<Score et="363.6">Japie Bosman(6) lap=2 point=2 t=81.242 et=363.602</Score>
+<Score et="364.8">Jaco Meintjes(8) lap=2 point=2 t=76.662 et=364.440</Score>
+<Score et="365.6">Wimpie Meintjes(3) lap=2 point=2 t=77.884 et=365.300</Score>
+<Score et="367.9">L Trichardt(7) lap=2 point=2 t=76.713 et=367.660</Score>
+<Score et="373.3">Anderton Smith(2) lap=2 point=2 t=76.733 et=372.960</Score>
+<TrackLimits Driver="Hannes Kruger" ID="5" Lap="2" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="373.4">Invalid Lap Cut Track</TrackLimits>
+<Score et="376.8">Andre Esterhuizen(9) lap=2 point=2 t=79.682 et=376.540</Score>
+<Score et="384.3">Hannes Kruger(5) lap=2 point=2 t=-1.000 et=384.060</Score>
+<Score et="385.9">Kyle Pretorius(4) lap=3 point=0 t=115.407 et=385.600</Score>
+<Score et="387.2">Zander Esterhuizen(10) lap=1 point=0 t=-1.000 et=387.000</Score>
+<Score et="390.7">Gerry Esterhuizen(0) lap=2 point=2 t=89.510 et=390.520</Score>
+<Score et="402.7">Jaco Meintjes(8) lap=3 point=0 t=114.592 et=402.360</Score>
+<Score et="403.8">Wimpie Meintjes(3) lap=3 point=0 t=116.154 et=403.560</Score>
+<Score et="404.0">Japie Bosman(6) lap=3 point=0 t=121.585 et=403.945</Score>
+<Score et="406.3">L Trichardt(7) lap=3 point=0 t=114.923 et=405.880</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="410.0">No Further Action</TrackLimits>
+<Sector Driver="Gerry Esterhuizen" ID="0" Sector="1" Class="GT3" et="410.3">Gerry Esterhuizen(0) set new best for sector 1</Sector>
+<Sector Driver="Gerry Esterhuizen" ID="0" Sector="2" Class="GT3" et="410.3">Gerry Esterhuizen(0) set new best for sector 2</Sector>
+<Sector Driver="Anderton Smith" ID="2" Sector="1" Class="GT3" et="410.3">Anderton Smith(2) set new best for sector 1</Sector>
+<Sector Driver="Anderton Smith" ID="2" Sector="2" Class="GT3" et="410.3">Anderton Smith(2) set new best for sector 2</Sector>
+<Sector Driver="Anderton Smith" ID="2" Sector="3" Class="GT3" et="410.3">Anderton Smith(2) set new best for sector 3</Sector>
+<Sector Driver="Wimpie Meintjes" ID="3" Sector="2" Class="GT3" et="410.3">Wimpie Meintjes(3) set new best for sector 2</Sector>
+<Sector Driver="Kyle Pretorius" ID="4" Sector="2" Class="GT3" et="410.3">Kyle Pretorius(4) set new best for sector 2</Sector>
+<Sector Driver="Hannes Kruger" ID="5" Sector="1" Class="GT3" et="410.3">Hannes Kruger(5) set new best for sector 1</Sector>
+<Sector Driver="Hannes Kruger" ID="5" Sector="2" Class="GT3" et="410.3">Hannes Kruger(5) set new best for sector 2</Sector>
+<Sector Driver="Hannes Kruger" ID="5" Sector="3" Class="GT3" et="410.3">Hannes Kruger(5) set new best for sector 3</Sector>
+<Score et="410.9">Anderton Smith(2) lap=3 point=0 t=114.514 et=410.740</Score>
+<Score et="418.1">Andre Esterhuizen(9) lap=3 point=0 t=120.959 et=417.820</Score>
+<Score et="422.3">Hannes Kruger(5) lap=3 point=0 t=-1.000 et=422.020</Score>
+<Score et="423.6">Kyle Pretorius(4) lap=3 point=1 t=37.739 et=423.320</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="427.2">No Further Action</TrackLimits>
+<Score et="432.8">Gerry Esterhuizen(0) lap=3 point=0 t=131.510 et=432.520</Score>
+<Score et="433.1">Zander Esterhuizen(10) lap=1 point=1 t=45.773 et=432.760</Score>
+<Score et="440.4">Jaco Meintjes(8) lap=3 point=1 t=37.693 et=440.060</Score>
+<Score et="441.6">Wimpie Meintjes(3) lap=3 point=1 t=37.792 et=441.360</Score>
+<Score et="442.4">Japie Bosman(6) lap=3 point=1 t=38.470 et=442.415</Score>
+<Score et="443.7">L Trichardt(7) lap=3 point=1 t=37.568 et=443.440</Score>
+<Score et="448.1">Anderton Smith(2) lap=3 point=1 t=37.165 et=447.900</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="3" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="448.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="3" WarningPoints="0" CurrentPoints="3" Resolution="7" et="453.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="454.0">No Further Action</TrackLimits>
+<Score et="456.8">Andre Esterhuizen(9) lap=3 point=1 t=38.626 et=456.440</Score>
+<Sector Driver="Hannes Kruger" ID="5" Sector="1" Class="GT3" et="459.2">Hannes Kruger(5) set new best for sector 1</Sector>
+<Score et="459.2">Hannes Kruger(5) lap=3 point=1 t=36.881 et=458.900</Score>
+<TrackLimits Driver="Wimpie Meintjes" ID="3" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="460.1">No Further Action</TrackLimits>
+<Score et="463.5">Kyle Pretorius(4) lap=3 point=2 t=77.737 et=463.320</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="463.9">No Further Action</TrackLimits>
+<Score et="472.4">Gerry Esterhuizen(0) lap=3 point=1 t=39.657 et=472.180</Score>
+<Score et="476.9">Zander Esterhuizen(10) lap=1 point=2 t=89.577 et=476.560</Score>
+<Score et="479.6">Jaco Meintjes(8) lap=3 point=2 t=76.881 et=479.240</Score>
+<Score et="482.6">Japie Bosman(6) lap=3 point=2 t=78.633 et=482.578</Score>
+<Score et="483.3">Wimpie Meintjes(3) lap=3 point=2 t=79.362 et=482.920</Score>
+<Score et="484.0">L Trichardt(7) lap=3 point=2 t=77.805 et=483.680</Score>
+<TrackLimits Driver="Hannes Kruger" ID="5" Lap="3" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="484.1">No Further Action</TrackLimits>
+<Score et="487.2">Anderton Smith(2) lap=3 point=2 t=76.219 et=486.960</Score>
+<Sector Driver="Hannes Kruger" ID="5" Sector="2" Class="GT3" et="497.0">Hannes Kruger(5) set new best for sector 2</Sector>
+<Score et="497.0">Hannes Kruger(5) lap=3 point=2 t=74.690 et=496.700</Score>
+<Score et="497.8">Andre Esterhuizen(9) lap=3 point=2 t=79.734 et=497.560</Score>
+<Score et="502.4">Kyle Pretorius(4) lap=4 point=0 t=116.533 et=502.120</Score>
+<Score et="514.0">Gerry Esterhuizen(0) lap=3 point=2 t=81.180 et=513.700</Score>
+<Score et="517.7">Jaco Meintjes(8) lap=4 point=0 t=114.984 et=517.340</Score>
+<Score et="519.5">Zander Esterhuizen(10) lap=2 point=0 t=132.214 et=519.200</Score>
+<Score et="521.2">Wimpie Meintjes(3) lap=4 point=0 t=117.394 et=520.960</Score>
+<Score et="521.6">Japie Bosman(6) lap=4 point=0 t=117.599 et=521.544</Score>
+<Score et="521.8">L Trichardt(7) lap=4 point=0 t=115.570 et=521.440</Score>
+<TrackLimits Driver="Kyle Pretorius" ID="4" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="524.0">No Further Action</TrackLimits>
+<Score et="525.2">Anderton Smith(2) lap=4 point=0 t=114.129 et=524.880</Score>
+<Score et="534.6">Hannes Kruger(5) lap=4 point=0 t=112.321 et=534.340</Score>
+<Score et="539.8">Andre Esterhuizen(9) lap=4 point=0 t=121.666 et=539.480</Score>
+<Score et="540.4">Kyle Pretorius(4) lap=4 point=1 t=38.060 et=540.180</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="4" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="540.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="544.2">No Further Action</TrackLimits>
+<Score et="555.5">Jaco Meintjes(8) lap=4 point=1 t=37.795 et=555.140</Score>
+<Score et="556.7">Gerry Esterhuizen(0) lap=4 point=0 t=123.887 et=556.420</Score>
+<Sector Driver="L Trichardt" ID="7" Sector="1" Class="GT3" et="558.5">L Trichardt(7) set new best for sector 1</Sector>
+<Score et="558.5">L Trichardt(7) lap=4 point=1 t=36.825 et=558.260</Score>
+<Score et="558.5">Wimpie Meintjes(3) lap=4 point=1 t=37.325 et=558.280</Score>
+<Score et="559.7">Japie Bosman(6) lap=4 point=1 t=38.138 et=559.682</Score>
+<Score et="562.3">Anderton Smith(2) lap=4 point=1 t=37.237 et=562.100</Score>
+<Score et="562.9">Zander Esterhuizen(10) lap=2 point=1 t=43.415 et=562.620</Score>
+<Score et="571.6">Hannes Kruger(5) lap=4 point=1 t=36.871 et=571.220</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="2" WarningPoints="1" CurrentPoints="1" Resolution="5" et="572.0">Invalid Lap Cut Track</TrackLimits>
+<Score et="577.4">Andre Esterhuizen(9) lap=4 point=1 t=37.678 et=577.160</Score>
+<Score et="579.6">Kyle Pretorius(4) lap=4 point=2 t=77.120 et=579.240</Score>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="583.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Hannes Kruger" ID="5" Lap="4" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="589.7">No Further Action</TrackLimits>
+<Score et="594.0">Jaco Meintjes(8) lap=4 point=2 t=76.395 et=593.740</Score>
+<Score et="595.2">Gerry Esterhuizen(0) lap=4 point=1 t=38.599 et=595.020</Score>
+<Score et="597.4">L Trichardt(7) lap=4 point=2 t=75.560 et=597.000</Score>
+<Score et="598.5">Wimpie Meintjes(3) lap=4 point=2 t=77.213 et=598.180</Score>
+<Score et="600.6">Japie Bosman(6) lap=4 point=2 t=79.042 et=600.586</Score>
+<Score et="601.4">Anderton Smith(2) lap=4 point=2 t=76.168 et=601.040</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="602.9">No Further Action</TrackLimits>
+<Incident et="603.2">L Trichardt(7) reported contact (3789.87) with Immovable</Incident>
+<Incident et="605.1">L Trichardt(7) reported contact (73.51) with Immovable</Incident>
+<Score et="605.4">Zander Esterhuizen(10) lap=2 point=2 t=-1.000 et=605.180</Score>
+<Sector et="605.5">Jaco Meintjes(8) reports new suspension damage</Sector>
+<Sector et="605.5">Jaco Meintjes(8) reports new suspension damage</Sector>
+<Incident et="605.6">Jaco Meintjes(8) reported contact (1699.09) with Immovable</Incident>
+<TrackLimits Driver="Jaco Meintjes" ID="8" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="607.3">No Further Action</TrackLimits>
+<Score et="610.0">Hannes Kruger(5) lap=4 point=2 t=75.219 et=609.560</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="613.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="2" WarningPoints="0" CurrentPoints="1" Resolution="7" et="614.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="4" WarningPoints="0" CurrentPoints="3" Resolution="7" et="615.5">No Further Action</TrackLimits>
+<Score et="617.4">Kyle Pretorius(4) lap=5 point=0 t=115.016 et=617.140</Score>
+<Score et="618.5">Andre Esterhuizen(9) lap=4 point=2 t=78.640 et=618.120</Score>
+<Score et="636.4">Jaco Meintjes(8) lap=5 point=0 t=118.654 et=636.000</Score>
+<Score et="636.4">Wimpie Meintjes(3) lap=5 point=0 t=115.182 et=636.140</Score>
+<Score et="637.0">Gerry Esterhuizen(0) lap=4 point=2 t=80.358 et=636.780</Score>
+<TrackLimits Driver="Kyle Pretorius" ID="4" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="638.8">No Further Action</TrackLimits>
+<Score et="639.2">Anderton Smith(2) lap=5 point=0 t=114.026 et=638.900</Score>
+<Score et="639.4">Japie Bosman(6) lap=5 point=0 t=117.885 et=639.429</Score>
+<Score et="646.8">L Trichardt(7) lap=5 point=0 t=125.134 et=646.580</Score>
+<Sector Driver="Hannes Kruger" ID="5" Sector="3" Class="GT3" et="647.1">Hannes Kruger(5) set new best for sector 3</Sector>
+<Score et="647.1">Hannes Kruger(5) lap=5 point=0 t=112.457 et=646.800</Score>
+<Score et="648.4">Anderton Smith(2) lap=5 point=1 t=-1.000 et=648.083</Score>
+<Score et="648.4">Anderton Smith(2) lap=5 point=2 t=-1.000 et=648.083</Score>
+<Score et="648.4">Anderton Smith(2) lap=6 point=0 t=-1.000 et=648.083</Score>
+<Score et="651.4">Zander Esterhuizen(10) lap=3 point=0 t=-1.000 et=651.120</Score>
+<Score et="655.6">Kyle Pretorius(4) lap=5 point=1 t=38.139 et=655.280</Score>
+<Score et="659.4">Andre Esterhuizen(9) lap=5 point=0 t=119.706 et=659.200</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="668.1">No Further Action</TrackLimits>
+<Score et="673.9">Wimpie Meintjes(3) lap=5 point=1 t=37.439 et=673.580</Score>
+<Score et="674.3">Jaco Meintjes(8) lap=5 point=1 t=38.042 et=674.040</Score>
+<Score et="677.4">Japie Bosman(6) lap=5 point=1 t=37.918 et=677.346</Score>
+<Score et="678.0">Gerry Esterhuizen(0) lap=5 point=0 t=121.281 et=677.700</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="3" WarningPoints="1.75" CurrentPoints="2.75" Resolution="5" et="679.5">Invalid Lap Cut Track</TrackLimits>
+<Score et="684.1">Hannes Kruger(5) lap=5 point=1 t=37.032 et=683.820</Score>
+<Score et="684.7">L Trichardt(7) lap=5 point=1 t=37.852 et=684.420</Score>
+<TrackLimits Driver="Jaco Meintjes" ID="8" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="693.3">No Further Action</TrackLimits>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="693.7">No Further Action</TrackLimits>
+<Score et="693.8">Zander Esterhuizen(10) lap=3 point=1 t=-1.000 et=693.440</Score>
+<Score et="694.6">Kyle Pretorius(4) lap=5 point=2 t=77.071 et=694.220</Score>
+<Score et="697.3">Andre Esterhuizen(9) lap=5 point=1 t=37.768 et=696.960</Score>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="3" WarningPoints="1.25" CurrentPoints="4" Resolution="5" et="702.9">Invalid Lap Cut Track</TrackLimits>
+<Score et="707.0">Shaun Schutte(11) lap=0 point=1 t=-1.000 et=706.760</Score>
+<TrackLimits Driver="Japie Bosman" ID="6" Lap="5" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="708.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="3" WarningPoints="0" CurrentPoints="4" Resolution="7" et="713.0">No Further Action</TrackLimits>
+<Score et="713.4">Wimpie Meintjes(3) lap=5 point=2 t=77.057 et=713.200</Score>
+<Score et="714.4">Jaco Meintjes(8) lap=5 point=2 t=78.104 et=714.100</Score>
+<Score et="716.4">Gerry Esterhuizen(0) lap=5 point=1 t=38.472 et=716.160</Score>
+<Score et="722.0">Hannes Kruger(5) lap=5 point=2 t=74.876 et=721.680</Score>
+<Score et="723.8">L Trichardt(7) lap=5 point=2 t=76.832 et=723.400</Score>
+<Score et="727.7">Japie Bosman(6) lap=5 point=2 t=88.293 et=727.721</Score>
+<Score et="732.6">Kyle Pretorius(4) lap=6 point=0 t=115.077 et=732.220</Score>
+<Score et="736.9">Zander Esterhuizen(10) lap=3 point=2 t=-1.000 et=736.560</Score>
+<Score et="738.2">Andre Esterhuizen(9) lap=5 point=2 t=78.716 et=737.900</Score>
+<Score et="744.5">Shaun Schutte(11) lap=0 point=2 t=-1.000 et=744.340</Score>
+<Score et="750.1">Anderton Smith(2) lap=6 point=1 t=-1.000 et=749.900</Score>
+<TrackLimits Driver="Shaun Schutte" ID="11" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="750.8">Invalid Lap Cut Track</TrackLimits>
+<Score et="751.2">Wimpie Meintjes(3) lap=6 point=0 t=114.732 et=750.880</Score>
+<Score et="752.9">Jaco Meintjes(8) lap=6 point=0 t=116.556 et=752.560</Score>
+<TrackLimits Driver="Shaun Schutte" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="753.8">No Further Action</TrackLimits>
+<Score et="757.2">Gerry Esterhuizen(0) lap=5 point=2 t=79.226 et=756.920</Score>
+<Score et="760.0">Hannes Kruger(5) lap=6 point=0 t=112.864 et=759.660</Score>
+<Score et="761.9">L Trichardt(7) lap=6 point=0 t=115.076 et=761.660</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="5" WarningPoints="0" CurrentPoints="3" Resolution="7" et="767.5">No Further Action</TrackLimits>
+<Score et="768.1">Japie Bosman(6) lap=6 point=0 t=128.640 et=768.069</Score>
+<Score et="771.8">Kyle Pretorius(4) lap=6 point=1 t=39.328 et=771.540</Score>
+<TrackLimits Driver="Wimpie Meintjes" ID="3" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="772.0">No Further Action</TrackLimits>
+<Score et="778.4">Andre Esterhuizen(9) lap=6 point=0 t=118.883 et=778.080</Score>
+<Score et="780.1">Zander Esterhuizen(10) lap=4 point=0 t=-1.000 et=779.860</Score>
+<Score et="781.7">Shaun Schutte(11) lap=1 point=0 t=-1.000 et=781.400</Score>
+<Score et="788.7">Wimpie Meintjes(3) lap=6 point=1 t=37.558 et=788.440</Score>
+<Score et="789.6">Anderton Smith(2) lap=6 point=2 t=-1.000 et=789.300</Score>
+<Score et="790.9">Jaco Meintjes(8) lap=6 point=1 t=38.091 et=790.640</Score>
+<Sector Driver="Hannes Kruger" ID="5" Sector="1" Class="GT3" et="796.8">Hannes Kruger(5) set new best for sector 1</Sector>
+<Score et="796.8">Hannes Kruger(5) lap=6 point=1 t=36.752 et=796.420</Score>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="797.0">No Further Action</TrackLimits>
+<Score et="797.2">Gerry Esterhuizen(0) lap=6 point=0 t=119.024 et=796.720</Score>
+<Score et="799.1">L Trichardt(7) lap=6 point=1 t=37.102 et=798.760</Score>
+<TrackLimits Driver="Hannes Kruger" ID="5" Lap="6" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="802.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Zander Esterhuizen" ID="10" Lap="4" WarningPoints="0" CurrentPoints="4" Resolution="7" et="803.5">No Further Action</TrackLimits>
+<Score et="805.5">Japie Bosman(6) lap=6 point=1 t=37.379 et=805.448</Score>
+<Score et="806.4">Zander Esterhuizen(10) lap=4 point=1 t=-1.000 et=806.045</Score>
+<Score et="806.4">Zander Esterhuizen(10) lap=4 point=2 t=-1.000 et=806.045</Score>
+<Score et="806.4">Zander Esterhuizen(10) lap=5 point=0 t=-1.000 et=806.045</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="808.0">No Further Action</TrackLimits>
+<Score et="810.8">Kyle Pretorius(4) lap=6 point=2 t=78.216 et=810.440</Score>
+<Score et="816.8">Andre Esterhuizen(9) lap=6 point=1 t=38.410 et=816.480</Score>
+<Sector Driver="Shaun Schutte" ID="11" Sector="1" Class="GT3" et="818.1">Shaun Schutte(11) set new best for sector 1</Sector>
+<Score et="818.1">Shaun Schutte(11) lap=1 point=1 t=36.522 et=817.920</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="6" WarningPoints="0" CurrentPoints="3" Resolution="7" et="818.3">No Further Action</TrackLimits>
+<Score et="827.4">Anderton Smith(2) lap=7 point=0 t=-1.000 et=827.000</Score>
+<Score et="828.2">Wimpie Meintjes(3) lap=6 point=2 t=77.070 et=827.940</Score>
+<Score et="830.1">Jaco Meintjes(8) lap=6 point=2 t=77.216 et=829.780</Score>
+<TrackLimits Driver="Wimpie Meintjes" ID="3" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="833.7">No Further Action</TrackLimits>
+<Score et="834.7">Hannes Kruger(5) lap=6 point=2 t=74.775 et=834.440</Score>
+<Score et="835.3">Gerry Esterhuizen(0) lap=6 point=1 t=38.225 et=834.940</Score>
+<TrackLimits Driver="Shaun Schutte" ID="11" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="838.4">No Further Action</TrackLimits>
+<Score et="838.6">L Trichardt(7) lap=6 point=2 t=76.463 et=838.120</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="6" WarningPoints="0.75" CurrentPoints="3.75" Resolution="5" et="844.0">Invalid Lap Cut Track</TrackLimits>
+<Score et="846.0">Japie Bosman(6) lap=6 point=2 t=77.971 et=846.039</Score>
+<Score et="849.0">Kyle Pretorius(4) lap=7 point=0 t=116.416 et=848.640</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="6" WarningPoints="0" CurrentPoints="3.75" Resolution="7" et="854.6">No Further Action</TrackLimits>
+<Score et="856.2">Shaun Schutte(11) lap=1 point=2 t=74.507 et=855.920</Score>
+<Score et="857.9">Andre Esterhuizen(9) lap=6 point=2 t=79.376 et=857.460</Score>
+<Score et="864.3">Anderton Smith(2) lap=7 point=1 t=37.063 et=864.060</Score>
+<Score et="868.9">Jaco Meintjes(8) lap=7 point=0 t=115.985 et=868.540</Score>
+<Score et="871.9">Hannes Kruger(5) lap=7 point=0 t=112.066 et=871.720</Score>
+<Score et="876.0">Wimpie Meintjes(3) lap=7 point=0 t=-1.000 et=875.740</Score>
+<Score et="876.0">L Trichardt(7) lap=7 point=0 t=114.174 et=875.820</Score>
+<Score et="876.8">Gerry Esterhuizen(0) lap=6 point=2 t=-1.000 et=876.420</Score>
+<Score et="881.4">Hannes Kruger(5) lap=7 point=1 t=-1.000 et=881.031</Score>
+<Score et="881.4">Hannes Kruger(5) lap=7 point=2 t=-1.000 et=881.031</Score>
+<Score et="881.4">Hannes Kruger(5) lap=8 point=0 t=-1.000 et=881.031</Score>
+<TrackLimits Driver="Wimpie Meintjes" ID="3" Lap="7" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="883.2">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="6" WarningPoints="0" CurrentPoints="3.75" Resolution="7" et="884.1">No Further Action</TrackLimits>
+<Score et="885.7">Japie Bosman(6) lap=7 point=0 t=117.613 et=885.682</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="6" WarningPoints="0" CurrentPoints="3.75" Resolution="7" et="886.6">No Further Action</TrackLimits>
+<Score et="887.3">Kyle Pretorius(4) lap=7 point=1 t=38.407 et=887.040</Score>
+<Sector Driver="Shaun Schutte" ID="11" Sector="3" Class="GT3" et="893.0">Shaun Schutte(11) set new best for sector 3</Sector>
+<Score et="893.0">Shaun Schutte(11) lap=2 point=0 t=111.358 et=892.760</Score>
+<Score et="899.6">Andre Esterhuizen(9) lap=7 point=0 t=121.120 et=899.200</Score>
+<Score et="903.0">Anderton Smith(2) lap=7 point=2 t=76.082 et=903.080</Score>
+<Score et="906.4">Japie Bosman(6) lap=7 point=1 t=-1.000 et=906.491</Score>
+<Score et="906.4">Japie Bosman(6) lap=7 point=2 t=-1.000 et=906.491</Score>
+<Score et="906.4">Japie Bosman(6) lap=8 point=0 t=-1.000 et=906.491</Score>
+<Score et="906.4">Jaco Meintjes(8) lap=7 point=1 t=37.596 et=906.140</Score>
+<Score et="913.0">L Trichardt(7) lap=7 point=1 t=36.917 et=912.740</Score>
+<Score et="916.4">Gerry Esterhuizen(0) lap=7 point=0 t=-1.000 et=915.920</Score>
+<Score et="926.6">Kyle Pretorius(4) lap=7 point=2 t=77.458 et=926.100</Score>
+<Sector Driver="Shaun Schutte" ID="11" Sector="1" Class="GT3" et="929.4">Shaun Schutte(11) set new best for sector 1</Sector>
+<Score et="929.5">Shaun Schutte(11) lap=2 point=1 t=36.440 et=929.200</Score>
+<TrackLimits Driver="Andre Esterhuizen" ID="9" Lap="8" WarningPoints="0" CurrentPoints="0" Resolution="7" et="932.6">No Further Action</TrackLimits>
+<Score et="932.7">Andre Esterhuizen(9) lap=7 point=1 t=-1.000 et=932.399</Score>
+<Score et="932.7">Andre Esterhuizen(9) lap=7 point=2 t=-1.000 et=932.399</Score>
+<Score et="932.7">Andre Esterhuizen(9) lap=8 point=0 t=-1.000 et=932.399</Score>
+<Score et="941.1">Anderton Smith(2) lap=8 point=0 t=113.818 et=940.820</Score>
+<Score et="946.5">Jaco Meintjes(8) lap=7 point=2 t=77.699 et=946.240</Score>
+<Score et="950.2">Anderton Smith(2) lap=8 point=1 t=-1.000 et=949.887</Score>
+<Score et="950.2">Anderton Smith(2) lap=8 point=2 t=-1.000 et=949.887</Score>
+<Score et="950.2">Anderton Smith(2) lap=9 point=0 t=-1.000 et=949.887</Score>
+<Score et="951.8">L Trichardt(7) lap=7 point=2 t=75.516 et=951.340</Score>
+<TrackLimits Driver="Shaun Schutte" ID="11" Lap="2" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="954.0">No Further Action</TrackLimits>
+<Score et="954.4">Gerry Esterhuizen(0) lap=7 point=1 t=38.232 et=954.160</Score>
+<TrackLimits Driver="L Trichardt" ID="7" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="7" et="956.6">No Further Action</TrackLimits>
+<Score et="960.7">Zander Esterhuizen(10) lap=5 point=1 t=-1.000 et=960.455</Score>
+<Score et="960.7">Zander Esterhuizen(10) lap=5 point=2 t=-1.000 et=960.455</Score>
+<Score et="960.7">Zander Esterhuizen(10) lap=6 point=0 t=-1.000 et=960.455</Score>
+<TrackLimits Driver="Gerry Esterhuizen" ID="0" Lap="7" WarningPoints="0" CurrentPoints="3.75" Resolution="7" et="963.4">No Further Action</TrackLimits>
+<Sector Driver="Shaun Schutte" ID="11" Sector="2" Class="GT3" et="966.7">Shaun Schutte(11) set new best for sector 2</Sector>
+<Score et="966.8">Shaun Schutte(11) lap=2 point=2 t=73.736 et=966.500</Score>
+<Score et="967.9">Jaco Meintjes(8) lap=8 point=0 t=-1.000 et=967.545</Score>
+<Score et="970.9">Kyle Pretorius(4) lap=8 point=0 t=-1.000 et=970.520</Score>
+<Score et="989.4">L Trichardt(7) lap=8 point=0 t=113.183 et=989.000</Score>
+<Score et="995.0">Gerry Esterhuizen(0) lap=7 point=2 t=78.880 et=994.800</Score>
+<Sector Driver="Shaun Schutte" ID="11" Sector="3" Class="GT3" et="1003.3">Shaun Schutte(11) set new best for sector 3</Sector>
+<Score et="1003.3">Shaun Schutte(11) lap=3 point=0 t=110.315 et=1003.080</Score>
+<Score et="1004.9">L Trichardt(7) lap=8 point=1 t=-1.000 et=1004.514</Score>
+<Score et="1004.9">L Trichardt(7) lap=8 point=2 t=-1.000 et=1004.514</Score>
+<Score et="1004.9">L Trichardt(7) lap=9 point=0 t=-1.000 et=1004.514</Score>
+<Score et="1017.3">Shaun Schutte(11) lap=3 point=1 t=-1.000 et=1017.052</Score>
+<Score et="1017.3">Shaun Schutte(11) lap=3 point=2 t=-1.000 et=1017.052</Score>
+<Score et="1017.3">Shaun Schutte(11) lap=4 point=0 t=-1.000 et=1017.052</Score>
+<Score et="1034.3">Gerry Esterhuizen(0) lap=8 point=0 t=118.191 et=1034.120</Score>
+</Stream>
+<MostLapsCompleted>9</MostLapsCompleted>
+<Driver>
+<Name>Shaun Schutte</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="257.20" fuel="0.078" fuelUsed="0.630" ve="0.110" veUsed="0.890" twfl="0.996" twfr="0.996" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="781.3999" s1="36.5222" s2="37.9846" s3="36.8517" topspeed="266.66" fuel="0.051" fuelUsed="0.027" ve="0.071" veUsed="0.039" twfl="0.988" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.3585</Lap>
+<Lap num="3" p="1" et="892.7600" s1="36.4399" s2="37.2960" s3="36.5791" topspeed="267.11" fuel="0.024" fuelUsed="0.027" ve="0.027" veUsed="0.043" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">110.3150</Lap>
+<Lap num="4" p="1" et="1003.0801" topspeed="237.83" fuel="0.710" fuelUsed="-0.686" ve="0.149" veUsed="-0.122" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>110.3150</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Hannes Kruger</Name>
+<Connected>1</Connected>
+<VehFile>397_24_BMW.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>BMW GT3 Custom Team #397</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>22</CarNumber>
+<TeamName>Kwagga Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="252.70" fuel="0.208" fuelUsed="0.534" ve="0.278" veUsed="0.722" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="196.3601" s1="37.2000" s2="38.4045" s3="37.4220" topspeed="263.96" fuel="0.180" fuelUsed="0.027" ve="0.239" veUsed="0.039" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.0264</Lap>
+<Lap num="3" p="1" et="309.3999" s1="36.8817" topspeed="264.41" fuel="0.153" fuelUsed="0.027" ve="0.200" veUsed="0.039" twfl="0.980" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="1" et="422.0200" s1="36.8806" s2="37.8090" s3="37.6310" topspeed="264.86" fuel="0.125" fuelUsed="0.027" ve="0.161" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.3206</Lap>
+<Lap num="5" p="1" et="534.3401" s1="36.8710" s2="38.3477" s3="37.2386" topspeed="264.86" fuel="0.094" fuelUsed="0.031" ve="0.118" veUsed="0.043" twfl="0.969" twfr="0.973" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.4574</Lap>
+<Lap num="6" p="1" et="646.8000" s1="37.0323" s2="37.8432" s3="37.9882" topspeed="264.86" fuel="0.067" fuelUsed="0.027" ve="0.078" veUsed="0.039" twfl="0.961" twfr="0.965" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.8637</Lap>
+<Lap num="7" p="1" et="759.6599" s1="36.7516" s2="38.0233" s3="37.2909" topspeed="264.86" fuel="0.039" fuelUsed="0.027" ve="0.039" veUsed="0.039" twfl="0.953" twfr="0.961" twrl="0.973" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.0658</Lap>
+<Lap num="8" p="1" et="871.7200" topspeed="235.13" fuel="0.741" fuelUsed="-0.702" ve="0.322" veUsed="-0.282" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>112.0658</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>L Trichardt</Name>
+<Connected>1</Connected>
+<VehFile>77_24_PROTF290ED44.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #77:LM</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>77</CarNumber>
+<TeamName>Proton Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="254.05" fuel="0.263" fuelUsed="0.511" ve="0.341" veUsed="0.659" twfl="0.973" twfr="0.992" twrl="0.961" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="175.2800" s1="38.3990" s2="39.4441" s3="37.8166" topspeed="260.80" fuel="0.235" fuelUsed="0.027" ve="0.298" veUsed="0.043" twfl="0.973" twfr="0.992" twrl="0.961" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.6597</Lap>
+<Lap num="3" p="5" et="290.9399" s1="37.2738" s2="39.4387" s3="38.2101" topspeed="264.86" fuel="0.208" fuelUsed="0.027" ve="0.259" veUsed="0.039" twfl="0.969" twfr="0.988" twrl="0.957" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.9227</Lap>
+<Lap num="4" p="4" et="405.8799" s1="37.5677" s2="40.2374" s3="37.7644" topspeed="264.41" fuel="0.180" fuelUsed="0.027" ve="0.220" veUsed="0.039" twfl="0.965" twfr="0.984" twrl="0.953" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.5695</Lap>
+<Lap num="5" p="4" et="521.4399" s1="36.8252" s2="38.7350" s3="49.5734" topspeed="264.86" fuel="0.153" fuelUsed="0.027" ve="0.176" veUsed="0.043" twfl="0.957" twfr="0.969" twrl="0.941" twrr="0.945" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.1336</Lap>
+<Lap num="6" p="5" et="646.5801" s1="37.8523" s2="38.9801" s3="38.2435" topspeed="261.26" fuel="0.125" fuelUsed="0.027" ve="0.137" veUsed="0.039" twfl="0.953" twfr="0.965" twrl="0.937" twrr="0.945" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.0759</Lap>
+<Lap num="7" p="3" et="761.6599" s1="37.1025" s2="39.3602" s3="37.7114" topspeed="261.26" fuel="0.102" fuelUsed="0.024" ve="0.094" veUsed="0.043" twfl="0.949" twfr="0.961" twrl="0.937" twrr="0.941" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.1740</Lap>
+<Lap num="8" p="3" et="875.8201" s1="36.9170" s2="38.5992" s3="37.6664" topspeed="261.26" fuel="0.075" fuelUsed="0.027" ve="0.055" veUsed="0.039" twfl="0.945" twfr="0.957" twrl="0.933" twrr="0.937" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.1826</Lap>
+<Lap num="9" p="3" et="989.0000" topspeed="240.08" fuel="0.765" fuelUsed="-0.690" ve="0.380" veUsed="-0.325" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>113.1826</BestLapTime>
+<Laps>9</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="9">PlayerControl,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Anderton Smith</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="254.95" fuel="0.678" fuelUsed="0.030" ve="0.961" veUsed="0.039" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="181.6799" s1="37.3066" s2="39.1716" s3="38.0787" topspeed="265.31" fuel="0.655" fuelUsed="0.024" ve="0.918" veUsed="0.043" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.5569</Lap>
+<Lap num="3" p="2" et="296.2200" s1="37.1073" s2="39.6258" s3="37.7808" topspeed="265.76" fuel="0.627" fuelUsed="0.027" ve="0.878" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.5139</Lap>
+<Lap num="4" p="2" et="410.7400" s1="37.1654" s2="39.0538" s3="37.9095" topspeed="264.86" fuel="0.600" fuelUsed="0.027" ve="0.839" veUsed="0.039" twfl="0.984" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.1287</Lap>
+<Lap num="5" p="2" et="524.8799" s1="37.2366" s2="38.9315" s3="37.8578" topspeed="265.31" fuel="0.573" fuelUsed="0.027" ve="0.796" veUsed="0.043" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.0259</Lap>
+<Lap num="6" p="2" et="638.8999" topspeed="232.43" fuel="0.710" fuelUsed="-0.137" ve="1.000" veUsed="-0.204" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="7" p="2" et="648.0833" topspeed="256.75" fuel="0.137" fuelUsed="0.573" ve="0.188" veUsed="0.812" twfl="0.976" twfr="0.976" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="8" p="3" et="827.0000" s1="37.0631" s2="39.0187" s3="37.7361" topspeed="266.21" fuel="0.110" fuelUsed="0.027" ve="0.149" veUsed="0.039" twfl="0.973" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.8180</Lap>
+<Lap num="9" p="3" et="940.8201" topspeed="231.98" fuel="0.710" fuelUsed="-0.600" ve="0.231" veUsed="-0.082" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>113.8180</BestLapTime>
+<Laps>9</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="9">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Jaco Meintjes</Name>
+<Connected>1</Connected>
+<VehFile>77_25_PROT192000D7.VEH</VehFile>
+<UpgradeCode>c6180500 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #77:LM</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>77</CarNumber>
+<TeamName>Proton Competition</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="252.25" fuel="0.267" fuelUsed="0.507" ve="0.341" veUsed="0.659" twfl="0.973" twfr="0.992" twrl="0.965" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="172.1599" s1="38.5516" s2="38.4410" s3="38.6210" topspeed="257.65" fuel="0.239" fuelUsed="0.027" ve="0.302" veUsed="0.039" twfl="0.969" twfr="0.988" twrl="0.961" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.6136</Lap>
+<Lap num="3" p="4" et="287.7600" s1="37.7024" s2="38.9595" s3="37.9305" topspeed="260.80" fuel="0.212" fuelUsed="0.027" ve="0.263" veUsed="0.039" twfl="0.961" twfr="0.984" twrl="0.961" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.5924</Lap>
+<Lap num="4" p="3" et="402.3601" s1="37.6932" s2="39.1875" s3="38.1032" topspeed="262.61" fuel="0.184" fuelUsed="0.027" ve="0.220" veUsed="0.043" twfl="0.957" twfr="0.980" twrl="0.957" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.9839</Lap>
+<Lap num="5" p="3" et="517.3401" s1="37.7952" s2="38.5996" s3="42.2596" topspeed="262.61" fuel="0.157" fuelUsed="0.027" ve="0.180" veUsed="0.039" twfl="0.945" twfr="0.973" twrl="0.953" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">118.6545</Lap>
+<Lap num="6" p="3" et="636.0000" s1="38.0423" s2="40.0621" s3="38.4520" topspeed="258.55" fuel="0.133" fuelUsed="0.024" ve="0.137" veUsed="0.043" twfl="0.937" twfr="0.965" twrl="0.949" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.5563</Lap>
+<Lap num="7" p="3" et="752.5601" s1="38.0908" s2="39.1249" s3="38.7695" topspeed="258.55" fuel="0.106" fuelUsed="0.027" ve="0.098" veUsed="0.039" twfl="0.925" twfr="0.957" twrl="0.949" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.9852</Lap>
+<Lap num="8" p="5" et="868.5400" s1="37.5959" s2="40.1033" topspeed="258.55" fuel="0.773" fuelUsed="-0.667" ve="0.380" veUsed="-0.282" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>114.5924</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Wimpie Meintjes</Name>
+<Connected>1</Connected>
+<VehFile>95_25_UNIT382AB771.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #95:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="252.70" fuel="0.235" fuelUsed="0.473" ve="0.329" veUsed="0.671" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="172.4800" s1="37.3027" s2="39.1587" s3="38.4769" topspeed="265.76" fuel="0.208" fuelUsed="0.027" ve="0.290" veUsed="0.039" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.9383</Lap>
+<Lap num="3" p="5" et="287.4199" s1="38.2739" s2="39.6105" s3="38.2699" topspeed="256.30" fuel="0.180" fuelUsed="0.027" ve="0.251" veUsed="0.039" twfl="0.992" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.1543</Lap>
+<Lap num="4" p="5" et="403.5601" s1="37.7916" s2="41.5702" s3="38.0325" topspeed="263.51" fuel="0.153" fuelUsed="0.027" ve="0.212" veUsed="0.039" twfl="0.988" twfr="0.984" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.3943</Lap>
+<Lap num="5" p="5" et="520.9600" s1="37.3246" s2="39.8881" s3="37.9697" topspeed="265.76" fuel="0.125" fuelUsed="0.027" ve="0.173" veUsed="0.039" twfl="0.984" twfr="0.980" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.1824</Lap>
+<Lap num="6" p="4" et="636.1399" s1="37.4391" s2="39.6179" s3="37.6749" topspeed="264.86" fuel="0.102" fuelUsed="0.024" ve="0.129" veUsed="0.043" twfl="0.976" twfr="0.976" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.7319</Lap>
+<Lap num="7" p="4" et="750.8799" s1="37.5584" s2="39.5117" topspeed="263.06" fuel="0.075" fuelUsed="0.027" ve="0.094" veUsed="0.035" twfl="0.976" twfr="0.973" twrl="0.984" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<BestLapTime>114.7319</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Kyle Pretorius</Name>
+<Connected>1</Connected>
+<VehFile>95_25_UNIT382AB771.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #95:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="254.05" fuel="0.682" fuelUsed="0.026" ve="0.961" veUsed="0.039" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="153.3999" s1="37.9152" s2="39.9373" s3="38.9230" topspeed="263.06" fuel="0.655" fuelUsed="0.027" ve="0.922" veUsed="0.039" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.7755</Lap>
+<Lap num="3" p="5" et="270.1799" s1="37.4612" s2="39.1180" s3="38.8277" topspeed="263.06" fuel="0.631" fuelUsed="0.024" ve="0.882" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.4069</Lap>
+<Lap num="4" p="6" et="385.6001" s1="37.7386" s2="39.9988" s3="38.7960" topspeed="263.51" fuel="0.604" fuelUsed="0.027" ve="0.843" veUsed="0.039" twfl="0.980" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.5334</Lap>
+<Lap num="5" p="6" et="502.1201" s1="38.0605" s2="39.0598" s3="37.8960" topspeed="263.06" fuel="0.576" fuelUsed="0.027" ve="0.804" veUsed="0.039" twfl="0.976" twfr="0.976" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.0163</Lap>
+<Lap num="6" p="6" et="617.1399" s1="38.1395" s2="38.9316" s3="38.0060" topspeed="262.61" fuel="0.553" fuelUsed="0.024" ve="0.769" veUsed="0.035" twfl="0.969" twfr="0.973" twrl="0.984" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.0771</Lap>
+<Lap num="7" p="6" et="732.2200" s1="39.3277" s2="38.8878" s3="38.2000" topspeed="263.06" fuel="0.525" fuelUsed="0.027" ve="0.729" veUsed="0.039" twfl="0.961" twfr="0.965" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">116.4155</Lap>
+<Lap num="8" p="7" et="848.6399" s1="38.4068" s2="39.0511" topspeed="263.96" fuel="0.502" fuelUsed="0.024" ve="0.690" veUsed="0.039" twfl="0.953" twfr="0.961" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<BestLapTime>115.0163</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="--.---" topspeed="250.19" fuel="0.678" fuelUsed="0.030" ve="0.961" veUsed="0.039" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="159.0703" s1="42.5183" s2="41.3099" s3="39.4622" topspeed="263.24" fuel="0.651" fuelUsed="0.027" ve="0.918" veUsed="0.043" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.2905</Lap>
+<Lap num="3" p="8" et="282.3607" s1="38.7552" s2="42.4863" s3="40.3430" topspeed="264.41" fuel="0.624" fuelUsed="0.027" ve="0.875" veUsed="0.043" twfl="0.984" twfr="0.984" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">121.5845</Lap>
+<Lap num="4" p="7" et="403.9453" s1="38.4696" s2="40.1634" s3="38.9658" topspeed="263.51" fuel="0.596" fuelUsed="0.027" ve="0.835" veUsed="0.039" twfl="0.976" twfr="0.976" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.5987</Lap>
+<Lap num="5" p="7" et="521.5440" s1="38.1381" s2="40.9036" s3="38.8430" topspeed="264.86" fuel="0.569" fuelUsed="0.027" ve="0.792" veUsed="0.043" twfl="0.973" twfr="0.969" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.8847</Lap>
+<Lap num="6" p="7" et="639.4287" s1="37.9177" s2="50.3749" s3="40.3474" topspeed="264.11" fuel="0.541" fuelUsed="0.027" ve="0.753" veUsed="0.039" twfl="0.965" twfr="0.961" twrl="0.980" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.6400</Lap>
+<Lap num="7" p="7" et="768.0687" s1="37.3790" s2="40.5916" s3="39.6425" topspeed="265.31" fuel="0.514" fuelUsed="0.027" ve="0.710" veUsed="0.043" twfl="0.961" twfr="0.957" twrl="0.976" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.6130</Lap>
+<Lap num="8" p="8" et="885.6818" topspeed="262.80" fuel="0.710" fuelUsed="-0.196" ve="1.000" veUsed="-0.290" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>117.5987</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Gerry Esterhuizen</Name>
+<Connected>1</Connected>
+<VehFile>54_25_AFCO859850D7.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Vista AF Corse 2025 #54:LM</VehName>
+<Category>WEC 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>54</CarNumber>
+<TeamName>Vista AF Corse</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="212.16" fuel="0.749" fuelUsed="0.001" ve="0.290" veUsed="0.710" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="9" et="124.4111" topspeed="248.64" fuel="0.184" fuelUsed="0.565" ve="0.247" veUsed="0.043" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="9" et="301.0200" s1="48.2375" s2="41.2721" s3="42.0005" topspeed="263.51" fuel="0.157" fuelUsed="0.027" ve="0.208" veUsed="0.039" twfl="0.996" twfr="0.992" twrl="0.992" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">131.5101</Lap>
+<Lap num="4" p="9" et="432.5200" s1="39.6575" s2="41.5222" s3="42.7072" topspeed="264.41" fuel="0.125" fuelUsed="0.031" ve="0.165" veUsed="0.043" twfl="0.992" twfr="0.988" twrl="0.988" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.8868</Lap>
+<Lap num="5" p="9" et="556.4199" s1="38.5994" s2="41.7588" s3="40.9230" topspeed="263.06" fuel="0.098" fuelUsed="0.027" ve="0.125" veUsed="0.039" twfl="0.992" twfr="0.988" twrl="0.988" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">121.2812</Lap>
+<Lap num="6" p="9" et="677.7000" s1="38.4716" s2="40.7540" s3="39.7987" topspeed="263.51" fuel="0.067" fuelUsed="0.031" ve="0.086" veUsed="0.039" twfl="0.988" twfr="0.984" twrl="0.984" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">119.0242</Lap>
+<Lap num="7" p="10" et="796.7200" s1="38.2250" topspeed="263.51" fuel="0.039" fuelUsed="0.027" ve="0.043" veUsed="0.043" twfl="0.988" twfr="0.984" twrl="0.984" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="8" p="9" et="915.9199" s1="38.2319" s2="40.6481" s3="39.3105" topspeed="262.61" fuel="0.008" fuelUsed="0.031" ve="0.004" veUsed="0.039" twfl="0.984" twfr="0.980" twrl="0.980" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">118.1906</Lap>
+<BestLapTime>118.1906</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Andre Esterhuizen</Name>
+<Connected>1</Connected>
+<VehFile>95_25_UNIT382AB771.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #95:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="--.---" topspeed="249.54" fuel="0.286" fuelUsed="0.422" ve="0.404" veUsed="0.596" twfl="0.996" twfr="0.996" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="7" et="175.1201" s1="38.7827" s2="40.9480" s3="42.0202" topspeed="264.86" fuel="0.259" fuelUsed="0.027" ve="0.365" veUsed="0.039" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">121.7509</Lap>
+<Lap num="3" p="7" et="296.8601" s1="38.3491" s2="41.3333" s3="41.2766" topspeed="264.86" fuel="0.231" fuelUsed="0.027" ve="0.325" veUsed="0.039" twfl="0.988" twfr="0.988" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">120.9590</Lap>
+<Lap num="4" p="8" et="417.8201" s1="38.6259" s2="41.1081" s3="41.9325" topspeed="264.41" fuel="0.208" fuelUsed="0.024" ve="0.286" veUsed="0.039" twfl="0.984" twfr="0.984" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">121.6664</Lap>
+<Lap num="5" p="8" et="539.4800" s1="37.6777" s2="40.9625" s3="41.0656" topspeed="265.76" fuel="0.180" fuelUsed="0.027" ve="0.247" veUsed="0.039" twfl="0.980" twfr="0.980" twrl="0.992" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">119.7057</Lap>
+<Lap num="6" p="8" et="659.2000" s1="37.7684" s2="40.9471" s3="40.1677" topspeed="266.66" fuel="0.153" fuelUsed="0.027" ve="0.208" veUsed="0.039" twfl="0.976" twfr="0.976" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">118.8832</Lap>
+<Lap num="7" p="9" et="778.0801" s1="38.4105" s2="40.9658" s3="41.7432" topspeed="266.21" fuel="0.125" fuelUsed="0.027" ve="0.165" veUsed="0.043" twfl="0.973" twfr="0.973" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">121.1195</Lap>
+<Lap num="8" p="9" et="899.2000" topspeed="267.11" fuel="0.710" fuelUsed="-0.584" ve="0.439" veUsed="-0.275" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>118.8832</BestLapTime>
+<Laps>8</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="8">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Zander Esterhuizen</Name>
+<Connected>1</Connected>
+<VehFile>60_24_IRONDCDFC07B.VEH</VehFile>
+<UpgradeCode>8c310a00 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2024 #60:LM</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>60</CarNumber>
+<TeamName>Iron Lynx</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>12</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="213.96" fuel="0.859" fuelUsed="0.025" ve="0.973" veUsed="0.027" twfl="0.992" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="10" et="387.0000" s1="45.7732" s2="43.8039" s3="42.6373" topspeed="220.27" fuel="0.831" fuelUsed="0.027" ve="0.941" veUsed="0.031" twfl="0.984" twfr="0.988" twrl="0.992" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">132.2144</Lap>
+<Lap num="3" p="10" et="519.2000" s1="43.4153" topspeed="219.81" fuel="0.808" fuelUsed="0.024" ve="0.914" veUsed="0.027" twfl="0.976" twfr="0.980" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="10" et="651.1201" topspeed="216.66" fuel="0.784" fuelUsed="0.024" ve="0.886" veUsed="0.027" twfl="0.969" twfr="0.976" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="10" et="779.8601" topspeed="216.21" fuel="0.882" fuelUsed="-0.098" ve="1.000" veUsed="-0.114" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="6" p="11" et="806.0447" topspeed="59.91" fuel="0.882" fuelUsed="0.000" ve="0.659" veUsed="0.341" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>132.2144</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+<ControlAndAids startLap="2" endLap="6">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+</Qualify>
+</RaceResults>
+</rFactorXML>

@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1768126833</DateTime>
+<TimeString>2026/01/11 12:20:33</TimeString>
+<TrackVenue>Circuit de la Sarthe</TrackVenue>
+<TrackCourse>Circuit de la Sarthe</TrackCourse>
+<TrackEvent>24 Heures du Mans</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\LeMans_2023\1.21\layoutLeMans.mas</TrackData>
+<TrackLength>13624.0</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>20</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>63</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Qualify>
+<DateTime>1768126957</DateTime>
+<TimeString>2026/01/11 12:22:37</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>5</Minutes>
+<Stream>
+<Incident et="8.9">edoardoOO lagana(10) reported contact (1032.64) with Immovable</Incident>
+<Incident et="26.4">DeeJay Akker(9) reported contact (209.17) with Immovable</Incident>
+<Incident et="44.3">Mitchell Dodd(3) reported contact (27.17) with Post</Incident>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="46.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Leo Holland" ID="2" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="47.8">No Further Action</TrackLimits>
+<TrackLimits Driver="gabriele mastronardi" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="48.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Dorin Dobrota" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="48.6">No Further Action</TrackLimits>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="48.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Anthony Roach" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="53.4">No Further Action</TrackLimits>
+<Incident et="57.3">Dorin Dobrota(1) reported contact (29.16) with Post</Incident>
+<Incident et="57.3">Dorin Dobrota(1) reported contact (193.95) with Post</Incident>
+<TrackLimits Driver="Miguel Cabeleira" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="61.7">No Further Action</TrackLimits>
+<Score et="67.8">Mitchell Dodd(3) lap=0 point=1 t=-1.000 et=67.640</Score>
+<Score et="67.8">Ruben Ferreira Machado(19) lap=0 point=1 t=-1.000 et=67.640</Score>
+<Score et="68.4">edoardoOO lagana(10) lap=0 point=1 t=-1.000 et=68.180</Score>
+<Score et="69.2">gabriele mastronardi(13) lap=0 point=1 t=-1.000 et=69.000</Score>
+<Score et="69.2">Matthew Hiltwine(6) lap=0 point=1 t=-1.000 et=68.940</Score>
+<Score et="69.5">David Fitzgerald(17) lap=0 point=1 t=-1.000 et=69.240</Score>
+<Score et="70.1">Dorin Dobrota(1) lap=0 point=1 t=-1.000 et=69.880</Score>
+<Score et="71.4">Leo Holland(2) lap=0 point=1 t=-1.000 et=71.140</Score>
+<Score et="71.5">carlos montoya(18) lap=0 point=1 t=-1.000 et=71.340</Score>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="71.8">No Further Action</TrackLimits>
+<Score et="71.8">Marc F#6632(0) lap=0 point=1 t=-1.000 et=71.600</Score>
+<Score et="73.1">Guy Johnson(11) lap=0 point=1 t=-1.000 et=72.960</Score>
+<Score et="74.1">Anthony Roach(5) lap=0 point=1 t=-1.000 et=73.720</Score>
+<Score et="75.4">k z#7184(7) lap=0 point=1 t=-1.000 et=74.980</Score>
+<TrackLimits Driver="Anthony Roach" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="78.1">No Further Action</TrackLimits>
+<Score et="80.0">Chris Nguyen#1014(15) lap=0 point=1 t=-1.000 et=79.720</Score>
+<Score et="81.2">Miguel Cabeleira(8) lap=0 point=1 t=-1.000 et=80.900</Score>
+<Score et="82.6">Japie Bosman(14) lap=0 point=1 t=-1.000 et=82.571</Score>
+<TrackLimits Driver="Vojtech Mlejnecky" ID="12" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="82.8">No Further Action</TrackLimits>
+<Score et="84.3">DeeJay Akker(9) lap=0 point=1 t=-1.000 et=84.140</Score>
+<Score et="101.9">Vojtech Mlejnecky(12) lap=0 point=1 t=-1.000 et=101.740</Score>
+<Incident et="102.0">Mitchell Dodd(3) reported contact (83.58) with Post</Incident>
+<TrackLimits Driver="Ruben Ferreira Machado" ID="19" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="102.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="104.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Vojtech Mlejnecky" ID="12" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="104.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="104.4">No Further Action</TrackLimits>
+<TrackLimits Driver="carlos montoya" ID="18" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="110.1">No Further Action</TrackLimits>
+<Score et="129.5">ben michell(16) lap=0 point=1 t=-1.000 et=129.180</Score>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="141.2">No Further Action</TrackLimits>
+<Score et="164.1">Ruben Ferreira Machado(19) lap=0 point=2 t=-1.000 et=163.920</Score>
+<Score et="164.2">edoardoOO lagana(10) lap=0 point=2 t=-1.000 et=164.060</Score>
+<Score et="164.7">Mitchell Dodd(3) lap=0 point=2 t=-1.000 et=164.440</Score>
+<Score et="165.6">Matthew Hiltwine(6) lap=0 point=2 t=-1.000 et=165.400</Score>
+<Score et="166.7">gabriele mastronardi(13) lap=0 point=2 t=-1.000 et=166.480</Score>
+<Score et="166.9">David Fitzgerald(17) lap=0 point=2 t=-1.000 et=166.660</Score>
+<Score et="167.5">Dorin Dobrota(1) lap=0 point=2 t=-1.000 et=167.320</Score>
+<Score et="168.8">Leo Holland(2) lap=0 point=2 t=-1.000 et=168.600</Score>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="169.7">No Further Action</TrackLimits>
+<Score et="170.0">carlos montoya(18) lap=0 point=2 t=-1.000 et=169.820</Score>
+<Score et="171.0">Marc F#6632(0) lap=0 point=2 t=-1.000 et=170.820</Score>
+<Score et="171.4">Guy Johnson(11) lap=0 point=2 t=-1.000 et=171.220</Score>
+<Score et="172.5">k z#7184(7) lap=0 point=2 t=-1.000 et=172.200</Score>
+<Score et="172.5">Anthony Roach(5) lap=0 point=2 t=-1.000 et=172.180</Score>
+<Score et="176.4">Miguel Cabeleira(8) lap=0 point=2 t=-1.000 et=176.140</Score>
+<Score et="177.5">Chris Nguyen#1014(15) lap=0 point=2 t=-1.000 et=177.260</Score>
+<Score et="181.5">Japie Bosman(14) lap=0 point=2 t=-1.000 et=181.519</Score>
+<Score et="185.5">DeeJay Akker(9) lap=0 point=2 t=-1.000 et=185.420</Score>
+<Score et="197.5">Vojtech Mlejnecky(12) lap=0 point=2 t=-1.000 et=197.300</Score>
+<Incident et="203.7">David Fitzgerald(17) reported contact (840.42) with Immovable</Incident>
+<Incident et="204.1">David Fitzgerald(17) reported contact (4657.81) with Immovable</Incident>
+<Sector et="204.1">David Fitzgerald(17) reports new suspension damage</Sector>
+<Incident et="204.2">David Fitzgerald(17) reported contact (4955.50) with Immovable</Incident>
+<Sector et="207.3">k z#7184(7) reports new suspension damage</Sector>
+<Incident et="207.4">k z#7184(7) reported contact (4012.98) with Immovable</Incident>
+<Sector et="207.4">k z#7184(7) reports new suspension damage</Sector>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="209.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Anthony Roach" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="210.4">No Further Action</TrackLimits>
+<Incident et="210.4">k z#7184(7) reported contact (3103.16) with Immovable</Incident>
+<Incident et="211.6">k z#7184(7) reported contact (30.37) with Wing</Incident>
+<TrackLimits Driver="edoardoOO lagana" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="212.1">No Further Action</TrackLimits>
+<TrackLimits Driver="k z#7184" ID="7" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="219.0">No Further Action</TrackLimits>
+<Score et="227.2">ben michell(16) lap=0 point=2 t=-1.000 et=226.860</Score>
+<Sector et="236.6">David Fitzgerald(17) reports new suspension damage</Sector>
+<Incident et="236.7">David Fitzgerald(17) reported contact (3708.46) with Immovable</Incident>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="238.8">No Further Action</TrackLimits>
+<Incident et="239.8">Mitchell Dodd(3) reported contact (254.91) with Immovable</Incident>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="241.6">No Further Action</TrackLimits>
+<Incident et="242.2">David Fitzgerald(17) reported contact (1214.94) with Immovable</Incident>
+<Sector et="242.5">Dorin Dobrota(1) reports new suspension damage</Sector>
+<Incident et="242.6">Dorin Dobrota(1) reported contact (355.59) with Immovable</Incident>
+<Incident et="242.9">David Fitzgerald(17) reported contact (351.94) with Immovable</Incident>
+<TrackLimits Driver="Vojtech Mlejnecky" ID="12" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="244.7">No Further Action</TrackLimits>
+<Score et="245.2">David Fitzgerald(17) lap=1 point=0 t=-1.000 et=244.966</Score>
+<TrackLimits Driver="Dorin Dobrota" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="245.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="249.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="252.4">No Further Action</TrackLimits>
+<Incident et="252.6">edoardoOO lagana(10) reported contact (42.54) with Post</Incident>
+<TrackLimits Driver="Ruben Ferreira Machado" ID="19" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="254.0">No Further Action</TrackLimits>
+<TrackLimits Driver="gabriele mastronardi" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="256.1">No Further Action</TrackLimits>
+<Sector et="256.5">k z#7184(7) reports new suspension damage</Sector>
+<Incident et="256.5">k z#7184(7) reported contact (5110.02) with Immovable</Incident>
+<Incident et="256.6">Matthew Hiltwine(6) reported contact (111.99) with Post</Incident>
+<Incident et="257.5">k z#7184(7) reported contact (145.97) with Wheel</Incident>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="258.5">No Further Action</TrackLimits>
+<Incident et="260.3">Guy Johnson(11) reported contact (231.56) with Post</Incident>
+<Incident et="264.2">Miguel Cabeleira(8) reported contact (19.31) with Post</Incident>
+<TrackLimits Driver="Guy Johnson" ID="11" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="264.4">Invalid Lap Cut Track</TrackLimits>
+<Score et="265.6">k z#7184(7) lap=1 point=0 t=-1.000 et=265.196</Score>
+<Incident et="269.0">gabriele mastronardi(13) reported contact (34.21) with Post</Incident>
+<Sector et="269.2">Vojtech Mlejnecky(12) reports new suspension damage</Sector>
+<Incident et="269.2">Vojtech Mlejnecky(12) reported contact (3597.37) with Immovable</Incident>
+<Sector et="269.4">Vojtech Mlejnecky(12) reports new suspension damage</Sector>
+<TrackLimits Driver="Anthony Roach" ID="5" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="271.5">No Further Action</TrackLimits>
+<TrackLimits Driver="edoardoOO lagana" ID="10" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="271.8">No Further Action</TrackLimits>
+<Incident et="272.9">carlos montoya(18) reported contact (25.65) with Post</Incident>
+<TrackLimits Driver="carlos montoya" ID="18" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="275.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Guy Johnson" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="275.7">No Further Action</TrackLimits>
+<Score et="276.2">Ruben Ferreira Machado(19) lap=1 point=0 t=-1.000 et=276.040</Score>
+<Score et="276.4">edoardoOO lagana(10) lap=1 point=0 t=-1.000 et=276.140</Score>
+<Score et="278.5">Dorin Dobrota(1) lap=1 point=0 t=-1.000 et=278.300</Score>
+<TrackLimits Driver="Vojtech Mlejnecky" ID="12" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="279.8">No Further Action</TrackLimits>
+<Score et="279.8">gabriele mastronardi(13) lap=1 point=0 t=-1.000 et=279.700</Score>
+<Score et="280.0">Matthew Hiltwine(6) lap=1 point=0 t=-1.000 et=279.720</Score>
+<Score et="282.6">carlos montoya(18) lap=1 point=0 t=-1.000 et=282.500</Score>
+<Score et="283.1">Leo Holland(2) lap=1 point=0 t=-1.000 et=282.960</Score>
+<Score et="283.2">Mitchell Dodd(3) lap=1 point=0 t=-1.000 et=283.060</Score>
+<Score et="284.5">Guy Johnson(11) lap=1 point=0 t=-1.000 et=284.300</Score>
+<Score et="287.5">Miguel Cabeleira(8) lap=1 point=0 t=-1.000 et=287.200</Score>
+<Score et="288.6">Marc F#6632(0) lap=1 point=0 t=-1.000 et=288.320</Score>
+<Score et="289.7">Anthony Roach(5) lap=1 point=0 t=-1.000 et=289.280</Score>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="1" WarningPoints="1.5" CurrentPoints="1.5" Resolution="5" et="290.2">Invalid Lap Cut Track</TrackLimits>
+<Score et="291.3">Chris Nguyen#1014(15) lap=1 point=0 t=-1.000 et=290.960</Score>
+<Incident et="291.3">Vojtech Mlejnecky(12) reported contact (4163.91) with Immovable</Incident>
+<Sector et="291.6">Vojtech Mlejnecky(12) reports new suspension damage</Sector>
+<TrackLimits Driver="Dorin Dobrota" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="295.8">No Further Action</TrackLimits>
+<Incident et="296.9">Leo Holland(2) reported contact (67.51) with Post</Incident>
+<Incident et="297.1">Matthew Hiltwine(6) reported contact (21.19) with Post</Incident>
+<Sector et="297.2">Leo Holland(2) reports new suspension damage</Sector>
+<Incident et="297.2">Leo Holland(2) reported contact (3973.82) with Immovable</Incident>
+<Incident et="297.3">Leo Holland(2) reported contact (60.54) with Post</Incident>
+<Incident et="297.6">Leo Holland(2) reported contact (175.57) with Post</Incident>
+<Score et="298.1">Japie Bosman(14) lap=1 point=0 t=-1.000 et=298.073</Score>
+<Incident et="298.4">Leo Holland(2) reported contact (1121.92) with Immovable</Incident>
+<Score et="298.5">Vojtech Mlejnecky(12) lap=1 point=0 t=-1.000 et=298.307</Score>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="299.1">No Further Action</TrackLimits>
+<Score et="300.1">DeeJay Akker(9) lap=1 point=0 t=-1.000 et=299.940</Score>
+<Incident et="301.9">Guy Johnson(11) reported contact (17.32) with Post</Incident>
+<Score et="305.7">Leo Holland(2) lap=1 point=1 t=-1.000 et=305.450</Score>
+<Score et="305.7">Leo Holland(2) lap=1 point=2 t=-1.000 et=305.450</Score>
+<Score et="305.7">Leo Holland(2) lap=2 point=0 t=-1.000 et=305.450</Score>
+<Score et="305.8">David Fitzgerald(17) lap=1 point=1 t=-1.000 et=305.560</Score>
+<Incident et="307.7">Anthony Roach(5) reported contact (79.61) with Post</Incident>
+<Incident et="309.4">Ruben Ferreira Machado(19) reported contact (468.11) with Post</Incident>
+<TrackLimits Driver="Anthony Roach" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="310.4">No Further Action</TrackLimits>
+<Incident et="312.1">Matthew Hiltwine(6) reported contact (232.46) with Post</Incident>
+<Incident et="313.5">Ruben Ferreira Machado(19) reported contact (1868.72) with Immovable</Incident>
+<Incident et="314.3">Matthew Hiltwine(6) reported contact (1559.93) with Immovable</Incident>
+<Incident et="314.9">Ruben Ferreira Machado(19) reported contact (662.52) with Immovable</Incident>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="315.5">No Further Action</TrackLimits>
+<Sector Driver="edoardoOO lagana" ID="10" Sector="1" Class="GT3" et="315.6">edoardoOO lagana(10) set new best for sector 1</Sector>
+<Score et="315.7">edoardoOO lagana(10) lap=1 point=1 t=39.342 et=315.500</Score>
+<Sector Driver="Dorin Dobrota" ID="1" Sector="1" Class="GT3" et="316.6">Dorin Dobrota(1) set new best for sector 1</Sector>
+<Score et="316.7">Dorin Dobrota(1) lap=1 point=1 t=38.229 et=316.520</Score>
+<Score et="318.9">gabriele mastronardi(13) lap=1 point=1 t=39.038 et=318.720</Score>
+<TrackLimits Driver="Ruben Ferreira Machado" ID="19" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="320.7">No Further Action</TrackLimits>
+<Score et="321.3">Anthony Roach(5) lap=1 point=1 t=-1.000 et=320.986</Score>
+<Score et="321.3">Anthony Roach(5) lap=1 point=2 t=-1.000 et=320.986</Score>
+<Score et="321.3">Anthony Roach(5) lap=2 point=0 t=-1.000 et=320.986</Score>
+<Score et="322.2">Mitchell Dodd(3) lap=1 point=1 t=38.871 et=321.940</Score>
+<Score et="322.6">carlos montoya(18) lap=1 point=1 t=39.921 et=322.420</Score>
+<Score et="322.6">Matthew Hiltwine(6) lap=1 point=1 t=42.662 et=322.380</Score>
+<Score et="323.8">Guy Johnson(11) lap=1 point=1 t=39.370 et=323.680</Score>
+<Sector Driver="Miguel Cabeleira" ID="8" Sector="1" Class="GT3" et="325.6">Miguel Cabeleira(8) set new best for sector 1</Sector>
+<Score et="325.6">Miguel Cabeleira(8) lap=1 point=1 t=38.078 et=325.280</Score>
+<Score et="328.6">Marc F#6632(0) lap=1 point=1 t=39.997 et=328.320</Score>
+<Score et="330.2">Ruben Ferreira Machado(19) lap=1 point=1 t=54.026 et=330.080</Score>
+<Score et="330.7">Chris Nguyen#1014(15) lap=1 point=1 t=39.479 et=330.420</Score>
+<Score et="339.5">Japie Bosman(14) lap=1 point=1 t=41.394 et=339.467</Score>
+<Score et="339.8">DeeJay Akker(9) lap=1 point=1 t=39.678 et=339.620</Score>
+<Score et="342.0">ben michell(16) lap=1 point=0 t=-1.000 et=341.620</Score>
+<Sector et="358.7">Matthew Hiltwine(6) reports new suspension damage</Sector>
+<Incident et="358.8">Matthew Hiltwine(6) reported contact (3429.71) with Immovable</Incident>
+<Sector et="358.9">Matthew Hiltwine(6) reports new suspension damage</Sector>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="361.1">No Further Action</TrackLimits>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="1" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="374.8">No Further Action</TrackLimits>
+<Score et="381.7">ben michell(16) lap=1 point=1 t=39.705 et=381.320</Score>
+<Incident et="383.4">ben michell(16) reported contact (1680.80) with Post</Incident>
+<TrackLimits Driver="ben michell" ID="16" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="386.0">No Further Action</TrackLimits>
+<Incident et="392.6">Miguel Cabeleira(8) reported contact (66.55) with Post</Incident>
+<Incident et="393.2">Matthew Hiltwine(6) reported contact (88.44) with Post</Incident>
+<TrackLimits Driver="Miguel Cabeleira" ID="8" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="394.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="395.1">No Further Action</TrackLimits>
+<Score et="404.8">David Fitzgerald(17) lap=1 point=2 t=-1.000 et=404.620</Score>
+<Incident et="405.2">David Fitzgerald(17) reported contact (88.32) with Post</Incident>
+<Sector Driver="edoardoOO lagana" ID="10" Sector="2" Class="GT3" et="411.1">edoardoOO lagana(10) set new best for sector 2</Sector>
+<Score et="411.1">edoardoOO lagana(10) lap=1 point=2 t=134.837 et=410.980</Score>
+<Sector Driver="Dorin Dobrota" ID="1" Sector="2" Class="GT3" et="411.9">Dorin Dobrota(1) set new best for sector 2</Sector>
+<Score et="411.9">Dorin Dobrota(1) lap=1 point=2 t=133.434 et=411.740</Score>
+<Score et="415.0">gabriele mastronardi(13) lap=1 point=2 t=135.137 et=414.820</Score>
+<Incident et="415.2">gabriele mastronardi(13) reported contact (128.56) with Post</Incident>
+<TrackLimits Driver="gabriele mastronardi" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="417.1">No Further Action</TrackLimits>
+<Score et="418.4">carlos montoya(18) lap=1 point=2 t=135.701 et=418.200</Score>
+<Score et="418.4">Mitchell Dodd(3) lap=1 point=2 t=135.175 et=418.240</Score>
+<Incident et="418.6">Mitchell Dodd(3) reported contact (81.12) with Post</Incident>
+<Incident et="418.6">Mitchell Dodd(3) reported contact (111.96) with Post</Incident>
+<Sector Driver="Miguel Cabeleira" ID="8" Sector="2" Class="GT3" et="420.0">Miguel Cabeleira(8) set new best for sector 2</Sector>
+<Score et="420.0">Miguel Cabeleira(8) lap=1 point=2 t=132.554 et=419.740</Score>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="420.7">No Further Action</TrackLimits>
+<Score et="420.7">Guy Johnson(11) lap=1 point=2 t=136.196 et=420.500</Score>
+<Score et="421.4">Matthew Hiltwine(6) lap=1 point=2 t=141.406 et=421.140</Score>
+<Incident et="422.4">carlos montoya(18) reported contact (1084.06) with Immovable</Incident>
+<TrackLimits Driver="carlos montoya" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="424.1">No Further Action</TrackLimits>
+<Score et="425.5">Marc F#6632(0) lap=1 point=2 t=137.045 et=425.380</Score>
+<Score et="426.2">Ruben Ferreira Machado(19) lap=1 point=2 t=150.010 et=426.060</Score>
+<Score et="427.6">Chris Nguyen#1014(15) lap=1 point=2 t=136.315 et=427.260</Score>
+<Score et="436.5">Japie Bosman(14) lap=1 point=2 t=138.398 et=436.471</Score>
+<Score et="437.0">DeeJay Akker(9) lap=1 point=2 t=136.954 et=436.880</Score>
+<TrackLimits Driver="Japie Bosman" ID="14" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="442.2">No Further Action</TrackLimits>
+<Score et="446.9">Japie Bosman(14) lap=2 point=0 t=-1.000 et=446.921</Score>
+<Incident et="452.5">Mitchell Dodd(3) reported contact (1902.78) with Immovable</Incident>
+<Incident et="452.6">Mitchell Dodd(3) reported contact (9423.65) with Immovable</Incident>
+<Incident et="455.4">Mitchell Dodd(3) reported contact (1927.01) with Immovable</Incident>
+<Incident et="456.5">Mitchell Dodd(3) reported contact (1455.52) with Immovable</Incident>
+<Incident et="458.6">Matthew Hiltwine(6) reported contact (1074.24) with Immovable</Incident>
+<Incident et="460.6">Mitchell Dodd(3) reported contact (1295.24) with Immovable</Incident>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="461.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Ruben Ferreira Machado" ID="19" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="463.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="467.1">No Further Action</TrackLimits>
+<Sector et="477.1">Mitchell Dodd(3) reports new suspension damage</Sector>
+<Incident et="477.2">Mitchell Dodd(3) reported contact (4966.48) with Immovable</Incident>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="1" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="477.4">No Further Action</TrackLimits>
+<Score et="478.8">ben michell(16) lap=1 point=2 t=136.815 et=478.420</Score>
+<TrackLimits Driver="Mitchell Dodd" ID="3" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="481.9">No Further Action</TrackLimits>
+<Score et="482.0">Mitchell Dodd(3) lap=2 point=0 t=-1.000 et=481.515</Score>
+<TrackLimits Driver="edoardoOO lagana" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="489.7">No Further Action</TrackLimits>
+<TrackLimits Driver="carlos montoya" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="494.6">No Further Action</TrackLimits>
+<Incident et="497.4">David Fitzgerald(17) reported contact (6.23) with Post</Incident>
+<Incident et="498.0">carlos montoya(18) reported contact (264.07) with Immovable</Incident>
+<Incident et="499.7">Ruben Ferreira Machado(19) reported contact (19.38) with Post</Incident>
+<Incident et="499.7">Ruben Ferreira Machado(19) reported contact (63.13) with Post</Incident>
+<TrackLimits Driver="carlos montoya" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="500.1">No Further Action</TrackLimits>
+<Incident et="506.6">Matthew Hiltwine(6) reported contact (4048.80) with Immovable</Incident>
+<Incident et="509.2">Matthew Hiltwine(6) reported contact (766.28) with Immovable</Incident>
+<TrackLimits Driver="Guy Johnson" ID="11" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="509.3">No Further Action</TrackLimits>
+<Incident et="511.5">Dorin Dobrota(1) reported contact (32.09) with Post</Incident>
+<Incident et="511.5">Dorin Dobrota(1) reported contact (125.44) with Post</Incident>
+<Incident et="516.1">Marc F#6632(0) reported contact (33.36) with Post</Incident>
+<Score et="521.3">David Fitzgerald(17) lap=2 point=0 t=-1.000 et=521.040</Score>
+<TrackLimits Driver="Chris Nguyen#1014" ID="15" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="521.9">No Further Action</TrackLimits>
+<Sector Driver="Dorin Dobrota" ID="1" Sector="3" Class="GT3" et="522.2">Dorin Dobrota(1) set new best for sector 3</Sector>
+<Score et="522.3">Dorin Dobrota(1) lap=2 point=0 t=243.774 et=522.080</Score>
+<Score et="522.5">edoardoOO lagana(10) lap=2 point=0 t=246.139 et=522.280</Score>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="524.2">No Further Action</TrackLimits>
+<TrackLimits Driver="ben michell" ID="16" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="526.5">No Further Action</TrackLimits>
+<Score et="527.1">gabriele mastronardi(13) lap=2 point=0 t=247.211 et=526.900</Score>
+<Score et="531.9">Miguel Cabeleira(8) lap=2 point=0 t=244.269 et=531.460</Score>
+<Score et="532.8">Dorin Dobrota(1) lap=2 point=1 t=-1.000 et=532.648</Score>
+<Score et="532.8">Dorin Dobrota(1) lap=2 point=2 t=-1.000 et=532.648</Score>
+<Score et="532.8">Dorin Dobrota(1) lap=3 point=0 t=-1.000 et=532.648</Score>
+<Score et="532.9">Guy Johnson(11) lap=2 point=0 t=248.422 et=532.720</Score>
+<Score et="535.4">carlos montoya(18) lap=2 point=0 t=252.689 et=535.200</Score>
+<Incident et="536.1">Chris Nguyen#1014(15) reported contact (97.72) with Immovable</Incident>
+<Incident et="536.2">Chris Nguyen#1014(15) reported contact (692.79) with Immovable</Incident>
+<Incident et="536.3">David Fitzgerald(17) reported contact (26.89) with Post</Incident>
+<Score et="537.8">Ruben Ferreira Machado(19) lap=2 point=0 t=261.597 et=537.640</Score>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="2" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="539.8">No Further Action</TrackLimits>
+<Score et="541.0">Marc F#6632(0) lap=2 point=0 t=252.553 et=540.880</Score>
+<Incident et="541.5">gabriele mastronardi(13) reported contact (52.05) with Post</Incident>
+<TrackLimits Driver="David Fitzgerald" ID="17" Lap="2" WarningPoints="0" CurrentPoints="1.5" Resolution="7" et="542.1">No Further Action</TrackLimits>
+<Incident et="542.1">gabriele mastronardi(13) reported contact (2374.85) with Immovable</Incident>
+<Incident et="543.1">Matthew Hiltwine(6) reported contact (165.70) with Post</Incident>
+<TrackLimits Driver="Chris Nguyen#1014" ID="15" Lap="2" WarningPoints="6.25" CurrentPoints="6.25" Resolution="5" et="543.7">Invalid Lap Cut Track</TrackLimits>
+<Score et="543.8">Chris Nguyen#1014(15) lap=2 point=0 t=-1.000 et=543.500</Score>
+<Score et="547.5">Miguel Cabeleira(8) lap=2 point=1 t=-1.000 et=547.194</Score>
+<Score et="547.5">Miguel Cabeleira(8) lap=2 point=2 t=-1.000 et=547.194</Score>
+<Score et="547.5">Miguel Cabeleira(8) lap=3 point=0 t=-1.000 et=547.194</Score>
+<TrackLimits Driver="Matthew Hiltwine" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="548.2">No Further Action</TrackLimits>
+<Score et="549.2">Guy Johnson(11) lap=2 point=1 t=-1.000 et=549.003</Score>
+<Score et="549.2">Guy Johnson(11) lap=2 point=2 t=-1.000 et=549.003</Score>
+<Score et="549.2">Guy Johnson(11) lap=3 point=0 t=-1.000 et=549.003</Score>
+<Score et="550.4">DeeJay Akker(9) lap=2 point=0 t=250.286 et=550.220</Score>
+<Score et="552.6">gabriele mastronardi(13) lap=2 point=1 t=-1.000 et=552.377</Score>
+<Score et="552.6">gabriele mastronardi(13) lap=2 point=2 t=-1.000 et=552.377</Score>
+<Score et="552.6">gabriele mastronardi(13) lap=3 point=0 t=-1.000 et=552.377</Score>
+<Score et="552.9">Matthew Hiltwine(6) lap=2 point=0 t=272.818 et=552.540</Score>
+</Stream>
+<MostLapsCompleted>3</MostLapsCompleted>
+<Driver>
+<Name>Dorin Dobrota</Name>
+<Connected>1</Connected>
+<VehFile>397_25_MCLAREN.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>McLaren Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>2</CarNumber>
+<TeamName>BikersXCars</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="284.68" fuel="0.145" fuelUsed="0.572" ve="0.200" veUsed="0.800" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="278.3000" s1="38.2289" s2="95.2054" s3="110.3398" topspeed="285.58" fuel="0.082" fuelUsed="0.063" ve="0.106" veUsed="0.094" twfl="0.976" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">243.7741</Lap>
+<Lap num="3" p="1" et="522.0801" topspeed="188.73" fuel="0.718" fuelUsed="-0.635" ve="0.290" veUsed="-0.184" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>243.7741</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Miguel Cabeleira</Name>
+<Connected>1</Connected>
+<VehFile>59_24_UNIT78FD2ADC.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #59:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>9</CarNumber>
+<TeamName>United Autosports 2024 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="12" et="--.---" topspeed="284.68" fuel="0.318" fuelUsed="0.399" ve="0.439" veUsed="0.561" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="287.2000" s1="38.0779" s2="94.4760" s3="111.7156" topspeed="285.13" fuel="0.259" fuelUsed="0.059" ve="0.349" veUsed="0.090" twfl="0.980" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">244.2695</Lap>
+<Lap num="3" p="2" et="531.4600" topspeed="200.45" fuel="0.718" fuelUsed="-0.459" ve="0.529" veUsed="-0.180" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>244.2695</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>edoardoOO lagana</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>11</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="--.---" topspeed="285.13" fuel="0.078" fuelUsed="0.638" ve="0.106" veUsed="0.894" twfl="0.973" twfr="0.980" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="276.1399" s1="39.3419" s2="95.4953" s3="111.3017" topspeed="285.58" fuel="0.016" fuelUsed="0.063" ve="0.012" veUsed="0.094" twfl="0.945" twfr="0.961" twrl="0.969" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">246.1389</Lap>
+<BestLapTime>246.1389</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,AutoShift=3,Clutch,Opposite,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>gabriele mastronardi</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>14</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="284.68" fuel="0.137" fuelUsed="0.579" ve="0.184" veUsed="0.816" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="279.7000" s1="39.0378" s2="96.0994" s3="112.0735" topspeed="283.33" fuel="0.075" fuelUsed="0.063" ve="0.094" veUsed="0.090" twfl="0.984" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">247.2107</Lap>
+<Lap num="3" p="4" et="526.8999" topspeed="232.88" fuel="0.718" fuelUsed="-0.643" ve="0.271" veUsed="-0.176" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>247.2107</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Guy Johnson</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>12</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="281.52" fuel="0.659" fuelUsed="0.058" ve="0.914" veUsed="0.086" twfl="0.988" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="284.3000" s1="39.3705" s2="96.8253" s3="112.2260" topspeed="284.68" fuel="0.596" fuelUsed="0.063" ve="0.824" veUsed="0.090" twfl="0.973" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">248.4217</Lap>
+<Lap num="3" p="5" et="532.7200" topspeed="201.35" fuel="0.718" fuelUsed="-0.122" ve="1.000" veUsed="-0.176" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>248.4217</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>DeeJay Akker</Name>
+<Connected>1</Connected>
+<VehFile>95_25_UNIT382AB771.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #95:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>10</CarNumber>
+<TeamName>United Autosports 2025 #95</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="18" et="--.---" topspeed="283.33" fuel="0.655" fuelUsed="0.062" ve="0.910" veUsed="0.090" twfl="0.996" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="6" et="299.9399" s1="39.6780" s2="97.2758" s3="113.3326" topspeed="284.68" fuel="0.592" fuelUsed="0.063" ve="0.816" veUsed="0.094" twfl="0.988" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">250.2863</Lap>
+<BestLapTime>250.2863</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Steering=2,Braking=1,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Marc F#6632</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>1</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="13" et="--.---" topspeed="282.88" fuel="0.655" fuelUsed="0.062" ve="0.910" veUsed="0.090" twfl="0.996" twfr="0.992" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="6" et="288.3201" s1="39.9971" s2="97.0479" s3="115.5080" topspeed="284.68" fuel="0.596" fuelUsed="0.059" ve="0.820" veUsed="0.090" twfl="0.988" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">252.5530</Lap>
+<BestLapTime>252.5530</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>carlos montoya</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>19</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="284.68" fuel="0.106" fuelUsed="0.611" ve="0.141" veUsed="0.859" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="6" et="282.5000" s1="39.9213" s2="95.7793" s3="116.9886" topspeed="285.58" fuel="0.047" fuelUsed="0.059" ve="0.051" veUsed="0.090" twfl="0.976" twfr="0.976" twrl="0.980" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">252.6892</Lap>
+<BestLapTime>252.6892</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Ruben Ferreira Machado</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>20</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="--.---" topspeed="285.13" fuel="0.082" fuelUsed="0.634" ve="0.110" veUsed="0.890" twfl="0.988" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="7" et="276.0400" s1="54.0258" s2="95.9842" s3="111.5870" topspeed="282.88" fuel="0.024" fuelUsed="0.059" ve="0.020" veUsed="0.090" twfl="0.961" twfr="0.973" twrl="0.925" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">261.5969</Lap>
+<BestLapTime>261.5969</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Matthew Hiltwine</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>7</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="--.---" topspeed="285.13" fuel="0.141" fuelUsed="0.575" ve="0.192" veUsed="0.808" twfl="0.961" twfr="0.984" twrl="0.933" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="10" et="279.7200" s1="42.6620" s2="98.7438" s3="131.4120" topspeed="283.78" fuel="0.078" fuelUsed="0.063" ve="0.098" veUsed="0.094" twfl="0.816" twfr="0.910" twrl="0.788" twrr="0.898" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">272.8178</Lap>
+<BestLapTime>272.8178</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>David Fitzgerald</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>18</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="1" et="--.---" topspeed="283.33" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="244.9658" topspeed="284.23" fuel="0.655" fuelUsed="0.063" ve="0.910" veUsed="0.090" twfl="0.925" twfr="0.890" twrl="0.867" twrr="0.843" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Chris Nguyen#1014</Name>
+<Connected>1</Connected>
+<VehFile>59_24_UNIT78FD2ADC.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #59:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>16</CarNumber>
+<TeamName>United Autosports 2024 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="15" et="--.---" topspeed="283.78" fuel="0.106" fuelUsed="0.611" ve="0.141" veUsed="0.859" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="14" et="290.9600" s1="39.4792" s2="96.8353" topspeed="283.78" fuel="0.047" fuelUsed="0.059" ve="0.051" veUsed="0.090" twfl="0.976" twfr="0.949" twrl="0.953" twrr="0.910" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>15</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="16" et="--.---" topspeed="283.47" fuel="0.659" fuelUsed="0.058" ve="0.914" veUsed="0.086" twfl="0.988" twfr="0.992" twrl="0.996" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="16" et="298.0731" s1="41.3942" s2="97.0037" topspeed="284.38" fuel="0.718" fuelUsed="-0.059" ve="1.000" veUsed="-0.086" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Anthony Roach</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>6</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>14</Position>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="14" et="--.---" topspeed="283.78" fuel="0.655" fuelUsed="0.062" ve="0.910" veUsed="0.090" twfl="0.984" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="18" et="289.2800" topspeed="236.93" fuel="0.718" fuelUsed="-0.063" ve="1.000" veUsed="-0.090" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Steering=2,Braking=1,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Mitchell Dodd</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>4</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>15</Position>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="285.13" fuel="0.651" fuelUsed="0.066" ve="0.906" veUsed="0.094" twfl="0.973" twfr="0.945" twrl="0.941" twrr="0.910" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="283.0601" s1="38.8707" s2="96.3043" topspeed="285.13" fuel="0.718" fuelUsed="-0.067" ve="1.000" veUsed="-0.094" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Leo Holland</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>3</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>16</Position>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="284.23" fuel="0.655" fuelUsed="0.062" ve="0.910" veUsed="0.090" twfl="0.992" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="18" et="282.9600" topspeed="236.93" fuel="0.718" fuelUsed="-0.063" ve="1.000" veUsed="-0.090" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>ben michell</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>17</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>17</Position>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="19" et="--.---" topspeed="282.43" fuel="0.659" fuelUsed="0.058" ve="0.914" veUsed="0.086" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Vojtech Mlejnecky</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>13</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>18</Position>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="17" et="--.---" topspeed="285.13" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>k z#7184</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>19</Position>
+<ClassPosition>19</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="284.23" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Braking=1,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Giuseppe Lepre</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>5</CarNumber>
+<TeamName>United Autosports 2025 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>20</Position>
+<ClassPosition>20</ClassPosition>
+<LapRankIncludingDiscos>21</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+</Driver>
+</Qualify>
+</RaceResults>
+</rFactorXML>

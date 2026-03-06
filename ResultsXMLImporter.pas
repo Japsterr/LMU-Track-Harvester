@@ -34,14 +34,140 @@ type
     LapDate: TDateTime;
   end;
 
+procedure AddLapCandidate(const ATrackHint, ACarHint, ASessionType: string;
+  ALapTimeMs: Int64; ALapDate: TDateTime; ACandidates: TList<TLapCandidate>);
+var
+  LapCandidate: TLapCandidate;
+begin
+  if (ACandidates = nil) or (ALapTimeMs <= 0) then
+    Exit;
+
+  LapCandidate.TrackHint := ATrackHint;
+  LapCandidate.CarHint := ACarHint;
+  LapCandidate.SessionType := ASessionType;
+  LapCandidate.LapTimeMs := ALapTimeMs;
+  LapCandidate.LapDate := ALapDate;
+  ACandidates.Add(LapCandidate);
+end;
+
 function NormalizeKey(const S: string): string;
 var
+  Normalized: string;
   C: Char;
 begin
+  Normalized := LowerCase(S);
+  Normalized := StringReplace(Normalized, #$00E1, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E0, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E2, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E4, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E3, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E5, 'a', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E7, 'c', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E9, 'e', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00E8, 'e', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00EA, 'e', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00EB, 'e', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00ED, 'i', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00EC, 'i', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00EE, 'i', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00EF, 'i', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F1, 'n', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F3, 'o', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F2, 'o', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F4, 'o', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F6, 'o', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F5, 'o', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00FA, 'u', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00F9, 'u', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00FB, 'u', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00FC, 'u', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00FD, 'y', [rfReplaceAll]);
+  Normalized := StringReplace(Normalized, #$00FF, 'y', [rfReplaceAll]);
+
   Result := '';
-  for C in LowerCase(S) do
+  for C in Normalized do
     if CharInSet(C, ['a'..'z', '0'..'9']) then
       Result := Result + C;
+end;
+
+function SimplifyTrackKey(const S: string): string;
+begin
+  Result := NormalizeKey(S);
+  Result := StringReplace(Result, 'autodromo', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'internacional', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'international', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'circuit', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'course', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'venue', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'track', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'full', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'layout', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'nazionale', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'de', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'do', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'la', '', [rfReplaceAll]);
+
+  if (Pos('portimao', Result) > 0) or (Pos('algarve', Result) > 0) then
+    Result := 'portimao'
+  else if Pos('monza', Result) > 0 then
+    Result := 'monza'
+  else if Pos('spa', Result) > 0 then
+    Result := 'spa'
+  else if Pos('fuji', Result) > 0 then
+    Result := 'fuji'
+  else if Pos('bahrain', Result) > 0 then
+    Result := 'bahrain'
+  else if Pos('sebring', Result) > 0 then
+    Result := 'sebring'
+  else if Pos('roadatlanta', Result) > 0 then
+    Result := 'roadatlanta'
+  else if Pos('lusail', Result) > 0 then
+    Result := 'lusail'
+  else if Pos('interlagos', Result) > 0 then
+    Result := 'interlagos'
+  else if Pos('imola', Result) > 0 then
+    Result := 'imola'
+  else if Pos('yasmarina', Result) > 0 then
+    Result := 'yasmarina'
+  else if (Pos('barcelona', Result) > 0) or (Pos('catalunya', Result) > 0) then
+    Result := 'barcelona'
+  else if Pos('ledenon', Result) > 0 then
+    Result := 'ledenon'
+  else if (Pos('sarthe', Result) > 0) or (Pos('lemans', Result) > 0) then
+    Result := 'lemans';
+end;
+
+function SimplifyCarKey(const S: string): string;
+begin
+  Result := NormalizeKey(S);
+  Result := StringReplace(Result, 'lmgt3', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'gt3', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'evo2', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'evo', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'hypercar', '', [rfReplaceAll]);
+  Result := StringReplace(Result, 'lmp2', '', [rfReplaceAll]);
+
+  if Pos('ferrari499p', Result) > 0 then Result := 'ferrari499p'
+  else if Pos('toyotagr010', Result) > 0 then Result := 'toyotagr010'
+  else if Pos('porsche963', Result) > 0 then Result := 'porsche963'
+  else if Pos('cadillacvseriesr', Result) > 0 then Result := 'cadillacvseriesr'
+  else if Pos('bmwmhybridv8', Result) > 0 then Result := 'bmwmhybridv8'
+  else if Pos('peugeot9x8', Result) > 0 then Result := 'peugeot9x8'
+  else if Pos('alpinea424', Result) > 0 then Result := 'alpinea424'
+  else if Pos('lamborghinisc63', Result) > 0 then Result := 'lamborghinisc63'
+  else if Pos('isottafraschini', Result) > 0 then Result := 'isottafraschini'
+  else if Pos('acuraarx06', Result) > 0 then Result := 'acuraarx06'
+  else if Pos('oreca07', Result) > 0 then Result := 'oreca07'
+  else if Pos('ferrari296', Result) > 0 then Result := 'ferrari296'
+  else if Pos('porsche911', Result) > 0 then Result := 'porsche911'
+  else if Pos('bmwm4', Result) > 0 then Result := 'bmwm4'
+  else if Pos('astonmartinvantage', Result) > 0 then Result := 'astonmartinvantage'
+  else if Pos('mustang', Result) > 0 then Result := 'mustang'
+  else if Pos('mclaren720s', Result) > 0 then Result := 'mclaren720s'
+  else if Pos('huracan', Result) > 0 then Result := 'huracan'
+  else if Pos('corvettez06', Result) > 0 then Result := 'corvettez06'
+  else if Pos('lexusrcf', Result) > 0 then Result := 'lexusrcf'
+  else if Pos('mercedesamg', Result) > 0 then Result := 'mercedesamg';
 end;
 
 function ParseLapTimeMs(const S: string): Int64;
@@ -103,6 +229,86 @@ begin
     Result := StrToInt64Def(Raw, -1);
 end;
 
+function SafeVariantToString(const AValue: Variant): string;
+begin
+  Result := '';
+  try
+    if VarIsNull(AValue) or VarIsClear(AValue) then
+      Exit;
+    Result := Trim(VarToStr(AValue));
+  except
+    Result := '';
+  end;
+end;
+
+function SafeNodeText(const ANode: IXMLNode): string;
+var
+  Child: IXMLNode;
+  I: Integer;
+begin
+  Result := '';
+  if ANode = nil then
+    Exit;
+
+  if Assigned(ANode.ChildNodes) then
+    for I := 0 to ANode.ChildNodes.Count - 1 do
+    begin
+      Child := ANode.ChildNodes[I];
+      if Child = nil then
+        Continue;
+
+      if Child.NodeType in [ntText, ntCData] then
+        Result := SafeVariantToString(Child.NodeValue)
+      else
+        Result := '';
+
+      if Result <> '' then
+        Exit;
+    end;
+
+  if not Assigned(ANode.ChildNodes) or (ANode.ChildNodes.Count = 0) then
+    if ANode.NodeType in [ntText, ntCData, ntAttribute] then
+      Result := SafeVariantToString(ANode.NodeValue);
+end;
+
+function IsLapTimeLikeName(const AName: string): Boolean;
+var
+  Name: string;
+begin
+  Name := NormalizeKey(AName);
+  Result :=
+    (Name = 'lap') or
+    (Name = 'laptime') or
+    (Name = 'bestlap') or
+    (Name = 'bestlaptime') or
+    (Pos('bestlap', Name) > 0) or
+    (Pos('laptime', Name) > 0);
+end;
+
+function NormalizeImportedSessionType(const S: string): string;
+var
+  Key: string;
+  LabelText: string;
+begin
+  Key := NormalizeKey(S);
+  if Pos('practice', Key) > 0 then
+    LabelText := 'Practice'
+  else if (Pos('qual', Key) > 0) or (Pos('qualify', Key) > 0) then
+    LabelText := 'Qualifying'
+  else if Pos('race', Key) > 0 then
+    LabelText := 'Race'
+  else if Pos('warm', Key) > 0 then
+    LabelText := 'Warmup'
+  else if Pos('timeattack', Key) > 0 then
+    LabelText := 'Time Attack'
+  else if Trim(S) <> '' then
+    LabelText := Trim(S)
+  else
+    LabelText := 'Session';
+
+  Result := 'LMU Results XML - ' + LabelText;
+end;
+
 function TryParseDateFromFilename(const AFileName: string;
   out ALapDate: TDateTime): Boolean;
 var
@@ -142,21 +348,21 @@ var
   Candidate: string;
 begin
   Result := -1;
-  NormalizedHint := NormalizeKey(AHint);
+  NormalizedHint := SimplifyTrackKey(AHint);
   if NormalizedHint = '' then
     Exit;
 
   Tracks := ADB.GetTracks;
   for T in Tracks do
   begin
-    Candidate := NormalizeKey(T.Name + T.Layout);
+    Candidate := SimplifyTrackKey(T.Name + ' ' + T.Layout);
     if Candidate = NormalizedHint then
       Exit(T.ID);
   end;
 
   for T in Tracks do
   begin
-    Candidate := NormalizeKey(T.Name + T.Layout);
+    Candidate := SimplifyTrackKey(T.Name + ' ' + T.Layout);
     if (Pos(NormalizedHint, Candidate) > 0) or (Pos(Candidate, NormalizedHint) > 0) then
       Exit(T.ID);
   end;
@@ -171,21 +377,21 @@ var
   Candidate: string;
 begin
   Result := -1;
-  NormalizedHint := NormalizeKey(AHint);
+  NormalizedHint := SimplifyCarKey(AHint);
   if NormalizedHint = '' then
     Exit;
 
   Cars := ADB.GetCars(-1);
   for C in Cars do
   begin
-    Candidate := NormalizeKey(C.Name);
+    Candidate := SimplifyCarKey(C.Name);
     if Candidate = NormalizedHint then
       Exit(C.ID);
   end;
 
   for C in Cars do
   begin
-    Candidate := NormalizeKey(C.Name);
+    Candidate := SimplifyCarKey(C.Name);
     if (Pos(NormalizedHint, Candidate) > 0) or (Pos(Candidate, NormalizedHint) > 0) then
       Exit(C.ID);
   end;
@@ -212,7 +418,7 @@ begin
       MatchName := LowerCase(Attr.NodeName);
       for Frag in ANameFragments do
         if Pos(LowerCase(Frag), MatchName) > 0 then
-          Exit(Trim(VarToStr(Attr.NodeValue)));
+          Exit(SafeVariantToString(Attr.NodeValue));
     end;
 
   for I := 0 to ANode.ChildNodes.Count - 1 do
@@ -222,16 +428,90 @@ begin
     for Frag in ANameFragments do
       if Pos(LowerCase(Frag), MatchName) > 0 then
       begin
-        try
-          Result := Trim(Child.Text);
-        except
-          on E: Exception do
-            Result := '';
-        end;
+        Result := SafeNodeText(Child);
         if Result <> '' then
           Exit;
       end;
   end;
+end;
+
+function IsPlayerDriverNode(const ANode: IXMLNode): Boolean;
+begin
+  Result :=
+    (ANode <> nil) and
+    (NormalizeKey(ANode.NodeName) = 'driver') and
+    (SameText(ReadNodeValue(ANode, ['isplayer']), '1') or
+     SameText(ReadNodeValue(ANode, ['serverscored']), '1'));
+end;
+
+procedure CollectPlayerDriverLaps(const ADriverNode: IXMLNode;
+  const ATrackHint: string; const ADefaultDate: TDateTime;
+  ACandidates: TList<TLapCandidate>);
+var
+  Child: IXMLNode;
+  I: Integer;
+  CarHint: string;
+  SessionType: string;
+  LapMs: Int64;
+begin
+  if ADriverNode = nil then
+    Exit;
+
+  CarHint := ReadNodeValue(ADriverNode, ['cartype']);
+  if CarHint = '' then
+    CarHint := ReadNodeValue(ADriverNode, ['vehname']);
+  if CarHint = '' then
+    CarHint := ReadNodeValue(ADriverNode, ['vehicle', 'car']);
+
+  if Assigned(ADriverNode.ParentNode) then
+    SessionType := NormalizeImportedSessionType(ADriverNode.ParentNode.NodeName)
+  else
+    SessionType := NormalizeImportedSessionType('');
+
+  for I := 0 to ADriverNode.ChildNodes.Count - 1 do
+  begin
+    Child := ADriverNode.ChildNodes[I];
+    if Child = nil then
+      Continue;
+
+    if IsLapTimeLikeName(Child.NodeName) then
+    begin
+      LapMs := ParseLapTimeMs(SafeNodeText(Child));
+      AddLapCandidate(ATrackHint, CarHint, SessionType, LapMs, ADefaultDate, ACandidates);
+    end;
+  end;
+end;
+
+function CollectPlayerLapCandidates(const ARoot: IXMLNode;
+  const ADefaultDate: TDateTime; ACandidates: TList<TLapCandidate>): Boolean;
+var
+  Child: IXMLNode;
+  TrackHint: string;
+  I: Integer;
+begin
+  Result := False;
+  if ARoot = nil then
+    Exit;
+
+  TrackHint := ReadNodeValue(ARoot, ['trackcourse']);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['trackvenue']);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['track', 'circuit', 'venue']);
+
+  if IsPlayerDriverNode(ARoot) then
+  begin
+    CollectPlayerDriverLaps(ARoot, TrackHint, ADefaultDate, ACandidates);
+    Exit(True);
+  end;
+
+  if Assigned(ARoot.ChildNodes) then
+    for I := 0 to ARoot.ChildNodes.Count - 1 do
+    begin
+      Child := ARoot.ChildNodes[I];
+      if CollectPlayerLapCandidates(Child, ADefaultDate, ACandidates) then
+        Result := True;
+    end;
 end;
 
 procedure WalkNodeForLaps(const ANode: IXMLNode;
@@ -243,7 +523,6 @@ var
   Child: IXMLNode;
   LapMs: Int64;
   AttrName: string;
-  LapCandidate: TLapCandidate;
   NodeText: string;
   NodeTrackValue, NodeCarValue, NodeSessionValue: string;
   I: Integer;
@@ -255,12 +534,7 @@ begin
   CarCtx := ACurrentCar;
   SessionCtx := ACurrentSession;
 
-  try
-    NodeText := Trim(ANode.Text);
-  except
-    on E: Exception do
-      NodeText := '';
-  end;
+  NodeText := SafeNodeText(ANode);
 
   NodeTrackValue := ReadNodeValue(ANode, ['track', 'circuit', 'venue']);
   if NodeTrackValue <> '' then
@@ -273,19 +547,10 @@ begin
     SessionCtx := NodeSessionValue;
 
   AttrName := LowerCase(ANode.NodeName);
-  if ((Pos('lap', AttrName) > 0) and (Pos('time', AttrName) > 0)) or
-     (Pos('bestlap', AttrName) > 0) then
+  if IsLapTimeLikeName(AttrName) then
   begin
     LapMs := ParseLapTimeMs(NodeText);
-    if LapMs > 0 then
-    begin
-      LapCandidate.TrackHint := TrackCtx;
-      LapCandidate.CarHint := CarCtx;
-      LapCandidate.SessionType := SessionCtx;
-      LapCandidate.LapTimeMs := LapMs;
-      LapCandidate.LapDate := ADefaultDate;
-      ACandidates.Add(LapCandidate);
-    end;
+    AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate, ACandidates);
   end;
 
   if Assigned(ANode.AttributeNodes) then
@@ -293,19 +558,10 @@ begin
     begin
       Attr := ANode.AttributeNodes[I];
       AttrName := LowerCase(Attr.NodeName);
-      if ((Pos('lap', AttrName) > 0) and (Pos('time', AttrName) > 0)) or
-         (Pos('bestlap', AttrName) > 0) then
+      if IsLapTimeLikeName(AttrName) then
       begin
-        LapMs := ParseLapTimeMs(Trim(VarToStr(Attr.NodeValue)));
-        if LapMs > 0 then
-        begin
-          LapCandidate.TrackHint := TrackCtx;
-          LapCandidate.CarHint := CarCtx;
-          LapCandidate.SessionType := SessionCtx;
-          LapCandidate.LapTimeMs := LapMs;
-          LapCandidate.LapDate := ADefaultDate;
-          ACandidates.Add(LapCandidate);
-        end;
+        LapMs := ParseLapTimeMs(SafeVariantToString(Attr.NodeValue));
+        AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate, ACandidates);
       end;
     end;
 
@@ -313,7 +569,12 @@ begin
     for I := 0 to ANode.ChildNodes.Count - 1 do
     begin
       Child := ANode.ChildNodes[I];
-      WalkNodeForLaps(Child, TrackCtx, CarCtx, SessionCtx, ADefaultDate, ACandidates);
+      try
+        WalkNodeForLaps(Child, TrackCtx, CarCtx, SessionCtx, ADefaultDate, ACandidates);
+      except
+        on Exception do
+          Continue;
+      end;
     end;
 end;
 
@@ -420,6 +681,7 @@ var
   LapDate: TDateTime;
   SessionType: string;
   XmlText: string;
+  UsedPlayerOnlyImport: Boolean;
 begin
   Result.FilesScanned := 0;
   Result.FilesFailed := 0;
@@ -430,6 +692,9 @@ begin
     Exit;
 
   Files := TDirectory.GetFiles(AFolder, '*.xml', TSearchOption.soTopDirectoryOnly);
+  if Length(Files) > 0 then
+    ADB.Connection.ExecSQL('DELETE FROM LapTimes WHERE SessionType LIKE ''LMU Results XML%''');
+
   for FilePath in Files do
   begin
     Inc(Result.FilesScanned);
@@ -446,8 +711,10 @@ begin
         if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
           LapDate := TFile.GetLastWriteTime(FilePath);
 
-        WalkNodeForLaps(XmlDoc.DocumentElement,
-          TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
+        UsedPlayerOnlyImport := CollectPlayerLapCandidates(XmlDoc.DocumentElement, LapDate, Candidates);
+        if not UsedPlayerOnlyImport then
+          WalkNodeForLaps(XmlDoc.DocumentElement,
+            TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
 
         for Candidate in Candidates do
         begin
@@ -467,7 +734,7 @@ begin
 
           SessionType := Trim(Candidate.SessionType);
           if SessionType = '' then
-            SessionType := 'LMU Results XML';
+            SessionType := 'LMU Results XML - Session';
 
           if LapAlreadyExists(ADB, TrackID, CarID, Candidate.LapTimeMs, Candidate.LapDate, SessionType) then
           begin

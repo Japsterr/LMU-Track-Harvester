@@ -16,7 +16,7 @@ unit DatabaseManager;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.IOUtils,
+  System.SysUtils, System.Classes, System.IOUtils, Data.DB,
   FireDAC.Comp.Client,
   FireDAC.Stan.ExprFuncs,
   FireDAC.Stan.Intf,
@@ -44,6 +44,7 @@ type
 
     procedure CreateSchema;
     procedure SeedReferenceData;
+    procedure NormalizeReferenceData;
     function LastInsertID: Integer;
   public
     constructor Create(const ADatabasePath: string = '');
@@ -105,6 +106,49 @@ type
 
 implementation
 
+function DateTimeToDBText(const AValue: TDateTime): string;
+begin
+  Result := FormatDateTime('yyyy-mm-dd hh:nn:ss', AValue);
+end;
+
+function TryParseDBDateTime(const S: string; out AValue: TDateTime): Boolean;
+var
+  FS: TFormatSettings;
+  Raw: string;
+begin
+  Raw := Trim(S);
+  AValue := 0;
+  if Raw = '' then
+    Exit(False);
+
+  FS := TFormatSettings.Create;
+  FS.DateSeparator := '-';
+  FS.TimeSeparator := ':';
+  FS.ShortDateFormat := 'yyyy-mm-dd';
+  FS.LongDateFormat := 'yyyy-mm-dd';
+  FS.ShortTimeFormat := 'hh:nn:ss';
+  FS.LongTimeFormat := 'hh:nn:ss';
+
+  Result :=
+    TryStrToDateTime(Raw, AValue, FS) or
+    TryStrToDateTime(StringReplace(Raw, 'T', ' ', [rfReplaceAll]), AValue, FS) or
+    TryStrToDateTime(Raw, AValue, TFormatSettings.Invariant);
+end;
+
+function FieldToDateTime(AField: TField): TDateTime;
+var
+  Parsed: TDateTime;
+  Raw: string;
+begin
+  Result := 0;
+  if (AField = nil) or AField.IsNull then
+    Exit;
+
+  Raw := Trim(AField.AsString);
+  if TryParseDBDateTime(Raw, Parsed) then
+    Result := Parsed;
+end;
+
 // ---------------------------------------------------------------------------
 // Constructor / Destructor
 // ---------------------------------------------------------------------------
@@ -156,6 +200,7 @@ begin
 
   CreateSchema;
   SeedReferenceData;
+  NormalizeReferenceData;
 end;
 
 destructor TDatabaseManager.Destroy;
@@ -279,15 +324,15 @@ begin
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Circuit de Spa-Francorchamps'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Fuji Speedway'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Bahrain International Circuit'', ''Full Circuit'')');
-    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Autódromo Internacional do Algarve (Portimão)'', ''Full Circuit'')');
+    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Autodromo Internacional do Algarve (Portimao)'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Sebring International Raceway'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Road Atlanta'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Lusail International Circuit'', ''Full Circuit'')');
-    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Autódromo José Carlos Pace (Interlagos)'', ''Full Circuit'')');
+    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Autodromo Jose Carlos Pace (Interlagos)'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Autodromo Enzo e Dino Ferrari (Imola)'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Yas Marina Circuit'', ''Full Circuit'')');
     FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Circuit de Catalunya'', ''Full Circuit'')');
-    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Circuit de Lédenon'', ''Full Circuit'')');
+    FConnection.ExecSQL('INSERT INTO Tracks (Name, Layout) VALUES (''Circuit de Ledenon'', ''Full Circuit'')');
 
     // ----- Car Classes -----
     FConnection.ExecSQL('INSERT INTO CarClasses (Name) VALUES (''Hypercar'')');
@@ -307,7 +352,7 @@ begin
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Acura ARX-06'', 1)');
 
     // ----- LMP2 (ClassID = 2) -----
-    FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''ORECA 07 – Gibson'', 2)');
+    FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''ORECA 07 - Gibson'', 2)');
 
     // ----- LMGT3 (ClassID = 3) -----
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Ferrari 296 GT3'', 3)');
@@ -316,13 +361,27 @@ begin
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Aston Martin Vantage AMR GT3'', 3)');
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Ford Mustang GT3'', 3)');
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''McLaren 720S GT3 EVO'', 3)');
-    FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Lamborghini Huracán GT3 EVO2'', 3)');
+    FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Lamborghini Huracan GT3 EVO2'', 3)');
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Corvette Z06 GT3.R'', 3)');
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Lexus RC F GT3'', 3)');
     FConnection.ExecSQL('INSERT INTO Cars (Name, ClassID) VALUES (''Mercedes-AMG GT3 EVO'', 3)');
   finally
     Q.Free;
   end;
+end;
+
+procedure TDatabaseManager.NormalizeReferenceData;
+begin
+  FConnection.ExecSQL(
+    'UPDATE Tracks SET Name = ''Autodromo Internacional do Algarve (Portimao)'' WHERE ID = 7');
+  FConnection.ExecSQL(
+    'UPDATE Tracks SET Name = ''Autodromo Jose Carlos Pace (Interlagos)'' WHERE ID = 11');
+  FConnection.ExecSQL(
+    'UPDATE Tracks SET Name = ''Circuit de Ledenon'' WHERE ID = 15');
+  FConnection.ExecSQL(
+    'UPDATE Cars SET Name = ''ORECA 07 - Gibson'' WHERE ID = 11');
+  FConnection.ExecSQL(
+    'UPDATE Cars SET Name = ''Lamborghini Huracan GT3 EVO2'' WHERE ID = 18');
 end;
 
 // ---------------------------------------------------------------------------
@@ -541,7 +600,7 @@ begin
       Result[Count].ClassID     := Q.FieldByName('ClassID').AsInteger;
       Result[Count].ClassName   := Q.FieldByName('ClassName').AsString;
       Result[Count].LapTimeMs   := Q.FieldByName('LapTimeMs').AsLargeInt;
-      Result[Count].LapDate     := Q.FieldByName('LapDate').AsDateTime;
+      Result[Count].LapDate     := FieldToDateTime(Q.FieldByName('LapDate'));
       Result[Count].SessionType := Q.FieldByName('SessionType').AsString;
       Inc(Count);
       Q.Next;
@@ -588,7 +647,7 @@ begin
       Result[Count].ClassID     := Q.FieldByName('ClassID').AsInteger;
       Result[Count].ClassName   := Q.FieldByName('ClassName').AsString;
       Result[Count].LapTimeMs   := Q.FieldByName('LapTimeMs').AsLargeInt;
-      Result[Count].LapDate     := Q.FieldByName('LapDate').AsDateTime;
+      Result[Count].LapDate     := FieldToDateTime(Q.FieldByName('LapDate'));
       Result[Count].SessionType := Q.FieldByName('SessionType').AsString;
       Inc(Count);
       Q.Next;
@@ -612,7 +671,7 @@ begin
     Q.ParamByName('TrackID').AsInteger     := ATrackID;
     Q.ParamByName('CarID').AsInteger       := ACarID;
     Q.ParamByName('LapTimeMs').AsLargeInt  := ALapTimeMs;
-    Q.ParamByName('LapDate').AsDateTime    := ALapDate;
+    Q.ParamByName('LapDate').AsString      := DateTimeToDBText(ALapDate);
     Q.ParamByName('SessionType').AsString  := ASessionType;
     Q.ExecSQL;
     Result := LastInsertID;
@@ -672,7 +731,7 @@ begin
       Result[Count].TrackLayout    := Q.FieldByName('TrackLayout').AsString;
       Result[Count].CarID          := Q.FieldByName('CarID').AsInteger;
       Result[Count].CarName        := Q.FieldByName('CarName').AsString;
-      Result[Count].SessionDate    := Q.FieldByName('SessionDate').AsDateTime;
+      Result[Count].SessionDate    := FieldToDateTime(Q.FieldByName('SessionDate'));
       Result[Count].Notes          := Q.FieldByName('Notes').AsString;
       Result[Count].DataPointCount := Q.FieldByName('DataPointCount').AsInteger;
       Inc(Count);
@@ -696,7 +755,7 @@ begin
       'VALUES (:TrackID, :CarID, :SessionDate, :Notes)';
     Q.ParamByName('TrackID').AsInteger    := ATrackID;
     Q.ParamByName('CarID').AsInteger      := ACarID;
-    Q.ParamByName('SessionDate').AsDateTime := ASessionDate;
+    Q.ParamByName('SessionDate').AsString  := DateTimeToDBText(ASessionDate);
     Q.ParamByName('Notes').AsString       := ANotes;
     Q.ExecSQL;
     Result := LastInsertID;

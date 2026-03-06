@@ -1,0 +1,1605 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1772281339</DateTime>
+<TimeString>2026/02/28 14:22:19</TimeString>
+<TrackVenue>Sebring International Raceway</TrackVenue>
+<TrackCourse>Sebring International Raceway</TrackCourse>
+<TrackEvent>1000 Miles of Sebring</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\Sebring_2023\1.23\layoutSebring.mas</TrackData>
+<TrackLength>5820.3</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>2147483647</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Practice1>
+<DateTime>1772281342</DateTime>
+<TimeString>2026/02/28 14:22:22</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>19</Minutes>
+<Stream>
+<Score et="122.2">Tim Miles#7319(1) lap=1 point=0 t=-1.000 et=122.140</Score>
+<Sector et="132.1">Roland Kun13(14) reports new suspension damage</Sector>
+<Incident et="132.1">Roland Kun13(14) reported contact (2866.30) with Immovable</Incident>
+<Score et="134.7">F Oliveira(3) lap=1 point=0 t=-1.000 et=134.520</Score>
+<Score et="136.1">Jordan Biet(2) lap=1 point=0 t=-1.000 et=135.820</Score>
+<Score et="148.8">Daniel Becher(5) lap=1 point=0 t=-1.000 et=139.800</Score>
+<Score et="151.8">Poyraz Kurc(0) lap=1 point=0 t=-1.000 et=151.660</Score>
+<Incident et="153.9">Marton Molnar(20) reported contact (1554.39) with Immovable</Incident>
+<Score et="162.0">Patrick Schwabe(7) lap=1 point=0 t=-1.000 et=161.840</Score>
+<Incident et="162.6">Mark Lor(18) reported contact (52.12) with Immovable</Incident>
+<Score et="165.5">Jong-un Kim#9896(9) lap=1 point=0 t=-1.000 et=165.380</Score>
+<Sector Driver="Tim Miles#7319" ID="1" Sector="1" Class="GT3" et="170.1">Tim Miles#7319(1) set new best for sector 1</Sector>
+<Score et="170.2">Tim Miles#7319(1) lap=1 point=1 t=47.840 et=169.980</Score>
+<Score et="180.4">Alain Terrieur(11) lap=1 point=0 t=-1.000 et=180.300</Score>
+<Sector Driver="F Oliveira" ID="3" Sector="1" Class="GT3" et="181.4">F Oliveira(3) set new best for sector 1</Sector>
+<Score et="181.4">F Oliveira(3) lap=1 point=1 t=46.766 et=181.300</Score>
+<ChatMessage et="182.0">J Munoz: is the race fixed?</ChatMessage>
+<Score et="184.3">Jerome Herve(15) lap=1 point=0 t=-1.000 et=184.180</Score>
+<Score et="186.6">Jordan Biet(2) lap=1 point=1 t=50.594 et=186.420</Score>
+<Score et="187.1">Daniel Becher(5) lap=1 point=1 t=47.117 et=186.920</Score>
+<Sector et="187.8">Joey Fink(26) reports new suspension damage</Sector>
+<Incident et="187.8">Joey Fink(26) reported contact (1779.28) with Immovable</Incident>
+<Score et="189.6">Grzegorz Parais(17) lap=1 point=0 t=-1.000 et=189.500</Score>
+<ChatMessage et="193.1">A Terrieur: no</ChatMessage>
+<Score et="194.9">Andrej Schwab(13) lap=1 point=0 t=-1.000 et=194.760</Score>
+<Score et="197.9">Manuel Recio(10) lap=1 point=0 t=-1.000 et=197.700</Score>
+<Score et="198.9">Poyraz Kurc(0) lap=1 point=1 t=47.076 et=198.720</Score>
+<Score et="199.1">Nick Kiselev(6) lap=1 point=0 t=-1.000 et=198.940</Score>
+<Sector Driver="Tim Miles#7319" ID="1" Sector="2" Class="GT3" et="203.1">Tim Miles#7319(1) set new best for sector 2</Sector>
+<Score et="203.2">Tim Miles#7319(1) lap=1 point=2 t=80.767 et=202.900</Score>
+<Score et="203.7">Daniel Becher(5) lap=1 point=2 t=-1.000 et=203.596</Score>
+<Incident et="203.8">Andrej Schwab(13) reported contact (467.51) with Immovable</Incident>
+<TrackLimits Driver="Andrej Schwab" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="205.6">No Further Action</TrackLimits>
+<Score et="206.5">Marton Molnar(20) lap=1 point=0 t=-1.000 et=206.260</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="208.4">Invalid Lap Cut Track</TrackLimits>
+<Score et="208.9">Patrick Schwabe(7) lap=1 point=1 t=46.881 et=208.720</Score>
+<Score et="213.0">Jong-un Kim#9896(9) lap=1 point=1 t=47.310 et=212.700</Score>
+<Sector Driver="F Oliveira" ID="3" Sector="2" Class="GT3" et="214.3">F Oliveira(3) set new best for sector 2</Sector>
+<Score et="214.3">F Oliveira(3) lap=1 point=2 t=79.636 et=214.160</Score>
+<Score et="215.2">Georgios Kirtzos(19) lap=1 point=0 t=-1.000 et=215.080</Score>
+<Score et="220.9">Jordan Biet(2) lap=1 point=2 t=84.892 et=220.700</Score>
+<Score et="221.0">Roland Kun13(14) lap=1 point=0 t=-1.000 et=220.880</Score>
+<Score et="221.8">Japie Bosman(16) lap=1 point=0 t=-1.000 et=221.745</Score>
+<Score et="223.9">Mark Lor(18) lap=1 point=0 t=-1.000 et=223.680</Score>
+<Score et="228.1">Alain Terrieur(11) lap=1 point=1 t=47.581 et=227.880</Score>
+<Incident et="230.2">Nick Kiselev(6) reported contact (433.46) with Immovable</Incident>
+<Score et="231.4">Jerome Herve(15) lap=1 point=1 t=46.970 et=231.140</Score>
+<TrackLimits Driver="Jordan Biet" ID="2" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="231.4">No Further Action</TrackLimits>
+<Score et="232.2">Poyraz Kurc(0) lap=1 point=2 t=80.438 et=232.080</Score>
+<Score et="235.6">Tomasz Rzepecki(22) lap=1 point=0 t=-1.000 et=235.480</Score>
+<Score et="237.4">Grzegorz Parais(17) lap=1 point=1 t=47.655 et=237.160</Score>
+<ChatMessage et="241.1">G Parais: open setup</ChatMessage>
+<Sector Driver="Patrick Schwabe" ID="7" Sector="2" Class="GT3" et="241.6">Patrick Schwabe(7) set new best for sector 2</Sector>
+<Score et="241.6">Patrick Schwabe(7) lap=1 point=2 t=79.627 et=241.460</Score>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="242.6">No Further Action</TrackLimits>
+<Score et="243.4">Andrej Schwab(13) lap=1 point=1 t=48.438 et=243.200</Score>
+<Score et="246.3">Jong-un Kim#9896(9) lap=1 point=2 t=80.737 et=246.120</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="246.3">No Further Action</TrackLimits>
+<Score et="247.6">Manuel Recio(10) lap=1 point=1 t=49.726 et=247.420</Score>
+<Sector Driver="Tim Miles#7319" ID="1" Sector="3" Class="GT3" et="247.9">Tim Miles#7319(1) set new best for sector 3</Sector>
+<Score et="247.9">Tim Miles#7319(1) lap=2 point=0 t=125.539 et=247.680</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="248.0">No Further Action</TrackLimits>
+<ChatMessage et="252.0">J Munoz: weird since when the rookie series is open</ChatMessage>
+<Score et="254.3">Justin Maerz(24) lap=1 point=0 t=-1.000 et=254.080</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="254.9">No Further Action</TrackLimits>
+<Score et="256.4">Ollie Orteu(21) lap=1 point=0 t=-1.000 et=256.200</Score>
+<Sector Driver="F Oliveira" ID="3" Sector="3" Class="GT3" et="258.7">F Oliveira(3) set new best for sector 3</Sector>
+<Score et="258.8">F Oliveira(3) lap=2 point=0 t=124.060 et=258.580</Score>
+<TrackLimits Driver="Jong-un Kim#9896" ID="9" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="260.1">No Further Action</TrackLimits>
+<Score et="260.2">Joey Fink(26) lap=1 point=0 t=-1.000 et=260.040</Score>
+<Score et="261.0">Alain Terrieur(11) lap=1 point=2 t=80.481 et=260.780</Score>
+<Score et="262.2">Charley Monserez(23) lap=1 point=0 t=-1.000 et=262.055</Score>
+<Score et="262.2">Charley Monserez(23) lap=1 point=1 t=-1.000 et=262.055</Score>
+<Score et="262.2">Charley Monserez(23) lap=1 point=2 t=-1.000 et=262.055</Score>
+<Score et="263.2">Marton Molnar(20) lap=1 point=1 t=-1.000 et=263.088</Score>
+<Score et="263.2">Marton Molnar(20) lap=1 point=2 t=-1.000 et=263.088</Score>
+<Score et="263.4">Georgios Kirtzos(19) lap=1 point=1 t=48.140 et=263.220</Score>
+<Score et="264.4">Jerome Herve(15) lap=1 point=2 t=80.071 et=264.240</Score>
+<Score et="264.4">Nick Kiselev(6) lap=1 point=1 t=65.284 et=264.240</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="264.7">No Further Action</TrackLimits>
+<Score et="265.2">Matthias Futschik(27) lap=1 point=0 t=-1.000 et=264.920</Score>
+<Score et="266.7">Jordan Biet(2) lap=2 point=0 t=130.674 et=266.500</Score>
+<Score et="267.1">Ferrari Mechanic(12) lap=1 point=0 t=-1.000 et=266.964</Score>
+<Score et="267.1">Ferrari Mechanic(12) lap=1 point=1 t=-1.000 et=266.964</Score>
+<Score et="267.1">Ferrari Mechanic(12) lap=1 point=2 t=-1.000 et=266.964</Score>
+<Score et="268.2">Roland Kun13(14) lap=1 point=1 t=47.232 et=268.100</Score>
+<Score et="271.1">Grzegorz Parais(17) lap=1 point=2 t=81.460 et=270.960</Score>
+<Score et="271.9">Japie Bosman(16) lap=1 point=1 t=50.185 et=271.930</Score>
+<TrackLimits Driver="Jerome Herve" ID="15" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="276.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Grzegorz Parais" ID="17" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="276.3">No Further Action</TrackLimits>
+<Score et="276.4">Andrej Schwab(13) lap=1 point=2 t=81.543 et=276.300</Score>
+<Sector et="276.5">Georgios Kirtzos(19) reports new suspension damage</Sector>
+<Incident et="276.5">Georgios Kirtzos(19) reported contact (3803.68) with Immovable</Incident>
+<Score et="276.8">Poyraz Kurc(0) lap=2 point=0 t=124.897 et=276.540</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="277.0">No Further Action</TrackLimits>
+<ChatMessage et="278.8">G Parais: 2/3 weeks now</ChatMessage>
+<Score et="280.9">Georgios Kirtzos(19) lap=1 point=2 t=-1.000 et=280.709</Score>
+<Score et="282.2">Joaquin Munoz(25) lap=1 point=0 t=-1.000 et=281.920</Score>
+<Score et="282.7">Mark Lor(18) lap=1 point=1 t=-1.000 et=282.460</Score>
+<Score et="284.0">Manuel Recio(10) lap=1 point=2 t=86.024 et=283.720</Score>
+<Score et="284.6">Tomasz Rzepecki(22) lap=1 point=1 t=48.924 et=284.420</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0.75" CurrentPoints="1" Resolution="5" et="285.0">Invalid Lap Cut Track</TrackLimits>
+<ChatMessage et="285.6">A Terrieur: that one i think</ChatMessage>
+<Sector Driver="Patrick Schwabe" ID="7" Sector="3" Class="GT3" et="285.7">Patrick Schwabe(7) set new best for sector 3</Sector>
+<Score et="285.8">Patrick Schwabe(7) lap=2 point=0 t=123.718 et=285.560</Score>
+<TrackLimits Driver="Andrej Schwab" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="290.5">No Further Action</TrackLimits>
+<Score et="292.6">Jong-un Kim#9896(9) lap=2 point=0 t=126.885 et=292.260</Score>
+<Score et="297.9">Nick Kiselev(6) lap=1 point=2 t=98.761 et=297.700</Score>
+<Score et="299.7">Tim Miles#7319(1) lap=2 point=1 t=-1.000 et=299.388</Score>
+<Score et="299.7">Tim Miles#7319(1) lap=2 point=2 t=-1.000 et=299.388</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="1" WarningPoints="0.5" CurrentPoints="0.5" Resolution="5" et="299.9">Invalid Lap Cut Track</TrackLimits>
+<Incident et="300.5">Jerome Herve(15) reported contact (1771.04) with Immovable</Incident>
+<Score et="301.1">Justin Maerz(24) lap=1 point=1 t=46.801 et=300.880</Score>
+<Score et="301.5">Roland Kun13(14) lap=1 point=2 t=80.483 et=301.360</Score>
+<Score et="303.4">Ollie Orteu(21) lap=1 point=1 t=47.104 et=303.300</Score>
+<Score et="305.6">Alain Terrieur(11) lap=2 point=0 t=125.117 et=305.420</Score>
+<Score et="306.4">F Oliveira(3) lap=2 point=1 t=47.683 et=306.260</Score>
+<Score et="306.6">Japie Bosman(16) lap=1 point=2 t=84.809 et=306.554</Score>
+<ChatMessage et="306.9">A Terrieur: oh nvm so</ChatMessage>
+<Score et="307.6">Jerome Herve(15) lap=2 point=0 t=-1.000 et=307.429</Score>
+<Score et="307.6">Jerome Herve(15) lap=2 point=1 t=-1.000 et=307.429</Score>
+<Score et="307.6">Jerome Herve(15) lap=2 point=2 t=-1.000 et=307.429</Score>
+<Score et="307.7">Joey Fink(26) lap=1 point=1 t=47.513 et=307.560</Score>
+<Sector et="309.1">Mark Lor(18) reports new suspension damage</Sector>
+<Incident et="309.1">Mark Lor(18) reported contact (7526.44) with Immovable</Incident>
+<Incident et="311.3">Charley Monserez(23) reported contact (92.64) with Immovable</Incident>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="1" Resolution="7" et="313.8">No Further Action</TrackLimits>
+<Score et="314.6">Jordan Biet(2) lap=2 point=1 t=47.835 et=314.320</Score>
+<Score et="315.4">Matthias Futschik(27) lap=1 point=1 t=50.150 et=315.060</Score>
+<Incident et="316.2">Mark Lor(18) reported contact (1835.31) with Immovable</Incident>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="316.9">No Further Action</TrackLimits>
+<Score et="317.8">Tomasz Rzepecki(22) lap=1 point=2 t=82.170 et=317.660</Score>
+<Score et="318.5">Grzegorz Parais(17) lap=2 point=0 t=128.782 et=318.280</Score>
+<Score et="319.4">Arnold Robin(30) lap=1 point=0 t=-1.000 et=319.280</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="1" Resolution="7" et="320.6">No Further Action</TrackLimits>
+<Score et="320.8">Andrej Schwab(13) lap=2 point=0 t=125.779 et=320.540</Score>
+<TrackLimits Driver="Ollie Orteu" ID="21" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="321.0">No Further Action</TrackLimits>
+<Score et="323.6">Poyraz Kurc(0) lap=2 point=1 t=46.866 et=323.420</Score>
+<Incident et="327.5">Mark Lor(18) reported contact (185.65) with Immovable</Incident>
+<ChatMessage et="328.3">F Oliveira: gte sucks</ChatMessage>
+<Score et="329.1">Manuel Recio(10) lap=2 point=0 t=-1.000 et=328.900</Score>
+<Score et="329.2">Joaquin Munoz(25) lap=1 point=1 t=46.985 et=328.900</Score>
+<Score et="330.7">Mark Lor(18) lap=1 point=2 t=-1.000 et=330.600</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="1" Resolution="7" et="330.8">No Further Action</TrackLimits>
+<Score et="331.8">F Oliveira(3) lap=2 point=2 t=-1.000 et=331.493</Score>
+<Sector Driver="Patrick Schwabe" ID="7" Sector="1" Class="GT3" et="332.4">Patrick Schwabe(7) set new best for sector 1</Sector>
+<Score et="332.5">Patrick Schwabe(7) lap=2 point=1 t=46.706 et=332.260</Score>
+<Incident et="333.7">Nate Gibbs(29) reported contact (105.33) with Immovable</Incident>
+<Score et="334.1">Justin Maerz(24) lap=1 point=2 t=79.865 et=333.940</Score>
+<Score et="334.1">Ozkan Kaya(4) lap=1 point=0 t=-1.000 et=333.880</Score>
+<TrackLimits Driver="Ollie Orteu" ID="21" Lap="1" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="337.1">Invalid Lap Cut Track</TrackLimits>
+<Score et="337.3">Ollie Orteu(21) lap=1 point=2 t=-1.000 et=337.160</Score>
+<Score et="337.8">Charley Monserez(23) lap=2 point=0 t=-1.000 et=337.680</Score>
+<Score et="339.6">Jong-un Kim#9896(9) lap=2 point=1 t=46.969 et=339.240</Score>
+<Score et="341.0">Joey Fink(26) lap=1 point=2 t=80.795 et=340.840</Score>
+<TrackLimits Driver="Nate Gibbs" ID="29" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="341.9">No Further Action</TrackLimits>
+<Score et="343.4">Nick Kiselev(6) lap=2 point=0 t=144.232 et=343.180</Score>
+<Score et="346.8">Roland Kun13(14) lap=2 point=0 t=125.777 et=346.660</Score>
+<Score et="348.4">Jordan Biet(2) lap=2 point=2 t=81.760 et=348.260</Score>
+<Score et="349.1">Matthias Futschik(27) lap=1 point=2 t=83.828 et=348.740</Score>
+<Penalty Driver="Nate Gibbs" ID="29" Penalty="Stop/Go" Time="10" Laps="0" Reason="Speeding In Pitlane" et="350.9">Nate Gibbs received Stop/Go penalty, 10s, 0laps for Speeding In Pitlane. Result: penalties=1, 1st=Stop/Go,10s</Penalty>
+<Score et="352.6">Alain Terrieur(11) lap=2 point=1 t=47.085 et=352.500</Score>
+<Score et="354.4">Japie Bosman(16) lap=2 point=0 t=132.622 et=354.367</Score>
+<Score et="356.6">Poyraz Kurc(0) lap=2 point=2 t=79.846 et=356.400</Score>
+<Score et="357.8">m 89(31) lap=1 point=0 t=-1.000 et=357.300</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="2" WarningPoints="0" CurrentPoints="0.5" Resolution="7" et="360.1">No Further Action</TrackLimits>
+<Score et="360.2">Georgios Kirtzos(19) lap=2 point=0 t=-1.000 et=360.080</Score>
+<Incident et="361.1">Andrej Schwab(13) reported contact (816.70) with another vehicle Arnold Robin(30)</Incident>
+<Incident et="361.1">Arnold Robin(30) reported contact (818.63) with another vehicle Andrej Schwab(13)</Incident>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="1" WarningPoints="0" CurrentPoints="1" Resolution="7" et="362.2">No Further Action</TrackLimits>
+<Score et="362.2">Joaquin Munoz(25) lap=1 point=2 t=80.004 et=361.920</Score>
+<Score et="362.7">Tomasz Rzepecki(22) lap=2 point=0 t=127.018 et=362.500</Score>
+<TrackLimits Driver="Matthias Futschik" ID="27" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="363.2">No Further Action</TrackLimits>
+<Score et="363.4">Daniel Becher(5) lap=2 point=0 t=-1.000 et=363.200</Score>
+<TrackLimits Driver="Ferrari Mechanic" ID="12" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="364.9">No Further Action</TrackLimits>
+<Score et="365.2">Patrick Schwabe(7) lap=2 point=2 t=79.490 et=365.040</Score>
+<Score et="365.6">Grzegorz Parais(17) lap=2 point=1 t=47.047 et=365.340</Score>
+<Score et="366.9">Arnold Robin(30) lap=1 point=1 t=47.376 et=366.660</Score>
+<Sector Driver="Andrej Schwab" ID="13" Sector="1" Class="GT3" et="367.1">Andrej Schwab(13) set new best for sector 1</Sector>
+<Score et="367.1">Andrej Schwab(13) lap=2 point=1 t=46.466 et=367.000</Score>
+<Score et="370.0">Mark Lor(18) lap=2 point=0 t=-1.000 et=369.835</Score>
+<Score et="370.0">Mark Lor(18) lap=2 point=1 t=-1.000 et=369.835</Score>
+<Score et="370.0">Mark Lor(18) lap=2 point=2 t=-1.000 et=369.835</Score>
+<Score et="373.1">Jong-un Kim#9896(9) lap=2 point=2 t=80.405 et=372.680</Score>
+<Sector et="373.4">Ollie Orteu(21) reports new suspension damage</Sector>
+<Incident et="373.5">Ollie Orteu(21) reported contact (5692.62) with Immovable</Incident>
+<Score et="373.5">Ferrari Mechanic(12) lap=2 point=0 t=-1.000 et=373.280</Score>
+<Sector et="373.6">Ollie Orteu(21) reports new suspension damage</Sector>
+<Score et="376.2">Nate Gibbs(29) lap=1 point=0 t=-1.000 et=375.820</Score>
+<Sector et="377.8">Ollie Orteu(21) reports new suspension damage</Sector>
+<Incident et="377.9">Ollie Orteu(21) reported contact (1295.82) with Immovable</Incident>
+<Score et="378.5">Justin Maerz(24) lap=2 point=0 t=124.343 et=378.420</Score>
+<Sector Driver="Charley Monserez" ID="23" Sector="1" Class="GT3" et="384.2">Charley Monserez(23) set new best for sector 1</Sector>
+<Score et="384.4">Charley Monserez(23) lap=2 point=1 t=46.419 et=384.100</Score>
+<Score et="384.6">Ozkan Kaya(4) lap=1 point=1 t=50.427 et=384.320</Score>
+<Score et="385.6">Alain Terrieur(11) lap=2 point=2 t=79.946 et=385.360</Score>
+<Score et="385.9">Joey Fink(26) lap=2 point=0 t=125.678 et=385.720</Score>
+<Score et="387.8">Ollie Orteu(21) lap=2 point=0 t=-1.000 et=387.614</Score>
+<Score et="387.8">Ollie Orteu(21) lap=2 point=1 t=-1.000 et=387.614</Score>
+<Score et="387.8">Ollie Orteu(21) lap=2 point=2 t=-1.000 et=387.614</Score>
+<Score et="389.3">Manuel Recio(10) lap=2 point=1 t=60.242 et=389.140</Score>
+<Incident et="389.5">Nick Kiselev(6) reported contact (4891.80) with Immovable</Incident>
+<TrackLimits Driver="Daniel Becher" ID="5" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="391.7">No Further Action</TrackLimits>
+<ChatMessage et="392.5">T Miles#7319: wot? last week ive been running without modifying setups lol</ChatMessage>
+<Score et="392.7">Nick Kiselev(6) lap=2 point=1 t=-1.000 et=392.541</Score>
+<Score et="392.7">Nick Kiselev(6) lap=2 point=2 t=-1.000 et=392.541</Score>
+<Score et="393.9">Roland Kun13(14) lap=2 point=1 t=47.149 et=393.800</Score>
+<Score et="394.0">Jordan Biet(2) lap=3 point=0 t=127.349 et=393.840</Score>
+<Score et="394.7">Matthias Futschik(27) lap=2 point=0 t=129.550 et=394.460</Score>
+<Score et="398.6">Grzegorz Parais(17) lap=2 point=2 t=80.127 et=398.420</Score>
+<Score et="400.2">Arnold Robin(30) lap=1 point=2 t=80.727 et=400.020</Score>
+<Score et="400.4">Andrej Schwab(13) lap=2 point=2 t=79.725 et=400.260</Score>
+<Score et="400.8">Poyraz Kurc(0) lap=3 point=0 t=124.106 et=400.660</Score>
+<Sector Driver="Joaquin Munoz" ID="25" Sector="3" Class="GT3" et="405.5">Joaquin Munoz(25) set new best for sector 3</Sector>
+<Score et="405.5">m 89(31) lap=1 point=1 t=48.259 et=405.560</Score>
+<Score et="406.2">Joaquin Munoz(25) lap=2 point=0 t=124.088 et=406.000</Score>
+<Score et="407.6">Georgios Kirtzos(19) lap=2 point=1 t=47.355 et=407.440</Score>
+<Sector Driver="Patrick Schwabe" ID="7" Sector="3" Class="GT3" et="409.1">Patrick Schwabe(7) set new best for sector 3</Sector>
+<Score et="409.1">Patrick Schwabe(7) lap=3 point=0 t=123.398 et=408.960</Score>
+<Score et="409.5">Tomasz Rzepecki(22) lap=2 point=1 t=46.877 et=409.380</Score>
+<Score et="410.2">Daniel Becher(5) lap=2 point=1 t=46.777 et=409.980</Score>
+<Score et="417.1">Charley Monserez(23) lap=2 point=2 t=79.279 et=416.960</Score>
+<Score et="417.6">Jong-un Kim#9896(9) lap=3 point=0 t=125.006 et=417.280</Score>
+<Score et="418.1">Ozkan Kaya(4) lap=1 point=2 t=83.945 et=417.840</Score>
+<TrackLimits Driver="Andrej Schwab" ID="13" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="420.8">No Further Action</TrackLimits>
+<Score et="422.7">Ferrari Mechanic(12) lap=2 point=1 t=49.238 et=422.520</Score>
+<TrackLimits Driver="Japie Bosman" ID="16" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="423.0">No Further Action</TrackLimits>
+<Score et="423.1">Manuel Recio(10) lap=2 point=2 t=93.931 et=422.840</Score>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="424.2">No Further Action</TrackLimits>
+<Score et="424.3">Japie Bosman(16) lap=2 point=1 t=69.894 et=424.261</Score>
+<Sector Driver="Justin Maerz" ID="24" Sector="1" Class="GT3" et="424.9">Justin Maerz(24) set new best for sector 1</Sector>
+<Score et="424.9">Justin Maerz(24) lap=2 point=1 t=46.341 et=424.760</Score>
+<Score et="426.6">Nate Gibbs(29) lap=1 point=1 t=50.555 et=426.380</Score>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="427.0">No Further Action</TrackLimits>
+<Score et="427.1">Roland Kun13(14) lap=2 point=2 t=80.258 et=426.920</Score>
+<Score et="429.8">Alain Terrieur(11) lap=3 point=0 t=124.264 et=429.680</Score>
+<Incident et="430.7">Japie Bosman(16) reported contact (407.07) with another vehicle Justin Maerz(24)</Incident>
+<Incident et="430.8">Justin Maerz(24) reported contact (539.47) with another vehicle Japie Bosman(16)</Incident>
+<TrackLimits Driver="Justin Maerz" ID="24" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="433.2">No Further Action</TrackLimits>
+<Score et="433.3">Joey Fink(26) lap=2 point=1 t=47.348 et=433.060</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="2" WarningPoints="0" CurrentPoints="0.5" Resolution="7" et="434.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="438.0">No Further Action</TrackLimits>
+<Score et="440.0">m 89(31) lap=1 point=2 t=82.273 et=439.580</Score>
+<Score et="440.8">Georgios Kirtzos(19) lap=2 point=2 t=80.507 et=440.600</Score>
+<TrackLimits Driver="Roland Kun13" ID="14" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="440.9">No Further Action</TrackLimits>
+<Score et="441.9">Jordan Biet(2) lap=3 point=1 t=47.842 et=441.680</Score>
+<Sector et="442.3">Japie Bosman(16) reports new suspension damage</Sector>
+<Incident et="442.4">Japie Bosman(16) reported contact (1313.93) with Immovable</Incident>
+<Score et="442.4">Matthias Futschik(27) lap=2 point=1 t=47.744 et=442.200</Score>
+<Score et="442.6">Tomasz Rzepecki(22) lap=2 point=2 t=79.921 et=442.420</Score>
+<Score et="443.2">Grzegorz Parais(17) lap=3 point=0 t=124.644 et=442.940</Score>
+<Score et="443.3">Daniel Becher(5) lap=2 point=2 t=79.925 et=443.140</Score>
+<Score et="445.2">Arnold Robin(30) lap=2 point=0 t=125.824 et=445.100</Score>
+<TrackLimits Driver="Japie Bosman" ID="16" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="451.1">No Further Action</TrackLimits>
+<Score et="453.8">jose burgos(28) lap=1 point=0 t=-1.000 et=453.500</Score>
+<Score et="453.8">Joaquin Munoz(25) lap=2 point=1 t=47.404 et=453.400</Score>
+<Score et="453.8">Tim Miles#7319(1) lap=3 point=0 t=-1.000 et=453.420</Score>
+<TrackLimits Driver="Patrick Schwabe" ID="7" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="455.0">No Further Action</TrackLimits>
+<Score et="455.3">Mark Lor(18) lap=3 point=0 t=-1.000 et=455.040</Score>
+<TrackLimits Driver="Georgios Kirtzos" ID="19" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="455.3">No Further Action</TrackLimits>
+<Score et="456.0">Patrick Schwabe(7) lap=3 point=1 t=46.934 et=455.880</Score>
+<Score et="457.3">Ferrari Mechanic(12) lap=2 point=2 t=83.732 et=457.020</Score>
+<Score et="458.1">Poyraz Kurc(0) lap=3 point=1 t=57.241 et=457.900</Score>
+<Incident et="458.7">Japie Bosman(16) reported contact (1156.98) with Immovable</Incident>
+<Score et="459.4">Justin Maerz(24) lap=2 point=2 t=80.809 et=459.240</Score>
+<Score et="461.2">Charley Monserez(23) lap=3 point=0 t=123.304 et=460.980</Score>
+<Score et="461.7">Nate Gibbs(29) lap=1 point=2 t=85.657 et=461.480</Score>
+<Score et="461.9">Japie Bosman(16) lap=2 point=2 t=-1.000 et=461.931</Score>
+<Score et="463.0">Ozkan Kaya(4) lap=2 point=0 t=128.768 et=462.660</Score>
+<Score et="464.6">Jong-un Kim#9896(9) lap=3 point=1 t=47.024 et=464.300</Score>
+<Score et="466.5">Joey Fink(26) lap=2 point=2 t=80.613 et=466.340</Score>
+<Score et="468.1">Manuel Recio(10) lap=3 point=0 t=139.060 et=467.960</Score>
+<TrackLimits Driver="Grzegorz Parais" ID="17" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="471.1">No Further Action</TrackLimits>
+<Score et="471.9">Roland Kun13(14) lap=3 point=0 t=125.087 et=471.740</Score>
+<Sector et="473.8">Jordan Biet(2) reports new suspension damage</Sector>
+<Incident et="473.9">Jordan Biet(2) reported contact (342.42) with another vehicle Matthias Futschik(27)</Incident>
+<Incident et="473.9">Jordan Biet(2) reported contact (495.15) with another vehicle Matthias Futschik(27)</Incident>
+<Sector et="473.9">Matthias Futschik(27) reports new suspension damage</Sector>
+<Incident et="473.9">Matthias Futschik(27) reported contact (309.02) with another vehicle Jordan Biet(2)</Incident>
+<Incident et="475.2">Jordan Biet(2) reported contact (385.88) with Sign</Incident>
+<Sector et="475.2">Mark Lor(18) reports new suspension damage</Sector>
+<Incident et="475.3">Mark Lor(18) reported contact (4079.08) with Immovable</Incident>
+<Incident et="475.3">Jordan Biet(2) reported contact (342.30) with Sign</Incident>
+<Sector et="475.4">Mark Lor(18) reports new suspension damage</Sector>
+<Score et="475.8">Matthias Futschik(27) lap=2 point=2 t=81.073 et=475.540</Score>
+<Sector Driver="Alain Terrieur" ID="11" Sector="1" Class="GT3" et="476.0">Alain Terrieur(11) set new best for sector 1</Sector>
+<Score et="476.0">Alain Terrieur(11) lap=3 point=1 t=46.169 et=475.860</Score>
+<Incident et="476.4">Jordan Biet(2) reported contact (2780.66) with Immovable</Incident>
+<Score et="476.6">Jordan Biet(2) lap=3 point=2 t=82.518 et=476.360</Score>
+<TrackLimits Driver="jose burgos" ID="28" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="477.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="477.3">No Further Action</TrackLimits>
+<Incident et="478.6">Manuel Recio(10) reported contact (879.66) with Immovable</Incident>
+<Sector et="478.7">Manuel Recio(10) reports new suspension damage</Sector>
+<TrackLimits Driver="Joey Fink" ID="26" Lap="2" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="482.0">Invalid Lap Cut Track</TrackLimits>
+<Score et="483.6">Manuel Recio(10) lap=3 point=1 t=-1.000 et=483.497</Score>
+<Score et="483.6">Manuel Recio(10) lap=3 point=2 t=-1.000 et=483.497</Score>
+<Score et="483.7">Nick Kiselev(6) lap=3 point=0 t=-1.000 et=483.560</Score>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="485.1">No Further Action</TrackLimits>
+<Score et="485.6">m 89(31) lap=2 point=0 t=128.040 et=485.340</Score>
+<Score et="485.8">Georgios Kirtzos(19) lap=3 point=0 t=125.581 et=485.660</Score>
+<Score et="487.1">Joaquin Munoz(25) lap=2 point=2 t=80.753 et=486.760</Score>
+<Score et="487.1">Tomasz Rzepecki(22) lap=3 point=0 t=124.408 et=486.920</Score>
+<TrackLimits Driver="Grzegorz Parais" ID="17" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="487.2">No Further Action</TrackLimits>
+<ChatMessage et="487.4">M Futschik: wtf r u doing biet</ChatMessage>
+<Score et="487.9">Daniel Becher(5) lap=3 point=0 t=124.511 et=487.720</Score>
+<Score et="488.9">Patrick Schwabe(7) lap=3 point=2 t=79.840 et=488.800</Score>
+<Score et="490.4">Grzegorz Parais(17) lap=3 point=1 t=47.328 et=490.260</Score>
+<Score et="491.4">Poyraz Kurc(0) lap=3 point=2 t=90.525 et=491.180</Score>
+<Score et="492.7">Arnold Robin(30) lap=2 point=1 t=47.339 et=492.440</Score>
+<Incident et="495.9">Nick Kiselev(6) reported contact (946.77) with Immovable</Incident>
+<Score et="497.4">Jong-un Kim#9896(9) lap=3 point=2 t=79.862 et=497.140</Score>
+<Score et="498.9">Nick Kiselev(6) lap=3 point=1 t=-1.000 et=498.710</Score>
+<Score et="498.9">Nick Kiselev(6) lap=3 point=2 t=-1.000 et=498.710</Score>
+<Score et="501.1">Tim Miles#7319(1) lap=3 point=1 t=47.318 et=500.740</Score>
+<Score et="502.8">jose burgos(28) lap=1 point=1 t=49.173 et=502.660</Score>
+<Score et="503.8">Justin Maerz(24) lap=3 point=0 t=125.221 et=503.640</Score>
+<Incident et="508.2">Charley Monserez(23) reported contact (472.41) with Immovable</Incident>
+<Score et="508.2">Mark Lor(18) lap=3 point=1 t=-1.000 et=508.004</Score>
+<Score et="508.2">Mark Lor(18) lap=3 point=2 t=-1.000 et=508.004</Score>
+<Sector Driver="Alain Terrieur" ID="11" Sector="2" Class="GT3" et="508.4">Alain Terrieur(11) set new best for sector 2</Sector>
+<Score et="508.4">Alain Terrieur(11) lap=3 point=2 t=78.594 et=508.280</Score>
+<Score et="508.6">Nate Gibbs(29) lap=2 point=0 t=132.527 et=508.360</Score>
+<TrackLimits Driver="Jong-un Kim#9896" ID="9" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="508.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Joey Fink" ID="26" Lap="2" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="509.2">No Further Action</TrackLimits>
+<Score et="510.1">Ozkan Kaya(4) lap=2 point=1 t=47.325 et=509.980</Score>
+<TrackLimits Driver="m 89" ID="31" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="510.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Charley Monserez" ID="23" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="511.2">No Further Action</TrackLimits>
+<Score et="511.4">Joey Fink(26) lap=3 point=0 t=-1.000 et=511.240</Score>
+<Score et="515.7">Charley Monserez(23) lap=3 point=1 t=54.465 et=515.440</Score>
+<Score et="518.8">Roland Kun13(14) lap=3 point=1 t=46.848 et=518.600</Score>
+<Incident et="520.5">Ferrari Mechanic(12) reported contact (773.79) with Immovable</Incident>
+<Sector et="520.6">Ferrari Mechanic(12) reports new suspension damage</Sector>
+<Incident et="522.4">Ferrari Mechanic(12) reported contact (2285.03) with Immovable</Incident>
+<TrackLimits Driver="Tim Miles#7319" ID="1" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="522.7">No Further Action</TrackLimits>
+<Incident et="523.4">Arnold Robin(30) reported contact (2081.33) with Immovable</Incident>
+<Score et="523.8">Grzegorz Parais(17) lap=3 point=2 t=80.716 et=523.640</Score>
+<Score et="526.3">Arnold Robin(30) lap=2 point=2 t=-1.000 et=526.003</Score>
+<Score et="528.0">Ferrari Mechanic(12) lap=3 point=0 t=-1.000 et=527.751</Score>
+<Score et="528.0">Ferrari Mechanic(12) lap=3 point=1 t=-1.000 et=527.751</Score>
+<Score et="528.0">Ferrari Mechanic(12) lap=3 point=2 t=-1.000 et=527.751</Score>
+<Score et="531.2">Joaquin Munoz(25) lap=3 point=0 t=124.806 et=530.800</Score>
+<Score et="532.9">Georgios Kirtzos(19) lap=3 point=1 t=47.045 et=532.720</Score>
+<Score et="534.6">Tim Miles#7319(1) lap=3 point=2 t=80.818 et=534.240</Score>
+<Score et="534.6">Patrick Schwabe(7) lap=4 point=0 t=125.510 et=534.460</Score>
+<Score et="534.9">Tomasz Rzepecki(22) lap=3 point=1 t=47.783 et=534.700</Score>
+<Score et="535.2">Daniel Becher(5) lap=3 point=1 t=47.358 et=535.080</Score>
+<Score et="535.3">Nate Gibbs(29) lap=2 point=1 t=-1.000 et=534.974</Score>
+<Score et="535.3">Nate Gibbs(29) lap=2 point=2 t=-1.000 et=534.974</Score>
+<Score et="536.1">Poyraz Kurc(0) lap=4 point=0 t=135.296 et=535.960</Score>
+<Score et="537.5">m 89(31) lap=2 point=1 t=51.750 et=537.100</Score>
+<Incident et="540.7">Jaimy Hart(33) reported contact (642.89) with Immovable</Incident>
+<Score et="541.2">jose burgos(28) lap=1 point=2 t=87.601 et=541.100</Score>
+<Score et="542.3">Jong-un Kim#9896(9) lap=4 point=0 t=124.413 et=541.680</Score>
+<Score et="543.6">Ozkan Kaya(4) lap=2 point=2 t=80.621 et=543.280</Score>
+<Score et="543.7">Andrej Schwab(13) lap=3 point=0 t=-1.000 et=543.480</Score>
+<Score et="548.9">Marton Molnar(20) lap=2 point=0 t=-1.000 et=548.740</Score>
+<Score et="549.2">Charley Monserez(23) lap=3 point=2 t=88.038 et=549.020</Score>
+<Score et="550.3">Justin Maerz(24) lap=3 point=1 t=46.414 et=550.060</Score>
+<Score et="551.8">Roland Kun13(14) lap=3 point=2 t=79.913 et=551.660</Score>
+<Incident et="552.4">Daniel Becher(5) reported contact (2269.17) with Immovable</Incident>
+<Score et="552.6">Alain Terrieur(11) lap=4 point=0 t=122.788 et=552.480</Score>
+<Score et="554.9">Daniel Becher(5) lap=3 point=2 t=-1.000 et=554.725</Score>
+<TrackLimits Driver="Ozkan Kaya" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="557.2">No Further Action</TrackLimits>
+<Incident et="558.0">Thomaz Oliveira(34) reported contact (265.08) with Immovable</Incident>
+<Incident et="559.1">Thomaz Oliveira(34) reported contact (273.50) with Immovable</Incident>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="564.5">No Further Action</TrackLimits>
+<Score et="564.6">Borja Iglesias(32) lap=1 point=0 t=-1.000 et=564.420</Score>
+<Score et="565.7">Georgios Kirtzos(19) lap=3 point=2 t=79.832 et=565.500</Score>
+<Score et="567.9">Tomasz Rzepecki(22) lap=3 point=2 t=80.839 et=567.760</Score>
+<Score et="568.4">Grzegorz Parais(17) lap=4 point=0 t=125.223 et=568.160</Score>
+<Score et="571.1">m 89(31) lap=2 point=2 t=85.411 et=570.760</Score>
+<Score et="575.9">Nick Kiselev(6) lap=4 point=0 t=-1.000 et=575.740</Score>
+<Score et="576.5">Matthias Futschik(27) lap=3 point=0 t=-1.000 et=576.260</Score>
+<Score et="577.5">Joaquin Munoz(25) lap=3 point=1 t=46.373 et=577.180</Score>
+<Score et="578.5">Mark Lor(18) lap=4 point=0 t=-1.000 et=578.360</Score>
+<Score et="579.3">Tim Miles#7319(1) lap=4 point=0 t=125.576 et=579.000</Score>
+<Score et="580.9">Patrick Schwabe(7) lap=4 point=1 t=46.286 et=580.760</Score>
+<Score et="583.3">Justin Maerz(24) lap=3 point=2 t=79.437 et=583.080</Score>
+<Score et="583.5">Poyraz Kurc(0) lap=4 point=1 t=47.406 et=583.360</Score>
+<TrackLimits Driver="Tomasz Rzepecki" ID="22" Lap="3" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="583.6">Invalid Lap Cut Track</TrackLimits>
+<Incident et="583.6">Ozkan Kaya(4) reported contact (739.58) with another vehicle jose burgos(28)</Incident>
+<Incident et="583.6">jose burgos(28) reported contact (619.68) with another vehicle Ozkan Kaya(4)</Incident>
+<Score et="583.8">Manuel Recio(10) lap=4 point=0 t=-1.000 et=583.640</Score>
+<Sector et="584.2">Ozkan Kaya(4) reports new suspension damage</Sector>
+<Incident et="584.2">Ozkan Kaya(4) reported contact (3197.79) with Immovable</Incident>
+<Sector et="584.3">Ozkan Kaya(4) reports new suspension damage</Sector>
+<TrackLimits Driver="Ozkan Kaya" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="586.6">No Further Action</TrackLimits>
+<Score et="589.4">jose burgos(28) lap=2 point=0 t=135.672 et=589.160</Score>
+<Score et="589.7">Jong-un Kim#9896(9) lap=4 point=1 t=47.675 et=589.360</Score>
+<Score et="589.8">Ozkan Kaya(4) lap=3 point=0 t=126.996 et=589.660</Score>
+<Score et="590.3">Andrej Schwab(13) lap=3 point=1 t=46.572 et=590.040</Score>
+<Incident et="591.5">Roland Kun13(14) reported contact (404.93) with Immovable</Incident>
+<Score et="592.8">Jaimy Hart(33) lap=1 point=0 t=-1.000 et=592.700</Score>
+<Sector et="593.2">Roland Kun13(14) reports new suspension damage</Sector>
+<Incident et="593.3">Roland Kun13(14) reported contact (3224.09) with Immovable</Incident>
+<Score et="593.4">Charley Monserez(23) lap=4 point=0 t=132.236 et=593.220</Score>
+<TrackLimits Driver="Roland Kun13" ID="14" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="593.6">No Further Action</TrackLimits>
+<Score et="597.1">Roland Kun13(14) lap=4 point=0 t=-1.000 et=596.900</Score>
+<Score et="599.1">Alain Terrieur(11) lap=4 point=1 t=46.465 et=598.940</Score>
+<Score et="599.4">Marton Molnar(20) lap=2 point=1 t=50.487 et=599.220</Score>
+<TrackLimits Driver="Roland Kun13" ID="14" Lap="4" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="599.7">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Marton Molnar" ID="20" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="600.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="604.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Mark Lor" ID="18" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="609.3">No Further Action</TrackLimits>
+<Score et="609.7">Georgios Kirtzos(19) lap=4 point=0 t=123.884 et=609.560</Score>
+<Score et="610.0">Joaquin Munoz(25) lap=3 point=2 t=78.927 et=609.740</Score>
+<Score et="612.0">Borja Iglesias(32) lap=1 point=1 t=47.379 et=611.800</Score>
+<Score et="612.5">Tomasz Rzepecki(22) lap=4 point=0 t=-1.000 et=612.360</Score>
+<Score et="613.0">Ozkan Kaya(4) lap=3 point=1 t=-1.000 et=612.480</Score>
+<Score et="613.0">Ozkan Kaya(4) lap=3 point=2 t=-1.000 et=612.480</Score>
+<Score et="613.8">Patrick Schwabe(7) lap=4 point=2 t=79.129 et=613.600</Score>
+<Incident et="614.6">Charley Monserez(23) reported contact (4722.25) with Immovable</Incident>
+<Score et="615.1">Grzegorz Parais(17) lap=4 point=1 t=46.777 et=614.940</Score>
+<Score et="616.6">m 89(31) lap=3 point=0 t=130.914 et=616.260</Score>
+<Score et="617.5">Poyraz Kurc(0) lap=4 point=2 t=81.414 et=617.360</Score>
+<Score et="617.6">Mark Lor(18) lap=4 point=1 t=-1.000 et=617.390</Score>
+<Score et="617.6">Mark Lor(18) lap=4 point=2 t=-1.000 et=617.390</Score>
+<Score et="617.7">Wayne Matthews(35) lap=1 point=0 t=-1.000 et=617.580</Score>
+<Score et="619.1">Charley Monserez(23) lap=4 point=1 t=-1.000 et=618.899</Score>
+<Score et="619.1">Charley Monserez(23) lap=4 point=2 t=-1.000 et=618.899</Score>
+<Incident et="620.0">Marton Molnar(20) reported contact (66.54) with Sign</Incident>
+<Incident et="620.1">Marton Molnar(20) reported contact (68.71) with Sign</Incident>
+<Score et="620.4">Thomaz Oliveira(34) lap=1 point=0 t=-1.000 et=620.340</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="620.8">No Further Action</TrackLimits>
+<Score et="622.7">Jong-un Kim#9896(9) lap=4 point=2 t=80.666 et=622.360</Score>
+<Score et="623.1">Andrej Schwab(13) lap=3 point=2 t=79.393 et=622.860</Score>
+<Score et="623.9">Matthias Futschik(27) lap=3 point=1 t=47.345 et=623.600</Score>
+<TrackLimits Driver="Marton Molnar" ID="20" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="624.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="624.8">No Further Action</TrackLimits>
+<Score et="641.4">Nick Kiselev(6) lap=4 point=1 t=49.613 et=625.360</Score>
+<ChatMessage et="641.4">O Kaya: wtf burgos???</ChatMessage>
+<Score et="641.4">Tim Miles#7319(1) lap=4 point=1 t=48.070 et=627.060</Score>
+<Score et="641.4">Justin Maerz(24) lap=4 point=0 t=123.628 et=627.280</Score>
+<Score et="641.5">Alain Terrieur(11) lap=4 point=2 t=79.294 et=631.760</Score>
+<Score et="641.6">jose burgos(28) lap=2 point=1 t=51.973 et=641.140</Score>
+<Score et="642.9">Jaimy Hart(33) lap=1 point=1 t=50.102 et=642.800</Score>
+<Incident et="645.1">Nick Kiselev(6) reported contact (246.38) with Immovable</Incident>
+<Score et="645.2">Borja Iglesias(32) lap=1 point=2 t=80.623 et=645.040</Score>
+<Incident et="645.4">Nick Kiselev(6) reported contact (908.20) with Immovable</Incident>
+<Incident et="645.7">Nick Kiselev(6) reported contact (5556.00) with Immovable</Incident>
+<Sector et="645.7">Nick Kiselev(6) reports new suspension damage</Sector>
+<Sector et="645.9">Nick Kiselev(6) reports new suspension damage</Sector>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="647.0">No Further Action</TrackLimits>
+<Score et="647.1">Marton Molnar(20) lap=2 point=2 t=98.138 et=646.880</Score>
+<Score et="647.3">Manuel Recio(10) lap=4 point=1 t=63.414 et=647.040</Score>
+<TrackLimits Driver="Alain Terrieur" ID="11" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="647.9">No Further Action</TrackLimits>
+<Score et="648.3">Grzegorz Parais(17) lap=4 point=2 t=79.958 et=648.120</Score>
+<Score et="649.8">Nick Kiselev(6) lap=4 point=2 t=-1.000 et=649.553</Score>
+<Incident et="652.2">Poyraz Kurc(0) reported contact (351.36) with Immovable</Incident>
+<ChatMessage et="652.4">R Kun13: Thank you</ChatMessage>
+<Incident et="652.4">Ozkan Kaya(4) reported contact (595.09) with Immovable</Incident>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="654.1">No Further Action</TrackLimits>
+<Score et="654.9">Joaquin Munoz(25) lap=4 point=0 t=123.769 et=654.580</Score>
+<Score et="656.0">Roland Kun13(14) lap=4 point=1 t=-1.000 et=655.880</Score>
+<Score et="656.1">Nate Gibbs(29) lap=3 point=0 t=-1.000 et=655.860</Score>
+<Penalty Driver="Nate Gibbs" ID="29" Penalty="Disqualify" et="656.1">Disqualify</Penalty>
+<Score et="656.6">Georgios Kirtzos(19) lap=4 point=1 t=46.859 et=656.420</Score>
+<Sector Driver="Patrick Schwabe" ID="7" Sector="3" Class="GT3" et="657.4">Patrick Schwabe(7) set new best for sector 3</Sector>
+<Score et="657.6">Patrick Schwabe(7) lap=5 point=0 t=122.857 et=657.320</Score>
+<Score et="657.6">Matthias Futschik(27) lap=3 point=2 t=81.036 et=657.280</Score>
+<Incident et="658.5">Tomasz Rzepecki(22) reported contact (2445.00) with Immovable</Incident>
+<TrackLimits Driver="Alain Terrieur" ID="11" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="660.4">No Further Action</TrackLimits>
+<Score et="660.6">Tim Miles#7319(1) lap=4 point=2 t=81.391 et=660.380</Score>
+<Incident et="661.0">Tomasz Rzepecki(22) reported contact (81.52) with Immovable</Incident>
+<Score et="662.2">Poyraz Kurc(0) lap=5 point=0 t=126.011 et=661.960</Score>
+<Score et="662.4">Tomasz Rzepecki(22) lap=4 point=1 t=-1.000 et=662.183</Score>
+<Score et="662.4">Tomasz Rzepecki(22) lap=4 point=2 t=-1.000 et=662.183</Score>
+<Score et="664.2">m 89(31) lap=3 point=1 t=47.638 et=663.900</Score>
+<Score et="664.9">Wayne Matthews(35) lap=1 point=1 t=47.183 et=664.760</Score>
+<Score et="666.9">Jong-un Kim#9896(9) lap=5 point=0 t=124.924 et=666.620</Score>
+<Score et="667.2">Andrej Schwab(13) lap=4 point=0 t=123.589 et=667.060</Score>
+<Score et="668.3">Thomaz Oliveira(34) lap=1 point=1 t=47.818 et=668.160</Score>
+<Sector Driver="Justin Maerz" ID="24" Sector="1" Class="GT3" et="673.5">Justin Maerz(24) set new best for sector 1</Sector>
+<Score et="673.6">Justin Maerz(24) lap=4 point=1 t=46.091 et=673.360</Score>
+<Incident et="675.9">Poyraz Kurc(0) reported contact (1676.88) with Immovable</Incident>
+<Score et="678.0">Jaimy Hart(33) lap=1 point=2 t=85.134 et=677.820</Score>
+<Sector et="678.7">Poyraz Kurc(0) reports new suspension damage</Sector>
+<Incident et="678.8">Poyraz Kurc(0) reported contact (5949.25) with Immovable</Incident>
+<Score et="680.1">jose burgos(28) lap=2 point=2 t=90.678 et=679.840</Score>
+<Score et="680.6">Manuel Recio(10) lap=4 point=2 t=96.802 et=680.440</Score>
+<Incident et="682.5">Georgios Kirtzos(19) reported contact (58.05) with Immovable</Incident>
+<Score et="683.2">Poyraz Kurc(0) lap=5 point=1 t=-1.000 et=683.073</Score>
+<Score et="683.2">Poyraz Kurc(0) lap=5 point=2 t=-1.000 et=683.073</Score>
+<TrackLimits Driver="Georgios Kirtzos" ID="19" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="684.4">No Further Action</TrackLimits>
+<Score et="684.4">Ferrari Mechanic(12) lap=4 point=0 t=-1.000 et=684.160</Score>
+<Score et="689.9">Borja Iglesias(32) lap=2 point=0 t=125.295 et=689.720</Score>
+<Score et="690.7">Georgios Kirtzos(19) lap=4 point=2 t=80.971 et=690.520</Score>
+<Score et="692.6">Marton Molnar(20) lap=3 point=0 t=143.603 et=692.340</Score>
+<Score et="692.8">Grzegorz Parais(17) lap=5 point=0 t=124.372 et=692.520</Score>
+<Score et="694.4">Alain Terrieur(11) lap=5 point=0 t=141.693 et=694.160</Score>
+<Score et="698.8">m 89(31) lap=3 point=2 t=82.164 et=698.420</Score>
+<Score et="699.1">Wayne Matthews(35) lap=1 point=2 t=81.298 et=698.880</Score>
+<Score et="699.1">Roland Kun13(14) lap=4 point=2 t=-1.000 et=698.920</Score>
+<Score et="701.2">Joaquin Munoz(25) lap=4 point=1 t=46.337 et=700.920</Score>
+<Score et="702.0">Matthias Futschik(27) lap=4 point=0 t=125.507 et=701.760</Score>
+<Score et="703.5">Thomaz Oliveira(34) lap=1 point=2 t=82.971 et=703.320</Score>
+<Score et="703.6">Ozkan Kaya(4) lap=4 point=0 t=-1.000 et=703.400</Score>
+<Score et="703.7">Patrick Schwabe(7) lap=5 point=1 t=46.231 et=703.560</Score>
+<Score et="705.3">Tim Miles#7319(1) lap=5 point=0 t=125.963 et=704.960</Score>
+<Score et="706.4">Justin Maerz(24) lap=4 point=2 t=78.972 et=706.240</Score>
+<Score et="707.9">Charley Monserez(23) lap=5 point=0 t=-1.000 et=707.760</Score>
+<Score et="713.0">Japie Bosman(16) lap=3 point=0 t=-1.000 et=712.995</Score>
+<Score et="713.5">Jong-un Kim#9896(9) lap=5 point=1 t=46.554 et=713.160</Score>
+<Score et="713.7">Andrej Schwab(13) lap=4 point=1 t=46.442 et=713.500</Score>
+<TrackLimits Driver="Thomaz Oliveira" ID="34" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="716.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Tim Miles#7319" ID="1" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="718.2">No Further Action</TrackLimits>
+<Incident et="719.9">jose burgos(28) reported contact (676.10) with Immovable</Incident>
+<Score et="724.1">Jaimy Hart(33) lap=2 point=0 t=131.245 et=723.940</Score>
+<Incident et="726.7">Nikita Bogdanov(37) reported contact (32.73) with Cone</Incident>
+<Score et="726.9">Manuel Recio(10) lap=5 point=0 t=-1.000 et=726.714</Score>
+<Score et="726.9">Manuel Recio(10) lap=5 point=1 t=-1.000 et=726.714</Score>
+<Score et="726.9">Manuel Recio(10) lap=5 point=2 t=-1.000 et=726.714</Score>
+<Incident et="727.1">Nikita Bogdanov(37) reported contact (53.12) with Cone</Incident>
+<Incident et="727.7">Nikita Bogdanov(37) reported contact (53.77) with Cone</Incident>
+<Incident et="728.9">Nikita Bogdanov(37) reported contact (90.68) with Cone</Incident>
+<Incident et="729.0">Nikita Bogdanov(37) reported contact (96.29) with Cone</Incident>
+<Incident et="729.5">Nikita Bogdanov(37) reported contact (127.39) with Cone</Incident>
+<Incident et="731.8">Georgios Kirtzos(19) reported contact (21.16) with Cone</Incident>
+<Incident et="731.9">Georgios Kirtzos(19) reported contact (104.31) with Cone</Incident>
+<TrackLimits Driver="jose burgos" ID="28" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="732.0">No Further Action</TrackLimits>
+<Incident et="732.7">Georgios Kirtzos(19) reported contact (18.30) with Cone</Incident>
+<Incident et="733.4">Nick Kiselev(6) reported contact (3.74) with Cone</Incident>
+<Score et="734.0">Joaquin Munoz(25) lap=4 point=2 t=79.188 et=733.760</Score>
+<Incident et="734.5">Japie Bosman(16) reported contact (1097.21) with Immovable</Incident>
+<Score et="735.3">Nikita Bogdanov(37) lap=1 point=0 t=-1.000 et=735.000</Score>
+<Score et="735.7">Georgios Kirtzos(19) lap=5 point=0 t=125.905 et=735.460</Score>
+<Score et="736.4">Nick Kiselev(6) lap=5 point=0 t=-1.000 et=736.220</Score>
+<Score et="736.4">Patrick Schwabe(7) lap=5 point=2 t=78.920 et=736.240</Score>
+<TrackLimits Driver="Japie Bosman" ID="16" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="737.0">No Further Action</TrackLimits>
+<Score et="737.1">Ferrari Mechanic(12) lap=4 point=1 t=52.764 et=736.940</Score>
+<Score et="737.3">Borja Iglesias(32) lap=2 point=1 t=47.427 et=737.140</Score>
+<Incident et="737.9">Nik Schouten(38) reported contact (340.12) with Immovable</Incident>
+<Incident et="739.7">Nik Schouten(38) reported contact (264.70) with Cone</Incident>
+<TrackLimits Driver="Nik Schouten" ID="38" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="739.8">No Further Action</TrackLimits>
+<Incident et="740.6">Wayne Matthews(35) reported contact (52.89) with Cone</Incident>
+<Score et="740.8">Alain Terrieur(11) lap=5 point=1 t=46.484 et=740.640</Score>
+<Score et="741.0">Marton Molnar(20) lap=3 point=1 t=48.481 et=740.820</Score>
+<Score et="741.4">jose burgos(28) lap=3 point=0 t=151.956 et=741.120</Score>
+<Score et="742.8">Nik Schouten(38) lap=1 point=0 t=-1.000 et=742.540</Score>
+<Score et="743.6">Grzegorz Parais(17) lap=5 point=1 t=50.942 et=743.480</Score>
+<Score et="744.0">m 89(31) lap=4 point=0 t=127.341 et=743.600</Score>
+<Score et="744.2">Wayne Matthews(35) lap=2 point=0 t=126.470 et=744.040</Score>
+<Incident et="745.3">Nik Schouten(38) reported contact (145.35) with Cone</Incident>
+<TrackLimits Driver="Japie Bosman" ID="16" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="745.8">No Further Action</TrackLimits>
+<Incident et="746.1">m 89(31) reported contact (18.45) with Cone</Incident>
+<Score et="746.6">Andrej Schwab(13) lap=4 point=2 t=79.341 et=746.400</Score>
+<Score et="746.6">Jong-un Kim#9896(9) lap=5 point=2 t=79.735 et=746.340</Score>
+<Score et="749.1">Matthias Futschik(27) lap=4 point=1 t=47.140 et=748.900</Score>
+<Score et="750.6">Thomaz Oliveira(34) lap=2 point=0 t=129.983 et=750.320</Score>
+<Score et="750.8">Justin Maerz(24) lap=5 point=0 t=123.312 et=750.580</Score>
+<TrackLimits Driver="Jong-un Kim#9896" ID="9" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="751.0">No Further Action</TrackLimits>
+<Score et="751.1">Ozkan Kaya(4) lap=4 point=1 t=47.580 et=751.000</Score>
+<Score et="752.1">Tim Miles#7319(1) lap=5 point=1 t=46.767 et=751.720</Score>
+<Score et="754.1">Charley Monserez(23) lap=5 point=1 t=46.188 et=753.940</Score>
+<TrackLimits Driver="jose burgos" ID="28" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="755.4">No Further Action</TrackLimits>
+<ChatMessage et="756.1">N Bogdanov: Go Right</ChatMessage>
+<Incident et="760.5">Nik Schouten(38) reported contact (678.01) with another vehicle jose burgos(28)</Incident>
+<Incident et="760.5">jose burgos(28) reported contact (780.43) with another vehicle Nik Schouten(38)</Incident>
+<Incident et="766.7">Justin Maerz(24) reported contact (1759.60) with another vehicle Thomaz Oliveira(34)</Incident>
+<Incident et="766.8">Thomaz Oliveira(34) reported contact (441.09) with another vehicle Justin Maerz(24)</Incident>
+<Score et="770.1">Borja Iglesias(32) lap=2 point=2 t=80.269 et=769.980</Score>
+<TrackLimits Driver="Justin Maerz" ID="24" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="771.0">No Further Action</TrackLimits>
+<Score et="771.7">Tomasz Rzepecki(22) lap=5 point=0 t=-1.000 et=771.600</Score>
+<Score et="773.0">Ferrari Mechanic(12) lap=4 point=2 t=88.598 et=772.760</Score>
+<Score et="773.2">Jaimy Hart(33) lap=2 point=1 t=48.978 et=772.920</Score>
+<TrackLimits Driver="Thomaz Oliveira" ID="34" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="773.4">No Further Action</TrackLimits>
+<Score et="773.6">Justin Maerz(24) lap=5 point=1 t=-1.000 et=773.383</Score>
+<Score et="773.6">Justin Maerz(24) lap=5 point=2 t=-1.000 et=773.383</Score>
+<Score et="773.7">Alain Terrieur(11) lap=5 point=2 t=79.309 et=773.480</Score>
+<Score et="774.6">Marton Molnar(20) lap=3 point=2 t=82.121 et=774.460</Score>
+<Incident et="774.6">Joaquin Munoz(25) reported contact (311.21) with Cone</Incident>
+<Score et="776.8">Grzegorz Parais(17) lap=5 point=2 t=84.255 et=776.780</Score>
+<Score et="778.0">Joaquin Munoz(25) lap=5 point=0 t=123.186 et=777.760</Score>
+<TrackLimits Driver="m 89" ID="31" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="778.8">No Further Action</TrackLimits>
+<Score et="779.4">Japie Bosman(16) lap=3 point=1 t=-1.000 et=779.476</Score>
+<Score et="779.4">Japie Bosman(16) lap=3 point=2 t=-1.000 et=779.476</Score>
+<Score et="779.6">Patrick Schwabe(7) lap=6 point=0 t=122.605 et=779.920</Score>
+<Score et="782.0">Matthias Futschik(27) lap=4 point=2 t=80.000 et=781.760</Score>
+<TrackLimits Driver="Thomaz Oliveira" ID="34" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="783.0">No Further Action</TrackLimits>
+<Score et="783.8">Nick Kiselev(6) lap=5 point=1 t=47.403 et=783.620</Score>
+<Score et="784.2">Georgios Kirtzos(19) lap=5 point=1 t=48.568 et=784.020</Score>
+<Incident et="786.5">Marton Molnar(20) reported contact (2442.97) with Immovable</Incident>
+<Score et="787.1">Charley Monserez(23) lap=5 point=2 t=79.143 et=786.900</Score>
+<Score et="787.4">Tim Miles#7319(1) lap=5 point=2 t=82.190 et=787.140</Score>
+<Score et="790.9">Andrej Schwab(13) lap=5 point=0 t=123.615 et=790.680</Score>
+<Score et="790.9">jose burgos(28) lap=3 point=1 t=49.587 et=790.700</Score>
+<Score et="791.5">Jong-un Kim#9896(9) lap=6 point=0 t=124.635 et=791.240</Score>
+<TrackLimits Driver="Marton Molnar" ID="20" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="791.7">No Further Action</TrackLimits>
+<Score et="792.8">Wayne Matthews(35) lap=2 point=1 t=48.551 et=792.600</Score>
+<Score et="792.8">m 89(31) lap=4 point=1 t=48.801 et=792.400</Score>
+<TrackLimits Driver="Grzegorz Parais" ID="17" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="792.8">No Further Action</TrackLimits>
+<Score et="793.6">Nik Schouten(38) lap=1 point=1 t=50.788 et=793.320</Score>
+<TrackLimits Driver="Matthias Futschik" ID="27" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="795.7">No Further Action</TrackLimits>
+<Score et="798.7">Manuel Recio(10) lap=6 point=0 t=-1.000 et=798.420</Score>
+<Score et="800.4">Ozkan Kaya(4) lap=4 point=2 t=-1.000 et=800.103</Score>
+<Score et="802.5">Poyraz Kurc(0) lap=6 point=0 t=-1.000 et=802.360</Score>
+<Incident et="803.4">Patrick Schwabe(7) reported contact (2910.40) with Immovable</Incident>
+<Score et="803.7">Thomaz Oliveira(34) lap=2 point=1 t=53.198 et=803.520</Score>
+<Incident et="804.7">Nik Schouten(38) reported contact (1698.72) with another vehicle Wayne Matthews(35)</Incident>
+<Incident et="804.7">Wayne Matthews(35) reported contact (1674.60) with another vehicle Nik Schouten(38)</Incident>
+<Incident et="805.0">Patrick Schwabe(7) reported contact (13.22) with Wing</Incident>
+<Incident et="805.2">Patrick Schwabe(7) reported contact (9.95) with Wing</Incident>
+<Incident et="805.2">Patrick Schwabe(7) reported contact (11.52) with Wing</Incident>
+<Incident et="805.7">Manuel Recio(10) reported contact (1325.58) with Immovable</Incident>
+<Score et="806.8">Jaimy Hart(33) lap=2 point=2 t=82.694 et=806.640</Score>
+<Score et="807.7">Patrick Schwabe(7) lap=6 point=1 t=-1.000 et=807.499</Score>
+<Score et="807.7">Patrick Schwabe(7) lap=6 point=2 t=-1.000 et=807.499</Score>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="811.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Antonio Freitas" ID="40" Lap="0" WarningPoints="3" CurrentPoints="3" Resolution="5" et="812.8">Invalid Lap Cut Track</TrackLimits>
+<Score et="815.0">Borja Iglesias(32) lap=3 point=0 t=125.084 et=814.800</Score>
+<Score et="815.4">Roland Kun13(14) lap=5 point=0 t=-1.000 et=815.200</Score>
+<Score et="817.0">Nick Kiselev(6) lap=5 point=2 t=80.681 et=816.900</Score>
+<Score et="817.2">Georgios Kirtzos(19) lap=5 point=2 t=81.587 et=817.040</Score>
+<Score et="818.7">Ferrari Mechanic(12) lap=5 point=0 t=134.383 et=818.540</Score>
+<Score et="818.9">Alain Terrieur(11) lap=6 point=0 t=124.570 et=818.740</Score>
+<Score et="819.1">Tomasz Rzepecki(22) lap=5 point=1 t=47.286 et=818.880</Score>
+<Score et="821.3">Grzegorz Parais(17) lap=6 point=0 t=128.659 et=821.180</Score>
+<Incident et="821.6">Alain Terrieur(11) reported contact (80.79) with Immovable</Incident>
+<Score et="824.5">Joaquin Munoz(25) lap=5 point=1 t=46.382 et=824.140</Score>
+<Incident et="825.1">Marton Molnar(20) reported contact (1974.66) with Immovable</Incident>
+<TrackLimits Driver="Manuel Recio" ID="10" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="825.8">No Further Action</TrackLimits>
+<Score et="826.8">Matthias Futschik(27) lap=5 point=0 t=124.746 et=826.500</Score>
+<Incident et="827.1">Manuel Recio(10) reported contact (1594.69) with Immovable</Incident>
+<Score et="827.4">Antonio Freitas(40) lap=1 point=0 t=-1.000 et=827.220</Score>
+<Incident et="827.8">Manuel Recio(10) reported contact (472.74) with Immovable</Incident>
+<Score et="827.9">Wayne Matthews(35) lap=2 point=2 t=83.668 et=827.720</Score>
+<Score et="829.0">Marton Molnar(20) lap=4 point=0 t=-1.000 et=828.175</Score>
+<Score et="829.0">Marton Molnar(20) lap=4 point=1 t=-1.000 et=828.175</Score>
+<Score et="829.0">Marton Molnar(20) lap=4 point=2 t=-1.000 et=828.175</Score>
+<Score et="829.2">Nik Schouten(38) lap=1 point=2 t=86.553 et=829.080</Score>
+<TrackLimits Driver="Alain Terrieur" ID="11" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="829.6">No Further Action</TrackLimits>
+<Score et="829.8">Alain Terrieur(11) lap=6 point=1 t=-1.000 et=829.596</Score>
+<Score et="829.8">Alain Terrieur(11) lap=6 point=2 t=-1.000 et=829.596</Score>
+<Score et="830.1">m 89(31) lap=4 point=2 t=86.194 et=829.800</Score>
+<Score et="830.6">Manuel Recio(10) lap=6 point=1 t=-1.000 et=830.390</Score>
+<Score et="830.6">Manuel Recio(10) lap=6 point=2 t=-1.000 et=830.390</Score>
+<Score et="831.1">Charley Monserez(23) lap=6 point=0 t=123.192 et=830.940</Score>
+<Score et="831.7">jose burgos(28) lap=3 point=2 t=90.338 et=831.460</Score>
+<Score et="832.2">Tim Miles#7319(1) lap=6 point=0 t=126.837 et=831.800</Score>
+<TrackLimits Driver="Ferrari Mechanic" ID="12" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="832.3">No Further Action</TrackLimits>
+<Score et="833.3">Evan Bagnall(39) lap=1 point=0 t=-1.000 et=833.140</Score>
+<Score et="837.0">Thomaz Oliveira(34) lap=2 point=2 t=86.521 et=836.840</Score>
+<Score et="837.3">Andrej Schwab(13) lap=5 point=1 t=46.481 et=837.160</Score>
+<Score et="838.6">Jong-un Kim#9896(9) lap=6 point=1 t=46.918 et=838.160</Score>
+<TrackLimits Driver="Nik Schouten" ID="38" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="842.6">No Further Action</TrackLimits>
+<Score et="849.5">Poyraz Kurc(0) lap=6 point=1 t=46.894 et=849.240</Score>
+<TrackLimits Driver="jose burgos" ID="28" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="851.9">No Further Action</TrackLimits>
+<Score et="852.5">Tomasz Rzepecki(22) lap=5 point=2 t=80.637 et=852.240</Score>
+<Score et="853.0">Jaimy Hart(33) lap=3 point=0 t=128.916 et=852.860</Score>
+<TrackLimits Driver="Nik Schouten" ID="38" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="855.6">No Further Action</TrackLimits>
+<Incident et="856.5">Charley Monserez(23) reported contact (813.68) with another vehicle Antonio Freitas(40)</Incident>
+<Incident et="856.5">Antonio Freitas(40) reported contact (2146.00) with another vehicle Charley Monserez(23)</Incident>
+<Score et="857.5">Joaquin Munoz(25) lap=5 point=2 t=79.327 et=857.100</Score>
+<Incident et="860.1">Marton Molnar(20) reported contact (568.24) with Immovable</Incident>
+<Score et="862.0">Georgios Kirtzos(19) lap=6 point=0 t=126.367 et=861.820</Score>
+<Score et="862.3">Borja Iglesias(32) lap=3 point=1 t=47.366 et=862.160</Score>
+<Score et="862.5">Nick Kiselev(6) lap=6 point=0 t=126.094 et=862.300</Score>
+<Score et="862.7">Roland Kun13(14) lap=5 point=1 t=47.367 et=862.560</Score>
+<Score et="867.9">Ferrari Mechanic(12) lap=5 point=1 t=49.157 et=867.700</Score>
+<Score et="868.5">Grzegorz Parais(17) lap=6 point=1 t=47.197 et=868.380</Score>
+<Score et="870.5">Andrej Schwab(13) lap=5 point=2 t=79.599 et=870.280</Score>
+<TrackLimits Driver="Joaquin Munoz" ID="25" Lap="5" WarningPoints="0.5" CurrentPoints="0.5" Resolution="5" et="871.8">Invalid Lap Cut Track</TrackLimits>
+<Score et="871.8">Jong-un Kim#9896(9) lap=6 point=2 t=80.180 et=871.420</Score>
+<Score et="872.3">Wayne Matthews(35) lap=3 point=0 t=127.994 et=872.040</Score>
+<Sector Driver="Matthias Futschik" ID="27" Sector="1" Class="GT3" et="872.6">Matthias Futschik(27) set new best for sector 1</Sector>
+<Score et="872.7">Matthias Futschik(27) lap=5 point=1 t=46.000 et=872.500</Score>
+<Score et="875.0">m 89(31) lap=5 point=0 t=131.029 et=874.620</Score>
+<TrackLimits Driver="Antonio Freitas" ID="40" Lap="1" WarningPoints="0" CurrentPoints="3" Resolution="7" et="876.2">No Further Action</TrackLimits>
+<Score et="876.2">na soul(41) lap=1 point=0 t=-1.000 et=876.100</Score>
+<Score et="877.9">Tomasz Rzepecki(22) lap=6 point=0 t=-1.000 et=877.691</Score>
+<Score et="877.9">Tomasz Rzepecki(22) lap=6 point=1 t=-1.000 et=877.691</Score>
+<Score et="877.9">Tomasz Rzepecki(22) lap=6 point=2 t=-1.000 et=877.691</Score>
+<Score et="878.1">Charley Monserez(23) lap=6 point=1 t=46.933 et=877.880</Score>
+<Score et="878.7">Tim Miles#7319(1) lap=6 point=1 t=46.569 et=878.360</Score>
+<Score et="880.0">Antonio Freitas(40) lap=1 point=1 t=52.587 et=879.820</Score>
+<TrackLimits Driver="Andrej Schwab" ID="13" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="880.5">No Further Action</TrackLimits>
+<Score et="886.3">Nik Schouten(38) lap=2 point=0 t=-1.000 et=882.276</Score>
+<Score et="886.3">Nik Schouten(38) lap=2 point=1 t=-1.000 et=882.276</Score>
+<Score et="886.3">Nik Schouten(38) lap=2 point=2 t=-1.000 et=882.276</Score>
+<Score et="886.3">Evan Bagnall(39) lap=1 point=1 t=49.209 et=882.340</Score>
+<Score et="886.3">Poyraz Kurc(0) lap=6 point=2 t=80.111 et=882.460</Score>
+<Score et="886.3">Thomaz Oliveira(34) lap=3 point=0 t=132.780 et=883.100</Score>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="891.1">No Further Action</TrackLimits>
+<Incident et="892.5">Justin Maerz(24) reported contact (593.32) with Immovable</Incident>
+<Score et="895.2">Borja Iglesias(32) lap=3 point=2 t=80.187 et=895.000</Score>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="895.2">No Further Action</TrackLimits>
+<Score et="895.7">Roland Kun13(14) lap=5 point=2 t=80.327 et=895.520</Score>
+<Score et="901.1">Antonio Freitas(40) lap=1 point=2 t=-1.000 et=900.804</Score>
+<Score et="901.4">Jaimy Hart(33) lap=3 point=1 t=48.309 et=901.160</Score>
+<Score et="901.9">Grzegorz Parais(17) lap=6 point=2 t=80.541 et=901.720</Score>
+<Score et="902.8">Joaquin Munoz(25) lap=6 point=0 t=-1.000 et=902.440</Score>
+<Score et="902.9">Ferrari Mechanic(12) lap=5 point=2 t=84.206 et=902.760</Score>
+<Score et="905.6">Matthias Futschik(27) lap=5 point=2 t=78.776 et=905.280</Score>
+<Score et="909.5">Marton Molnar(20) lap=5 point=0 t=-1.000 et=909.360</Score>
+<Score et="910.6">Charley Monserez(23) lap=6 point=2 t=79.474 et=910.420</Score>
+<Score et="910.8">Nick Kiselev(6) lap=6 point=1 t=48.350 et=910.660</Score>
+<Score et="911.2">Georgios Kirtzos(19) lap=6 point=1 t=49.165 et=910.980</Score>
+<Score et="911.3">Tim Miles#7319(1) lap=6 point=2 t=79.254 et=911.040</Score>
+<Score et="915.0">Andrej Schwab(13) lap=6 point=0 t=124.237 et=914.920</Score>
+<Score et="916.1">Evan Bagnall(39) lap=1 point=2 t=82.835 et=915.960</Score>
+<Score et="916.1">Jong-un Kim#9896(9) lap=7 point=0 t=124.597 et=915.840</Score>
+<TrackLimits Driver="Wayne Matthews" ID="35" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="917.9">No Further Action</TrackLimits>
+<Score et="918.8">Wayne Matthews(35) lap=3 point=1 t=46.660 et=918.700</Score>
+<Incident et="920.8">Justin Maerz(24) reported contact (25.08) with Immovable</Incident>
+<TrackLimits Driver="Matthias Futschik" ID="27" Lap="5" WarningPoints="0.5" CurrentPoints="0.5" Resolution="5" et="920.9">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Ferrari Mechanic" ID="12" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="922.2">No Further Action</TrackLimits>
+<Score et="922.4">m 89(31) lap=5 point=1 t=47.346 et=921.980</Score>
+<Score et="923.2">na soul(41) lap=1 point=1 t=46.941 et=923.040</Score>
+<Sector Driver="Poyraz Kurc" ID="0" Sector="3" Class="GT3" et="924.4">Poyraz Kurc(0) set new best for sector 3</Sector>
+<Sector Driver="Jong-un Kim#9896" ID="9" Sector="3" Class="GT3" et="924.4">Jong-un Kim#9896(9) set new best for sector 3</Sector>
+<Sector Driver="Alain Terrieur" ID="11" Sector="3" Class="GT3" et="924.4">Alain Terrieur(11) set new best for sector 3</Sector>
+<Sector Driver="Georgios Kirtzos" ID="19" Sector="3" Class="GT3" et="924.4">Georgios Kirtzos(19) set new best for sector 3</Sector>
+<Sector Driver="Charley Monserez" ID="23" Sector="3" Class="GT3" et="924.4">Charley Monserez(23) set new best for sector 3</Sector>
+<Sector Driver="Joaquin Munoz" ID="25" Sector="3" Class="GT3" et="924.4">Joaquin Munoz(25) set new best for sector 3</Sector>
+<Score et="925.7">jose burgos(28) lap=4 point=0 t=184.331 et=925.460</Score>
+<Score et="927.6">Poyraz Kurc(0) lap=7 point=0 t=125.047 et=927.400</Score>
+<Score et="930.4">Alex Albrood(42) lap=1 point=0 t=-1.000 et=930.160</Score>
+<Score et="931.0">Thomaz Oliveira(34) lap=3 point=1 t=47.683 et=930.780</Score>
+<Score et="935.8">Jaimy Hart(33) lap=3 point=2 t=82.774 et=935.620</Score>
+<Score et="939.6">Borja Iglesias(32) lap=4 point=0 t=124.583 et=939.380</Score>
+<Score et="939.8">Roland Kun13(14) lap=6 point=0 t=124.503 et=939.700</Score>
+<Incident et="940.1">Vladimir Kolpakov(43) reported contact (160.96) with another vehicle Alex Escudero(44)</Incident>
+<Incident et="940.9">Vladimir Kolpakov(43) reported contact (222.80) with another vehicle Alex Escudero(44)</Incident>
+<Incident et="941.0">Alex Escudero(44) reported contact (488.62) with another vehicle Vladimir Kolpakov(43)</Incident>
+<TrackLimits Driver="Poyraz Kurc" ID="0" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="7" et="942.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Jong-un Kim#9896" ID="9" Lap="7" WarningPoints="0" CurrentPoints="0" Resolution="7" et="943.8">No Further Action</TrackLimits>
+<Score et="944.4">Nick Kiselev(6) lap=6 point=2 t=81.847 et=944.160</Score>
+<Score et="944.6">Georgios Kirtzos(19) lap=6 point=2 t=82.659 et=944.480</Score>
+<Sector et="944.8">Matthias Futschik(27) reports new suspension damage</Sector>
+<Sector et="944.9">Matthias Futschik(27) reports new suspension damage</Sector>
+<Incident et="944.9">Matthias Futschik(27) reported contact (1758.27) with Immovable</Incident>
+<TrackLimits Driver="Alex Albrood" ID="42" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="945.1">No Further Action</TrackLimits>
+<Score et="946.1">Poyraz Kurc(0) lap=7 point=1 t=-1.000 et=945.955</Score>
+<Score et="946.1">Poyraz Kurc(0) lap=7 point=2 t=-1.000 et=945.955</Score>
+<Score et="946.2">Grzegorz Parais(17) lap=7 point=0 t=124.803 et=946.000</Score>
+<TrackLimits Driver="Matthias Futschik" ID="27" Lap="5" WarningPoints="0" CurrentPoints="0.5" Resolution="7" et="946.8">No Further Action</TrackLimits>
+<Score et="949.0">Ferrari Mechanic(12) lap=6 point=0 t=130.188 et=948.740</Score>
+<Score et="949.1">Joaquin Munoz(25) lap=6 point=1 t=46.319 et=948.760</Score>
+<Score et="950.4">Jong-un Kim#9896(9) lap=7 point=1 t=-1.000 et=949.975</Score>
+<Score et="950.4">Jong-un Kim#9896(9) lap=7 point=2 t=-1.000 et=949.975</Score>
+<Incident et="950.7">Jordan GUICH(45) reported contact (1654.57) with Immovable</Incident>
+<Score et="951.6">Wayne Matthews(35) lap=3 point=2 t=79.399 et=951.440</Score>
+<Score et="952.2">Matthias Futschik(27) lap=6 point=0 t=-1.000 et=952.000</Score>
+<TrackLimits Driver="Borja Iglesias" ID="32" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="952.9">No Further Action</TrackLimits>
+<Score et="955.0">Charley Monserez(23) lap=7 point=0 t=123.848 et=954.800</Score>
+<Score et="955.6">Tim Miles#7319(1) lap=7 point=0 t=123.542 et=955.340</Score>
+<Score et="956.0">m 89(31) lap=5 point=2 t=80.948 et=955.580</Score>
+<Score et="956.4">na soul(41) lap=1 point=2 t=80.187 et=956.280</Score>
+<Incident et="956.8">Ferrari Mechanic(12) reported contact (1081.26) with Immovable</Incident>
+<TrackLimits Driver="Nick Kiselev" ID="6" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="957.0">No Further Action</TrackLimits>
+<Incident et="957.1">Jordan GUICH(45) reported contact (1262.22) with Immovable</Incident>
+<Incident et="957.2">Borja Iglesias(32) reported contact (187.44) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="957.2">Roland Kun13(14) reported contact (167.89) with another vehicle Borja Iglesias(32)</Incident>
+<Score et="957.9">Japie Bosman(16) lap=4 point=0 t=-1.000 et=957.880</Score>
+<Score et="957.9">Tomasz Rzepecki(22) lap=7 point=0 t=-1.000 et=957.720</Score>
+<Score et="958.3">Marton Molnar(20) lap=5 point=1 t=48.787 et=958.160</Score>
+<Score et="959.3">Matthias Futschik(27) lap=6 point=1 t=-1.000 et=959.105</Score>
+<Score et="959.3">Matthias Futschik(27) lap=6 point=2 t=-1.000 et=959.105</Score>
+<Sector et="959.9">Ferrari Mechanic(12) reports new suspension damage</Sector>
+<Sector et="959.9">Ferrari Mechanic(12) reports new suspension damage</Sector>
+<Incident et="960.0">Ferrari Mechanic(12) reported contact (2924.82) with Immovable</Incident>
+<Incident et="961.3">Ferrari Mechanic(12) reported contact (14.06) with Immovable</Incident>
+<Score et="961.8">Andrej Schwab(13) lap=6 point=1 t=46.680 et=961.600</Score>
+<Score et="962.0">Evan Bagnall(39) lap=2 point=0 t=128.718 et=961.840</Score>
+<Sector et="964.3">Nick Kiselev(6) reports new suspension damage</Sector>
+<Incident et="964.4">Nick Kiselev(6) reported contact (4690.37) with Immovable</Incident>
+<Score et="964.4">Thomaz Oliveira(34) lap=3 point=2 t=81.112 et=964.220</Score>
+<TrackLimits Driver="Ferrari Mechanic" ID="12" Lap="6" WarningPoints="0" CurrentPoints="0" Resolution="7" et="964.8">No Further Action</TrackLimits>
+<Score et="966.1">Ferrari Mechanic(12) lap=6 point=1 t=-1.000 et=965.789</Score>
+<Score et="966.1">Ferrari Mechanic(12) lap=6 point=2 t=-1.000 et=965.789</Score>
+<Score et="967.2">Justin Maerz(24) lap=6 point=0 t=-1.000 et=967.080</Score>
+<Score et="969.2">Nick Kiselev(6) lap=7 point=0 t=-1.000 et=968.931</Score>
+<Score et="969.2">Nick Kiselev(6) lap=7 point=1 t=-1.000 et=968.931</Score>
+<Score et="969.2">Nick Kiselev(6) lap=7 point=2 t=-1.000 et=968.931</Score>
+<Sector Driver="Poyraz Kurc" ID="0" Sector="1" Class="GT3" et="970.1">Poyraz Kurc(0) set new best for sector 1</Sector>
+<Sector Driver="Tim Miles#7319" ID="1" Sector="1" Class="GT3" et="970.1">Tim Miles#7319(1) set new best for sector 1</Sector>
+<Sector Driver="Alain Terrieur" ID="11" Sector="1" Class="GT3" et="970.1">Alain Terrieur(11) set new best for sector 1</Sector>
+<Sector Driver="Justin Maerz" ID="24" Sector="1" Class="GT3" et="970.1">Justin Maerz(24) set new best for sector 1</Sector>
+<Score et="972.0">Alain Terrieur(11) lap=7 point=0 t=-1.000 et=971.740</Score>
+<Score et="974.8">jose burgos(28) lap=4 point=1 t=49.195 et=974.640</Score>
+<TrackLimits Driver="Marton Molnar" ID="20" Lap="5" WarningPoints="0" CurrentPoints="0" Resolution="7" et="978.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Thomaz Oliveira" ID="34" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="980.9">No Further Action</TrackLimits>
+<Score et="981.3">Alex Albrood(42) lap=1 point=1 t=50.949 et=981.120</Score>
+<Score et="981.7">Joaquin Munoz(25) lap=6 point=2 t=78.982 et=981.420</Score>
+<Score et="982.3">Jaimy Hart(33) lap=4 point=0 t=129.303 et=982.160</Score>
+<Sector et="982.5">Roland Kun13(14) reports new suspension damage</Sector>
+<Incident et="982.6">Borja Iglesias(32) reported contact (1300.25) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="982.6">Roland Kun13(14) reported contact (1334.96) with another vehicle Borja Iglesias(32)</Incident>
+<Sector et="983.6">Japie Bosman(16) reports new suspension damage</Sector>
+<Incident et="983.7">Japie Bosman(16) reported contact (2863.92) with Immovable</Incident>
+<Incident et="984.0">Roland Kun13(14) reported contact (18.18) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="984.0">Roland Kun13(14) reported contact (270.77) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="984.1">Borja Iglesias(32) reported contact (162.52) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="984.5">Roland Kun13(14) reported contact (289.28) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="984.8">Borja Iglesias(32) reported contact (256.46) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="986.3">Roland Kun13(14) reported contact (122.41) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="986.4">Borja Iglesias(32) reported contact (238.88) with another vehicle Roland Kun13(14)</Incident>
+<TrackLimits Driver="Borja Iglesias" ID="32" Lap="4" WarningPoints="0" CurrentPoints="0" Resolution="7" et="988.2">No Further Action</TrackLimits>
+<Incident et="988.3">Roland Kun13(14) reported contact (19.49) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="988.4">Roland Kun13(14) reported contact (72.45) with another vehicle Borja Iglesias(32)</Incident>
+<TrackLimits Driver="Roland Kun13" ID="14" Lap="6" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="988.4">No Further Action</TrackLimits>
+<Incident et="988.5">Roland Kun13(14) reported contact (95.35) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="988.6">Borja Iglesias(32) reported contact (158.05) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="988.7">Roland Kun13(14) reported contact (116.66) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="989.5">Borja Iglesias(32) reported contact (115.61) with another vehicle Roland Kun13(14)</Incident>
+<Score et="989.5">Georgios Kirtzos(19) lap=7 point=0 t=127.493 et=989.320</Score>
+<Incident et="989.7">Roland Kun13(14) reported contact (333.09) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="989.7">Borja Iglesias(32) reported contact (406.51) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="989.7">m 89(31) reported contact (368.47) with another vehicle na soul(41)</Incident>
+<Score et="989.8">Roland Kun13(14) lap=6 point=1 t=49.894 et=989.600</Score>
+<Score et="989.8">Borja Iglesias(32) lap=4 point=1 t=50.256 et=989.640</Score>
+<Incident et="990.4">Roland Kun13(14) reported contact (411.57) with another vehicle Borja Iglesias(32)</Incident>
+<Incident et="990.4">Borja Iglesias(32) reported contact (477.78) with another vehicle Roland Kun13(14)</Incident>
+<Incident et="990.8">Roland Kun13(14) reported contact (477.39) with another vehicle Borja Iglesias(32)</Incident>
+<TrackLimits Driver="Evan Bagnall" ID="39" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="991.6">No Further Action</TrackLimits>
+<Score et="992.6">Vladimir Kolpakov(43) lap=1 point=0 t=-1.000 et=992.620</Score>
+<Score et="992.6">Japie Bosman(16) lap=4 point=1 t=-1.000 et=992.715</Score>
+<Score et="992.6">Japie Bosman(16) lap=4 point=2 t=-1.000 et=992.715</Score>
+<Score et="992.7">Grzegorz Parais(17) lap=7 point=1 t=46.524 et=992.520</Score>
+</Stream>
+<MostLapsCompleted>7</MostLapsCompleted>
+<Driver>
+<Name>Alain Terrieur</Name>
+<Connected>1</Connected>
+<VehFile>397_25_MUSTANG.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Mustang Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>Les Gueux Jackouille</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="213.06" fuel="0.165" fuelUsed="0.592" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="180.3000" s1="47.5808" s2="32.9002" s3="44.6364" topspeed="249.54" fuel="0.137" fuelUsed="0.027" ve="0.949" veUsed="0.043" twfl="0.992" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.1174</Lap>
+<Lap num="3" p="4" et="305.4199" s1="47.0846" s2="32.8610" s3="44.3183" topspeed="250.90" fuel="0.106" fuelUsed="0.031" ve="0.902" veUsed="0.047" twfl="0.980" twfr="0.984" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.2639</Lap>
+<Lap num="4" p="1" et="429.6799" s1="46.1687" s2="32.4248" s3="44.1940" topspeed="250.90" fuel="0.078" fuelUsed="0.027" ve="0.859" veUsed="0.043" twfl="0.973" twfr="0.976" twrl="0.973" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">122.7875</Lap>
+<Lap num="5" p="1" et="552.4800" s1="46.4654" s2="32.8287" s3="62.3990" topspeed="249.09" fuel="0.047" fuelUsed="0.031" ve="0.816" veUsed="0.043" twfl="0.922" twfr="0.961" twrl="0.925" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">141.6931</Lap>
+<Lap num="6" p="2" et="694.1599" s1="46.4837" s2="32.8254" s3="45.2611" topspeed="244.59" fuel="0.020" fuelUsed="0.027" ve="0.773" veUsed="0.043" twfl="0.914" twfr="0.953" twrl="0.918" twrr="0.949" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.5702</Lap>
+<Lap num="7" p="1" et="818.7400" topspeed="242.79" fuel="0.165" fuelUsed="-0.145" ve="0.992" veUsed="-0.220" twfl="1.000" twfr="1.000" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>122.7875</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Joaquin Munoz</Name>
+<Connected>1</Connected>
+<VehFile>77_25_PROT192000D7.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #77:LM</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>77</CarNumber>
+<TeamName>Proton Competition</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="26" et="--.---" topspeed="212.61" fuel="0.286" fuelUsed="0.470" ve="0.373" veUsed="0.627" twfl="0.996" twfr="1.000" twrl="0.996" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="281.9199" s1="46.9847" s2="33.0193" s3="44.0845" topspeed="251.35" fuel="0.259" fuelUsed="0.027" ve="0.329" veUsed="0.043" twfl="0.984" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.0885</Lap>
+<Lap num="3" p="3" et="406.0000" s1="47.4035" s2="33.3494" s3="44.0533" topspeed="250.90" fuel="0.231" fuelUsed="0.027" ve="0.282" veUsed="0.047" twfl="0.973" twfr="0.980" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.8062</Lap>
+<Lap num="4" p="5" et="530.8000" s1="46.3733" s2="32.5536" s3="44.8417" topspeed="250.90" fuel="0.200" fuelUsed="0.557" ve="0.239" veUsed="0.761" twfl="0.961" twfr="0.969" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.7686</Lap>
+<Lap num="5" p="3" et="654.5801" s1="46.3368" s2="32.8514" s3="43.9979" topspeed="251.80" fuel="0.173" fuelUsed="0.027" ve="0.196" veUsed="0.043" twfl="0.945" twfr="0.957" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.1860</Lap>
+<Lap num="6" p="3" et="777.7600" s1="46.3818" s2="32.9456" topspeed="248.19" fuel="0.145" fuelUsed="0.027" ve="0.153" veUsed="0.043" twfl="0.933" twfr="0.945" twrl="0.953" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>123.1860</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Charley Monserez</Name>
+<Connected>1</Connected>
+<VehFile>44_24_PROT92DCFAD4.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #44:LM</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>44</CarNumber>
+<TeamName>Proton Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="26" et="--.---" topspeed="206.75" fuel="0.757" fuelUsed="-0.000" ve="0.251" veUsed="0.749" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="11" et="262.0554" topspeed="214.86" fuel="0.180" fuelUsed="0.576" ve="0.239" veUsed="0.012" twfl="0.996" twfr="1.000" twrl="0.996" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="1" et="337.6799" s1="46.4186" s2="32.8600" s3="44.0252" topspeed="251.80" fuel="0.153" fuelUsed="0.027" ve="0.196" veUsed="0.043" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.3038</Lap>
+<Lap num="4" p="2" et="460.9800" s1="54.4653" s2="33.5723" s3="44.1984" topspeed="250.90" fuel="0.122" fuelUsed="0.031" ve="0.153" veUsed="0.043" twfl="0.973" twfr="0.980" twrl="0.965" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">132.2361</Lap>
+<Lap num="5" p="3" et="593.2200" topspeed="244.14" fuel="0.180" fuelUsed="0.576" ve="0.239" veUsed="0.761" twfl="0.996" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="6" p="4" et="707.7600" s1="46.1877" s2="32.9553" s3="44.0485" topspeed="251.35" fuel="0.153" fuelUsed="0.027" ve="0.196" veUsed="0.043" twfl="0.984" twfr="0.988" twrl="0.988" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.1916</Lap>
+<Lap num="7" p="3" et="830.9399" s1="46.9327" s2="32.5416" s3="44.3737" topspeed="249.54" fuel="0.122" fuelUsed="0.031" ve="0.153" veUsed="0.043" twfl="0.973" twfr="0.980" twrl="0.980" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.8480</Lap>
+<BestLapTime>123.1916</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,ABS=1,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Justin Maerz</Name>
+<Connected>1</Connected>
+<VehFile>78_25_AKKOF71490E4.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Akkodis ASP Team 2025 #78:LM</VehName>
+<Category>WEC 2025, GT3, Lexus RCF LMGT3</Category>
+<CarType>Lexus RCF LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>78</CarNumber>
+<TeamName>Akkodis ASP Team</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="20" et="--.---" topspeed="212.61" fuel="0.337" fuelUsed="0.463" ve="0.420" veUsed="0.580" twfl="0.996" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="254.0801" s1="46.8007" s2="33.0641" s3="44.4783" topspeed="249.54" fuel="0.302" fuelUsed="0.035" ve="0.380" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.988" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.3430</Lap>
+<Lap num="3" p="6" et="378.4199" s1="46.3410" s2="34.4683" s3="44.4113" topspeed="249.09" fuel="0.271" fuelUsed="0.031" ve="0.337" veUsed="0.043" twfl="0.973" twfr="0.976" twrl="0.980" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.2207</Lap>
+<Lap num="4" p="4" et="503.6399" s1="46.4143" s2="33.0225" s3="44.1910" topspeed="250.44" fuel="0.235" fuelUsed="0.565" ve="0.294" veUsed="0.706" twfl="0.957" twfr="0.969" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.6278</Lap>
+<Lap num="5" p="4" et="627.2800" s1="46.0909" s2="32.8815" s3="44.3392" topspeed="249.99" fuel="0.204" fuelUsed="0.031" ve="0.251" veUsed="0.043" twfl="0.945" twfr="0.957" twrl="0.965" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.3116</Lap>
+<Lap num="6" p="4" et="750.5801" topspeed="242.34" fuel="0.337" fuelUsed="-0.133" ve="0.420" veUsed="-0.169" twfl="0.933" twfr="0.949" twrl="0.925" twrr="0.929" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>123.3116</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Tim Miles#7319</Name>
+<Connected>1</Connected>
+<VehFile>46_25_WRT_874F6E78.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2025 #46:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>46</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="212.61" fuel="0.341" fuelUsed="0.384" ve="0.471" veUsed="0.529" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="122.1399" s1="47.8400" s2="32.9273" s3="44.7715" topspeed="249.09" fuel="0.314" fuelUsed="0.027" ve="0.431" veUsed="0.039" twfl="0.992" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.5388</Lap>
+<Lap num="3" p="8" et="247.6799" topspeed="242.79" fuel="0.349" fuelUsed="-0.035" ve="0.490" veUsed="-0.059" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="11" et="453.4199" s1="47.3181" s2="33.4995" s3="44.7583" topspeed="248.19" fuel="0.318" fuelUsed="0.031" ve="0.451" veUsed="0.039" twfl="0.992" twfr="0.996" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.5760</Lap>
+<Lap num="5" p="15" et="579.0000" s1="48.0705" s2="33.3208" s3="44.5712" topspeed="249.99" fuel="0.290" fuelUsed="0.027" ve="0.408" veUsed="0.043" twfl="0.988" twfr="0.988" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.9625</Lap>
+<Lap num="6" p="15" et="704.9600" s1="46.7666" s2="35.4231" s3="44.6475" topspeed="250.44" fuel="0.259" fuelUsed="0.031" ve="0.369" veUsed="0.039" twfl="0.980" twfr="0.980" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">126.8372</Lap>
+<Lap num="7" p="5" et="831.8000" s1="46.5688" s2="32.6851" s3="44.2886" topspeed="250.90" fuel="0.231" fuelUsed="0.027" ve="0.325" veUsed="0.043" twfl="0.976" twfr="0.976" twrl="0.973" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.5424</Lap>
+<BestLapTime>123.5424</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Andrej Schwab</Name>
+<Connected>1</Connected>
+<VehFile>88_24_PROT935AB9F2.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #88:LM</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>88</CarNumber>
+<TeamName>Proton Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="212.16" fuel="0.380" fuelUsed="0.376" ve="0.502" veUsed="0.498" twfl="1.000" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="6" et="194.7600" s1="48.4380" s2="33.1052" s3="44.2356" topspeed="251.35" fuel="0.349" fuelUsed="0.031" ve="0.459" veUsed="0.043" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.7788</Lap>
+<Lap num="3" p="15" et="320.5400" s1="46.4663" s2="33.2585" topspeed="243.69" fuel="0.278" fuelUsed="0.071" ve="0.361" veUsed="0.098" twfl="0.996" twfr="1.000" twrl="0.996" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="4" et="543.4800" s1="46.5720" s2="32.8214" s3="44.1959" topspeed="252.70" fuel="0.251" fuelUsed="0.027" ve="0.318" veUsed="0.043" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.5893</Lap>
+<Lap num="5" p="6" et="667.0601" s1="46.4423" s2="32.8985" s3="44.2739" topspeed="251.35" fuel="0.224" fuelUsed="0.027" ve="0.275" veUsed="0.043" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.6147</Lap>
+<Lap num="6" p="6" et="790.6799" s1="46.4814" s2="33.1181" s3="44.6374" topspeed="251.35" fuel="0.196" fuelUsed="0.027" ve="0.231" veUsed="0.043" twfl="0.969" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.2369</Lap>
+<BestLapTime>123.5893</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Georgios Kirtzos</Name>
+<Connected>1</Connected>
+<VehFile>46_25_WRT_874F6E78.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2025 #46:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>46</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="15" et="--.---" topspeed="213.51" fuel="0.196" fuelUsed="0.529" ve="0.271" veUsed="0.729" twfl="0.996" twfr="1.000" twrl="0.996" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="14" et="215.0801" s1="48.1398" topspeed="242.34" fuel="0.196" fuelUsed="0.000" ve="0.271" veUsed="0.000" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="11" et="360.0801" s1="47.3548" s2="33.1522" s3="45.0739" topspeed="245.49" fuel="0.165" fuelUsed="0.031" ve="0.227" veUsed="0.043" twfl="0.984" twfr="0.984" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.5810</Lap>
+<Lap num="4" p="4" et="485.6599" s1="47.0455" s2="32.7866" s3="44.0522" topspeed="252.25" fuel="0.133" fuelUsed="0.031" ve="0.184" veUsed="0.043" twfl="0.976" twfr="0.976" twrl="0.976" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">123.8843</Lap>
+<Lap num="5" p="7" et="609.5601" s1="46.8591" s2="34.1115" s3="44.9347" topspeed="251.35" fuel="0.106" fuelUsed="0.027" ve="0.141" veUsed="0.043" twfl="0.965" twfr="0.969" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.9053</Lap>
+<Lap num="6" p="7" et="735.4600" s1="48.5679" s2="33.0195" s3="44.7798" topspeed="252.25" fuel="0.075" fuelUsed="0.031" ve="0.098" veUsed="0.043" twfl="0.957" twfr="0.961" twrl="0.961" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">126.3672</Lap>
+<Lap num="7" p="7" et="861.8201" s1="49.1648" s2="33.4940" s3="44.8344" topspeed="250.90" fuel="0.043" fuelUsed="0.031" ve="0.055" veUsed="0.043" twfl="0.949" twfr="0.953" twrl="0.953" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">127.4932</Lap>
+<BestLapTime>123.8843</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Poyraz Kurc</Name>
+<Connected>1</Connected>
+<VehFile>46_25_WRT_874F6E78.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2025 #46:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>46</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="216.21" fuel="0.180" fuelUsed="0.545" ve="0.251" veUsed="0.749" twfl="1.000" twfr="1.000" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="151.6599" s1="47.0756" s2="33.3623" s3="44.4595" topspeed="251.80" fuel="0.149" fuelUsed="0.031" ve="0.208" veUsed="0.043" twfl="0.988" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.8975</Lap>
+<Lap num="3" p="2" et="276.5400" s1="46.8657" s2="32.9804" s3="44.2599" topspeed="251.35" fuel="0.122" fuelUsed="0.027" ve="0.165" veUsed="0.043" twfl="0.976" twfr="0.980" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.1060</Lap>
+<Lap num="4" p="4" et="400.6599" s1="57.2408" s2="33.2839" s3="44.7716" topspeed="251.35" fuel="0.090" fuelUsed="0.031" ve="0.122" veUsed="0.043" twfl="0.937" twfr="0.969" twrl="0.922" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">135.2963</Lap>
+<Lap num="5" p="7" et="535.9600" s1="47.4062" s2="34.0074" s3="44.5974" topspeed="250.90" fuel="0.059" fuelUsed="0.031" ve="0.078" veUsed="0.043" twfl="0.925" twfr="0.961" twrl="0.914" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">126.0110</Lap>
+<Lap num="6" p="8" et="661.9600" topspeed="242.79" fuel="0.067" fuelUsed="-0.008" ve="0.090" veUsed="-0.012" twfl="0.996" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="7" p="7" et="802.3601" s1="46.8936" s2="33.2178" s3="44.9360" topspeed="251.35" fuel="0.035" fuelUsed="0.031" ve="0.047" veUsed="0.043" twfl="0.984" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.0474</Lap>
+<BestLapTime>124.1060</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,ABS=2,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Grzegorz Parais</Name>
+<Connected>1</Connected>
+<VehFile>31_24_WRT_6CBE4475.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #31:WEC</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>31</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="211.26" fuel="0.718" fuelUsed="0.007" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="7" et="189.5000" s1="47.6551" s2="33.8045" s3="47.3228" topspeed="249.54" fuel="0.686" fuelUsed="0.031" ve="0.949" veUsed="0.043" twfl="0.992" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.7825</Lap>
+<Lap num="3" p="6" et="318.2800" s1="47.0470" s2="33.0803" s3="44.5170" topspeed="249.99" fuel="0.655" fuelUsed="0.031" ve="0.906" veUsed="0.043" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.6443</Lap>
+<Lap num="4" p="9" et="442.9399" s1="47.3280" s2="33.3877" s3="44.5074" topspeed="250.44" fuel="0.627" fuelUsed="0.027" ve="0.859" veUsed="0.047" twfl="0.973" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.2231</Lap>
+<Lap num="5" p="9" et="568.1599" s1="46.7772" s2="33.1804" s3="44.4144" topspeed="250.44" fuel="0.596" fuelUsed="0.031" ve="0.816" veUsed="0.043" twfl="0.965" twfr="0.969" twrl="0.969" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.3719</Lap>
+<Lap num="6" p="9" et="692.5200" s1="50.9420" s2="33.3134" s3="44.4031" topspeed="250.90" fuel="0.565" fuelUsed="0.031" ve="0.776" veUsed="0.039" twfl="0.957" twfr="0.961" twrl="0.965" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.6586</Lap>
+<Lap num="7" p="8" et="821.1799" s1="47.1970" s2="33.3443" s3="44.2617" topspeed="249.99" fuel="0.533" fuelUsed="0.031" ve="0.733" veUsed="0.043" twfl="0.949" twfr="0.953" twrl="0.961" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.8029</Lap>
+<BestLapTime>124.3719</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Tomasz Rzepecki</Name>
+<Connected>1</Connected>
+<VehFile>77_25_PROT192000D7.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #77:LM</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>77</CarNumber>
+<TeamName>Proton Competition</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="19" et="--.---" topspeed="212.16" fuel="0.749" fuelUsed="0.008" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="8" et="235.4800" s1="48.9245" s2="33.2458" s3="44.8474" topspeed="248.64" fuel="0.722" fuelUsed="0.027" ve="0.949" veUsed="0.043" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">127.0177</Lap>
+<Lap num="3" p="7" et="362.5000" s1="46.8766" s2="33.0446" s3="44.4868" topspeed="249.99" fuel="0.690" fuelUsed="0.031" ve="0.902" veUsed="0.047" twfl="0.976" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.4080</Lap>
+<Lap num="4" p="8" et="486.9199" s1="47.7833" s2="33.0561" topspeed="249.54" fuel="0.663" fuelUsed="0.027" ve="0.859" veUsed="0.043" twfl="0.961" twfr="0.969" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="10" et="612.3601" topspeed="242.79" fuel="0.765" fuelUsed="-0.008" ve="0.992" veUsed="0.008" twfl="0.996" twfr="1.000" twrl="0.992" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="6" p="10" et="771.6001" s1="47.2862" s2="33.3508" topspeed="242.79" fuel="0.773" fuelUsed="-0.008" ve="1.000" veUsed="-0.008" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="7" p="10" et="877.6912" topspeed="212.61" fuel="0.749" fuelUsed="0.024" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>124.4080</BestLapTime>
+<Laps>7</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="7">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Roland Kun13</Name>
+<Connected>1</Connected>
+<VehFile>31_24_WRT_F2B895A5.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #31:LM</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>31</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="16" et="--.---" topspeed="214.86" fuel="0.325" fuelUsed="0.400" ve="0.451" veUsed="0.549" twfl="0.996" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="220.8799" s1="47.2317" s2="33.2509" s3="45.2948" topspeed="250.44" fuel="0.294" fuelUsed="0.031" ve="0.408" veUsed="0.043" twfl="0.988" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.7774</Lap>
+<Lap num="3" p="9" et="346.6599" s1="47.1486" s2="33.1099" s3="44.8290" topspeed="251.80" fuel="0.263" fuelUsed="0.031" ve="0.361" veUsed="0.047" twfl="0.980" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.0875</Lap>
+<Lap num="4" p="10" et="471.7400" s1="46.8480" s2="33.0646" topspeed="252.70" fuel="0.231" fuelUsed="0.031" ve="0.318" veUsed="0.043" twfl="0.000" twfr="0.969" twrl="0.976" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="13" et="596.8999" topspeed="218.01" fuel="0.212" fuelUsed="0.020" ve="0.290" veUsed="0.027" twfl="0.996" twfr="0.965" twrl="0.969" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<Lap num="6" p="11" et="815.2000" s1="47.3672" s2="32.9594" s3="44.1765" topspeed="252.70" fuel="0.180" fuelUsed="0.031" ve="0.247" veUsed="0.043" twfl="0.984" twfr="0.953" twrl="0.961" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.5031</Lap>
+<BestLapTime>124.5031</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Borja Iglesias</Name>
+<Connected>1</Connected>
+<VehFile>397_25_MUSTANG.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Mustang Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>Bemind Racing Team</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="28" et="--.---" topspeed="214.86" fuel="0.259" fuelUsed="0.498" ve="0.341" veUsed="0.659" twfl="0.996" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="13" et="564.4199" s1="47.3788" s2="33.2443" s3="44.6719" topspeed="250.44" fuel="0.231" fuelUsed="0.525" ve="0.298" veUsed="0.702" twfl="0.980" twfr="0.988" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.2950</Lap>
+<Lap num="3" p="12" et="689.7200" s1="47.4271" s2="32.8418" s3="44.8148" topspeed="249.09" fuel="0.200" fuelUsed="0.031" ve="0.255" veUsed="0.043" twfl="0.965" twfr="0.976" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">125.0837</Lap>
+<Lap num="4" p="11" et="814.8000" s1="47.3658" s2="32.8215" s3="44.3957" topspeed="251.35" fuel="0.173" fuelUsed="0.027" ve="0.212" veUsed="0.043" twfl="0.953" twfr="0.965" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">124.5829</Lap>
+<BestLapTime>124.5829</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Wayne Matthews</Name>
+<Connected>1</Connected>
+<VehFile>85_25_IRON5675B0BB.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2025 #85:ELMS</VehName>
+<Category>ELMS 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>85</CarNumber>
+<TeamName>Iron Dames</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="27" et="--.---" topspeed="212.16" fuel="0.259" fuelUsed="0.519" ve="0.333" veUsed="0.667" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="16" et="617.5801" s1="47.1832" s2="34.1145" s3="45.1719" topspeed="244.14" fuel="0.227" fuelUsed="0.550" ve="0.290" veUsed="0.710" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">126.4696</Lap>
+<Lap num="3" p="17" et="744.0400" s1="48.5510" s2="35.1169" s3="44.3263" topspeed="249.09" fuel="0.200" fuelUsed="0.027" ve="0.251" veUsed="0.039" twfl="0.984" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">127.9942</Lap>
+<BestLapTime>126.4696</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>m 89</Name>
+<Connected>1</Connected>
+<VehFile>86_GRRACIN8BE3F08E.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>GR Racing 2025 #86:ELMS</VehName>
+<Category>ELMS 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>86</CarNumber>
+<TeamName>GR Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>14</Position>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="27" et="--.---" topspeed="211.71" fuel="0.710" fuelUsed="0.015" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="16" et="357.3000" s1="48.2594" s2="34.0133" s3="45.7671" topspeed="246.84" fuel="0.678" fuelUsed="0.031" ve="0.949" veUsed="0.043" twfl="0.992" twfr="0.996" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.0397</Lap>
+<Lap num="3" p="15" et="485.3401" s1="51.7504" s2="33.6608" s3="45.5026" topspeed="248.19" fuel="0.651" fuelUsed="0.027" ve="0.906" veUsed="0.043" twfl="0.988" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">130.9138</Lap>
+<Lap num="4" p="17" et="616.2600" s1="47.6382" s2="34.5262" s3="45.1770" topspeed="247.29" fuel="0.620" fuelUsed="0.105" ve="0.867" veUsed="0.133" twfl="0.980" twfr="0.984" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">127.3414</Lap>
+<Lap num="5" p="18" et="743.6001" s1="48.8013" s2="37.3931" s3="44.8344" topspeed="249.54" fuel="0.588" fuelUsed="0.031" ve="0.824" veUsed="0.043" twfl="0.976" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">131.0288</Lap>
+<BestLapTime>127.3414</BestLapTime>
+<Laps>5</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="5">PlayerControl,ABS=1,Clutch</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Evan Bagnall</Name>
+<Connected>1</Connected>
+<VehFile>63_25_IRON3E8BB8AD.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #63:ELMS</VehName>
+<Category>ELMS 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>63</CarNumber>
+<TeamName>Iron Lynx</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>15</Position>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="28" et="--.---" topspeed="206.30" fuel="0.769" fuelUsed="0.006" ve="0.992" veUsed="0.008" twfl="0.937" twfr="0.988" twrl="0.925" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="17" et="833.1399" s1="49.2087" s2="33.6260" s3="45.8831" topspeed="249.54" fuel="0.733" fuelUsed="0.042" ve="0.949" veUsed="0.051" twfl="0.929" twfr="0.980" twrl="0.918" twrr="0.961" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.7179</Lap>
+<BestLapTime>128.7179</BestLapTime>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Jaimy Hart</Name>
+<Connected>1</Connected>
+<VehFile>63_25_IRON3E8BB8AD.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #63:ELMS</VehName>
+<Category>ELMS 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>63</CarNumber>
+<TeamName>Iron Lynx</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>16</Position>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="26" et="--.---" topspeed="211.26" fuel="0.769" fuelUsed="0.006" ve="0.992" veUsed="0.008" twfl="0.996" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="18" et="592.7000" s1="50.1017" s2="35.0323" s3="46.1110" topspeed="248.19" fuel="0.733" fuelUsed="0.042" ve="0.949" veUsed="0.051" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">131.2451</Lap>
+<Lap num="3" p="18" et="723.9399" s1="48.9776" s2="33.7162" s3="46.2220" topspeed="248.64" fuel="0.702" fuelUsed="0.031" ve="0.906" veUsed="0.043" twfl="0.984" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">128.9159</Lap>
+<Lap num="4" p="16" et="852.8601" s1="48.3088" s2="34.4653" s3="46.5284" topspeed="248.64" fuel="0.667" fuelUsed="0.035" ve="0.859" veUsed="0.047" twfl="0.976" twfr="0.980" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">129.3026</Lap>
+<BestLapTime>128.9159</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Thomaz Oliveira</Name>
+<Connected>1</Connected>
+<VehFile>10_25_RSLM3C7CA220.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Racing Spirit of Léman 2025 #10:LM</VehName>
+<Category>WEC 2025, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>10</CarNumber>
+<TeamName>Racing Spirit of Léman</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>17</Position>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="28" et="--.---" topspeed="209.45" fuel="0.702" fuelUsed="0.006" ve="0.992" veUsed="0.008" twfl="0.996" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="19" et="620.3401" s1="47.8177" s2="35.1533" s3="47.0122" topspeed="246.84" fuel="0.671" fuelUsed="0.038" ve="0.949" veUsed="0.051" twfl="0.988" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">129.9833</Lap>
+<Lap num="3" p="20" et="750.3201" s1="53.1978" s2="33.3231" s3="46.2593" topspeed="249.54" fuel="0.643" fuelUsed="0.027" ve="0.906" veUsed="0.043" twfl="0.976" twfr="0.984" twrl="0.980" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">132.7802</Lap>
+<BestLapTime>129.9833</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Ferrari Mechanic</Name>
+<Connected>1</Connected>
+<VehFile>31_24_WRT_C033B08A.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #31:WE2</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>31</CarNumber>
+<TeamName>Team WRT</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>18</Position>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="26" et="--.---" topspeed="179.28" fuel="0.008" fuelUsed="0.717" ve="0.400" veUsed="0.600" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="18" et="266.9641" topspeed="215.31" fuel="0.282" fuelUsed="-0.275" ve="0.392" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="26" et="373.2800" s1="49.2382" s2="34.4938" topspeed="245.94" fuel="0.725" fuelUsed="-0.443" ve="0.400" veUsed="-0.008" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="21" et="527.7507" topspeed="180.63" fuel="0.286" fuelUsed="0.439" ve="0.396" veUsed="0.004" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="21" et="684.1599" s1="52.7644" s2="35.8332" s3="45.7854" topspeed="251.35" fuel="0.259" fuelUsed="0.027" ve="0.357" veUsed="0.039" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">134.3830</Lap>
+<Lap num="6" p="20" et="818.5400" s1="49.1570" s2="35.0490" s3="45.9816" topspeed="247.29" fuel="0.227" fuelUsed="0.031" ve="0.314" veUsed="0.043" twfl="0.973" twfr="0.969" twrl="0.980" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">130.1876</Lap>
+<BestLapTime>130.1876</BestLapTime>
+<Laps>6</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="6">PlayerControl</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>19</Position>
+<ClassPosition>19</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="17" et="--.---" topspeed="206.49" fuel="0.682" fuelUsed="0.009" ve="0.992" veUsed="0.008" twfl="0.996" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="10" et="221.7450" s1="50.1848" s2="34.6244" s3="47.8129" topspeed="241.59" fuel="0.651" fuelUsed="0.031" ve="0.945" veUsed="0.047" twfl="0.976" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">132.6220</Lap>
+<Lap num="3" p="18" et="354.3671" s1="69.8942" topspeed="237.08" fuel="0.682" fuelUsed="0.009" ve="0.992" veUsed="0.008" twfl="0.988" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="21" et="712.9951" topspeed="222.52" fuel="0.588" fuelUsed="0.103" ve="0.851" veUsed="0.009" twfl="0.996" twfr="1.000" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>132.6220</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+<Swap startLap="1" endLap="1">Brendan Iribe</Swap>
+<Swap startLap="2" endLap="4">Japie Bosman</Swap>
+</Driver>
+<Driver>
+<Name>jose burgos</Name>
+<Connected>1</Connected>
+<VehFile>85_25_IRON71169233.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2025 #85:LM</VehName>
+<Category>WEC 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>85</CarNumber>
+<TeamName>Iron Dames</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>20</Position>
+<ClassPosition>20</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="28" et="--.---" topspeed="207.20" fuel="0.345" fuelUsed="0.433" ve="0.443" veUsed="0.557" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="20" et="453.5000" s1="49.1728" s2="38.4280" s3="48.0717" topspeed="245.94" fuel="0.318" fuelUsed="0.027" ve="0.408" veUsed="0.035" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">135.6725</Lap>
+<Lap num="3" p="20" et="589.1599" s1="51.9730" s2="38.7053" s3="61.2778" topspeed="247.74" fuel="0.290" fuelUsed="0.488" ve="0.369" veUsed="0.631" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">151.9561</Lap>
+<Lap num="4" p="22" et="741.1201" s1="49.5869" s2="40.7512" s3="93.9929" topspeed="245.94" fuel="0.263" fuelUsed="0.027" ve="0.337" veUsed="0.031" twfl="0.976" twfr="0.976" twrl="0.980" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">184.3309</Lap>
+<BestLapTime>135.6725</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Marton Molnar</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITDF975F11.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:WEC</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>21</Position>
+<ClassPosition>21</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="14" et="--.---" topspeed="209.45" fuel="0.682" fuelUsed="0.009" ve="0.992" veUsed="0.008" twfl="1.000" twfr="1.000" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="26" et="206.2600" topspeed="237.83" fuel="0.165" fuelUsed="0.518" ve="0.239" veUsed="0.753" twfl="0.984" twfr="0.992" twrl="0.965" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="21" et="548.7400" s1="50.4866" s2="47.6519" s3="45.4644" topspeed="250.90" fuel="0.133" fuelUsed="0.031" ve="0.196" veUsed="0.043" twfl="0.969" twfr="0.984" twrl="0.933" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">143.6028</Lap>
+<Lap num="4" p="24" et="692.3401" s1="48.4808" s2="33.6406" topspeed="249.99" fuel="0.690" fuelUsed="-0.557" ve="0.251" veUsed="-0.055" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="5" p="24" et="828.1750" topspeed="213.96" fuel="0.165" fuelUsed="0.525" ve="0.239" veUsed="0.012" twfl="0.906" twfr="0.965" twrl="0.835" twrr="0.898" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>143.6028</BestLapTime>
+<Laps>5</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="5">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>na soul</Name>
+<Connected>1</Connected>
+<VehFile>397_25_AMG.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Mercedes AMG Custom Team 2025 #397</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>5</CarNumber>
+<TeamName>NA SOUL</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>22</Position>
+<ClassPosition>22</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="28" et="--.---" topspeed="212.61" fuel="0.325" fuelUsed="0.450" ve="0.431" veUsed="0.569" twfl="0.996" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Alex Albrood</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>23</Position>
+<ClassPosition>23</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="27" et="--.---" topspeed="209.00" fuel="0.686" fuelUsed="0.005" ve="0.992" veUsed="0.008" twfl="0.996" twfr="0.996" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Vladimir Kolpakov</Name>
+<Connected>1</Connected>
+<VehFile>85_24_IRON46E687F1.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2024 #85:LM</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>85</CarNumber>
+<TeamName>Iron Dames</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>24</Position>
+<ClassPosition>24</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Lap num="1" p="24" et="--.---" topspeed="210.81" fuel="0.094" fuelUsed="0.773" ve="0.114" veUsed="0.886" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Alex Escudero</Name>
+<Connected>1</Connected>
+<VehFile>44_24_PROT92DCFAD4.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Racing 2024 #44:LM</VehName>
+<Category>WEC 2024, GT3, Ford Mustang LMGT3</Category>
+<CarType>Ford Mustang LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>44</CarNumber>
+<TeamName>Proton Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>25</Position>
+<ClassPosition>25</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Jordan GUICH</Name>
+<Connected>1</Connected>
+<VehFile>85_25_IRON71169233.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2025 #85:LM</VehName>
+<Category>WEC 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>85</CarNumber>
+<TeamName>Iron Dames</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>26</Position>
+<ClassPosition>26</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Jim Godin</Name>
+<Connected>1</Connected>
+<VehFile>82_25_TFS_745F4460.VEH</VehFile>
+<UpgradeCode>00000100 00000000 00000000 00000000</UpgradeCode>
+<VehName>TF Sport 2025 #82:ELMS</VehName>
+<Category>ELMS 2025, GT3, Chevrolet Corvette Z06 LMGT3.R</Category>
+<CarType>Chevrolet Corvette Z06 LMGT3.R</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>82</CarNumber>
+<TeamName>TF Sport</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>27</Position>
+<ClassPosition>27</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Francesco Cugino</Name>
+<Connected>1</Connected>
+<VehFile>21_25_AFCO72EE38BF.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Vista AF Corse 2025 #21:LM</VehName>
+<Category>WEC 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>21</CarNumber>
+<TeamName>Vista AF Corse</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>28</Position>
+<ClassPosition>28</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>George Marchenko</Name>
+<Connected>1</Connected>
+<VehFile>61_25_IRON5F647A80.VEH</VehFile>
+<UpgradeCode>00000200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #61:LM</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>61</CarNumber>
+<TeamName>Iron Lynx</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>29</Position>
+<ClassPosition>29</ClassPosition>
+<LapRankIncludingDiscos>30</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

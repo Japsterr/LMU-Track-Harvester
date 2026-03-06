@@ -132,7 +132,7 @@ object AddLapForm: TAddLapForm
     Height = 30
     Caption = 'Add Lap'
     Default = True
-    ModalResult = mrNone
+    ModalResult = 0
     TabOrder = 6
     OnClick = BtnOKClick
   end
@@ -143,7 +143,7 @@ object AddLapForm: TAddLapForm
     Height = 30
     Cancel = True
     Caption = 'Cancel'
-    ModalResult = mrCancel
+    ModalResult = 2
     TabOrder = 7
   end
 end

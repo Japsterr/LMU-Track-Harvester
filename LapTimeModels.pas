@@ -81,31 +81,44 @@ function ParseLapTime(const S: string): Int64;
 
 implementation
 
+function NormalizeDisplayText(const S: string): string;
+begin
+  Result := S;
+  Result := StringReplace(Result, 'â€“', ' - ', [rfReplaceAll]);
+  Result := StringReplace(Result, '–', ' - ', [rfReplaceAll]);
+  Result := StringReplace(Result, '—', ' - ', [rfReplaceAll]);
+  Result := StringReplace(Result, 'Autódromo', 'Autodromo', [rfReplaceAll]);
+  Result := StringReplace(Result, 'José', 'Jose', [rfReplaceAll]);
+  Result := StringReplace(Result, 'Portimão', 'Portimao', [rfReplaceAll]);
+  Result := StringReplace(Result, 'Lédenon', 'Ledenon', [rfReplaceAll]);
+  Result := StringReplace(Result, 'Huracán', 'Huracan', [rfReplaceAll]);
+end;
+
 function EnglishTrackName(const AName: string): string;
 begin
-  if SameText(AName, 'Circuit de la Sarthe') then
+  if SameText(NormalizeDisplayText(AName), 'Circuit de la Sarthe') then
     Exit('Le Mans (Circuit de la Sarthe)');
-  if SameText(AName, 'Autodromo Nazionale Monza') then
+  if SameText(NormalizeDisplayText(AName), 'Autodromo Nazionale Monza') then
     Exit('Monza');
-  if SameText(AName, 'Circuit de Spa-Francorchamps') then
+  if SameText(NormalizeDisplayText(AName), 'Circuit de Spa-Francorchamps') then
     Exit('Spa-Francorchamps');
-  if SameText(AName, 'Autódromo Internacional do Algarve (Portimão)') then
+  if SameText(NormalizeDisplayText(AName), 'Autodromo Internacional do Algarve (Portimao)') then
     Exit('Algarve (Portimao)');
-  if SameText(AName, 'Autódromo José Carlos Pace (Interlagos)') then
+  if SameText(NormalizeDisplayText(AName), 'Autodromo Jose Carlos Pace (Interlagos)') then
     Exit('Interlagos');
-  if SameText(AName, 'Autodromo Enzo e Dino Ferrari (Imola)') then
+  if SameText(NormalizeDisplayText(AName), 'Autodromo Enzo e Dino Ferrari (Imola)') then
     Exit('Imola');
-  if SameText(AName, 'Circuit de Catalunya') then
+  if SameText(NormalizeDisplayText(AName), 'Circuit de Catalunya') then
     Exit('Circuit de Barcelona-Catalunya');
-  if SameText(AName, 'Circuit de Lédenon') then
+  if SameText(NormalizeDisplayText(AName), 'Circuit de Ledenon') then
     Exit('Ledenon');
-  Result := AName;
+  Result := NormalizeDisplayText(AName);
 end;
 
 function TTrack.DisplayName: string;
 begin
   if Layout <> '' then
-    Result := EnglishTrackName(Name) + ' – ' + Layout
+    Result := EnglishTrackName(Name) + ' - ' + NormalizeDisplayText(Layout)
   else
     Result := EnglishTrackName(Name);
 end;

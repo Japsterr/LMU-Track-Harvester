@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1768128608</DateTime>
+<TimeString>2026/01/11 12:50:08</TimeString>
+<TrackVenue>Circuit de la Sarthe</TrackVenue>
+<TrackCourse>Circuit de la Sarthe</TrackCourse>
+<TrackEvent>24 Heures du Mans</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\LeMans_2023\1.21\layoutLeMans.mas</TrackData>
+<TrackLength>13624.0</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="50000" download="100000">VDSL/Cable 100M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>63</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Practice1>
+<DateTime>1768128612</DateTime>
+<TimeString>2026/01/11 12:50:12</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>13</Minutes>
+<Stream>
+<TrackLimits Driver="Thomas Backhusen" ID="0" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="234.5">Invalid Lap Cut Track</TrackLimits>
+<Score et="256.5">Thomas Backhusen(0) lap=0 point=2 t=-1.000 et=256.340</Score>
+<Score et="259.6">Yue Tempest(2) lap=0 point=2 t=-1.000 et=259.500</Score>
+<Score et="261.3">Maroc Danderfluff(6) lap=0 point=1 t=-1.000 et=261.100</Score>
+<Sector et="293.1">Yue Tempest(2) reports new suspension damage</Sector>
+<Incident et="293.1">Yue Tempest(2) reported contact (3898.04) with Immovable</Incident>
+<Sector et="293.3">Yue Tempest(2) reports new suspension damage</Sector>
+<Incident et="294.2">Yue Tempest(2) reported contact (47.26) with Post</Incident>
+<Incident et="294.3">Yue Tempest(2) reported contact (48.93) with Post</Incident>
+<Incident et="296.4">Yue Tempest(2) reported contact (1283.56) with Immovable</Incident>
+<Incident et="296.6">Yue Tempest(2) reported contact (6.15) with Wheel</Incident>
+<Incident et="296.6">Yue Tempest(2) reported contact (19.98) with Wheel</Incident>
+<Incident et="296.8">Yue Tempest(2) reported contact (12.41) with Wheel</Incident>
+<Score et="297.0">Romain MORICEAU(5) lap=0 point=1 t=-1.000 et=296.920</Score>
+<Incident et="297.2">Yue Tempest(2) reported contact (20.52) with Wheel</Incident>
+<Incident et="297.7">Yue Tempest(2) reported contact (17.38) with Wheel</Incident>
+<Incident et="299.5">Yue Tempest(2) reported contact (132.85) with Wheel</Incident>
+<Incident et="300.4">Yue Tempest(2) reported contact (70.42) with Wheel</Incident>
+<Incident et="301.5">Yue Tempest(2) reported contact (68.10) with Wheel</Incident>
+<Incident et="302.5">Yue Tempest(2) reported contact (69.37) with Wheel</Incident>
+<Incident et="303.3">Yue Tempest(2) reported contact (112.20) with Wheel</Incident>
+<Incident et="304.8">Yue Tempest(2) reported contact (94.11) with Wheel</Incident>
+<Score et="305.0">flavius szabo(1) lap=0 point=2 t=-1.000 et=304.820</Score>
+<Incident et="306.6">Yue Tempest(2) reported contact (47.41) with Wheel</Incident>
+<Score et="308.3">Yue Tempest(2) lap=1 point=0 t=-1.000 et=307.595</Score>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="343.6">No Further Action</TrackLimits>
+<Score et="357.5">Maroc Danderfluff(6) lap=0 point=2 t=-1.000 et=357.360</Score>
+<TrackLimits Driver="Bob Baumeister#7054" ID="4" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="358.1">No Further Action</TrackLimits>
+<Score et="366.2">Thomas Backhusen(0) lap=1 point=0 t=-1.000 et=366.040</Score>
+<Score et="380.7">Bob Baumeister#7054(4) lap=0 point=1 t=-1.000 et=380.500</Score>
+<Incident et="382.4">flavius szabo(1) reported contact (6305.10) with Immovable</Incident>
+<Incident et="383.7">flavius szabo(1) reported contact (1345.33) with Immovable</Incident>
+<Score et="387.1">Yue Tempest(2) lap=1 point=1 t=-1.000 et=386.880</Score>
+<Incident et="390.1">Japie Bosman(7) reported contact (691.53) with Immovable</Incident>
+<Score et="398.1">flavius szabo(1) lap=1 point=0 t=-1.000 et=397.933</Score>
+<Score et="398.1">Romain MORICEAU(5) lap=0 point=2 t=-1.000 et=397.960</Score>
+<Sector et="402.5">Yue Tempest(2) reports new suspension damage</Sector>
+<Incident et="402.6">Yue Tempest(2) reported contact (372.42) with Immovable</Incident>
+<TrackLimits Driver="Yue Tempest" ID="2" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="404.2">No Further Action</TrackLimits>
+<Sector Driver="Thomas Backhusen" ID="0" Sector="1" Class="GT3" et="404.3">Thomas Backhusen(0) set new best for sector 1</Sector>
+<Score et="404.3">Thomas Backhusen(0) lap=1 point=1 t=38.173 et=404.200</Score>
+<Incident et="438.9">tymoteusz jozwiak(8) reported contact (484.12) with Immovable</Incident>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="439.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Maroc Danderfluff" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="448.0">No Further Action</TrackLimits>
+<Score et="449.3">Japie Bosman(7) lap=0 point=1 t=-1.000 et=449.315</Score>
+<TrackLimits Driver="Yue Tempest" ID="2" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="461.1">No Further Action</TrackLimits>
+<Sector et="466.7">tymoteusz jozwiak(8) reports new suspension damage</Sector>
+<Incident et="466.9">tymoteusz jozwiak(8) reported contact (156.22) with Immovable</Incident>
+<Incident et="466.9">tymoteusz jozwiak(8) reported contact (255.88) with Immovable</Incident>
+<Incident et="467.1">tymoteusz jozwiak(8) reported contact (261.00) with Immovable</Incident>
+<Score et="468.9">flavius szabo(1) lap=1 point=1 t=-1.000 et=468.660</Score>
+<Incident et="469.1">tymoteusz jozwiak(8) reported contact (189.48) with Immovable</Incident>
+<Score et="477.1">Maroc Danderfluff(6) lap=1 point=0 t=-1.000 et=476.880</Score>
+<TrackLimits Driver="Thomas Backhusen" ID="0" Lap="1" WarningPoints="0.25" CurrentPoints="0.5" Resolution="5" et="477.2">Invalid Lap Cut Track</TrackLimits>
+<Score et="483.0">Yue Tempest(2) lap=1 point=2 t=-1.000 et=482.760</Score>
+<Incident et="483.1">Yue Tempest(2) reported contact (158.94) with Post</Incident>
+<Incident et="483.2">Yue Tempest(2) reported contact (141.26) with Post</Incident>
+<Score et="484.1">Bob Baumeister#7054(4) lap=0 point=2 t=-1.000 et=483.960</Score>
+<Incident et="484.2">Yue Tempest(2) reported contact (40.53) with Post</Incident>
+<Score et="499.2">Thomas Backhusen(0) lap=1 point=2 t=-1.000 et=499.040</Score>
+<Incident et="502.4">Thomas Backhusen(0) reported contact (1511.58) with Post</Incident>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="505.7">No Further Action</TrackLimits>
+<Score et="513.2">Romain MORICEAU(5) lap=1 point=0 t=-1.000 et=513.040</Score>
+<Score et="515.9">Maroc Danderfluff(6) lap=1 point=1 t=38.856 et=515.740</Score>
+<Incident et="520.0">Bob Baumeister#7054(4) reported contact (53.90) with Post</Incident>
+<Incident et="520.1">Bob Baumeister#7054(4) reported contact (56.45) with Post</Incident>
+<Sector et="522.3">Bob Baumeister#7054(4) reports new suspension damage</Sector>
+<Incident et="522.4">Bob Baumeister#7054(4) reported contact (4651.97) with Immovable</Incident>
+<Score et="526.7">Bob Baumeister#7054(4) lap=1 point=0 t=-1.000 et=526.457</Score>
+<TrackLimits Driver="Abel Tapai" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="538.2">No Further Action</TrackLimits>
+<Score et="549.2">Japie Bosman(7) lap=0 point=2 t=-1.000 et=549.171</Score>
+<Score et="552.1">Romain MORICEAU(5) lap=1 point=1 t=38.910 et=551.940</Score>
+<Score et="557.4">Abel Tapai(9) lap=0 point=1 t=-1.000 et=557.240</Score>
+<Incident et="565.4">flavius szabo(1) reported contact (22.24) with Post</Incident>
+<Score et="565.4">flavius szabo(1) lap=1 point=2 t=-1.000 et=565.160</Score>
+<Incident et="565.5">flavius szabo(1) reported contact (108.95) with Post</Incident>
+<Incident et="565.8">flavius szabo(1) reported contact (121.78) with Post</Incident>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="567.5">No Further Action</TrackLimits>
+<Incident et="569.7">Yue Tempest(2) reported contact (2668.26) with Immovable</Incident>
+<TrackLimits Driver="Elyes Lamanac" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="579.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Yue Tempest" ID="2" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="581.6">No Further Action</TrackLimits>
+<Incident et="586.3">Thomas Backhusen(0) reported contact (59.34) with Post</Incident>
+<Incident et="586.5">Thomas Backhusen(0) reported contact (79.01) with Post</Incident>
+<Incident et="586.9">Elyes Lamanac(11) reported contact (59.89) with Post</Incident>
+<Incident et="587.0">Elyes Lamanac(11) reported contact (119.33) with Post</Incident>
+<TrackLimits Driver="Elyes Lamanac" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="587.1">No Further Action</TrackLimits>
+<TrackLimits Driver="Romain MORICEAU" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="588.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Adam Hrb" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="588.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Thomas Backhusen" ID="0" Lap="1" WarningPoints="0.25" CurrentPoints="0.75" Resolution="5" et="590.3">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Yue Tempest" ID="2" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="597.3">No Further Action</TrackLimits>
+<Sector et="598.3">Elyes Lamanac(11) reports new suspension damage</Sector>
+<Incident et="598.4">Elyes Lamanac(11) reported contact (353.51) with Immovable</Incident>
+<Incident et="598.5">Thomas Backhusen(0) reported contact (21.15) with Post</Incident>
+<TrackLimits Driver="Elyes Lamanac" ID="11" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="600.3">No Further Action</TrackLimits>
+<Incident et="600.9">Elyes Lamanac(11) reported contact (1745.39) with Immovable</Incident>
+<Incident et="603.1">tymoteusz jozwiak(8) reported contact (57.93) with Immovable</Incident>
+<Score et="604.3">Elyes Lamanac(11) lap=0 point=1 t=-1.000 et=604.180</Score>
+<TrackLimits Driver="Yue Tempest" ID="2" Lap="1" WarningPoints="0.75" CurrentPoints="0.75" Resolution="5" et="605.4">Invalid Lap Cut Track</TrackLimits>
+<Incident et="606.2">tymoteusz jozwiak(8) reported contact (1564.97) with Immovable</Incident>
+<Score et="608.6">Yue Tempest(2) lap=2 point=0 t=-1.000 et=608.460</Score>
+<Score et="609.3">Thomas Backhusen(0) lap=2 point=0 t=-1.000 et=609.060</Score>
+<Score et="610.7">Elyes Lamanac(11) lap=0 point=2 t=-1.000 et=610.471</Score>
+<Score et="610.7">Elyes Lamanac(11) lap=1 point=0 t=-1.000 et=610.471</Score>
+<Sector Driver="Maroc Danderfluff" ID="6" Sector="2" Class="GT3" et="612.0">Maroc Danderfluff(6) set new best for sector 2</Sector>
+<Score et="612.0">Maroc Danderfluff(6) lap=1 point=2 t=134.969 et=611.840</Score>
+<Score et="612.9">Adam Hrb(13) lap=0 point=1 t=-1.000 et=612.620</Score>
+<TrackLimits Driver="Randall Wales" ID="15" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="621.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Romain MORICEAU" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="624.2">No Further Action</TrackLimits>
+<Incident et="625.6">Walter Bassalig(12) reported contact (12.58) with Post</Incident>
+<Incident et="625.6">Walter Bassalig(12) reported contact (40.17) with Post</Incident>
+<Incident et="625.7">Walter Bassalig(12) reported contact (64.54) with Post</Incident>
+<Incident et="625.8">Walter Bassalig(12) reported contact (179.77) with Post</Incident>
+<TrackLimits Driver="Abel Tapai" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="631.5">No Further Action</TrackLimits>
+<Score et="637.1">RAMBO BAMBO(14) lap=0 point=1 t=-1.000 et=637.080</Score>
+<Score et="639.1">Walter Bassalig(12) lap=0 point=1 t=-1.000 et=638.980</Score>
+<Score et="643.7">Randall Wales(15) lap=0 point=1 t=-1.000 et=643.400</Score>
+<Sector Driver="Thomas Backhusen" ID="0" Sector="1" Class="GT3" et="647.2">Thomas Backhusen(0) set new best for sector 1</Sector>
+<Score et="647.3">Thomas Backhusen(0) lap=2 point=1 t=38.090 et=647.140</Score>
+<Score et="650.1">Romain MORICEAU(5) lap=1 point=2 t=136.825 et=649.860</Score>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="653.9">No Further Action</TrackLimits>
+<Score et="655.4">Abel Tapai(9) lap=0 point=2 t=-1.000 et=655.220</Score>
+<Incident et="658.0">Abel Tapai(9) reported contact (31.87) with Post</Incident>
+<TrackLimits Driver="Abel Tapai" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="660.3">No Further Action</TrackLimits>
+<Incident et="664.9">Zaabry Bober(21) reported contact (330.99) with Immovable</Incident>
+<Score et="667.7">Japie Bosman(7) lap=1 point=0 t=-1.000 et=667.725</Score>
+<Incident et="667.9">flavius szabo(1) reported contact (100.53) with Post</Incident>
+<Incident et="668.0">flavius szabo(1) reported contact (93.85) with Post</Incident>
+<Incident et="669.2">Miguel Skez(17) reported contact (114.65) with Post</Incident>
+<Incident et="669.3">Miguel Skez(17) reported contact (118.32) with Post</Incident>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="672.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Miguel Skez" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="674.7">No Further Action</TrackLimits>
+<Score et="675.7">Mar Tin(18) lap=0 point=1 t=-1.000 et=675.620</Score>
+<Score et="677.2">Arslan Khabibullin(16) lap=0 point=1 t=-1.000 et=677.100</Score>
+<Incident et="677.4">Mar Tin(18) reported contact (18.53) with Post</Incident>
+<Incident et="677.5">Mar Tin(18) reported contact (63.62) with Post</Incident>
+<Incident et="677.5">Mar Tin(18) reported contact (221.62) with Post</Incident>
+<Incident et="677.6">Mar Tin(18) reported contact (221.14) with Post</Incident>
+<Score et="678.0">flavius szabo(1) lap=2 point=0 t=-1.000 et=677.840</Score>
+<TrackLimits Driver="Arslan Khabibullin" ID="16" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="681.3">No Further Action</TrackLimits>
+<Score et="682.0">Walter Bassalig(12) lap=0 point=2 t=-1.000 et=681.872</Score>
+<Score et="682.0">Walter Bassalig(12) lap=1 point=0 t=-1.000 et=681.872</Score>
+<TrackLimits Driver="Mar Tin" ID="18" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="682.2">Invalid Lap Cut Track</TrackLimits>
+<Score et="683.8">Miguel Skez(17) lap=0 point=1 t=-1.000 et=683.620</Score>
+<TrackLimits Driver="Zaabry Bober" ID="21" Lap="0" WarningPoints="0.5" CurrentPoints="0.5" Resolution="5" et="689.5">Invalid Lap Cut Track</TrackLimits>
+<Sector et="689.7">Arslan Khabibullin(16) reports new suspension damage</Sector>
+<Sector et="689.7">Arslan Khabibullin(16) reports new suspension damage</Sector>
+<Incident et="689.8">Arslan Khabibullin(16) reported contact (1279.43) with Immovable</Incident>
+<Incident et="695.4">flavius szabo(1) reported contact (204.48) with Post</Incident>
+<Incident et="696.4">Fahrin Hakim(20) reported contact (3423.01) with Immovable</Incident>
+<TrackLimits Driver="flavius szabo" ID="1" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="697.1">No Further Action</TrackLimits>
+<Incident et="697.3">Arslan Khabibullin(16) reported contact (67.23) with Immovable</Incident>
+<Incident et="697.3">Arslan Khabibullin(16) reported contact (69.37) with Immovable</Incident>
+<Incident et="697.8">Arslan Khabibullin(16) reported contact (70.53) with Immovable</Incident>
+<Incident et="699.4">Arslan Khabibullin(16) reported contact (36.62) with Immovable</Incident>
+<Score et="699.8">Arslan Khabibullin(16) lap=0 point=2 t=-1.000 et=699.590</Score>
+<Score et="699.8">Arslan Khabibullin(16) lap=1 point=0 t=-1.000 et=699.590</Score>
+<Score et="702.4">Fahrin Hakim(20) lap=0 point=1 t=-1.000 et=702.102</Score>
+<Score et="702.4">Fahrin Hakim(20) lap=0 point=2 t=-1.000 et=702.102</Score>
+<Score et="702.4">Fahrin Hakim(20) lap=1 point=0 t=-1.000 et=702.102</Score>
+<Incident et="705.8">Rene Goehrke(22) reported contact (168.91) with Post</Incident>
+<Score et="709.2">Japie Bosman(7) lap=1 point=1 t=-1.000 et=709.281</Score>
+<Score et="709.2">Japie Bosman(7) lap=1 point=2 t=-1.000 et=709.281</Score>
+<Score et="709.2">Japie Bosman(7) lap=2 point=0 t=-1.000 et=709.281</Score>
+<Score et="709.2">Adam Hrb(13) lap=0 point=2 t=-1.000 et=709.040</Score>
+<Incident et="710.1">Abel Tapai(9) reported contact (4.10) with Post</Incident>
+<Incident et="710.2">Abel Tapai(9) reported contact (4.06) with Post</Incident>
+<TrackLimits Driver="Oliver Gruendel" ID="23" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="710.4">No Further Action</TrackLimits>
+<TrackLimits Driver="Adam Hrb" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="711.4">No Further Action</TrackLimits>
+<Sector et="712.5">Randall Wales(15) reports new suspension damage</Sector>
+<Incident et="712.5">Thomas Backhusen(0) reported contact (104.05) with another vehicle Randall Wales(15)</Incident>
+<Incident et="712.5">Thomas Backhusen(0) reported contact (225.77) with another vehicle Randall Wales(15)</Incident>
+<TrackLimits Driver="Mar Tin" ID="18" Lap="0" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="712.5">No Further Action</TrackLimits>
+<Incident et="714.0">Thomas Backhusen(0) reported contact (950.02) with another vehicle Randall Wales(15)</Incident>
+<Incident et="714.1">Randall Wales(15) reported contact (659.88) with another vehicle Thomas Backhusen(0)</Incident>
+<Incident et="714.1">Christian SCHMITT44(10) reported contact (428.73) with Post</Incident>
+<Score et="715.4">Abel Tapai(9) lap=1 point=0 t=-1.000 et=715.224</Score>
+<Score et="718.5">flavius szabo(1) lap=2 point=1 t=40.509 et=718.340</Score>
+<Score et="718.5">Mar Tin(18) lap=0 point=2 t=-1.000 et=718.335</Score>
+<Score et="718.5">Mar Tin(18) lap=1 point=0 t=-1.000 et=718.335</Score>
+<TrackLimits Driver="Thomas Backhusen" ID="0" Lap="2" WarningPoints="0" CurrentPoints="0.75" Resolution="7" et="718.5">No Further Action</TrackLimits>
+<Score et="718.8">Zaabry Bober(21) lap=0 point=1 t=-1.000 et=718.620</Score>
+</Stream>
+<MostLapsCompleted>2</MostLapsCompleted>
+<Driver>
+<Name>Thomas Backhusen</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="285.58" fuel="0.318" fuelUsed="0.399" ve="0.439" veUsed="0.561" twfl="0.988" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="366.0400" s1="38.1729" topspeed="285.58" fuel="0.259" fuelUsed="0.059" ve="0.349" veUsed="0.090" twfl="0.976" twfr="0.976" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>flavius szabo</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="--.---" topspeed="285.13" fuel="0.718" fuelUsed="-0.001" ve="0.298" veUsed="0.702" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="397.9333" topspeed="285.13" fuel="0.184" fuelUsed="0.533" ve="0.247" veUsed="0.051" twfl="0.941" twfr="0.957" twrl="0.957" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,AutoShift=3,Clutch,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="283.33" fuel="0.655" fuelUsed="0.062" ve="0.910" veUsed="0.090" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="667.7248" topspeed="231.53" fuel="0.718" fuelUsed="-0.063" ve="1.000" veUsed="-0.090" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>2</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="2">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+<Swap startLap="1" endLap="1">Brendan Iribe</Swap>
+<Swap startLap="2" endLap="2">Japie Bosman</Swap>
+</Driver>
+<Driver>
+<Name>Maroc Danderfluff</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="--.---" topspeed="285.13" fuel="0.651" fuelUsed="0.066" ve="0.906" veUsed="0.094" twfl="0.976" twfr="0.941" twrl="0.965" twrr="0.925" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Romain MORICEAU</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="283.33" fuel="0.184" fuelUsed="0.532" ve="0.255" veUsed="0.745" twfl="0.984" twfr="0.984" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=1,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Fahrin Hakim</Name>
+<Connected>1</Connected>
+<VehFile>95_25_UNIT382AB771.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #95:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="19" et="--.---" topspeed="195.49" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Mar Tin</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="19" et="--.---" topspeed="285.58" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Abel Tapai</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="278.82" fuel="0.718" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Bob Baumeister#7054</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="279.72" fuel="0.718" fuelUsed="-0.001" ve="0.671" veUsed="0.329" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,ABS=2,AutoShift=1,Steering=1,Braking=1,Clutch,Opposite,AutoLift,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Adam Hrb</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>RAMBO BAMBO</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Randall Wales</Name>
+<Connected>1</Connected>
+<VehFile>95_24_UNITE72F634D.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #95:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Miguel Skez</Name>
+<Connected>1</Connected>
+<VehFile>95_24_UNITE72F634D.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #95:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Zaabry Bober</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>14</Position>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Christian SCHMITT44</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>15</Position>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Rene Goehrke</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>70</CarNumber>
+<TeamName>Inception Racing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>16</Position>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Oliver Gruendel</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>17</Position>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>Alex Gaucho</Name>
+<Connected>1</Connected>
+<VehFile>95_24_UNITE72F634D.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2024 #95:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>95</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>18</Position>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+<Driver>
+<Name>kristian bylov</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>08210900 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>59</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>19</Position>
+<ClassPosition>19</ClassPosition>
+<LapRankIncludingDiscos>20</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

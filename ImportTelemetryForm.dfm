@@ -106,7 +106,7 @@ object ImportTelemetryForm: TImportTelemetryForm
     Height = 30
     Caption = 'Import'
     Default = True
-    ModalResult = mrNone
+    ModalResult = 0
     TabOrder = 5
     OnClick = BtnImportClick
   end
@@ -117,7 +117,7 @@ object ImportTelemetryForm: TImportTelemetryForm
     Height = 30
     Cancel = True
     Caption = 'Cancel'
-    ModalResult = mrCancel
+    ModalResult = 2
     TabOrder = 6
   end
 end

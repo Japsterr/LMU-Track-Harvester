@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Race Weekend</Setting>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1767470839</DateTime>
+<TimeString>2026/01/03 22:07:19</TimeString>
+<TrackVenue>Algarve International Circuit</TrackVenue>
+<TrackCourse>Algarve International Circuit</TrackCourse>
+<TrackEvent>6 Hours of Portimao</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\PortimaoWEC_2023\1.21\layoutPortimao.mas</TrackData>
+<TrackLength>4635.3</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="10000" download="20000">ADSL2+ 16M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>60</RaceTime>
+<MechFailRate>1</MechFailRate>
+<DamageMult>50</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>11</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Practice1>
+<DateTime>1767470843</DateTime>
+<TimeString>2026/01/03 22:07:23</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>60</Minutes>
+<Stream>
+<Score et="64.3">Japie Bosman(0) lap=0 point=1 t=-1.000 et=64.304</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="80.4">No Further Action</TrackLimits>
+<Score et="109.1">Japie Bosman(0) lap=0 point=2 t=-1.000 et=109.086</Score>
+<Score et="158.6">Japie Bosman(0) lap=1 point=0 t=-1.000 et=158.581</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="177.0">No Further Action</TrackLimits>
+<Score et="183.5">Japie Bosman(0) lap=1 point=1 t=24.868 et=183.448</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="183.5">Japie Bosman(0) set new best for sector 1</Sector>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="197.4">No Further Action</TrackLimits>
+<Score et="225.5">Japie Bosman(0) lap=1 point=2 t=66.900 et=225.481</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="225.5">Japie Bosman(0) set new best for sector 2</Sector>
+<Score et="274.1">Japie Bosman(0) lap=2 point=0 t=115.459 et=274.040</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="274.1">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="299.2">Japie Bosman(0) lap=2 point=1 t=25.128 et=299.168</Score>
+<Score et="339.8">Japie Bosman(0) lap=2 point=2 t=65.781 et=339.822</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="339.8">Japie Bosman(0) set new best for sector 2</Sector>
+<Score et="388.7">Japie Bosman(0) lap=3 point=0 t=114.697 et=388.737</Score>
+<Score et="413.4">Japie Bosman(0) lap=3 point=1 t=24.664 et=413.400</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="413.4">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="454.1">Japie Bosman(0) lap=3 point=2 t=65.332 et=454.069</Score>
+<Score et="502.4">Japie Bosman(0) lap=4 point=0 t=113.644 et=502.380</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="502.4">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="526.8">Japie Bosman(0) lap=4 point=1 t=24.457 et=526.837</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="526.8">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="567.5">Japie Bosman(0) lap=4 point=2 t=65.113 et=567.493</Score>
+<Score et="615.5">Japie Bosman(0) lap=5 point=0 t=113.150 et=615.531</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="3" Class="GT3" et="615.5">Japie Bosman(0) set new best for sector 3</Sector>
+<Score et="639.5">Japie Bosman(0) lap=5 point=1 t=23.950 et=639.480</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="1" Class="GT3" et="639.5">Japie Bosman(0) set new best for sector 1</Sector>
+<Score et="680.5">Japie Bosman(0) lap=5 point=2 t=64.956 et=680.487</Score>
+<Score et="731.0">Japie Bosman(0) lap=6 point=0 t=115.465 et=730.996</Score>
+<Score et="755.6">Japie Bosman(0) lap=6 point=1 t=24.641 et=755.636</Score>
+<Score et="796.0">Japie Bosman(0) lap=6 point=2 t=64.994 et=795.990</Score>
+<Sector Driver="Japie Bosman" ID="0" Sector="2" Class="GT3" et="796.0">Japie Bosman(0) set new best for sector 2</Sector>
+<Score et="844.1">Japie Bosman(0) lap=7 point=0 t=113.106 et=844.102</Score>
+<Score et="868.5">Japie Bosman(0) lap=7 point=1 t=24.432 et=868.533</Score>
+<Score et="909.0">Japie Bosman(0) lap=7 point=2 t=64.933 et=909.034</Score>
+<Score et="957.5">Japie Bosman(0) lap=8 point=0 t=113.373 et=957.474</Score>
+<Score et="982.0">Japie Bosman(0) lap=8 point=1 t=24.529 et=982.004</Score>
+<Score et="1023.0">Japie Bosman(0) lap=8 point=2 t=65.509 et=1022.983</Score>
+<Score et="1071.3">Japie Bosman(0) lap=9 point=0 t=113.837 et=1071.311</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="9" WarningPoints="0" CurrentPoints="0" Resolution="7" et="1091.0">No Further Action</TrackLimits>
+<Score et="1095.8">Japie Bosman(0) lap=9 point=1 t=24.465 et=1095.776</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="9" WarningPoints="0" CurrentPoints="0" Resolution="7" et="1111.0">No Further Action</TrackLimits>
+<Score et="1136.7">Japie Bosman(0) lap=9 point=2 t=65.376 et=1136.687</Score>
+<TrackLimits Driver="Japie Bosman" ID="0" Lap="9" WarningPoints="0" CurrentPoints="0" Resolution="7" et="1158.1">No Further Action</TrackLimits>
+<Score et="1186.9">Japie Bosman(0) lap=10 point=0 t=115.579 et=1186.891</Score>
+<Score et="1211.7">Japie Bosman(0) lap=10 point=1 t=24.814 et=1211.704</Score>
+<Score et="1223.6">Japie Bosman(0) lap=10 point=2 t=-1.000 et=1223.711</Score>
+<Score et="1223.6">Japie Bosman(0) lap=11 point=0 t=-1.000 et=1223.711</Score>
+</Stream>
+<MostLapsCompleted>11</MostLapsCompleted>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>23</CarNumber>
+<TeamName>United Autosports</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>2</LapRankIncludingDiscos>
+<Lap num="1" p="1" et="--.---" topspeed="247.29" fuel="0.682" fuelUsed="0.026" ve="0.965" veUsed="0.035" twfl="0.976" twfr="0.976" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="158.5807" s1="24.8676" s2="42.0327" s3="48.5589" topspeed="259.17" fuel="0.663" fuelUsed="0.020" ve="0.933" veUsed="0.031" twfl="0.961" twfr="0.965" twrl="0.965" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.4593</Lap>
+<Lap num="3" p="1" et="274.0401" s1="25.1276" s2="40.6538" s3="48.9153" topspeed="257.65" fuel="0.635" fuelUsed="0.027" ve="0.898" veUsed="0.035" twfl="0.949" twfr="0.953" twrl="0.957" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">114.6967</Lap>
+<Lap num="4" p="1" et="388.7368" s1="24.6636" s2="40.6685" s3="48.3116" topspeed="258.64" fuel="0.612" fuelUsed="0.024" ve="0.859" veUsed="0.039" twfl="0.933" twfr="0.941" twrl="0.949" twrr="0.949" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.6437</Lap>
+<Lap num="5" p="1" et="502.3805" s1="24.4568" s2="40.6559" s3="48.0374" topspeed="260.35" fuel="0.588" fuelUsed="0.024" ve="0.824" veUsed="0.035" twfl="0.922" twfr="0.929" twrl="0.941" twrr="0.941" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.1501</Lap>
+<Lap num="6" p="1" et="615.5306" s1="23.9499" s2="41.0063" s3="50.5087" topspeed="260.90" fuel="0.565" fuelUsed="0.024" ve="0.788" veUsed="0.035" twfl="0.910" twfr="0.918" twrl="0.933" twrr="0.933" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.4650</Lap>
+<Lap num="7" p="1" et="730.9955" s1="24.6405" s2="40.3538" s3="48.1118" topspeed="258.55" fuel="0.541" fuelUsed="0.024" ve="0.753" veUsed="0.035" twfl="0.898" twfr="0.906" twrl="0.925" twrr="0.925" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.1061</Lap>
+<Lap num="8" p="1" et="844.1016" s1="24.4316" s2="40.5012" s3="48.4400" topspeed="259.13" fuel="0.514" fuelUsed="0.027" ve="0.718" veUsed="0.035" twfl="0.882" twfr="0.894" twrl="0.918" twrr="0.918" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.3729</Lap>
+<Lap num="9" p="1" et="957.4745" s1="24.5291" s2="40.9795" s3="48.3282" topspeed="258.78" fuel="0.490" fuelUsed="0.024" ve="0.682" veUsed="0.035" twfl="0.867" twfr="0.878" twrl="0.910" twrr="0.910" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">113.8368</Lap>
+<Lap num="10" p="1" et="1071.3113" s1="24.4651" s2="40.9110" s3="50.2034" topspeed="260.53" fuel="0.467" fuelUsed="0.024" ve="0.647" veUsed="0.035" twfl="0.851" twfr="0.867" twrl="0.906" twrr="0.906" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.5795</Lap>
+<Lap num="11" p="1" et="1186.8907" s1="24.8136" topspeed="258.21" fuel="0.710" fuelUsed="-0.243" ve="1.000" veUsed="-0.353" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>113.1061</BestLapTime>
+<Laps>11</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>None</FinishStatus>
+<ControlAndAids startLap="1" endLap="11">PlayerControl,TC=2,ABS=2,Stability=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+</Practice1>
+</RaceResults>
+</rFactorXML>

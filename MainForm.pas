@@ -139,6 +139,7 @@ type
     function SelectedTrackID: Integer;
     function SelectedClassID: Integer;
     function SelectedSessionID: Integer;
+    function SelectedSourceTelemetryFile: string;
     function SelectedSessionInfo(out ATrackName, ACarName, AClassName: string): Boolean;
 
     procedure SetStatus(const AMsg: string);
@@ -388,6 +389,19 @@ begin
     Result := -1;
 end;
 
+function TMainForm.SelectedSourceTelemetryFile: string;
+var
+  Idx: Integer;
+begin
+  Result := '';
+  if LvwSessions.Selected = nil then
+    Exit;
+
+  Idx := LvwSessions.Selected.Index - Length(FSessions);
+  if (Idx >= 0) and (Idx <= High(FSourceTelemetryFiles)) then
+    Result := FSourceTelemetryFiles[Idx];
+end;
+
 function TMainForm.SelectedSessionInfo(out ATrackName, ACarName,
   AClassName: string): Boolean;
 var
@@ -404,7 +418,7 @@ begin
 
   ATrackName := FSessions[Idx].TrackName;
   if FSessions[Idx].TrackLayout <> '' then
-    ATrackName := ATrackName + ' – ' + FSessions[Idx].TrackLayout;
+    ATrackName := ATrackName + ' - ' + FSessions[Idx].TrackLayout;
   ACarName   := FSessions[Idx].CarName;
 
   // Look up car class name
@@ -738,7 +752,10 @@ var
   SourcePath, ErrMsg: string;
   SD: TSaveDialog;
   TrackName, CarName, ClassName: string;
+  SourceFile: string;
+  ErrorText: string;
 begin
+<<<<<<< HEAD
   if LvwSessions.Selected = nil then
   begin
     ShowMessage('Please select a telemetry session or source file first.');
@@ -762,11 +779,23 @@ begin
       SD.DefaultExt := 'csv';
       SD.Filter     := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
       SD.FileName   := ChangeFileExt(ExtractFileName(SourcePath), '.csv');
+=======
+  SourceFile := SelectedSourceTelemetryFile;
+  if SourceFile <> '' then
+  begin
+    SD := TSaveDialog.Create(nil);
+    try
+      SD.Title := 'Export LMU Source Telemetry to CSV';
+      SD.DefaultExt := 'csv';
+      SD.Filter := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
+      SD.FileName := ChangeFileExt(ExtractFileName(SourceFile), '.csv');
+>>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
       SD.InitialDir := FSettings.LastExportFolder;
 
       if SD.Execute then
       begin
         FSettings.LastExportFolder := ExtractFilePath(SD.FileName);
+<<<<<<< HEAD
         SetStatus('Exporting DuckDB telemetry...');
         Screen.Cursor := crHourGlass;
         Application.ProcessMessages;
@@ -786,6 +815,17 @@ begin
         finally
           Screen.Cursor := crDefault;
         end;
+=======
+        if TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, SD.FileName, ErrorText) then
+        begin
+          SetStatus('Source telemetry exported to: ' + SD.FileName);
+          if MessageDlg('Export successful. Open the file?',
+                        mtInformation, [mbYes, mbNo], 0) = mrYes then
+            ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
+        end
+        else
+          ShowMessage(ErrorText);
+>>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
       end;
     finally
       SD.Free;
@@ -793,7 +833,10 @@ begin
     Exit;
   end;
 
+<<<<<<< HEAD
   // Imported session export
+=======
+>>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
   SessionID := SelectedSessionID;
   if SessionID = -1 then
   begin
@@ -1022,80 +1065,43 @@ begin
     EdtResultsFolder.Text := SelectedDir;
     FSettings.ResultsSourceFolder := SelectedDir;
     FSettings.Save;
-    RefreshResultsSourceInfo;
-    ImportResultsFromConfiguredFolder(False);
-    RefreshLapTimes;
-  end;
-end;
-
-procedure TMainForm.BtnRescanResultsClick(Sender: TObject);
-begin
-  RefreshResultsSourceInfo;
-  ImportResultsFromConfiguredFolder(True);
-  RefreshLapTimes;
-end;
-
-procedure TMainForm.DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
-var
-  FileSize: Int64;
-  Header: TBytes;
-  HeaderHex: string;
-  I: Integer;
-  Stream: TFileStream;
-  Conn: TFDConnection;
-  Q: TFDQuery;
-begin
-  if not TFile.Exists(AFilePath) then
+  // If a source telemetry file row is selected, export the LMU .duckdb file
+  SourceFile := SelectedSourceTelemetryFile;
+  if SourceFile <> '' then
   begin
-    ALines.Add('File no longer exists.');
+    SD := TSaveDialog.Create(nil);
+    try
+      SD.Title := 'Export LMU Source Telemetry to CSV';
+      SD.DefaultExt := 'csv';
+      SD.Filter := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
+      SD.FileName := ChangeFileExt(ExtractFileName(SourceFile), '.csv');
+      SD.InitialDir := FSettings.LastExportFolder;
+
+      if SD.Execute then
+      begin
+        FSettings.LastExportFolder := ExtractFilePath(SD.FileName);
+        SetStatus('Exporting DuckDB telemetry...');
+        Screen.Cursor := crHourGlass;
+        Application.ProcessMessages;
+        try
+          if TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, SD.FileName, ErrorText) then
+          begin
+            SetStatus('Source telemetry exported to: ' + SD.FileName);
+            if MessageDlg('Export successful. Open the file?',
+                          mtInformation, [mbYes, mbNo], 0) = mrYes then
+              ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
+          end
+          else
+            ShowMessage('Export failed.' + sLineBreak + ErrorText);
+        finally
+          Screen.Cursor := crDefault;
+        end;
+      end;
+    finally
+      SD.Free;
+    end;
     Exit;
   end;
-
-  FileSize := TFile.GetSize(AFilePath);
-  ALines.Add(Format('Modified: %s', [DateTimeToStr(TFile.GetLastWriteTime(AFilePath))]));
-  ALines.Add(Format('Size: %.2f MB', [FileSize / (1024 * 1024)]));
-
-  SetLength(Header, 16);
-  HeaderHex := '';
-  Stream := TFileStream.Create(AFilePath, fmOpenRead or fmShareDenyNone);
-  try
-    I := Stream.Read(Header, Length(Header));
-    SetLength(Header, I);
-  finally
-    Stream.Free;
-  end;
-  for I := 0 to High(Header) do
-    HeaderHex := HeaderHex + IntToHex(Header[I], 2) + ' ';
-  if HeaderHex <> '' then
-    ALines.Add('Header bytes: ' + Trim(HeaderHex));
-  if (Length(Header) >= 4) and
-     (Header[0] = Ord('D')) and
-     (Header[1] = Ord('U')) and
-     (Header[2] = Ord('C')) and
-     (Header[3] = Ord('K')) then
-    ALines.Add('Detected file signature: DuckDB');
-
-  Conn := TFDConnection.Create(nil);
-  Q := TFDQuery.Create(nil);
-  try
-    Conn.DriverName := 'SQLite';
-    Conn.LoginPrompt := False;
-    Conn.Params.Add('Database=' + AFilePath);
-    Conn.Params.Add('OpenMode=ReadOnly');
-    Conn.Connected := True;
-
-    Q.Connection := Conn;
-    Q.SQL.Text := 'SELECT name FROM sqlite_master WHERE type = ''table'' ORDER BY name';
-    Q.Open;
-    if Q.Eof then
-      ALines.Add('SQLite probe: opened, but no tables found.')
-    else
-    begin
-      ALines.Add('SQLite probe: file opened. Tables:');
-      while not Q.Eof do
-      begin
-        ALines.Add('  - ' + Q.Fields[0].AsString);
-        Q.Next;
       end;
     end;
   except

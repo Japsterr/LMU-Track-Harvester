@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE rF [
+<!ENTITY rFEnt "rFactor Entity">
+]>
+<rFactorXML version="1.0">
+<RaceResults>
+<Setting>Multiplayer</Setting>
+<ServerName></ServerName>
+<ClientFuelVisible>3</ClientFuelVisible>
+<PlayerFile>Settings</PlayerFile>
+<DateTime>1767636042</DateTime>
+<TimeString>2026/01/05 20:00:42</TimeString>
+<TrackVenue>Algarve International Circuit</TrackVenue>
+<TrackCourse>Algarve International Circuit</TrackCourse>
+<TrackEvent>6 Hours of Portimao</TrackEvent>
+<TrackData>D:\SteamLibrary\steamapps\common\Le Mans Ultimate\Installed\Locations\PortimaoWEC_2023\1.21\layoutPortimao.mas</TrackData>
+<TrackLength>4635.3</TrackLength>
+<GameVersion>1.2000</GameVersion>
+<Dedicated>0</Dedicated>
+<ConnectionType upload="10000" download="20000">ADSL2+ 16M</ConnectionType>
+<RaceLaps>0</RaceLaps>
+<RaceTime>20</RaceTime>
+<MechFailRate>0</MechFailRate>
+<DamageMult>100</DamageMult>
+<FuelMult>1</FuelMult>
+<TireMult>1</TireMult>
+<VehiclesAllowed>McLaren_720S_LMGT3_Evo,</VehiclesAllowed>
+<ParcFerme>3</ParcFerme>
+<FixedSetups>0</FixedSetups>
+<FreeSettings>63</FreeSettings>
+<FixedUpgrades>0</FixedUpgrades>
+<TireWarmers>0</TireWarmers>
+<Qualify>
+<DateTime>1767636154</DateTime>
+<TimeString>2026/01/05 20:02:34</TimeString>
+<Laps>2147483647</Laps>
+<Minutes>5</Minutes>
+<Stream>
+<Penalty Driver="Dogma Rosso" ID="7" Penalty="Stop/Go" Time="10" Laps="0" Reason="Exiting Pits Under Red" et="28.3">Dogma Rosso received Stop/Go penalty, 10s, 0laps for Exiting Pits Under Red. Result: penalties=1, 1st=Stop/Go,10s</Penalty>
+<Incident et="31.9">Thomas Slezak(6) reported contact (194.65) with Immovable</Incident>
+<Incident et="33.2">Mike Kremmudas(9) reported contact (528.46) with Immovable</Incident>
+<TrackLimits Driver="Radek Dyh" ID="10" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="38.8">Invalid Lap Cut Track</TrackLimits>
+<Sector et="49.2">Johann Gaudray(8) reports new suspension damage</Sector>
+<Incident et="49.3">Johann Gaudray(8) reported contact (1725.72) with Immovable</Incident>
+<Incident et="49.9">Johann Gaudray(8) reported contact (1203.67) with Immovable</Incident>
+<TrackLimits Driver="Nuebu Schring" ID="15" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="54.5">No Further Action</TrackLimits>
+<Score et="57.1">Thomas Braakman(19) lap=0 point=1 t=-1.000 et=56.960</Score>
+<Score et="58.3">Radek Dyh(10) lap=0 point=1 t=-1.000 et=58.100</Score>
+<Score et="58.6">Matthew Tabone(3) lap=0 point=1 t=-1.000 et=58.480</Score>
+<TrackLimits Driver="Thomas Braakman" ID="19" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="58.7">No Further Action</TrackLimits>
+<Score et="58.8">Nuebu Schring(15) lap=0 point=1 t=-1.000 et=58.680</Score>
+<TrackLimits Driver="Matthew Tabone" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="59.8">No Further Action</TrackLimits>
+<Score et="61.6">Daniel Dombrowski(1) lap=0 point=1 t=-1.000 et=61.400</Score>
+<Score et="62.1">Lilian RsR(0) lap=0 point=1 t=-1.000 et=61.940</Score>
+<Score et="63.1">Dogma Rosso(7) lap=0 point=1 t=-1.000 et=62.860</Score>
+<Score et="63.1">Thomas Slezak(6) lap=0 point=1 t=-1.000 et=62.960</Score>
+<Score et="64.3">Marcin Wieczorek(17) lap=0 point=1 t=-1.000 et=64.120</Score>
+<Score et="70.0">Miku Hatsune#9897(11) lap=0 point=1 t=-1.000 et=69.860</Score>
+<Score et="73.9">Japie Bosman(5) lap=0 point=1 t=-1.000 et=73.931</Score>
+<Score et="74.9">Mike Kremmudas(9) lap=0 point=1 t=-1.000 et=74.760</Score>
+<Score et="75.6">Sean McNulty#6787(14) lap=0 point=1 t=-1.000 et=75.460</Score>
+<Score et="76.3">Lautaro Paez(13) lap=0 point=1 t=-1.000 et=75.820</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="77.5">No Further Action</TrackLimits>
+<TrackLimits Driver="Dogma Rosso" ID="7" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="81.0">No Further Action</TrackLimits>
+<Sector et="87.7">Lilian RsR(0) reports new suspension damage</Sector>
+<Incident et="87.7">Lilian RsR(0) reported contact (2409.15) with Immovable</Incident>
+<Incident et="87.8">Lilian RsR(0) reported contact (150.70) with Wheel</Incident>
+<Score et="90.2">Lilian RsR(0) lap=0 point=2 t=-1.000 et=90.061</Score>
+<Score et="90.2">Lilian RsR(0) lap=1 point=0 t=-1.000 et=90.061</Score>
+<TrackLimits Driver="Mike Kremmudas" ID="9" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="90.2">No Further Action</TrackLimits>
+<Score et="93.7">Pascal Buonemani(4) lap=0 point=1 t=-1.000 et=93.520</Score>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="95.3">No Further Action</TrackLimits>
+<Score et="95.9">Thomas Braakman(19) lap=0 point=2 t=-1.000 et=95.760</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="97.1">No Further Action</TrackLimits>
+<Score et="97.3">Matthew Tabone(3) lap=0 point=2 t=-1.000 et=97.200</Score>
+<Score et="97.8">Nuebu Schring(15) lap=0 point=2 t=-1.000 et=97.640</Score>
+<Score et="98.2">Radek Dyh(10) lap=0 point=2 t=-1.000 et=98.000</Score>
+<Score et="101.7">Thomas Slezak(6) lap=0 point=2 t=-1.000 et=101.580</Score>
+<Score et="102.0">Luca Pinti(20) lap=0 point=1 t=-1.000 et=101.820</Score>
+<Score et="102.6">Marcin Wieczorek(17) lap=0 point=2 t=-1.000 et=102.300</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="105.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthew Tabone" ID="3" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="105.6">No Further Action</TrackLimits>
+<Score et="107.5">Dogma Rosso(7) lap=0 point=2 t=-1.000 et=107.400</Score>
+<Score et="109.2">Miku Hatsune#9897(11) lap=0 point=2 t=-1.000 et=109.020</Score>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="109.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="111.0">No Further Action</TrackLimits>
+<Score et="114.4">Sean McNulty#6787(14) lap=0 point=2 t=-1.000 et=114.280</Score>
+<Score et="115.0">Japie Bosman(5) lap=0 point=2 t=-1.000 et=114.983</Score>
+<Score et="115.4">Daniel Dombrowski(1) lap=0 point=2 t=-1.000 et=114.980</Score>
+<Score et="115.8">Mike Kremmudas(9) lap=0 point=2 t=-1.000 et=115.500</Score>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="116.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="122.6">No Further Action</TrackLimits>
+<Score et="123.9">Lautaro Paez(13) lap=0 point=2 t=-1.000 et=123.480</Score>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="124.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="124.9">No Further Action</TrackLimits>
+<Score et="127.4">Johann Gaudray(8) lap=0 point=1 t=-1.000 et=127.280</Score>
+<TrackLimits Driver="Johann Gaudray" ID="8" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="128.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Luca Pinti" ID="20" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="130.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Lilian RsR" ID="0" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="132.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="132.9">No Further Action</TrackLimits>
+<Score et="133.1">Pascal Buonemani(4) lap=0 point=2 t=-1.000 et=132.940</Score>
+<TrackLimits Driver="Nuebu Schring" ID="15" Lap="0" WarningPoints="0" CurrentPoints="0" Resolution="7" et="138.2">No Further Action</TrackLimits>
+<Score et="141.2">Luca Pinti(20) lap=0 point=2 t=-1.000 et=141.040</Score>
+<Score et="142.8">Thomas Braakman(19) lap=1 point=0 t=-1.000 et=142.680</Score>
+<Score et="143.9">Matthew Tabone(3) lap=1 point=0 t=-1.000 et=143.700</Score>
+<Score et="144.6">Nuebu Schring(15) lap=1 point=0 t=-1.000 et=144.400</Score>
+<Score et="145.0">Lilian RsR(0) lap=1 point=1 t=-1.000 et=144.920</Score>
+<Score et="145.7">Radek Dyh(10) lap=1 point=0 t=-1.000 et=145.580</Score>
+<Score et="150.2">Marcin Wieczorek(17) lap=1 point=0 t=-1.000 et=149.920</Score>
+<TrackLimits Driver="Miku Hatsune#9897" ID="11" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="151.0">Invalid Lap Cut Track</TrackLimits>
+<Incident et="151.2">Luca Pinti(20) reported contact (6902.62) with Immovable</Incident>
+<TrackLimits Driver="Thomas Braakman" ID="19" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="153.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Matthew Tabone" ID="3" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="153.9">No Further Action</TrackLimits>
+<Score et="154.0">Thomas Slezak(6) lap=1 point=0 t=-1.000 et=153.840</Score>
+<Incident et="154.7">Luca Pinti(20) reported contact (54.09) with Wheel</Incident>
+<TrackLimits Driver="Nuebu Schring" ID="15" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="154.8">No Further Action</TrackLimits>
+<Score et="155.7">Dogma Rosso(7) lap=1 point=0 t=-1.000 et=155.580</Score>
+<Score et="156.1">Miku Hatsune#9897(11) lap=1 point=0 t=-1.000 et=155.940</Score>
+<TrackLimits Driver="Lilian RsR" ID="0" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="159.9">No Further Action</TrackLimits>
+<Score et="161.4">Sean McNulty#6787(14) lap=1 point=0 t=-1.000 et=161.160</Score>
+<Score et="161.7">Luca Pinti(20) lap=1 point=0 t=-1.000 et=160.899</Score>
+<Score et="162.6">Japie Bosman(5) lap=1 point=0 t=-1.000 et=162.556</Score>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="164.1">No Further Action</TrackLimits>
+<Score et="164.4">Mike Kremmudas(9) lap=1 point=0 t=-1.000 et=164.140</Score>
+<Score et="165.7">Thomas Braakman(19) lap=1 point=1 t=-1.000 et=165.500</Score>
+<Score et="166.4">Daniel Dombrowski(1) lap=1 point=0 t=-1.000 et=166.020</Score>
+<Sector Driver="Matthew Tabone" ID="3" Sector="1" Class="GT3" et="166.8">Matthew Tabone(3) set new best for sector 1</Sector>
+<Score et="166.9">Matthew Tabone(3) lap=1 point=1 t=22.977 et=166.680</Score>
+<Score et="167.1">Johann Gaudray(8) lap=0 point=2 t=-1.000 et=166.900</Score>
+<TrackLimits Driver="Thomas Braakman" ID="19" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="167.1">No Further Action</TrackLimits>
+<Score et="168.5">Nuebu Schring(15) lap=1 point=1 t=23.909 et=168.300</Score>
+<Score et="169.4">Radek Dyh(10) lap=1 point=1 t=23.642 et=169.220</Score>
+<Score et="169.7">Lautaro Paez(13) lap=1 point=0 t=-1.000 et=169.420</Score>
+<Score et="173.3">Marcin Wieczorek(17) lap=1 point=1 t=23.165 et=173.080</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="176.8">No Further Action</TrackLimits>
+<Score et="177.1">Thomas Slezak(6) lap=1 point=1 t=23.070 et=176.920</Score>
+<Score et="179.2">Dogma Rosso(7) lap=1 point=1 t=23.440 et=179.020</Score>
+<Score et="179.6">Miku Hatsune#9897(11) lap=1 point=1 t=-1.000 et=179.400</Score>
+<Score et="180.1">Pascal Buonemani(4) lap=1 point=0 t=-1.000 et=179.780</Score>
+<TrackLimits Driver="Japie Bosman" ID="5" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="180.2">No Further Action</TrackLimits>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="182.3">No Further Action</TrackLimits>
+<Score et="183.6">Lilian RsR(0) lap=1 point=2 t=-1.000 et=183.440</Score>
+<Score et="184.7">Sean McNulty#6787(14) lap=1 point=1 t=-1.000 et=184.600</Score>
+<TrackLimits Driver="Sean McNulty#6787" ID="14" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="186.0">No Further Action</TrackLimits>
+<Score et="186.3">Japie Bosman(5) lap=1 point=1 t=23.779 et=186.335</Score>
+<Score et="188.5">Mike Kremmudas(9) lap=1 point=1 t=24.176 et=188.300</Score>
+<Score et="190.0">Daniel Dombrowski(1) lap=1 point=1 t=23.667 et=189.700</Score>
+<Sector Driver="Lautaro Paez" ID="13" Sector="1" Class="GT3" et="192.6">Lautaro Paez(13) set new best for sector 1</Sector>
+<Score et="192.7">Lautaro Paez(13) lap=1 point=1 t=22.763 et=192.200</Score>
+<TrackLimits Driver="Dogma Rosso" ID="7" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="194.1">No Further Action</TrackLimits>
+<Score et="203.1">Pascal Buonemani(4) lap=1 point=1 t=23.129 et=202.920</Score>
+<Score et="203.4">Luca Pinti(20) lap=1 point=1 t=-1.000 et=203.300</Score>
+<Score et="203.8">Thomas Braakman(19) lap=1 point=2 t=60.988 et=203.660</Score>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="204.4">No Further Action</TrackLimits>
+<Sector Driver="Matthew Tabone" ID="3" Sector="2" Class="GT3" et="205.6">Matthew Tabone(3) set new best for sector 2</Sector>
+<Score et="205.7">Matthew Tabone(3) lap=1 point=2 t=61.791 et=205.500</Score>
+<Sector Driver="Nuebu Schring" ID="15" Sector="2" Class="GT3" et="207.0">Nuebu Schring(15) set new best for sector 2</Sector>
+<Score et="207.1">Nuebu Schring(15) lap=1 point=2 t=62.523 et=206.920</Score>
+<Score et="208.6">Radek Dyh(10) lap=1 point=2 t=62.769 et=208.360</Score>
+<Score et="212.5">Marcin Wieczorek(17) lap=1 point=2 t=62.335 et=212.260</Score>
+<Score et="214.9">Johann Gaudray(8) lap=1 point=0 t=-1.000 et=214.740</Score>
+<Sector Driver="Thomas Slezak" ID="6" Sector="2" Class="GT3" et="215.4">Thomas Slezak(6) set new best for sector 2</Sector>
+<Score et="215.5">Thomas Slezak(6) lap=1 point=2 t=61.478 et=215.320</Score>
+<Score et="218.0">Dogma Rosso(7) lap=1 point=2 t=62.207 et=217.800</Score>
+<Score et="218.4">Miku Hatsune#9897(11) lap=1 point=2 t=-1.000 et=218.300</Score>
+<Score et="223.6">Sean McNulty#6787(14) lap=1 point=2 t=62.253 et=223.420</Score>
+<Score et="226.0">Japie Bosman(5) lap=1 point=2 t=63.465 et=226.021</Score>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="226.1">No Further Action</TrackLimits>
+<Score et="228.6">Mike Kremmudas(9) lap=1 point=2 t=64.249 et=228.380</Score>
+<Score et="229.7">Daniel Dombrowski(1) lap=1 point=2 t=63.317 et=229.340</Score>
+<Score et="229.8">Lilian RsR(0) lap=2 point=0 t=-1.000 et=229.680</Score>
+<TrackLimits Driver="Radek Dyh" ID="10" Lap="1" WarningPoints="0" CurrentPoints="0.25" Resolution="7" et="236.8">No Further Action</TrackLimits>
+<Score et="238.9">Lautaro Paez(13) lap=1 point=2 t=68.948 et=238.380</Score>
+<Score et="239.0">Johann Gaudray(8) lap=1 point=1 t=24.158 et=238.900</Score>
+<TrackLimits Driver="Johann Gaudray" ID="8" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="240.1">No Further Action</TrackLimits>
+<Score et="241.7">Pascal Buonemani(4) lap=1 point=2 t=61.728 et=241.520</Score>
+<TrackLimits Driver="Lilian RsR" ID="0" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="242.1">No Further Action</TrackLimits>
+<Score et="242.7">Luca Pinti(20) lap=1 point=2 t=-1.000 et=242.580</Score>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="245.6">No Further Action</TrackLimits>
+<Sector Driver="Thomas Braakman" ID="19" Sector="3" Class="GT3" et="250.3">Thomas Braakman(19) set new best for sector 3</Sector>
+<Score et="250.4">Thomas Braakman(19) lap=2 point=0 t=107.553 et=250.220</Score>
+<Sector Driver="Matthew Tabone" ID="3" Sector="3" Class="GT3" et="251.9">Matthew Tabone(3) set new best for sector 3</Sector>
+<Score et="251.9">Matthew Tabone(3) lap=2 point=0 t=108.071 et=251.780</Score>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="252.1">No Further Action</TrackLimits>
+<Score et="253.2">Lilian RsR(0) lap=2 point=1 t=23.325 et=253.000</Score>
+<Score et="253.6">Nuebu Schring(15) lap=2 point=0 t=108.968 et=253.360</Score>
+<Score et="255.5">Radek Dyh(10) lap=2 point=0 t=109.762 et=255.340</Score>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="1" WarningPoints="0" CurrentPoints="0" Resolution="7" et="259.0">No Further Action</TrackLimits>
+<Score et="259.3">Marcin Wieczorek(17) lap=2 point=0 t=109.114 et=259.040</Score>
+<Sector Driver="Thomas Slezak" ID="6" Sector="3" Class="GT3" et="261.7">Thomas Slezak(6) set new best for sector 3</Sector>
+<Score et="261.7">Thomas Slezak(6) lap=2 point=0 t=107.744 et=261.600</Score>
+<Score et="265.4">Miku Hatsune#9897(11) lap=2 point=0 t=-1.000 et=265.280</Score>
+<TrackLimits Driver="Lilian RsR" ID="0" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="267.9">No Further Action</TrackLimits>
+<Incident et="269.1">Nuebu Schring(15) reported contact (69.46) with Immovable</Incident>
+<Score et="270.4">Sean McNulty#6787(14) lap=2 point=0 t=109.016 et=270.180</Score>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="271.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="271.8">No Further Action</TrackLimits>
+<TrackLimits Driver="Nuebu Schring" ID="15" Lap="2" WarningPoints="0.5" CurrentPoints="0.5" Resolution="5" et="273.0">Invalid Lap Cut Track</TrackLimits>
+<Score et="273.3">Thomas Braakman(19) lap=2 point=1 t=-1.000 et=273.180</Score>
+<Score et="273.8">Japie Bosman(5) lap=2 point=0 t=111.212 et=273.767</Score>
+<TrackLimits Driver="Thomas Braakman" ID="19" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="274.4">No Further Action</TrackLimits>
+<Score et="274.9">Matthew Tabone(3) lap=2 point=1 t=22.994 et=274.780</Score>
+<Score et="276.5">Mike Kremmudas(9) lap=2 point=0 t=112.193 et=276.320</Score>
+<Score et="277.1">Nuebu Schring(15) lap=2 point=1 t=-1.000 et=276.900</Score>
+<Score et="277.8">Daniel Dombrowski(1) lap=2 point=0 t=111.441 et=277.460</Score>
+<Score et="278.0">Pete Sobotta(12) lap=0 point=1 t=-1.000 et=277.880</Score>
+<Score et="278.5">Johann Gaudray(8) lap=1 point=2 t=63.626 et=278.360</Score>
+<Score et="278.7">Radek Dyh(10) lap=2 point=1 t=23.154 et=278.500</Score>
+<Penalty et="280.7">Dogma Rosso served 1st Stop/Go penalty, result: penalties=0, 1st=Stop/Go,10s</Penalty>
+<Score et="282.0">Marcin Wieczorek(17) lap=2 point=1 t=-1.000 et=281.860</Score>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="283.4">No Further Action</TrackLimits>
+<Sector Driver="Thomas Slezak" ID="6" Sector="1" Class="GT3" et="284.3">Thomas Slezak(6) set new best for sector 1</Sector>
+<Score et="284.3">Thomas Slezak(6) lap=2 point=1 t=22.647 et=284.240</Score>
+<Score et="287.4">Lautaro Paez(13) lap=2 point=0 t=117.545 et=286.980</Score>
+<Score et="288.4">Pascal Buonemani(4) lap=2 point=0 t=108.365 et=288.140</Score>
+<Score et="288.8">Miku Hatsune#9897(11) lap=2 point=1 t=23.283 et=288.560</Score>
+<TrackLimits Driver="Thomas Braakman" ID="19" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="289.0">No Further Action</TrackLimits>
+<Score et="289.7">Luca Pinti(20) lap=2 point=0 t=-1.000 et=289.540</Score>
+<Sector Driver="Lilian RsR" ID="0" Sector="2" Class="GT3" et="291.3">Lilian RsR(0) set new best for sector 2</Sector>
+<Score et="291.4">Lilian RsR(0) lap=2 point=2 t=61.448 et=291.140</Score>
+<Score et="293.2">Sean McNulty#6787(14) lap=2 point=1 t=-1.000 et=293.080</Score>
+<TrackLimits Driver="Sean McNulty#6787" ID="14" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="294.7">No Further Action</TrackLimits>
+<TrackLimits Driver="Pete Sobotta" ID="12" Lap="0" WarningPoints="0.25" CurrentPoints="0.25" Resolution="5" et="295.7">Invalid Lap Cut Track</TrackLimits>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="296.5">No Further Action</TrackLimits>
+<Score et="297.9">Japie Bosman(5) lap=2 point=1 t=24.154 et=297.921</Score>
+<TrackLimits Driver="Mike Kremmudas" ID="9" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="298.9">No Further Action</TrackLimits>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="300.1">No Further Action</TrackLimits>
+<Score et="301.5">Daniel Dombrowski(1) lap=2 point=1 t=23.777 et=301.240</Score>
+<Score et="301.7">Dogma Rosso(7) lap=2 point=0 t=-1.000 et=301.460</Score>
+<Score et="304.3">Mike Kremmudas(9) lap=2 point=1 t=27.839 et=304.160</Score>
+<TrackLimits Driver="Nuebu Schring" ID="15" Lap="2" WarningPoints="0" CurrentPoints="0.5" Resolution="7" et="304.5">No Further Action</TrackLimits>
+<Score et="310.6">Lautaro Paez(13) lap=2 point=1 t=23.213 et=310.180</Score>
+<Score et="311.2">Pascal Buonemani(4) lap=2 point=1 t=-1.000 et=310.980</Score>
+<Score et="311.9">Thomas Braakman(19) lap=2 point=2 t=61.496 et=311.720</Score>
+<Score et="312.6">Luca Pinti(20) lap=2 point=1 t=22.921 et=312.460</Score>
+<TrackLimits Driver="Marcin Wieczorek" ID="17" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="313.4">No Further Action</TrackLimits>
+<Score et="313.5">Matthew Tabone(3) lap=2 point=2 t=61.501 et=313.280</Score>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="314.9">No Further Action</TrackLimits>
+<Score et="315.9">Nuebu Schring(15) lap=2 point=2 t=-1.000 et=315.760</Score>
+<Score et="317.4">Pete Sobotta(12) lap=0 point=2 t=-1.000 et=317.320</Score>
+<Score et="318.2">Radek Dyh(10) lap=2 point=2 t=62.590 et=317.940</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="319.4">No Further Action</TrackLimits>
+<Score et="321.2">Marcin Wieczorek(17) lap=2 point=2 t=61.977 et=321.020</Score>
+<Sector Driver="Thomas Slezak" ID="6" Sector="2" Class="GT3" et="322.5">Thomas Slezak(6) set new best for sector 2</Sector>
+<Score et="322.5">Thomas Slezak(6) lap=2 point=2 t=60.749 et=322.340</Score>
+<Score et="326.7">Dogma Rosso(7) lap=2 point=1 t=-1.000 et=326.580</Score>
+<Score et="326.7">Dogma Rosso(7) lap=2 point=2 t=-1.000 et=326.580</Score>
+<Score et="326.7">Dogma Rosso(7) lap=3 point=0 t=-1.000 et=326.580</Score>
+<Score et="327.2">Johann Gaudray(8) lap=2 point=0 t=112.288 et=327.040</Score>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="327.5">No Further Action</TrackLimits>
+<Score et="328.0">Miku Hatsune#9897(11) lap=2 point=2 t=62.543 et=327.820</Score>
+<TrackLimits Driver="Daniel Dombrowski" ID="1" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="328.2">No Further Action</TrackLimits>
+<Score et="331.9">Sean McNulty#6787(14) lap=2 point=2 t=61.490 et=331.660</Score>
+<TrackLimits Driver="Matthew Tabone" ID="3" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="333.6">No Further Action</TrackLimits>
+<Sector Driver="Lilian RsR" ID="0" Sector="3" Class="GT3" et="337.2">Lilian RsR(0) set new best for sector 3</Sector>
+<Score et="337.3">Lilian RsR(0) lap=3 point=0 t=107.445 et=337.120</Score>
+<Score et="337.7">Japie Bosman(5) lap=2 point=2 t=63.965 et=337.732</Score>
+<TrackLimits Driver="Johann Gaudray" ID="8" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="338.1">No Further Action</TrackLimits>
+<Score et="341.4">Daniel Dombrowski(1) lap=2 point=2 t=63.630 et=341.100</Score>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="343.6">No Further Action</TrackLimits>
+<TrackLimits Driver="Lautaro Paez" ID="13" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="344.3">No Further Action</TrackLimits>
+<Score et="344.5">Lautaro Paez(13) lap=2 point=2 t=-1.000 et=344.066</Score>
+<Score et="344.5">Lautaro Paez(13) lap=3 point=0 t=-1.000 et=344.066</Score>
+<Incident et="346.3">Lilian RsR(0) reported contact (8069.43) with Immovable</Incident>
+<Incident et="348.7">Lilian RsR(0) reported contact (10.49) with Immovable</Incident>
+<Score et="350.0">Pascal Buonemani(4) lap=2 point=2 t=61.586 et=349.740</Score>
+<Score et="351.2">Luca Pinti(20) lap=2 point=2 t=61.422 et=350.960</Score>
+<Score et="351.2">Johann Gaudray(8) lap=2 point=1 t=23.980 et=351.020</Score>
+<Score et="352.2">Mike Kremmudas(9) lap=2 point=2 t=75.676 et=352.000</Score>
+<Score et="352.9">Lilian RsR(0) lap=3 point=1 t=-1.000 et=352.639</Score>
+<Score et="352.9">Lilian RsR(0) lap=3 point=2 t=-1.000 et=352.639</Score>
+<Score et="352.9">Lilian RsR(0) lap=4 point=0 t=-1.000 et=352.639</Score>
+<TrackLimits Driver="Matthew Tabone" ID="3" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="353.0">No Further Action</TrackLimits>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="356.5">No Further Action</TrackLimits>
+<Score et="359.9">Matthew Tabone(3) lap=3 point=0 t=107.905 et=359.680</Score>
+<Score et="362.4">Nuebu Schring(15) lap=3 point=0 t=-1.000 et=362.240</Score>
+<Score et="364.1">Pete Sobotta(12) lap=1 point=0 t=-1.000 et=363.592</Score>
+<Score et="365.4">Radek Dyh(10) lap=3 point=0 t=109.827 et=365.180</Score>
+<TrackLimits Driver="Johann Gaudray" ID="8" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="365.8">No Further Action</TrackLimits>
+<Score et="366.3">Thomas Braakman(19) lap=3 point=0 t=115.902 et=366.140</Score>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="367.2">No Further Action</TrackLimits>
+<Score et="368.0">Matthew Tabone(3) lap=3 point=1 t=-1.000 et=367.843</Score>
+<Score et="368.0">Matthew Tabone(3) lap=3 point=2 t=-1.000 et=367.843</Score>
+<Score et="368.0">Matthew Tabone(3) lap=4 point=0 t=-1.000 et=367.843</Score>
+<Score et="368.0">Marcin Wieczorek(17) lap=3 point=0 t=108.807 et=367.840</Score>
+<Score et="368.6">Thomas Slezak(6) lap=3 point=0 t=106.765 et=368.360</Score>
+<Score et="373.8">Radek Dyh(10) lap=3 point=1 t=-1.000 et=373.604</Score>
+<Score et="373.8">Radek Dyh(10) lap=3 point=2 t=-1.000 et=373.604</Score>
+<Score et="373.8">Radek Dyh(10) lap=4 point=0 t=-1.000 et=373.604</Score>
+<Score et="374.4">Thomas Braakman(19) lap=3 point=1 t=-1.000 et=374.253</Score>
+<Score et="374.4">Thomas Braakman(19) lap=3 point=2 t=-1.000 et=374.253</Score>
+<Score et="374.4">Thomas Braakman(19) lap=4 point=0 t=-1.000 et=374.253</Score>
+<Score et="374.7">Nuebu Schring(15) lap=3 point=1 t=-1.000 et=374.111</Score>
+<Score et="374.7">Nuebu Schring(15) lap=3 point=2 t=-1.000 et=374.111</Score>
+<Score et="374.7">Nuebu Schring(15) lap=4 point=0 t=-1.000 et=374.111</Score>
+<Score et="375.0">Miku Hatsune#9897(11) lap=3 point=0 t=109.507 et=374.800</Score>
+<Score et="378.8">Sean McNulty#6787(14) lap=3 point=0 t=108.417 et=378.600</Score>
+<TrackLimits Driver="Thomas Slezak" ID="6" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="380.3">No Further Action</TrackLimits>
+<TrackLimits Driver="Johann Gaudray" ID="8" Lap="2" WarningPoints="0" CurrentPoints="0" Resolution="7" et="381.1">No Further Action</TrackLimits>
+<Score et="383.2">Thomas Slezak(6) lap=3 point=1 t=-1.000 et=383.062</Score>
+<Score et="383.2">Thomas Slezak(6) lap=3 point=2 t=-1.000 et=383.062</Score>
+<Score et="383.2">Thomas Slezak(6) lap=4 point=0 t=-1.000 et=383.062</Score>
+<Score et="385.0">Japie Bosman(5) lap=3 point=0 t=111.190 et=384.957</Score>
+<Score et="388.6">Daniel Dombrowski(1) lap=3 point=0 t=110.895 et=388.360</Score>
+<Score et="388.8">Sean McNulty#6787(14) lap=3 point=1 t=-1.000 et=388.650</Score>
+<Score et="388.8">Sean McNulty#6787(14) lap=3 point=2 t=-1.000 et=388.650</Score>
+<Score et="388.8">Sean McNulty#6787(14) lap=4 point=0 t=-1.000 et=388.650</Score>
+<Score et="391.9">Johann Gaudray(8) lap=2 point=2 t=64.597 et=391.620</Score>
+<Score et="397.0">Pascal Buonemani(4) lap=3 point=0 t=108.556 et=396.700</Score>
+<Score et="397.7">Luca Pinti(20) lap=3 point=0 t=108.061 et=397.600</Score>
+<Score et="403.6">Mike Kremmudas(9) lap=3 point=0 t=127.026 et=403.360</Score>
+<Score et="403.6">Marcin Wieczorek(17) lap=3 point=1 t=35.514 et=403.360</Score>
+<Score et="409.0">Japie Bosman(5) lap=3 point=1 t=24.040 et=408.997</Score>
+<Score et="412.0">Daniel Dombrowski(1) lap=3 point=1 t=23.423 et=411.780</Score>
+<Score et="413.3">Luca Pinti(20) lap=3 point=1 t=-1.000 et=412.490</Score>
+<Score et="413.3">Luca Pinti(20) lap=3 point=2 t=-1.000 et=412.490</Score>
+<Score et="413.3">Luca Pinti(20) lap=4 point=0 t=-1.000 et=412.490</Score>
+<Score et="419.7">Pascal Buonemani(4) lap=3 point=1 t=-1.000 et=419.480</Score>
+<TrackLimits Driver="Pascal Buonemani" ID="4" Lap="3" WarningPoints="0" CurrentPoints="0" Resolution="7" et="423.2">No Further Action</TrackLimits>
+<Score et="431.5">Mike Kremmudas(9) lap=3 point=1 t=28.041 et=431.400</Score>
+<Score et="438.7">Johann Gaudray(8) lap=3 point=0 t=111.563 et=438.600</Score>
+</Stream>
+<MostLapsCompleted>4</MostLapsCompleted>
+<Driver>
+<Name>Thomas Slezak</Name>
+<Connected>1</Connected>
+<VehFile>63_25_IRON3E8BB8AD.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #63:ELMS</VehName>
+<Category>ELMS 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>7</CarNumber>
+<TeamName>Iron Lynx 2025 #63</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>1</Position>
+<ClassPosition>1</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="7" et="--.---" topspeed="252.25" fuel="0.129" fuelUsed="0.654" ve="0.165" veUsed="0.835" twfl="0.992" twfr="0.992" twrl="0.988" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="153.8401" s1="23.0699" s2="38.4077" s3="46.2661" topspeed="263.06" fuel="0.102" fuelUsed="0.027" ve="0.129" veUsed="0.035" twfl="0.980" twfr="0.984" twrl="0.980" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">107.7437</Lap>
+<Lap num="3" p="1" et="261.6001" s1="22.6474" s2="38.1019" s3="46.0157" topspeed="263.96" fuel="0.078" fuelUsed="0.024" ve="0.094" veUsed="0.035" twfl="0.973" twfr="0.980" twrl="0.973" twrr="0.973" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">106.7650</Lap>
+<Lap num="4" p="1" et="368.3601" topspeed="263.96" fuel="0.784" fuelUsed="-0.706" ve="0.200" veUsed="-0.106" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>106.7650</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Lilian RsR</Name>
+<Connected>1</Connected>
+<VehFile>46_25_WRT_874F6E78.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2025 #46:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>1</CarNumber>
+<TeamName>Team WRT 2025 #46</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>2</Position>
+<ClassPosition>2</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="220.27" fuel="0.733" fuelUsed="0.000" ve="0.188" veUsed="0.812" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="90.0608" topspeed="252.25" fuel="0.114" fuelUsed="0.620" ve="0.157" veUsed="0.031" twfl="0.976" twfr="0.969" twrl="0.976" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="1" et="229.6799" s1="23.3250" s2="38.1233" s3="45.9966" topspeed="262.16" fuel="0.090" fuelUsed="0.024" ve="0.122" veUsed="0.035" twfl="0.961" twfr="0.957" twrl="0.973" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">107.4449</Lap>
+<Lap num="4" p="1" et="337.1201" topspeed="263.96" fuel="0.733" fuelUsed="-0.643" ve="0.188" veUsed="-0.067" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>107.4449</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,ABS=1,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Thomas Braakman</Name>
+<Connected>1</Connected>
+<VehFile>31_24_WRT_C033B08A.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Team WRT 2024 #31:WE2</VehName>
+<Category>WEC 2024, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>20</CarNumber>
+<TeamName>Team WRT 2024 #31</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>3</Position>
+<ClassPosition>3</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="2" et="--.---" topspeed="252.25" fuel="0.055" fuelUsed="0.678" ve="0.075" veUsed="0.925" twfl="0.992" twfr="0.996" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="1" et="142.6799" topspeed="263.06" fuel="0.031" fuelUsed="0.024" ve="0.039" veUsed="0.035" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">107.5533</Lap>
+<Lap num="3" p="2" et="250.2200" topspeed="263.51" fuel="0.008" fuelUsed="0.024" ve="0.008" veUsed="0.031" twfl="0.953" twfr="0.973" twrl="0.933" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">115.9019</Lap>
+<Lap num="4" p="3" et="366.1399" topspeed="252.25" fuel="0.733" fuelUsed="-0.725" ve="0.110" veUsed="-0.102" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>107.5533</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Matthew Tabone</Name>
+<Connected>1</Connected>
+<VehFile>23_25_UNIT907820FF.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #23:ELMS</VehName>
+<Category>ELMS 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>4</CarNumber>
+<TeamName>United Autosports 2025 #23</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>4</Position>
+<ClassPosition>4</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="3" et="--.---" topspeed="251.35" fuel="0.055" fuelUsed="0.653" ve="0.075" veUsed="0.925" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="2" et="143.7000" s1="22.9768" s2="38.8147" s3="46.2797" topspeed="262.61" fuel="0.031" fuelUsed="0.024" ve="0.043" veUsed="0.031" twfl="0.980" twfr="0.984" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.0711</Lap>
+<Lap num="3" p="4" et="251.7800" s1="22.9941" s2="38.5070" s3="46.4037" topspeed="263.51" fuel="0.008" fuelUsed="0.024" ve="0.008" veUsed="0.035" twfl="0.969" twfr="0.976" twrl="0.976" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">107.9049</Lap>
+<Lap num="4" p="4" et="359.6799" topspeed="255.85" fuel="0.710" fuelUsed="-0.702" ve="0.110" veUsed="-0.102" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>107.9049</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,ABS=2,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Luca Pinti</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITDF975F11.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:WEC</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>21</CarNumber>
+<TeamName>United Autosports 2025 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>5</Position>
+<ClassPosition>5</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="11" et="--.---" topspeed="215.76" fuel="0.710" fuelUsed="-0.001" ve="0.149" veUsed="0.851" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="15" et="160.8994" topspeed="252.25" fuel="0.082" fuelUsed="0.627" ve="0.118" veUsed="0.031" twfl="0.988" twfr="0.992" twrl="0.980" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="5" et="289.5400" s1="22.9213" s2="38.5002" s3="46.6391" topspeed="263.96" fuel="0.059" fuelUsed="0.024" ve="0.082" veUsed="0.035" twfl="0.976" twfr="0.984" twrl="0.976" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.0606</Lap>
+<Lap num="4" p="5" et="397.6001" topspeed="254.50" fuel="0.710" fuelUsed="-0.651" ve="0.149" veUsed="-0.067" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>108.0606</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Pascal Buonemani</Name>
+<Connected>1</Connected>
+<VehFile>60_24_IRONDCDFC07B.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2024 #60:LM</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>5</CarNumber>
+<TeamName>Iron Lynx 2024 #60</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>6</Position>
+<ClassPosition>6</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="16" et="--.---" topspeed="251.80" fuel="0.298" fuelUsed="0.585" ve="0.337" veUsed="0.663" twfl="0.992" twfr="0.996" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="179.7800" s1="23.1288" s2="38.5988" s3="46.6371" topspeed="260.35" fuel="0.267" fuelUsed="0.031" ve="0.302" veUsed="0.035" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.3646</Lap>
+<Lap num="3" p="5" et="288.1399" topspeed="260.80" fuel="0.239" fuelUsed="0.027" ve="0.271" veUsed="0.031" twfl="0.973" twfr="0.980" twrl="0.976" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.5564</Lap>
+<BestLapTime>108.3646</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Sean McNulty#6787</Name>
+<Connected>1</Connected>
+<VehFile>85_24_IRON243EA520.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2024 #85:EC2</VehName>
+<Category>WEC 2024, GT3, Lamborghini Huracan LMGT3 Evo2</Category>
+<CarType>Lamborghini Huracan LMGT3 Evo2</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>15</CarNumber>
+<TeamName>Iron Dames 2024 #85</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>7</Position>
+<ClassPosition>7</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="10" et="--.---" topspeed="249.99" fuel="0.851" fuelUsed="0.032" ve="0.965" veUsed="0.035" twfl="0.988" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="5" et="161.1599" topspeed="261.71" fuel="0.820" fuelUsed="0.031" ve="0.929" veUsed="0.035" twfl="0.973" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">109.0163</Lap>
+<Lap num="3" p="6" et="270.1799" topspeed="261.71" fuel="0.792" fuelUsed="0.027" ve="0.894" veUsed="0.035" twfl="0.961" twfr="0.973" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.4167</Lap>
+<Lap num="4" p="6" et="378.6001" topspeed="254.50" fuel="0.882" fuelUsed="-0.090" ve="1.000" veUsed="-0.106" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>108.4167</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Marcin Wieczorek</Name>
+<Connected>1</Connected>
+<VehFile>92_24_MANT5488007D.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Manthey PureRxcing 2024 #92:LM</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>18</CarNumber>
+<TeamName>Manthey PureRxcing 2024 #92</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>8</Position>
+<ClassPosition>8</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="6" et="--.---" topspeed="248.64" fuel="0.098" fuelUsed="0.680" ve="0.125" veUsed="0.875" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="149.9199" s1="23.1653" s2="39.1701" s3="46.7783" topspeed="260.35" fuel="0.075" fuelUsed="0.024" ve="0.094" veUsed="0.031" twfl="0.969" twfr="0.980" twrl="0.976" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">109.1137</Lap>
+<Lap num="3" p="6" et="259.0400" topspeed="258.55" fuel="0.051" fuelUsed="0.024" ve="0.059" veUsed="0.035" twfl="0.957" twfr="0.969" twrl="0.969" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.8073</Lap>
+<BestLapTime>108.8073</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Nuebu Schring</Name>
+<Connected>1</Connected>
+<VehFile>31_25_WRT_D751317E.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>The Bend Team WRT 2025 #31:WEC</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>16</CarNumber>
+<TeamName>The Bend Team WRT 2025 #31</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>9</Position>
+<ClassPosition>9</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="4" et="--.---" topspeed="251.35" fuel="0.078" fuelUsed="0.655" ve="0.106" veUsed="0.894" twfl="0.984" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="3" et="144.3999" s1="23.9088" s2="38.6141" s3="46.4453" topspeed="263.51" fuel="0.055" fuelUsed="0.024" ve="0.071" veUsed="0.035" twfl="0.965" twfr="0.980" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">108.9682</Lap>
+<Lap num="3" p="6" et="253.3601" topspeed="261.71" fuel="0.031" fuelUsed="0.024" ve="0.035" veUsed="0.035" twfl="0.953" twfr="0.969" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="4" p="7" et="362.2400" topspeed="256.75" fuel="0.733" fuelUsed="-0.702" ve="0.141" veUsed="-0.106" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>108.9682</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Miku Hatsune#9897</Name>
+<Connected>1</Connected>
+<VehFile>60_25_IRON3680959B.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #60:LM</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>12</CarNumber>
+<TeamName>Iron Lynx 2025 #60</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>10</Position>
+<ClassPosition>10</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="9" et="--.---" topspeed="247.29" fuel="0.753" fuelUsed="0.030" ve="0.965" veUsed="0.035" twfl="0.988" twfr="0.992" twrl="0.976" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="8" et="155.9399" topspeed="259.00" fuel="0.725" fuelUsed="0.027" ve="0.929" veUsed="0.035" twfl="0.980" twfr="0.984" twrl="0.973" twrr="0.976" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="3" p="9" et="265.2800" s1="23.2829" s2="39.2598" s3="46.9647" topspeed="261.71" fuel="0.702" fuelUsed="0.024" ve="0.894" veUsed="0.035" twfl="0.973" twfr="0.980" twrl="0.965" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">109.5074</Lap>
+<BestLapTime>109.5074</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Radek Dyh</Name>
+<Connected>1</Connected>
+<VehFile>85_25_IRON71169233.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Dames 2025 #85:LM</VehName>
+<Category>WEC 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>11</CarNumber>
+<TeamName>Iron Dames 2025 #85</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>11</Position>
+<ClassPosition>11</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="5" et="--.---" topspeed="249.09" fuel="0.063" fuelUsed="0.715" ve="0.078" veUsed="0.922" twfl="0.996" twfr="0.996" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="4" et="145.5801" s1="23.6420" s2="39.1268" s3="46.9933" topspeed="259.00" fuel="0.039" fuelUsed="0.024" ve="0.043" veUsed="0.035" twfl="0.988" twfr="0.992" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">109.7621</Lap>
+<Lap num="3" p="9" et="255.3401" s1="23.1544" s2="39.4355" s3="47.2375" topspeed="259.45" fuel="0.012" fuelUsed="0.027" ve="0.012" veUsed="0.031" twfl="0.984" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">109.8274</Lap>
+<Lap num="4" p="9" et="365.1799" topspeed="251.80" fuel="0.776" fuelUsed="-0.765" ve="0.110" veUsed="-0.098" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>109.7621</BestLapTime>
+<Laps>4</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="4">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Daniel Dombrowski</Name>
+<Connected>1</Connected>
+<VehFile>31_25_WRT_B619D040.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>The Bend Team WRT 2025 #31:LM</VehName>
+<Category>WEC 2025, GT3, BMW M4 LMGT3</Category>
+<CarType>BMW M4 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>2</CarNumber>
+<TeamName>The Bend Team WRT 2025 #31</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>12</Position>
+<ClassPosition>12</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="14" et="--.---" topspeed="249.99" fuel="0.710" fuelUsed="0.024" ve="0.965" veUsed="0.035" twfl="0.933" twfr="0.984" twrl="0.918" twrr="0.969" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="9" et="166.0200" s1="23.6672" s2="39.6495" s3="48.1240" topspeed="262.16" fuel="0.686" fuelUsed="0.024" ve="0.933" veUsed="0.031" twfl="0.925" twfr="0.976" twrl="0.910" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.4407</Lap>
+<Lap num="3" p="11" et="277.4600" s1="23.7773" s2="39.8525" s3="47.2654" topspeed="260.35" fuel="0.663" fuelUsed="0.024" ve="0.898" veUsed="0.035" twfl="0.914" twfr="0.965" twrl="0.902" twrr="0.957" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">110.8952</Lap>
+<BestLapTime>110.8952</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,Opposite,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Japie Bosman</Name>
+<Connected>1</Connected>
+<VehFile>70_24_INCEE7C900BF.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Inception Racing 2024 #70:LM</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>6</CarNumber>
+<TeamName>Inception Racing 2024 #70</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>13</Position>
+<ClassPosition>13</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="12" et="--.---" topspeed="250.92" fuel="0.686" fuelUsed="0.022" ve="0.969" veUsed="0.031" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="8" et="162.5556" s1="23.7790" s2="39.6860" s3="47.7466" topspeed="262.27" fuel="0.663" fuelUsed="0.024" ve="0.933" veUsed="0.035" twfl="0.984" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.2117</Lap>
+<Lap num="3" p="11" et="273.7673" s1="24.1541" s2="39.8105" s3="47.2250" topspeed="260.49" fuel="0.639" fuelUsed="0.024" ve="0.898" veUsed="0.035" twfl="0.969" twfr="0.973" twrl="0.980" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.1897</Lap>
+<BestLapTime>111.1897</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,ABS=2,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Johann Gaudray</Name>
+<Connected>1</Connected>
+<VehFile>91_24_MANT4FC2B6C0.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Manthey Ema 2024 #91:LM</VehName>
+<Category>WEC 2024, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>9</CarNumber>
+<TeamName>Manthey Ema 2024 #91</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>14</Position>
+<ClassPosition>14</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="17" et="--.---" topspeed="245.94" fuel="0.188" fuelUsed="0.590" ve="0.235" veUsed="0.765" twfl="0.992" twfr="0.992" twrl="0.992" twrr="0.992" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="12" et="214.7400" s1="24.1584" s2="39.4672" s3="48.6625" topspeed="258.10" fuel="0.165" fuelUsed="0.024" ve="0.204" veUsed="0.031" twfl="0.976" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.2881</Lap>
+<Lap num="3" p="14" et="327.0400" s1="23.9802" s2="40.6164" s3="46.9665" topspeed="256.75" fuel="0.141" fuelUsed="0.024" ve="0.173" veUsed="0.031" twfl="0.965" twfr="0.973" twrl="0.984" twrr="0.980" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">111.5631</Lap>
+<BestLapTime>111.5631</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Mike Kremmudas</Name>
+<Connected>1</Connected>
+<VehFile>61_25_IRON5F647A80.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Iron Lynx 2025 #61:LM</VehName>
+<Category>WEC 2025, GT3, Mercedes-AMG LMGT3</Category>
+<CarType>Mercedes-AMG LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>10</CarNumber>
+<TeamName>Iron Lynx 2025 #61</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>15</Position>
+<ClassPosition>15</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="13" et="--.---" topspeed="249.54" fuel="0.427" fuelUsed="0.356" ve="0.549" veUsed="0.451" twfl="0.992" twfr="0.996" twrl="0.992" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="9" et="164.1399" s1="24.1765" s2="40.0728" s3="47.9441" topspeed="261.71" fuel="0.404" fuelUsed="0.024" ve="0.514" veUsed="0.035" twfl="0.988" twfr="0.988" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">112.1934</Lap>
+<Lap num="3" p="14" et="276.3201" s1="27.8395" s2="47.8365" s3="51.3498" topspeed="253.15" fuel="0.384" fuelUsed="0.020" ve="0.490" veUsed="0.024" twfl="0.980" twfr="0.988" twrl="0.984" twrr="0.984" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">127.0258</Lap>
+<BestLapTime>112.1934</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Lautaro Paez</Name>
+<Connected>1</Connected>
+<VehFile>21_25_AFCO36CA1D94.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>Vista AF Corse 2025 #21:WEC</VehName>
+<Category>WEC 2025, GT3, Ferrari 296 LMGT3</Category>
+<CarType>Ferrari 296 LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>14</CarNumber>
+<TeamName>Vista AF Corse 2025 #21</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>16</Position>
+<ClassPosition>16</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="15" et="--.---" topspeed="252.25" fuel="0.090" fuelUsed="0.635" ve="0.122" veUsed="0.878" twfl="0.961" twfr="0.984" twrl="0.953" twrr="0.965" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="11" et="169.4199" s1="22.7629" s2="46.1853" s3="48.5969" topspeed="263.06" fuel="0.063" fuelUsed="0.027" ve="0.086" veUsed="0.035" twfl="0.922" twfr="0.969" twrl="0.835" twrr="0.882" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">117.5452</Lap>
+<Lap num="3" p="14" et="286.9800" s1="23.2131" topspeed="263.06" fuel="0.725" fuelUsed="-0.663" ve="0.161" veUsed="-0.075" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<BestLapTime>117.5452</BestLapTime>
+<Laps>3</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Dogma Rosso</Name>
+<Connected>1</Connected>
+<VehFile>60_25_PROTA8B000C7.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Proton Competition 2025 #60:ELMS</VehName>
+<Category>ELMS 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>8</CarNumber>
+<TeamName>Proton Competition 2025 #60</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>17</Position>
+<ClassPosition>17</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="8" et="--.---" topspeed="248.19" fuel="0.078" fuelUsed="0.699" ve="0.102" veUsed="0.898" twfl="0.992" twfr="0.992" twrl="0.996" twrr="0.996" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Lap num="2" p="16" et="155.5801" s1="23.4395" s2="38.7672" topspeed="259.00" fuel="0.059" fuelUsed="0.020" ve="0.075" veUsed="0.027" twfl="0.980" twfr="0.984" twrl="0.988" twrr="0.988" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium" pit="1">--.----</Lap>
+<Lap num="3" p="16" et="301.4600" topspeed="164.41" fuel="0.776" fuelUsed="-0.718" ve="0.129" veUsed="-0.055" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>3</Laps>
+<Pitstops>1</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="3">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Pete Sobotta</Name>
+<Connected>1</Connected>
+<VehFile>397_24_MCLAREN.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>McLaren Custom Team 2024 #397</VehName>
+<Category>WEC 2024, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>13</CarNumber>
+<TeamName>KPSRacing</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>18</Position>
+<ClassPosition>18</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Lap num="1" p="18" et="--.---" topspeed="212.61" fuel="0.710" fuelUsed="-0.001" ve="1.000" veUsed="0.000" twfl="1.000" twfr="1.000" twrl="1.000" twrr="1.000" fcompound="0,Medium" rcompound="0,Medium" FL="0,Medium" FR="0,Medium" RL="0,Medium" RR="0,Medium">--.----</Lap>
+<Laps>1</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+<ControlAndAids startLap="1" endLap="1">PlayerControl,Clutch,AutoBlip</ControlAndAids>
+</Driver>
+<Driver>
+<Name>Zoltan Perger</Name>
+<Connected>1</Connected>
+<VehFile>10_25_RSLM3C7CA220.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Racing Spirit of Léman 2025 #10:LM</VehName>
+<Category>WEC 2025, GT3, Aston Martin Vantage AMR LMGT3</Category>
+<CarType>Aston Martin Vantage AMR LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>3</CarNumber>
+<TeamName>Racing Spirit of Léman 2025 #10</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>19</Position>
+<ClassPosition>19</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+</Driver>
+<Driver>
+<Name>Maxence Duflos</Name>
+<Connected>1</Connected>
+<VehFile>90_25_MANT767D59F8.VEH</VehFile>
+<UpgradeCode>42080200 00000000 00000000 00000000</UpgradeCode>
+<VehName>Manthey 2025 #90:LM</VehName>
+<Category>WEC 2025, GT3, Porsche 911 GT3 R LMGT3</Category>
+<CarType>Porsche 911 GT3 R LMGT3</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>17</CarNumber>
+<TeamName>Manthey 2025 #90</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>20</Position>
+<ClassPosition>20</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+</Driver>
+<Driver>
+<Name>Lukas Fort</Name>
+<Connected>1</Connected>
+<VehFile>59_25_UNITEB30E8CF.VEH</VehFile>
+<UpgradeCode>84100400 00000000 00000000 00000000</UpgradeCode>
+<VehName>United Autosports 2025 #59:LM</VehName>
+<Category>WEC 2025, GT3, McLaren 720S LMGT3 Evo</Category>
+<CarType>McLaren 720S LMGT3 Evo</CarType>
+<CarClass>GT3</CarClass>
+<CarNumber>19</CarNumber>
+<TeamName>United Autosports 2025 #59</TeamName>
+<isPlayer>1</isPlayer>
+<ServerScored>1</ServerScored>
+<Position>21</Position>
+<ClassPosition>21</ClassPosition>
+<LapRankIncludingDiscos>22</LapRankIncludingDiscos>
+<Laps>0</Laps>
+<Pitstops>0</Pitstops>
+<FinishStatus>Finished Normally</FinishStatus>
+</Driver>
+</Qualify>
+</RaceResults>
+</rFactorXML>
