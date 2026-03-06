@@ -1,4 +1,4 @@
-unit MainForm;
+﻿unit MainForm;
 
 { Main application window for LMU Track Harvester.
   Tabs:
@@ -1044,9 +1044,7 @@ begin
   except
     on E: Exception do
       ALines.Add('SQLite probe failed (likely DuckDB-only format): ' + E.Message);
-  finally
-    Q.Free;
-    Conn.Free;
+
   end;
 end;
 

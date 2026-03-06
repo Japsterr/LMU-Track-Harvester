@@ -3,7 +3,7 @@ unit ResultsXMLImporter;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.IOUtils, System.StrUtils,
+  System.SysUtils, System.Classes, System.IOUtils, System.StrUtils, System.DateUtils,
   System.Generics.Collections, System.Variants,
   Xml.XMLIntf, Xml.XMLDoc,
   FireDAC.Comp.Client,
@@ -478,8 +478,7 @@ begin
       end;
     except
       Inc(Result.FilesFailed);
-    finally
-      Candidates.Free;
+
     end;
   end;
 end;

@@ -1,4 +1,4 @@
-object FrmMain: TMainForm
+object MainForm: TMainForm
   Left = 0
   Top = 0
   Caption = 'LMU Track Harvester'
@@ -12,22 +12,19 @@ object FrmMain: TMainForm
   Font.Style = []
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  PixelsPerInch = 96
   TextHeight = 17
   object StatusBar: TStatusBar
     Left = 0
     Top = 697
     Width = 1150
     Height = 23
-    Align = alBottom
     Panels = <
       item
-        Width = 500
         Text = 'Ready'
+        Width = 500
       end
       item
         Width = 150
-        Text = ''
       end>
   end
   object PageControl: TPageControl
@@ -52,7 +49,7 @@ object FrmMain: TMainForm
         object LblTrack: TLabel
           Left = 8
           Top = 20
-          Width = 35
+          Width = 33
           Height = 17
           Caption = 'Track:'
         end
@@ -113,10 +110,17 @@ object FrmMain: TMainForm
         Left = 0
         Top = 58
         Width = 1142
-        Height = 611
+        Height = 601
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitHeight = 611
+        object SplitterLT: TSplitter
+          Left = 565
+          Top = 0
+          Width = 6
+          Height = 611
+        end
         object GrpTop10: TGroupBox
           Left = 0
           Top = 0
@@ -159,13 +163,6 @@ object FrmMain: TMainForm
             ViewStyle = vsReport
             OnSelectItem = LvwTop10SelectItem
           end
-        end
-        object SplitterLT: TSplitter
-          Left = 565
-          Top = 0
-          Width = 6
-          Height = 611
-          Cursor = crHSplit
         end
         object GrpFastest: TGroupBox
           Left = 571
@@ -213,6 +210,12 @@ object FrmMain: TMainForm
     end
     object TabTelemetry: TTabSheet
       Caption = 'Telemetry'
+      object SplitterTel: TSplitter
+        Left = 380
+        Top = 0
+        Width = 6
+        Height = 669
+      end
       object PnlTelLeft: TPanel
         Left = 0
         Top = 0
@@ -293,13 +296,6 @@ object FrmMain: TMainForm
             OnClick = BtnDeleteSessionClick
           end
         end
-      end
-      object SplitterTel: TSplitter
-        Left = 380
-        Top = 0
-        Width = 6
-        Height = 669
-        Cursor = crHSplit
       end
       object PnlTelRight: TPanel
         Left = 386
@@ -401,14 +397,15 @@ object FrmMain: TMainForm
         Left = 0
         Top = 0
         Width = 1142
-        Height = 669
+        Height = 659
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitHeight = 669
         object LblSettingsTitle: TLabel
           Left = 24
           Top = 24
-          Width = 177
+          Width = 186
           Height = 21
           Caption = 'Gemini AI Configuration'
           Font.Charset = DEFAULT_CHARSET
@@ -431,7 +428,7 @@ object FrmMain: TMainForm
         object LblAPIKey: TLabel
           Left = 24
           Top = 72
-          Width = 49
+          Width = 46
           Height = 17
           Caption = 'API Key:'
         end
@@ -441,10 +438,10 @@ object FrmMain: TMainForm
           Width = 580
           Height = 34
           AutoSize = False
-          Caption =
-            'Your API key is stored locally in settings.ini inside ' +
-            'Documents\LMUTrackHarvester\. It is never transmitted anywhere ' +
-            'except to Google'#39's Gemini API endpoint.'
+          Caption = 
+            'Your API key is stored locally in settings.ini inside Documents\' +
+            'LMUTrackHarvester\. It is never transmitted anywhere except to G' +
+            'oogle'#39's Gemini API endpoint.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGrayText
           Font.Height = -11
@@ -456,15 +453,16 @@ object FrmMain: TMainForm
         object LblModel: TLabel
           Left = 24
           Top = 108
-          Width = 37
+          Width = 41
           Height = 17
           Caption = 'Model:'
         end
         object LblGetKey: TLabel
           Left = 24
           Top = 184
-          Width = 450
+          Width = 356
           Height = 17
+          Cursor = crHandPoint
           Caption = 'Get a free API key at: https://aistudio.google.com/app/apikey'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlue
@@ -472,20 +470,18 @@ object FrmMain: TMainForm
           Font.Name = 'Segoe UI'
           Font.Style = [fsUnderline]
           ParentFont = False
-          Cursor = crHandPoint
           OnClick = LblGetKeyClick
         end
         object LblTestResult: TLabel
           Left = 404
           Top = 219
-          Width = 200
+          Width = 4
           Height = 17
-          Caption = ''
         end
         object LblTelemetrySource: TLabel
           Left = 24
           Top = 278
-          Width = 161
+          Width = 175
           Height = 17
           Caption = 'LMU Telemetry Source Folder:'
         end
@@ -495,7 +491,6 @@ object FrmMain: TMainForm
           Width = 600
           Height = 34
           AutoSize = False
-          Caption = ''
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGrayText
           Font.Height = -11
@@ -507,7 +502,7 @@ object FrmMain: TMainForm
         object LblResultsSource: TLabel
           Left = 24
           Top = 382
-          Width = 145
+          Width = 146
           Height = 17
           Caption = 'LMU Results XML Folder:'
         end
@@ -517,7 +512,6 @@ object FrmMain: TMainForm
           Width = 600
           Height = 34
           AutoSize = False
-          Caption = ''
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clGrayText
           Font.Height = -11
