@@ -334,17 +334,36 @@ end;
 
 function StripDoctypeDeclaration(const AXml: string): string;
 var
-  UpperXML: string;
   StartPos, I, BracketDepth: Integer;
   InQuote: Char;
   C: Char;
+  function IsDoctypeAt(const S: string; AIndex: Integer): Boolean;
+  begin
+    Result :=
+      (AIndex > 0) and
+      (AIndex + 8 <= Length(S)) and
+      (S[AIndex] = '<') and
+      (S[AIndex + 1] = '!') and
+      (UpCase(S[AIndex + 2]) = 'D') and
+      (UpCase(S[AIndex + 3]) = 'O') and
+      (UpCase(S[AIndex + 4]) = 'C') and
+      (UpCase(S[AIndex + 5]) = 'T') and
+      (UpCase(S[AIndex + 6]) = 'Y') and
+      (UpCase(S[AIndex + 7]) = 'P') and
+      (UpCase(S[AIndex + 8]) = 'E');
+  end;
 begin
   Result := AXml;
   if Result = '' then
     Exit;
 
-  UpperXML := UpperCase(Result);
-  StartPos := Pos('<!DOCTYPE', UpperXML);
+  StartPos := 0;
+  for I := 1 to Length(Result) do
+    if (Result[I] = '<') and IsDoctypeAt(Result, I) then
+    begin
+      StartPos := I;
+      Break;
+    end;
   if StartPos = 0 then
     Exit;
 
