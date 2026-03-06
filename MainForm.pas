@@ -305,7 +305,16 @@ var
   Summary: TResultsImportSummary;
 begin
   Folder := Trim(EdtResultsFolder.Text);
-  Summary := TResultsXMLImporter.ImportFolder(FDB, Folder);
+  try
+    Summary := TResultsXMLImporter.ImportFolder(FDB, Folder);
+  except
+    on E: Exception do
+    begin
+      if AShowStatus then
+        ShowMessage('Results scan failed: ' + E.Message);
+      Exit;
+    end;
+  end;
 
   if AShowStatus then
     ShowMessage(Format(
@@ -491,26 +500,38 @@ procedure TMainForm.BtnAddLapClick(Sender: TObject);
 var
   Dlg: TAddLapForm;
 begin
-  Dlg := TAddLapForm.Create(Self);
+  if not Assigned(FDB) then
+  begin
+    ShowMessage('Database is not available. Please restart the application.');
+    Exit;
+  end;
+
+  Dlg := nil;
   try
-    Dlg.Initialize(FDB);
-    // Pre-select the currently chosen track / class
-    if (CboTrack.ItemIndex >= 0) and
-       (CboTrack.ItemIndex < Dlg.CboTrack.Items.Count) then
-      Dlg.CboTrack.ItemIndex := CboTrack.ItemIndex;
-    if (CboClass.ItemIndex >= 0) and
-       (CboClass.ItemIndex < Dlg.CboClass.Items.Count) then
-    begin
-      Dlg.CboClass.ItemIndex := CboClass.ItemIndex;
-      Dlg.CboClassChange(nil);
+    try
+      Dlg := TAddLapForm.Create(Self);
+      Dlg.Initialize(FDB);
+      // Pre-select the currently chosen track / class
+      if (CboTrack.ItemIndex >= 0) and
+         (CboTrack.ItemIndex < Dlg.CboTrack.Items.Count) then
+        Dlg.CboTrack.ItemIndex := CboTrack.ItemIndex;
+      if (CboClass.ItemIndex >= 0) and
+         (CboClass.ItemIndex < Dlg.CboClass.Items.Count) then
+      begin
+        Dlg.CboClass.ItemIndex := CboClass.ItemIndex;
+        Dlg.CboClassChange(nil);
+      end;
+      if Dlg.ShowModal = mrOk then
+      begin
+        RefreshLapTimes;
+        SetStatus('Lap time added.');
+      end;
+    finally
+      Dlg.Free;
     end;
-    if Dlg.ShowModal = mrOk then
-    begin
-      RefreshLapTimes;
-      SetStatus('Lap time added.');
-    end;
-  finally
-    Dlg.Free;
+  except
+    on E: Exception do
+      ShowMessage('Could not open Add Lap dialog: ' + E.Message);
   end;
 end;
 

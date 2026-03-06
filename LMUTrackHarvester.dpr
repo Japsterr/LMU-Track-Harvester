@@ -9,7 +9,8 @@ uses
   LapTimeModels in 'LapTimeModels.pas',
   AppSettings in 'AppSettings.pas',
   CSVExporter in 'CSVExporter.pas',
-  GeminiAPI in 'GeminiAPI.pas';
+  GeminiAPI in 'GeminiAPI.pas',
+  ResultsXMLImporter in 'ResultsXMLImporter.pas';
 
 {$R *.res}
 

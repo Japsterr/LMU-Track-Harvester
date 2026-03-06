@@ -67,6 +67,7 @@
     <DCCReference Include="AppSettings.pas"/>
     <DCCReference Include="CSVExporter.pas"/>
     <DCCReference Include="GeminiAPI.pas"/>
+    <DCCReference Include="ResultsXMLImporter.pas"/>
     <BuildConfiguration Include="Base">
       <Key>Base</Key>
     </BuildConfiguration>
