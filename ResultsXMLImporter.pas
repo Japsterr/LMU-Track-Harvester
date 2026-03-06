@@ -225,7 +225,7 @@ begin
         try
           Result := Trim(Child.Text);
         except
-          on E: EXMLDocError do
+          on E: Exception do
             Result := '';
         end;
         if Result <> '' then
@@ -258,7 +258,7 @@ begin
   try
     NodeText := Trim(ANode.Text);
   except
-    on E: EXMLDocError do
+    on E: Exception do
       NodeText := '';
   end;
 
@@ -309,11 +309,12 @@ begin
       end;
     end;
 
-  for I := 0 to ANode.ChildNodes.Count - 1 do
-  begin
-    Child := ANode.ChildNodes[I];
-    WalkNodeForLaps(Child, TrackCtx, CarCtx, SessionCtx, ADefaultDate, ACandidates);
-  end;
+  if Assigned(ANode.ChildNodes) then
+    for I := 0 to ANode.ChildNodes.Count - 1 do
+    begin
+      Child := ANode.ChildNodes[I];
+      WalkNodeForLaps(Child, TrackCtx, CarCtx, SessionCtx, ADefaultDate, ACandidates);
+    end;
 end;
 
 function LapAlreadyExists(const ADB: TDatabaseManager;
@@ -434,51 +435,54 @@ begin
     Inc(Result.FilesScanned);
     Candidates := TList<TLapCandidate>.Create;
     try
-      XmlDoc := TXMLDocument.Create(nil);
-      XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
-      XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
-      XmlText := StripDoctypeDeclaration(XmlText);
-      XmlDoc.LoadFromXML(XmlText);
-      XmlDoc.Active := True;
+      try
+        XmlDoc := TXMLDocument.Create(nil);
+        XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
+        XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
+        XmlText := StripDoctypeDeclaration(XmlText);
+        XmlDoc.LoadFromXML(XmlText);
+        XmlDoc.Active := True;
 
-      if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
-        LapDate := TFile.GetLastWriteTime(FilePath);
+        if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
+          LapDate := TFile.GetLastWriteTime(FilePath);
 
-      WalkNodeForLaps(XmlDoc.DocumentElement,
-        TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
+        WalkNodeForLaps(XmlDoc.DocumentElement,
+          TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
 
-      for Candidate in Candidates do
-      begin
-        if (Candidate.LapTimeMs < 30000) or (Candidate.LapTimeMs > 1200000) then
+        for Candidate in Candidates do
         begin
-          Inc(Result.LapsSkipped);
-          Continue;
+          if (Candidate.LapTimeMs < 30000) or (Candidate.LapTimeMs > 1200000) then
+          begin
+            Inc(Result.LapsSkipped);
+            Continue;
+          end;
+
+          TrackID := FindBestTrackID(ADB, Candidate.TrackHint);
+          CarID := FindBestCarID(ADB, Candidate.CarHint);
+          if (TrackID <= 0) or (CarID <= 0) then
+          begin
+            Inc(Result.LapsSkipped);
+            Continue;
+          end;
+
+          SessionType := Trim(Candidate.SessionType);
+          if SessionType = '' then
+            SessionType := 'LMU Results XML';
+
+          if LapAlreadyExists(ADB, TrackID, CarID, Candidate.LapTimeMs, Candidate.LapDate, SessionType) then
+          begin
+            Inc(Result.LapsSkipped);
+            Continue;
+          end;
+
+          ADB.AddLapTime(TrackID, CarID, Candidate.LapTimeMs, SessionType, Candidate.LapDate);
+          Inc(Result.LapsInserted);
         end;
-
-        TrackID := FindBestTrackID(ADB, Candidate.TrackHint);
-        CarID := FindBestCarID(ADB, Candidate.CarHint);
-        if (TrackID <= 0) or (CarID <= 0) then
-        begin
-          Inc(Result.LapsSkipped);
-          Continue;
-        end;
-
-        SessionType := Trim(Candidate.SessionType);
-        if SessionType = '' then
-          SessionType := 'LMU Results XML';
-
-        if LapAlreadyExists(ADB, TrackID, CarID, Candidate.LapTimeMs, Candidate.LapDate, SessionType) then
-        begin
-          Inc(Result.LapsSkipped);
-          Continue;
-        end;
-
-        ADB.AddLapTime(TrackID, CarID, Candidate.LapTimeMs, SessionType, Candidate.LapDate);
-        Inc(Result.LapsInserted);
+      except
+        Inc(Result.FilesFailed);
       end;
-    except
-      Inc(Result.FilesFailed);
-
+    finally
+      Candidates.Free;
     end;
   end;
 end;
