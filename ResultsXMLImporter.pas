@@ -222,7 +222,12 @@ begin
     for Frag in ANameFragments do
       if Pos(LowerCase(Frag), MatchName) > 0 then
       begin
-        Result := Trim(Child.Text);
+        try
+          Result := Trim(Child.Text);
+        except
+          on E: EXMLDocError do
+            Result := '';
+        end;
         if Result <> '' then
           Exit;
       end;
@@ -250,7 +255,12 @@ begin
   CarCtx := ACurrentCar;
   SessionCtx := ACurrentSession;
 
-  NodeText := Trim(ANode.Text);
+  try
+    NodeText := Trim(ANode.Text);
+  except
+    on E: EXMLDocError do
+      NodeText := '';
+  end;
 
   NodeTrackValue := ReadNodeValue(ANode, ['track', 'circuit', 'venue']);
   if NodeTrackValue <> '' then
