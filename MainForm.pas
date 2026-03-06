@@ -192,7 +192,13 @@ end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
+  FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
+  FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
+  FSettings.ResultsSourceFolder := Trim(EdtResultsFolder.Text);
+  if CboAIModel.ItemIndex >= 0 then
+    FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
   FSettings.WindowMaximized := (WindowState = wsMaximized);
+  FSettings.Save;
   FSettings.Free;
   FDB.Free;
 end;
@@ -597,7 +603,9 @@ begin
       Item.SubItems.Add(FSessions[I].CarName);
     end;
 
-    SourceFolder := Trim(FSettings.TelemetrySourceFolder);
+    SourceFolder := Trim(EdtTelemetryFolder.Text);
+    if SourceFolder = '' then
+      SourceFolder := Trim(FSettings.TelemetrySourceFolder);
     if (SourceFolder <> '') and TDirectory.Exists(SourceFolder) then
     begin
       FSourceTelemetryFiles :=
@@ -913,6 +921,8 @@ begin
   if SelectDirectory('Select LMU telemetry folder', '', SelectedDir) then
   begin
     EdtTelemetryFolder.Text := SelectedDir;
+    FSettings.TelemetrySourceFolder := SelectedDir;
+    FSettings.Save;
     RefreshTelemetrySourceInfo;
     RefreshSessions;
   end;
@@ -932,6 +942,8 @@ begin
   if SelectDirectory('Select LMU results folder', '', SelectedDir) then
   begin
     EdtResultsFolder.Text := SelectedDir;
+    FSettings.ResultsSourceFolder := SelectedDir;
+    FSettings.Save;
     RefreshResultsSourceInfo;
     ImportResultsFromConfiguredFolder(False);
     RefreshLapTimes;

@@ -81,12 +81,33 @@ function ParseLapTime(const S: string): Int64;
 
 implementation
 
+function EnglishTrackName(const AName: string): string;
+begin
+  if SameText(AName, 'Circuit de la Sarthe') then
+    Exit('Le Mans (Circuit de la Sarthe)');
+  if SameText(AName, 'Autodromo Nazionale Monza') then
+    Exit('Monza');
+  if SameText(AName, 'Circuit de Spa-Francorchamps') then
+    Exit('Spa-Francorchamps');
+  if SameText(AName, 'Autódromo Internacional do Algarve (Portimão)') then
+    Exit('Algarve (Portimao)');
+  if SameText(AName, 'Autódromo José Carlos Pace (Interlagos)') then
+    Exit('Interlagos');
+  if SameText(AName, 'Autodromo Enzo e Dino Ferrari (Imola)') then
+    Exit('Imola');
+  if SameText(AName, 'Circuit de Catalunya') then
+    Exit('Circuit de Barcelona-Catalunya');
+  if SameText(AName, 'Circuit de Lédenon') then
+    Exit('Ledenon');
+  Result := AName;
+end;
+
 function TTrack.DisplayName: string;
 begin
   if Layout <> '' then
-    Result := Name + ' – ' + Layout
+    Result := EnglishTrackName(Name) + ' – ' + Layout
   else
-    Result := Name;
+    Result := EnglishTrackName(Name);
 end;
 
 function FormatLapTime(LapTimeMs: Int64): string;
