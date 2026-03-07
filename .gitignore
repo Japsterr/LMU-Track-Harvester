@@ -43,7 +43,11 @@ Telemetry/
 
 # Generated packaging and helper output
 dist/
-download/
 build-temp/
 scripts/__pycache__/
 *.pyc
+
+# Keep published download artifacts tracked
+!download/
+!download/*.exe
+!download/*.zip
