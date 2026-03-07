@@ -1,14 +1,14 @@
 object MainForm: TMainForm
   Left = 0
   Top = 0
-  Caption = 'LMU Track Harvester'
+  Caption = 'LMU Track Harvester - Driver Performance Hub'
   ClientHeight = 720
   ClientWidth = 1150
-  Color = clBtnFace
+  Color = 1314571
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
-  Font.Name = 'Segoe UI'
+  Font.Name = 'Bahnschrift'
   Font.Style = []
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -42,27 +42,41 @@ object MainForm: TMainForm
         Left = 0
         Top = 0
         Width = 1142
-        Height = 58
+        Height = 64
         Align = alTop
         BevelOuter = bvNone
+        Color = 2161174
+        ParentBackground = False
         TabOrder = 0
         object LblTrack: TLabel
           Left = 8
-          Top = 20
+          Top = 22
           Width = 33
           Height = 17
           Caption = 'Track:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object LblClass: TLabel
           Left = 384
-          Top = 20
+          Top = 22
           Width = 57
           Height = 17
           Caption = 'Car Class:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentFont = False
         end
         object CboTrack: TComboBox
           Left = 52
-          Top = 16
+          Top = 18
           Width = 320
           Height = 25
           Style = csDropDownList
@@ -71,7 +85,7 @@ object MainForm: TMainForm
         end
         object CboClass: TComboBox
           Left = 450
-          Top = 16
+          Top = 18
           Width = 200
           Height = 25
           Style = csDropDownList
@@ -80,39 +94,59 @@ object MainForm: TMainForm
         end
         object BtnAddLap: TButton
           Left = 670
-          Top = 14
+          Top = 16
           Width = 120
           Height = 30
-          Caption = '+ Add Lap Time'
+          Caption = '+ Log Lap'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 2
           OnClick = BtnAddLapClick
         end
         object BtnDeleteLap: TButton
           Left = 800
-          Top = 14
+          Top = 16
           Width = 120
           Height = 30
-          Caption = 'Delete Selected'
+          Caption = 'Delete Lap'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 3
           OnClick = BtnDeleteLapClick
         end
         object BtnExportLaps: TButton
           Left = 930
-          Top = 14
+          Top = 16
           Width = 120
           Height = 30
-          Caption = 'Export to CSV'
+          Caption = 'Export Pace'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentFont = False
           TabOrder = 4
           OnClick = BtnExportLapsClick
         end
       end
       object PnlLTContent: TPanel
         Left = 0
-        Top = 58
+        Top = 64
         Width = 1142
-        Height = 601
+        Height = 595
         Align = alClient
         BevelOuter = bvNone
+        Color = 1314571
+        ParentBackground = False
         TabOrder = 1
         ExplicitHeight = 611
         object SplitterLT: TSplitter
@@ -124,15 +158,23 @@ object MainForm: TMainForm
         object GrpTop10: TGroupBox
           Left = 0
           Top = 0
-          Width = 565
+          Width = 548
           Height = 611
           Align = alLeft
-          Caption = ' Top 10 Fastest Laps '
+          Caption = ' Driver Top 10 Pace '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
           TabOrder = 0
           object LvwTop10: TListView
             Left = 2
             Top = 20
-            Width = 561
+            Width = 544
             Height = 589
             Align = alClient
             Columns = <
@@ -156,7 +198,8 @@ object MainForm: TMainForm
                 Caption = 'Session'
                 Width = 90
               end>
-            GridLines = True
+            Color = 15921906
+            GridLines = False
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -165,17 +208,25 @@ object MainForm: TMainForm
           end
         end
         object GrpFastest: TGroupBox
-          Left = 571
+          Left = 554
           Top = 0
-          Width = 571
+          Width = 588
           Height = 611
           Align = alClient
-          Caption = ' Fastest Lap per Car (all laps) '
+          Caption = ' Best Personal Lap Per Car '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
           TabOrder = 1
           object LvwFastest: TListView
             Left = 2
             Top = 20
-            Width = 567
+            Width = 584
             Height = 589
             Align = alClient
             Columns = <
@@ -199,7 +250,8 @@ object MainForm: TMainForm
                 Caption = 'Session'
                 Width = 90
               end>
-            GridLines = True
+            Color = 15921906
+            GridLines = False
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -232,12 +284,12 @@ object MainForm: TMainForm
           Align = alTop
           Alignment = taCenter
           AutoSize = False
-          Caption = 'Saved Telemetry Sessions'
+          Caption = 'Telemetry Sessions and LMU Source Files'
           Color = clInactiveCaption
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
+          Font.Color = clWhite
           Font.Height = -13
-          Font.Name = 'Segoe UI'
+          Font.Name = 'Bahnschrift'
           Font.Style = [fsBold]
           ParentColor = False
           ParentFont = False
@@ -251,18 +303,19 @@ object MainForm: TMainForm
           Align = alClient
           Columns = <
             item
-              Caption = 'Date'
+              Caption = 'When'
               Width = 120
             end
             item
-              Caption = 'Track'
+              Caption = 'Track / Type'
               Width = 130
             end
             item
-              Caption = 'Car'
-              Width = 110
+              Caption = 'Car / File'
+              Width = 120
             end>
-          GridLines = True
+          Color = 15921906
+          GridLines = False
           ReadOnly = True
           RowSelect = True
           TabOrder = 0
@@ -283,6 +336,12 @@ object MainForm: TMainForm
             Width = 180
             Height = 28
             Caption = 'Import Telemetry (CSV)'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Bahnschrift'
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 0
             OnClick = BtnImportTelClick
           end
@@ -291,7 +350,13 @@ object MainForm: TMainForm
             Top = 6
             Width = 180
             Height = 28
-            Caption = 'Delete Session'
+            Caption = 'Delete Saved Session'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Bahnschrift'
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 1
             OnClick = BtnDeleteSessionClick
           end
@@ -311,7 +376,15 @@ object MainForm: TMainForm
           Width = 756
           Height = 90
           Align = alTop
-          Caption = ' Session Details '
+          Caption = ' Telemetry Deck '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
           TabOrder = 0
           object MemoSessionInfo: TMemo
             Left = 2
@@ -320,7 +393,7 @@ object MainForm: TMainForm
             Height = 68
             Align = alClient
             BorderStyle = bsNone
-            Color = clBtnFace
+            Color = 15921906
             ReadOnly = True
             ScrollBars = ssVertical
             TabOrder = 0
@@ -339,7 +412,13 @@ object MainForm: TMainForm
             Top = 8
             Width = 165
             Height = 28
-            Caption = 'Export Session to CSV'
+            Caption = 'Export Telemetry CSV'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Bahnschrift'
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 0
             OnClick = BtnExportCSVClick
           end
@@ -348,7 +427,13 @@ object MainForm: TMainForm
             Top = 8
             Width = 185
             Height = 28
-            Caption = 'Analyze with Gemini AI'
+            Caption = 'Ask Gemini for Coaching'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -13
+            Font.Name = 'Bahnschrift'
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 1
             OnClick = BtnAnalyzeAIClick
           end
@@ -368,7 +453,15 @@ object MainForm: TMainForm
           Width = 756
           Height = 535
           Align = alClient
-          Caption = ' AI Coaching Response '
+          Caption = ' Coaching Wall '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
           TabOrder = 2
           object MemoAIResponse: TMemo
             Left = 2
@@ -520,6 +613,28 @@ object MainForm: TMainForm
           ParentFont = False
           WordWrap = True
         end
+        object LblPreferredDriver: TLabel
+          Left = 24
+          Top = 486
+          Width = 146
+          Height = 17
+          Caption = 'Preferred Driver Name:'
+        end
+        object LblPreferredDriverInfo: TLabel
+          Left = 24
+          Top = 542
+          Width = 600
+          Height = 34
+          AutoSize = False
+          Caption = 'Use the exact name shown in LMU results XML. The app will auto-fill this from telemetry metadata when possible and only import laps for this driver.'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clGrayText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          WordWrap = True
+        end
         object EdtAPIKey: TEdit
           Left = 90
           Top = 68
@@ -623,6 +738,13 @@ object MainForm: TMainForm
           Caption = 'Rescan'
           TabOrder = 10
           OnClick = BtnRescanResultsClick
+        end
+        object EdtPreferredDriver: TEdit
+          Left = 24
+          Top = 510
+          Width = 300
+          Height = 25
+          TabOrder = 11
         end
       end
     end

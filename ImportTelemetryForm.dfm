@@ -5,7 +5,7 @@ object ImportTelemetryForm: TImportTelemetryForm
   Caption = 'Import Telemetry Session'
   ClientHeight = 258
   ClientWidth = 460
-  Color = clBtnFace
+  Color = 15921906
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
@@ -47,9 +47,9 @@ object ImportTelemetryForm: TImportTelemetryForm
     Left = 16
     Top = 126
     Width = 428
-    Height = 34
+    Height = 51
     AutoSize = False
-    Caption = 'CSV must have columns: TimestampMs, Speed_kmh, RPM, Gear, Throttle_pct, Brake_pct, Steering_pct, LapDistance_pct'
+    Caption = 'CSV must have columns: TimestampMs, Speed_kmh, RPM, Gear, Throttle_pct, Brake_pct, Steering_pct, LapDistance_pct. Short clips are rejected; import roughly a lap of telemetry.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clGrayText
     Font.Height = -11

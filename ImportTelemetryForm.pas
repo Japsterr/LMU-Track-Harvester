@@ -46,6 +46,8 @@ type
 
     procedure LoadTracks;
     procedure LoadCars;
+    function ValidateCSVFile(const AFilePath: string; out AValidRows: Integer;
+      out ADurationMs: Int64; out ALapSpan: Double; out AError: string): Boolean;
     function ImportCSV(const AFilePath: string; ASessionID: Integer): Integer;
   public
     { Call Initialize(DB) after Create and before ShowModal. }
@@ -123,6 +125,114 @@ begin
   end;
 end;
 
+function TImportTelemetryForm.ValidateCSVFile(const AFilePath: string;
+  out AValidRows: Integer; out ADurationMs: Int64; out ALapSpan: Double;
+  out AError: string): Boolean;
+const
+  MIN_DURATION_MS = 80000;
+  MIN_LAP_SPAN = 0.80;
+  MIN_VALID_ROWS = 4000;
+var
+  Lines: TStringList;
+  I: Integer;
+  Parts: TArray<string>;
+  TimestampMs: Int64;
+  LapDistance: Double;
+  FirstTimestamp: Int64;
+  LastTimestamp: Int64;
+  MinLapDistance: Double;
+  MaxLapDistance: Double;
+  FirstRow: Boolean;
+  InvariantFS: TFormatSettings;
+begin
+  Result := False;
+  AError := '';
+  AValidRows := 0;
+  ADurationMs := 0;
+  ALapSpan := 0;
+  InvariantFS := TFormatSettings.Invariant;
+
+  if not TFile.Exists(AFilePath) then
+  begin
+    AError := 'CSV file not found.';
+    Exit;
+  end;
+
+  Lines := TStringList.Create;
+  try
+    Lines.LoadFromFile(AFilePath, TEncoding.UTF8);
+    if Lines.Count <= 1 then
+    begin
+      AError := 'The CSV contains no telemetry rows.';
+      Exit;
+    end;
+
+    FirstRow := True;
+    for I := 1 to Lines.Count - 1 do
+    begin
+      if Trim(Lines[I]) = '' then
+        Continue;
+
+      Parts := Lines[I].Split([',']);
+      if Length(Parts) < 8 then
+        Continue;
+
+      if not TryStrToInt64(Trim(Parts[0]), TimestampMs) then
+        Continue;
+      if not TryStrToFloat(Trim(Parts[7]), LapDistance, InvariantFS) then
+        Continue;
+
+      if FirstRow then
+      begin
+        FirstTimestamp := TimestampMs;
+        LastTimestamp := TimestampMs;
+        MinLapDistance := LapDistance;
+        MaxLapDistance := LapDistance;
+        FirstRow := False;
+      end
+      else
+      begin
+        if TimestampMs < FirstTimestamp then
+          FirstTimestamp := TimestampMs;
+        if TimestampMs > LastTimestamp then
+          LastTimestamp := TimestampMs;
+        if LapDistance < MinLapDistance then
+          MinLapDistance := LapDistance;
+        if LapDistance > MaxLapDistance then
+          MaxLapDistance := LapDistance;
+      end;
+
+      Inc(AValidRows);
+    end;
+  finally
+    Lines.Free;
+  end;
+
+  if AValidRows = 0 then
+  begin
+    AError := 'No valid telemetry rows were found in the CSV.';
+    Exit;
+  end;
+
+  ADurationMs := LastTimestamp - FirstTimestamp;
+  ALapSpan := MaxLapDistance - MinLapDistance;
+
+  if (AValidRows < MIN_VALID_ROWS) or
+     ((ADurationMs < MIN_DURATION_MS) and (ALapSpan < MIN_LAP_SPAN)) then
+  begin
+    AError := Format(
+      'Telemetry clip is too short to be useful.' + #13#10 +
+      'Valid rows: %d' + #13#10 +
+      'Duration: %.1f seconds' + #13#10 +
+      'Lap coverage: %.0f%%' + #13#10 +
+      'Import at least roughly one lap of telemetry.',
+      [AValidRows, ADurationMs / 1000.0, ALapSpan * 100.0]);
+    Exit;
+  end;
+
+  Result := True;
+end;
+
 function TImportTelemetryForm.ImportCSV(const AFilePath: string;
   ASessionID: Integer): Integer;
 var
@@ -133,8 +243,10 @@ var
   Speed, RPM, Throttle, Brake, Steering, LapDistance: Double;
   Gear: Integer;
   Imported: Integer;
+  InvariantFS: TFormatSettings;
 begin
   Imported := 0;
+  InvariantFS := TFormatSettings.Invariant;
   Lines := TStringList.Create;
   try
     Lines.LoadFromFile(AFilePath, TEncoding.UTF8);
@@ -151,13 +263,13 @@ begin
 
       try
         TimestampMs := StrToInt64(Trim(Parts[0]));
-        Speed       := StrToFloat(Trim(Parts[1]));
-        RPM         := StrToFloat(Trim(Parts[2]));
+        Speed       := StrToFloat(Trim(Parts[1]), InvariantFS);
+        RPM         := StrToFloat(Trim(Parts[2]), InvariantFS);
         Gear        := StrToInt(Trim(Parts[3]));
-        Throttle    := StrToFloat(Trim(Parts[4])) / 100.0;
-        Brake       := StrToFloat(Trim(Parts[5])) / 100.0;
-        Steering    := StrToFloat(Trim(Parts[6])) / 100.0;
-        LapDistance := StrToFloat(Trim(Parts[7]));
+        Throttle    := StrToFloat(Trim(Parts[4]), InvariantFS) / 100.0;
+        Brake       := StrToFloat(Trim(Parts[5]), InvariantFS) / 100.0;
+        Steering    := StrToFloat(Trim(Parts[6]), InvariantFS) / 100.0;
+        LapDistance := StrToFloat(Trim(Parts[7]), InvariantFS);
 
         FDB.AddTelemetryDataPoint(ASessionID, TimestampMs, Speed, RPM,
                                   Gear, Throttle, Brake, Steering, LapDistance);
@@ -176,6 +288,10 @@ procedure TImportTelemetryForm.BtnImportClick(Sender: TObject);
 var
   TrackID, CarID, SessionID, Imported: Integer;
   Notes: string;
+  ValidRows: Integer;
+  DurationMs: Int64;
+  LapSpan: Double;
+  ValidationError: string;
 begin
   if CboTrack.ItemIndex < 0 then
   begin
@@ -205,6 +321,13 @@ begin
   CarID   := FCars[CboCar.ItemIndex].ID;
   Notes   := Trim(EdtNotes.Text);
 
+  if not ValidateCSVFile(EdtCSVFile.Text, ValidRows, DurationMs, LapSpan,
+    ValidationError) then
+  begin
+    ShowMessage(ValidationError);
+    Exit;
+  end;
+
   try
     SessionID := FDB.AddTelemetrySession(TrackID, CarID, Notes, Now);
     Imported  := ImportCSV(EdtCSVFile.Text, SessionID);
@@ -220,7 +343,11 @@ begin
       Exit;
     end;
 
-    ShowMessage(Format('Import complete. %d data points imported.', [Imported]));
+    ShowMessage(Format(
+      'Import complete. %d data points imported.' + #13#10 +
+      'Clip length: %.1f seconds' + #13#10 +
+      'Lap coverage: %.0f%%',
+      [Imported, DurationMs / 1000.0, LapSpan * 100.0]));
     ModalResult := mrOk;
   except
     on E: Exception do

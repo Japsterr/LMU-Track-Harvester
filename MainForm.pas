@@ -78,9 +78,12 @@ type
     LblTelemetrySourceInfo: TLabel;
     LblResultsSource: TLabel;
     LblResultsSourceInfo: TLabel;
+    LblPreferredDriver: TLabel;
+    LblPreferredDriverInfo: TLabel;
     EdtAPIKey: TEdit;
     EdtTelemetryFolder: TEdit;
     EdtResultsFolder: TEdit;
+    EdtPreferredDriver: TEdit;
     BtnShowKey: TButton;
     CboAIModel: TComboBox;
     BtnSaveSettings: TButton;
@@ -145,8 +148,11 @@ type
     procedure SetStatus(const AMsg: string);
     procedure RefreshTelemetrySourceInfo;
     procedure RefreshResultsSourceInfo;
+    procedure ApplyRacingTheme;
     procedure ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
     procedure DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
+
+    function DetectPreferredDriverName: string;
   end;
 
 var
@@ -164,6 +170,8 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   FSettings := TAppSettings.Create;
   FDB       := TDatabaseManager.Create;
+
+  ApplyRacingTheme;
 
   LoadTrackCombo;
   LoadClassCombo;
@@ -185,6 +193,9 @@ begin
 
   EdtTelemetryFolder.Text := FSettings.TelemetrySourceFolder;
   EdtResultsFolder.Text := FSettings.ResultsSourceFolder;
+  EdtPreferredDriver.Text := FSettings.PreferredDriverName;
+  if Trim(EdtPreferredDriver.Text) = '' then
+    EdtPreferredDriver.Text := DetectPreferredDriverName;
   RefreshTelemetrySourceInfo;
   RefreshResultsSourceInfo;
   ImportResultsFromConfiguredFolder(False);
@@ -196,6 +207,7 @@ begin
   FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
   FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
   FSettings.ResultsSourceFolder := Trim(EdtResultsFolder.Text);
+  FSettings.PreferredDriverName := Trim(EdtPreferredDriver.Text);
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
   FSettings.WindowMaximized := (WindowState = wsMaximized);
@@ -211,6 +223,128 @@ end;
 procedure TMainForm.SetStatus(const AMsg: string);
 begin
   StatusBar.Panels[0].Text := AMsg;
+end;
+
+procedure TMainForm.ApplyRacingTheme;
+const
+  COLOR_FRAME = $00140F0B;
+  COLOR_PANEL = $00211A16;
+  COLOR_SURFACE = $00F2F5F7;
+  COLOR_SURFACE_ALT = $00E5ECF1;
+  COLOR_ACCENT = $000066CC;
+  COLOR_HEADER = $001F4A9D;
+begin
+  Caption := 'LMU Track Harvester - Driver Performance Hub';
+  Color := COLOR_FRAME;
+
+  PageControl.ParentBackground := False;
+  PageControl.Color := COLOR_FRAME;
+
+  PnlLTTop.ParentBackground := False;
+  PnlLTTop.Color := COLOR_PANEL;
+  PnlLTContent.ParentBackground := False;
+  PnlLTContent.Color := COLOR_FRAME;
+  LblTrack.Font.Color := clWhite;
+  LblClass.Font.Color := clWhite;
+
+  GrpTop10.Caption := ' Driver Top 10 Pace ';
+  GrpFastest.Caption := ' Best Personal Lap Per Car ';
+  GrpTop10.ParentBackground := False;
+  GrpFastest.ParentBackground := False;
+  GrpTop10.Color := COLOR_SURFACE_ALT;
+  GrpFastest.Color := COLOR_SURFACE_ALT;
+  GrpTop10.Font.Style := [fsBold];
+  GrpFastest.Font.Style := [fsBold];
+  LvwTop10.GridLines := False;
+  LvwFastest.GridLines := False;
+  LvwTop10.Color := COLOR_SURFACE;
+  LvwFastest.Color := COLOR_SURFACE;
+
+  LblSessions.Caption := 'Telemetry Garage';
+  LblSessions.Color := COLOR_HEADER;
+  LblSessions.Font.Color := clWhite;
+  PnlTelLeft.ParentBackground := False;
+  PnlTelLeft.Color := COLOR_FRAME;
+  PnlTelRight.ParentBackground := False;
+  PnlTelRight.Color := COLOR_FRAME;
+  GrpSessionInfo.ParentBackground := False;
+  GrpAIResponse.ParentBackground := False;
+  GrpSessionInfo.Color := COLOR_SURFACE_ALT;
+  GrpAIResponse.Color := COLOR_SURFACE_ALT;
+  GrpSessionInfo.Font.Style := [fsBold];
+  GrpAIResponse.Font.Style := [fsBold];
+  PnlTelActions.ParentBackground := False;
+  PnlTelActions.Color := COLOR_FRAME;
+  MemoSessionInfo.Color := COLOR_SURFACE;
+  MemoAIResponse.Color := COLOR_SURFACE;
+  MemoSessionInfo.Font.Name := 'Bahnschrift';
+  MemoAIResponse.Font.Name := 'Bahnschrift';
+
+  PnlSettings.ParentBackground := False;
+  PnlSettings.Color := COLOR_SURFACE;
+
+  BtnAddLap.Font.Style := [fsBold];
+  BtnDeleteLap.Font.Style := [fsBold];
+  BtnExportLaps.Font.Style := [fsBold];
+  BtnExportCSV.Font.Style := [fsBold];
+  BtnAnalyzeAI.Font.Style := [fsBold];
+  BtnImportTel.Font.Style := [fsBold];
+  BtnSaveSettings.Font.Style := [fsBold];
+
+  BtnAddLap.Caption := '+ Log Lap';
+  BtnDeleteLap.Caption := 'Delete Lap';
+  BtnExportLaps.Caption := 'Export Pace';
+  BtnExportCSV.Caption := 'Export Telemetry CSV';
+  BtnAnalyzeAI.Caption := 'Ask Gemini for Coaching';
+  BtnImportTel.Caption := 'Import Telemetry CSV';
+  BtnDeleteSession.Caption := 'Delete Saved Session';
+
+  LblSettingsTitle.Caption := 'Driver and AI Control Centre';
+  LblSep1.Color := COLOR_ACCENT;
+end;
+
+function TMainForm.DetectPreferredDriverName: string;
+var
+  Folder: string;
+  Files: TArray<string>;
+  LatestFile: string;
+  LatestTime: TDateTime;
+  FileTime: TDateTime;
+  F: string;
+  ErrorText: string;
+begin
+  Result := Trim(EdtPreferredDriver.Text);
+  if Result <> '' then
+    Exit;
+
+  Result := '';
+
+  Folder := Trim(EdtTelemetryFolder.Text);
+  if Folder = '' then
+    Folder := Trim(FSettings.TelemetrySourceFolder);
+  if (Folder = '') or (not TDirectory.Exists(Folder)) then
+    Exit;
+
+  Files := TDirectory.GetFiles(Folder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
+  if Length(Files) = 0 then
+    Exit;
+
+  LatestFile := Files[0];
+  LatestTime := TFile.GetLastWriteTime(LatestFile);
+  for F in Files do
+  begin
+    FileTime := TFile.GetLastWriteTime(F);
+    if FileTime > LatestTime then
+    begin
+      LatestTime := FileTime;
+      LatestFile := F;
+    end;
+  end;
+
+  TCSVExporter.ReadDuckDBMetadataValue(LatestFile, 'DriverName', Result, ErrorText);
+  Result := Trim(Result);
+  if Result <> '' then
+    EdtPreferredDriver.Text := Result;
 end;
 
 procedure TMainForm.RefreshTelemetrySourceInfo;
@@ -265,11 +399,16 @@ var
   LatestTime: TDateTime;
   FileTime: TDateTime;
   F: string;
+  DriverName: string;
 begin
+  DriverName := Trim(EdtPreferredDriver.Text);
   Folder := Trim(EdtResultsFolder.Text);
   if Folder = '' then
   begin
-    LblResultsSourceInfo.Caption := 'No LMU results folder configured.';
+    if DriverName <> '' then
+      LblResultsSourceInfo.Caption := 'No LMU results folder configured. Preferred driver: ' + DriverName
+    else
+      LblResultsSourceInfo.Caption := 'No LMU results folder configured. Set Preferred Driver Name to import only your laps.';
     Exit;
   end;
 
@@ -281,7 +420,12 @@ begin
 
   Files := TDirectory.GetFiles(Folder, '*.xml', TSearchOption.soTopDirectoryOnly);
   if Length(Files) = 0 then
-    LblResultsSourceInfo.Caption := 'No .xml result files found in results folder.'
+  begin
+    if DriverName <> '' then
+      LblResultsSourceInfo.Caption := 'No .xml result files found in results folder. Preferred driver: ' + DriverName
+    else
+      LblResultsSourceInfo.Caption := 'No .xml result files found in results folder. Set Preferred Driver Name to import only your laps.';
+  end
   else
   begin
     LatestFile := '';
@@ -295,8 +439,12 @@ begin
         LatestFile := F;
       end;
     end;
-    LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s',
-      [Length(Files), ExtractFileName(LatestFile)]);
+    if DriverName <> '' then
+      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Importing laps for: %s',
+        [Length(Files), ExtractFileName(LatestFile), DriverName])
+    else
+      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Set Preferred Driver Name before rescanning.',
+        [Length(Files), ExtractFileName(LatestFile)]);
   end;
 end;
 
@@ -304,10 +452,28 @@ procedure TMainForm.ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
 var
   Folder: string;
   Summary: TResultsImportSummary;
+  PreferredDriverName: string;
 begin
   Folder := Trim(EdtResultsFolder.Text);
+  PreferredDriverName := DetectPreferredDriverName;
+  if PreferredDriverName = '' then
+  begin
+    try
+      FDB.Connection.ExecSQL('DELETE FROM LapTimes WHERE SessionType LIKE ''LMU Results XML%''');
+    except
+      // Leave existing data alone if the cleanup cannot be completed.
+    end;
+
+    if AShowStatus then
+      ShowMessage('Results import skipped because the Preferred Driver Name is empty.' + sLineBreak +
+        'Enter your name as it appears in LMU results, then rescan.' + sLineBreak +
+        'Example: Japie Bosman');
+    SetStatus('LMU results import skipped until Preferred Driver Name is set.');
+    Exit;
+  end;
+
   try
-    Summary := TResultsXMLImporter.ImportFolder(FDB, Folder);
+    Summary := TResultsXMLImporter.ImportFolder(FDB, Folder, PreferredDriverName);
   except
     on E: Exception do
     begin
@@ -471,8 +637,8 @@ begin
   PopulateLapListView(LvwFastest, Fastest);
 
   // Update group-box captions with counts
-  GrpTop10.Caption   := Format(' Top 10 Fastest Laps (%d recorded) ', [Length(Top10)]);
-  GrpFastest.Caption := Format(' Fastest Lap per Car (%d cars) ',      [Length(Fastest)]);
+  GrpTop10.Caption   := Format(' Your Top 10 (%d logged) ', [Length(Top10)]);
+  GrpFastest.Caption := Format(' Your Best By Car (%d cars) ', [Length(Fastest)]);
 end;
 
 procedure TMainForm.PopulateLapListView(ALV: TListView;
@@ -623,6 +789,9 @@ var
   Item: TListItem;
   SourceFolder: string;
   SourceFile: string;
+  TrackName: string;
+  CarName: string;
+  ErrorText: string;
 begin
   LvwSessions.Items.BeginUpdate;
   try
@@ -649,8 +818,12 @@ begin
       begin
         Item := LvwSessions.Items.Add;
         Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', TFile.GetLastWriteTime(SourceFile));
-        Item.SubItems.Add('[LMU Source]');
-        Item.SubItems.Add(ExtractFileName(SourceFile));
+        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', TrackName, ErrorText) then
+          TrackName := 'LMU source file';
+        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'CarName', CarName, ErrorText) then
+          CarName := ExtractFileName(SourceFile);
+        Item.SubItems.Add(TrackName);
+        Item.SubItems.Add(CarName);
       end;
     end;
   finally
@@ -687,7 +860,7 @@ begin
       MemoSessionInfo.Lines.Add('');
       DescribeTelemetrySourceFile(FSourceTelemetryFiles[Idx], MemoSessionInfo.Lines);
       MemoSessionInfo.Lines.Add('');
-      MemoSessionInfo.Lines.Add('Use "Import Telemetry (CSV)" to import telemetry data into the app database.');
+      MemoSessionInfo.Lines.Add('Use "Export Telemetry CSV" to create a coachable file or "Ask Gemini for Coaching" to analyse this source directly.');
     end;
     Exit;
   end;
@@ -748,38 +921,11 @@ end;
 procedure TMainForm.BtnExportCSVClick(Sender: TObject);
 var
   SessionID: Integer;
-  SourceIdx: Integer;
-  SourcePath, ErrMsg: string;
   SD: TSaveDialog;
   TrackName, CarName, ClassName: string;
   SourceFile: string;
   ErrorText: string;
 begin
-<<<<<<< HEAD
-  if LvwSessions.Selected = nil then
-  begin
-    ShowMessage('Please select a telemetry session or source file first.');
-    Exit;
-  end;
-
-  // Check whether a DuckDB source-file row is selected
-  SourceIdx := LvwSessions.Selected.Index - Length(FSessions);
-  if SourceIdx >= 0 then
-  begin
-    if SourceIdx > High(FSourceTelemetryFiles) then
-    begin
-      ShowMessage('Please select a telemetry session or source file first.');
-      Exit;
-    end;
-
-    SourcePath := FSourceTelemetryFiles[SourceIdx];
-    SD := TSaveDialog.Create(nil);
-    try
-      SD.Title      := 'Export DuckDB Telemetry to CSV';
-      SD.DefaultExt := 'csv';
-      SD.Filter     := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
-      SD.FileName   := ChangeFileExt(ExtractFileName(SourcePath), '.csv');
-=======
   SourceFile := SelectedSourceTelemetryFile;
   if SourceFile <> '' then
   begin
@@ -789,33 +935,15 @@ begin
       SD.DefaultExt := 'csv';
       SD.Filter := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
       SD.FileName := ChangeFileExt(ExtractFileName(SourceFile), '.csv');
->>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
       SD.InitialDir := FSettings.LastExportFolder;
 
       if SD.Execute then
       begin
         FSettings.LastExportFolder := ExtractFilePath(SD.FileName);
-<<<<<<< HEAD
         SetStatus('Exporting DuckDB telemetry...');
         Screen.Cursor := crHourGlass;
         Application.ProcessMessages;
         try
-          if TCSVExporter.ExportDuckDBSourceToCSV(SourcePath, SD.FileName, ErrMsg) then
-          begin
-            SetStatus('DuckDB telemetry exported to: ' + SD.FileName);
-            if MessageDlg('Export successful. Open the file?',
-                          mtInformation, [mbYes, mbNo], 0) = mrYes then
-              ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
-          end
-          else
-          begin
-            SetStatus('DuckDB export failed.');
-            ShowMessage('Export failed.' + sLineBreak + ErrMsg);
-          end;
-        finally
-          Screen.Cursor := crDefault;
-        end;
-=======
         if TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, SD.FileName, ErrorText) then
         begin
           SetStatus('Source telemetry exported to: ' + SD.FileName);
@@ -824,8 +952,10 @@ begin
             ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
         end
         else
-          ShowMessage(ErrorText);
->>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
+            ShowMessage('Export failed.' + sLineBreak + ErrorText);
+        finally
+          Screen.Cursor := crDefault;
+        end;
       end;
     finally
       SD.Free;
@@ -833,10 +963,6 @@ begin
     Exit;
   end;
 
-<<<<<<< HEAD
-  // Imported session export
-=======
->>>>>>> c4b932e (Apply fixes: DFM modal values, DuckDB detection, Results XML importer improvements, DuckDB CSV exporter)
   SessionID := SelectedSessionID;
   if SessionID = -1 then
   begin
@@ -881,14 +1007,10 @@ var
   TrackName, CarName, ClassName: string;
   CSVData, Response: string;
   Gemini: TGeminiAPI;
+  SourceFile: string;
+  TempCSVPath: string;
+  ErrorText: string;
 begin
-  SessionID := SelectedSessionID;
-  if SessionID = -1 then
-  begin
-    ShowMessage('Please select a telemetry session to analyse.');
-    Exit;
-  end;
-
   APIKey := FSettings.GeminiAPIKey;
   if Trim(APIKey) = '' then
   begin
@@ -898,14 +1020,49 @@ begin
     Exit;
   end;
 
-  SelectedSessionInfo(TrackName, CarName, ClassName);
+  SourceFile := SelectedSourceTelemetryFile;
+  SessionID := SelectedSessionID;
+  if (SourceFile = '') and (SessionID = -1) then
+  begin
+    ShowMessage('Please select a telemetry session or source file to analyse.');
+    Exit;
+  end;
 
   // Get CSV data
   MemoAIResponse.Lines.Clear;
   MemoAIResponse.Lines.Add('Preparing telemetry data...');
   Application.ProcessMessages;
 
-  CSVData := TCSVExporter.TelemetrySessionToCSV(FDB, SessionID);
+  if SourceFile <> '' then
+  begin
+    TempCSVPath := TPath.Combine(TPath.GetTempPath,
+      'LMUTrackHarvester_SourceTelemetry_' + FormatDateTime('yyyymmdd_hhnnsszzz', Now) + '.csv');
+    if not TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, TempCSVPath, ErrorText) then
+    begin
+      ShowMessage('Could not prepare source telemetry for analysis.' + sLineBreak + ErrorText);
+      MemoAIResponse.Clear;
+      Exit;
+    end;
+
+    try
+      CSVData := TFile.ReadAllText(TempCSVPath, TEncoding.UTF8);
+    finally
+      if TFile.Exists(TempCSVPath) then
+        TFile.Delete(TempCSVPath);
+    end;
+
+    if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', TrackName, ErrorText) then
+      TrackName := ChangeFileExt(ExtractFileName(SourceFile), '');
+    if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'CarName', CarName, ErrorText) then
+      CarName := 'LMU source telemetry';
+    ClassName := 'LMU telemetry source';
+  end
+  else
+  begin
+    SelectedSessionInfo(TrackName, CarName, ClassName);
+    CSVData := TCSVExporter.TelemetrySessionToCSV(FDB, SessionID);
+  end;
+
   if Trim(CSVData) = '' then
   begin
     ShowMessage('No telemetry data found for this session.');
@@ -968,6 +1125,7 @@ begin
   FSettings.GeminiAPIKey := Trim(EdtAPIKey.Text);
   FSettings.TelemetrySourceFolder := Trim(EdtTelemetryFolder.Text);
   FSettings.ResultsSourceFolder := Trim(EdtResultsFolder.Text);
+  FSettings.PreferredDriverName := Trim(EdtPreferredDriver.Text);
 
   if CboAIModel.ItemIndex >= 0 then
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
@@ -1065,49 +1223,110 @@ begin
     EdtResultsFolder.Text := SelectedDir;
     FSettings.ResultsSourceFolder := SelectedDir;
     FSettings.Save;
-  // If a source telemetry file row is selected, export the LMU .duckdb file
-  SourceFile := SelectedSourceTelemetryFile;
-  if SourceFile <> '' then
-  begin
-    SD := TSaveDialog.Create(nil);
-    try
-      SD.Title := 'Export LMU Source Telemetry to CSV';
-      SD.DefaultExt := 'csv';
-      SD.Filter := 'CSV Files (*.csv)|*.csv|All Files (*.*)|*.*';
-      SD.FileName := ChangeFileExt(ExtractFileName(SourceFile), '.csv');
-      SD.InitialDir := FSettings.LastExportFolder;
+    RefreshResultsSourceInfo;
+    ImportResultsFromConfiguredFolder(False);
+    RefreshLapTimes;
+  end;
+end;
 
-      if SD.Execute then
-      begin
-        FSettings.LastExportFolder := ExtractFilePath(SD.FileName);
-        SetStatus('Exporting DuckDB telemetry...');
-        Screen.Cursor := crHourGlass;
-        Application.ProcessMessages;
-        try
-          if TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, SD.FileName, ErrorText) then
-          begin
-            SetStatus('Source telemetry exported to: ' + SD.FileName);
-            if MessageDlg('Export successful. Open the file?',
-                          mtInformation, [mbYes, mbNo], 0) = mrYes then
-              ShellExecute(0, 'open', PChar(SD.FileName), nil, nil, SW_SHOWNORMAL);
-          end
-          else
-            ShowMessage('Export failed.' + sLineBreak + ErrorText);
-        finally
-          Screen.Cursor := crDefault;
-        end;
-      end;
-    finally
-      SD.Free;
-    end;
+procedure TMainForm.BtnRescanResultsClick(Sender: TObject);
+begin
+  RefreshResultsSourceInfo;
+  ImportResultsFromConfiguredFolder(True);
+  RefreshLapTimes;
+end;
+
+procedure TMainForm.DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
+var
+  FileSize: Int64;
+  Header: TBytes;
+  HeaderHex: string;
+  I: Integer;
+  Stream: TFileStream;
+  Conn: TFDConnection;
+  Q: TFDQuery;
+  TrackName: string;
+  CarName: string;
+  DriverName: string;
+  ErrorText: string;
+begin
+  if not TFile.Exists(AFilePath) then
+  begin
+    ALines.Add('File no longer exists.');
     Exit;
   end;
+
+  if SameText(ExtractFileExt(AFilePath), '.duckdb') then
+  begin
+    ALines.Add('LMU telemetry source file selected:');
+    ALines.Add('This is a DuckDB telemetry database, not the app''s SQLite database.');
+    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'TrackName', TrackName, ErrorText) then
+      ALines.Add('Track   : ' + TrackName);
+    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'CarName', CarName, ErrorText) then
+      ALines.Add('Car     : ' + CarName);
+    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'DriverName', DriverName, ErrorText) then
+      ALines.Add('Driver  : ' + DriverName);
+    ALines.Add('The app can export this source straight to CSV and can send that CSV to Gemini for coaching.');
+    Exit;
+  end;
+
+  FileSize := TFile.GetSize(AFilePath);
+  ALines.Add(Format('Modified: %s', [DateTimeToStr(TFile.GetLastWriteTime(AFilePath))]));
+  ALines.Add(Format('Size: %.2f MB', [FileSize / (1024 * 1024)]));
+
+  SetLength(Header, 16);
+  HeaderHex := '';
+  Stream := TFileStream.Create(AFilePath, fmOpenRead or fmShareDenyNone);
+  try
+    I := Stream.Read(Header, Length(Header));
+    SetLength(Header, I);
+  finally
+    Stream.Free;
+  end;
+
+  for I := 0 to High(Header) do
+    HeaderHex := HeaderHex + IntToHex(Header[I], 2) + ' ';
+  if HeaderHex <> '' then
+    ALines.Add('Header bytes: ' + Trim(HeaderHex));
+
+  if (Length(Header) >= 4) and
+     (Header[0] = Ord('D')) and
+     (Header[1] = Ord('U')) and
+     (Header[2] = Ord('C')) and
+     (Header[3] = Ord('K')) then
+  begin
+    ALines.Add('Detected file signature: DuckDB');
+    ALines.Add('This is an LMU source telemetry database, not the app''s SQLite database.');
+    ALines.Add('Use Export Telemetry CSV or Ask Gemini for Coaching on the selected source file.');
+    Exit;
+  end;
+
+  Conn := TFDConnection.Create(nil);
+  Q := TFDQuery.Create(nil);
+  try
+    Conn.DriverName := 'SQLite';
+    Conn.LoginPrompt := False;
+    Conn.Params.Add('Database=' + AFilePath);
+    Conn.Params.Add('OpenMode=ReadOnly');
+    Conn.Connected := True;
+
+    Q.Connection := Conn;
+    Q.SQL.Text := 'SELECT name FROM sqlite_master WHERE type = ''table'' ORDER BY name';
+    Q.Open;
+    if Q.Eof then
+      ALines.Add('SQLite probe: opened, but no tables found.')
+    else
+    begin
+      ALines.Add('SQLite probe: file opened. Tables:');
+      while not Q.Eof do
+      begin
+        ALines.Add('  - ' + Q.Fields[0].AsString);
+        Q.Next;
       end;
     end;
   except
     on E: Exception do
       ALines.Add('SQLite probe failed (likely DuckDB-only format): ' + E.Message);
-
   end;
 end;
 

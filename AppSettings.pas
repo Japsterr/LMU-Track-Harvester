@@ -28,6 +28,8 @@ type
     procedure SetTelemetrySourceFolder(const Value: string);
     function GetResultsSourceFolder: string;
     procedure SetResultsSourceFolder(const Value: string);
+    function GetPreferredDriverName: string;
+    procedure SetPreferredDriverName(const Value: string);
   public
     constructor Create;
     destructor Destroy; override;
@@ -40,6 +42,7 @@ type
     property WindowMaximized: Boolean read GetWindowMaximized write SetWindowMaximized;
     property TelemetrySourceFolder: string read GetTelemetrySourceFolder write SetTelemetrySourceFolder;
     property ResultsSourceFolder: string read GetResultsSourceFolder write SetResultsSourceFolder;
+    property PreferredDriverName: string read GetPreferredDriverName write SetPreferredDriverName;
   end;
 
 implementation
@@ -253,6 +256,16 @@ end;
 procedure TAppSettings.SetResultsSourceFolder(const Value: string);
 begin
   FIniFile.WriteString('Results', 'SourceFolder', Trim(Value));
+end;
+
+function TAppSettings.GetPreferredDriverName: string;
+begin
+  Result := Trim(FIniFile.ReadString('Results', 'PreferredDriverName', ''));
+end;
+
+procedure TAppSettings.SetPreferredDriverName(const Value: string);
+begin
+  FIniFile.WriteString('Results', 'PreferredDriverName', Trim(Value));
 end;
 
 end.

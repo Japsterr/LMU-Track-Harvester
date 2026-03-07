@@ -20,7 +20,7 @@ type
   TResultsXMLImporter = class
   public
     class function ImportFolder(ADB: TDatabaseManager;
-      const AFolder: string): TResultsImportSummary;
+      const AFolder: string; const APreferredDriverName: string = ''): TResultsImportSummary;
   end;
 
 implementation
@@ -445,7 +445,7 @@ begin
 end;
 
 procedure CollectPlayerDriverLaps(const ADriverNode: IXMLNode;
-  const ATrackHint: string; const ADefaultDate: TDateTime;
+  const ATrackHint, ASessionTypeHint: string; const ADefaultDate: TDateTime;
   ACandidates: TList<TLapCandidate>);
 var
   Child: IXMLNode;
@@ -453,6 +453,7 @@ var
   CarHint: string;
   SessionType: string;
   LapMs: Int64;
+  NodeName: string;
 begin
   if ADriverNode = nil then
     Exit;
@@ -463,10 +464,14 @@ begin
   if CarHint = '' then
     CarHint := ReadNodeValue(ADriverNode, ['vehicle', 'car']);
 
-  if Assigned(ADriverNode.ParentNode) then
+  SessionType := Trim(ASessionTypeHint);
+  if SessionType = '' then
+  begin
+    if Assigned(ADriverNode.ParentNode) then
     SessionType := NormalizeImportedSessionType(ADriverNode.ParentNode.NodeName)
-  else
-    SessionType := NormalizeImportedSessionType('');
+    else
+      SessionType := NormalizeImportedSessionType('');
+  end;
 
   for I := 0 to ADriverNode.ChildNodes.Count - 1 do
   begin
@@ -474,7 +479,8 @@ begin
     if Child = nil then
       Continue;
 
-    if IsLapTimeLikeName(Child.NodeName) then
+    NodeName := NormalizeKey(Child.NodeName);
+    if (NodeName = 'lap') or IsLapTimeLikeName(Child.NodeName) then
     begin
       LapMs := ParseLapTimeMs(SafeNodeText(Child));
       AddLapCandidate(ATrackHint, CarHint, SessionType, LapMs, ADefaultDate, ACandidates);
@@ -482,26 +488,61 @@ begin
   end;
 end;
 
-function CollectPlayerLapCandidates(const ARoot: IXMLNode;
-  const ADefaultDate: TDateTime; ACandidates: TList<TLapCandidate>): Boolean;
+function IsPreferredDriverNode(const ANode: IXMLNode;
+  const APreferredDriverName: string): Boolean;
+var
+  DriverName: string;
+  PreferredKey: string;
+  DriverKey: string;
+begin
+  Result := False;
+  if (ANode = nil) or (NormalizeKey(ANode.NodeName) <> 'driver') then
+    Exit;
+
+  PreferredKey := NormalizeKey(APreferredDriverName);
+  if PreferredKey = '' then
+    Exit;
+
+  DriverName := ReadNodeValue(ANode, ['name']);
+  DriverKey := NormalizeKey(DriverName);
+  Result := (DriverKey <> '') and
+    ((DriverKey = PreferredKey) or (Pos(PreferredKey, DriverKey) > 0) or
+     (Pos(DriverKey, PreferredKey) > 0));
+end;
+
+function CollectPreferredDriverLapCandidates(const ARoot: IXMLNode;
+  const APreferredDriverName: string; const ADefaultDate: TDateTime;
+  ACandidates: TList<TLapCandidate>; const ACurrentTrack: string = '';
+  const ACurrentSession: string = ''): Boolean;
 var
   Child: IXMLNode;
   TrackHint: string;
+  SessionType: string;
   I: Integer;
 begin
   Result := False;
   if ARoot = nil then
     Exit;
 
-  TrackHint := ReadNodeValue(ARoot, ['trackcourse']);
+  TrackHint := Trim(ACurrentTrack);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['trackcourse']);
   if TrackHint = '' then
     TrackHint := ReadNodeValue(ARoot, ['trackvenue']);
   if TrackHint = '' then
     TrackHint := ReadNodeValue(ARoot, ['track', 'circuit', 'venue']);
 
-  if IsPlayerDriverNode(ARoot) then
+  SessionType := Trim(ACurrentSession);
+  if SessionType = '' then
   begin
-    CollectPlayerDriverLaps(ARoot, TrackHint, ADefaultDate, ACandidates);
+    if SameText(ARoot.NodeName, 'Qualify') or SameText(ARoot.NodeName, 'Practice') or
+       SameText(ARoot.NodeName, 'Race') or SameText(ARoot.NodeName, 'Warmup') then
+      SessionType := NormalizeImportedSessionType(ARoot.NodeName);
+  end;
+
+  if IsPreferredDriverNode(ARoot, APreferredDriverName) then
+  begin
+    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate, ACandidates);
     Exit(True);
   end;
 
@@ -509,7 +550,52 @@ begin
     for I := 0 to ARoot.ChildNodes.Count - 1 do
     begin
       Child := ARoot.ChildNodes[I];
-      if CollectPlayerLapCandidates(Child, ADefaultDate, ACandidates) then
+      if CollectPreferredDriverLapCandidates(Child, APreferredDriverName,
+           ADefaultDate, ACandidates, TrackHint, SessionType) then
+        Result := True;
+    end;
+end;
+
+function CollectPlayerLapCandidates(const ARoot: IXMLNode;
+  const ADefaultDate: TDateTime; ACandidates: TList<TLapCandidate>;
+  const ACurrentTrack: string = ''; const ACurrentSession: string = ''): Boolean;
+var
+  Child: IXMLNode;
+  TrackHint: string;
+  SessionType: string;
+  I: Integer;
+begin
+  Result := False;
+  if ARoot = nil then
+    Exit;
+
+  TrackHint := Trim(ACurrentTrack);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['trackcourse']);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['trackvenue']);
+  if TrackHint = '' then
+    TrackHint := ReadNodeValue(ARoot, ['track', 'circuit', 'venue']);
+
+  SessionType := Trim(ACurrentSession);
+  if SessionType = '' then
+  begin
+    if SameText(ARoot.NodeName, 'Qualify') or SameText(ARoot.NodeName, 'Practice') or
+       SameText(ARoot.NodeName, 'Race') or SameText(ARoot.NodeName, 'Warmup') then
+      SessionType := NormalizeImportedSessionType(ARoot.NodeName);
+  end;
+
+  if IsPlayerDriverNode(ARoot) then
+  begin
+    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate, ACandidates);
+    Exit(True);
+  end;
+
+  if Assigned(ARoot.ChildNodes) then
+    for I := 0 to ARoot.ChildNodes.Count - 1 do
+    begin
+      Child := ARoot.ChildNodes[I];
+      if CollectPlayerLapCandidates(Child, ADefaultDate, ACandidates, TrackHint, SessionType) then
         Result := True;
     end;
 end;
@@ -670,7 +756,7 @@ begin
 end;
 
 class function TResultsXMLImporter.ImportFolder(ADB: TDatabaseManager;
-  const AFolder: string): TResultsImportSummary;
+  const AFolder: string; const APreferredDriverName: string = ''): TResultsImportSummary;
 var
   Files: TArray<string>;
   FilePath: string;
@@ -711,10 +797,21 @@ begin
         if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
           LapDate := TFile.GetLastWriteTime(FilePath);
 
-        UsedPlayerOnlyImport := CollectPlayerLapCandidates(XmlDoc.DocumentElement, LapDate, Candidates);
+        UsedPlayerOnlyImport := False;
+        if Trim(APreferredDriverName) <> '' then
+          UsedPlayerOnlyImport := CollectPreferredDriverLapCandidates(
+            XmlDoc.DocumentElement, APreferredDriverName, LapDate, Candidates)
+        else
+          UsedPlayerOnlyImport := CollectPlayerLapCandidates(XmlDoc.DocumentElement, LapDate, Candidates);
+
         if not UsedPlayerOnlyImport then
+        begin
+          if Trim(APreferredDriverName) <> '' then
+            Continue;
+
           WalkNodeForLaps(XmlDoc.DocumentElement,
             TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
+        end;
 
         for Candidate in Candidates do
         begin

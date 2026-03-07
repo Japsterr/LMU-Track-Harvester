@@ -30,17 +30,15 @@ type
     class function ExportDuckDBSourceToCSV(const ASourcePath,
       AFilePath: string; out AError: string): Boolean;
 
+    { Read a metadata value from an LMU DuckDB telemetry file via the bundled Python helper. }
+    class function ReadDuckDBMetadataValue(const ASourcePath, AMetadataKey: string;
+      out AValue, AError: string): Boolean;
+
     { Export top-N lap times for a specific track + car class. }
     class function ExportLapTimes(ADB: TDatabaseManager;
                                   ATrackID, AClassID: Integer;
                                   const AFilePath: string;
                                   ALimit: Integer = 100): Boolean;
-
-    { Export telemetry from a raw LMU DuckDB source file to CSV using Python.
-      Returns True on success; AError is populated on failure. }
-    class function ExportDuckDBSourceToCSV(const ASourcePath,
-                                           AFilePath: string;
-                                           out AError: string): Boolean;
   private
     { Locates a bundled script by name; returns '' if not found. }
     class function ResolveScriptPath(const AScriptName: string): string;
@@ -53,24 +51,6 @@ type
 implementation
 uses
   Winapi.Windows;
-
-function ResolveScriptPath(const AScriptName: string): string;
-var
-  BaseDir: string;
-  Candidate: string;
-  I: Integer;
-begin
-  Result := '';
-  BaseDir := ExcludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
-
-  for I := 0 to 3 do
-  begin
-    Candidate := TPath.Combine(BaseDir, TPath.Combine('scripts', AScriptName));
-    if TFile.Exists(Candidate) then
-      Exit(Candidate);
-    BaseDir := ExcludeTrailingPathDelimiter(ExtractFileDir(BaseDir));
-  end;
-end;
 
 class function TCSVExporter.TelemetrySessionToCSV(ADB: TDatabaseManager;
   ASessionID: Integer): string;
@@ -130,67 +110,6 @@ begin
   end;
 end;
 
-class function TCSVExporter.ExportDuckDBSourceToCSV(const ASourcePath,
-  AFilePath: string; out AError: string): Boolean;
-var
-  ScriptPath: string;
-  ExitCode: Integer;
-  CommandLine: string;
-  Runners: array[0..2] of string;
-  R: string;
-  Launched: Boolean;
-begin
-  Result := False;
-  AError := '';
-
-  if not TFile.Exists(ASourcePath) then
-  begin
-    AError := 'DuckDB source file not found.';
-    Exit;
-  end;
-
-  ScriptPath := ResolveScriptPath('export_duckdb_csv.py');
-  if ScriptPath = '' then
-  begin
-    AError := 'Bundled export script not found.';
-    Exit;
-  end;
-
-  // Try several Python runners: py (Windows launcher), python3, python
-  Runners[0] := 'py';
-  Runners[1] := 'python3';
-  Runners[2] := 'python';
-
-  Launched := False;
-  ExitCode := -1;
-  for R in Runners do
-  begin
-    // '-3' flag is valid for 'py' launcher only; omit for plain python executables
-    if R = 'py' then
-      CommandLine := Format('-3 "%s" --input "%s" --output "%s"', [ScriptPath, ASourcePath, AFilePath])
-    else
-      CommandLine := Format('"%s" --input "%s" --output "%s"', [ScriptPath, ASourcePath, AFilePath]);
-    try
-      ExitCode := RunProcessAndWait(R, CommandLine);
-      Launched := True;
-      Break;
-    except
-      // try next runner
-    end;
-  end;
-
-  if not Launched then
-  begin
-    AError := 'Could not launch Python. Ensure Python 3 is installed and on the system PATH.';
-    Exit;
-  end;
-
-  Result := (ExitCode = 0) and TFile.Exists(AFilePath);
-  if not Result then
-    AError := 'DuckDB export failed (exit code ' + IntToStr(ExitCode) + '). ' +
-      'Ensure Python 3 and the duckdb package are installed (pip install duckdb).';
-end;
-
 class function TCSVExporter.ExportLapTimes(ADB: TDatabaseManager;
   ATrackID, AClassID: Integer; const AFilePath: string;
   ALimit: Integer = 100): Boolean;
@@ -241,28 +160,25 @@ end;
 
 class function TCSVExporter.ResolveScriptPath(const AScriptName: string): string;
 var
-  ExeDir: string;
+  BaseDir: string;
   Candidate: string;
+  I: Integer;
 begin
-  ExeDir := ExtractFilePath(ParamStr(0));
-
-  // Look in the 'scripts' sub-folder next to the executable first
-  Candidate := TPath.Combine(TPath.Combine(ExeDir, 'scripts'), AScriptName);
-  if TFile.Exists(Candidate) then
-  begin
-    Result := Candidate;
-    Exit;
-  end;
-
-  // Fall back to the executable directory itself
-  Candidate := TPath.Combine(ExeDir, AScriptName);
-  if TFile.Exists(Candidate) then
-  begin
-    Result := Candidate;
-    Exit;
-  end;
-
   Result := '';
+  BaseDir := ExcludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+
+  for I := 0 to 5 do
+  begin
+    Candidate := TPath.Combine(TPath.Combine(BaseDir, 'scripts'), AScriptName);
+    if TFile.Exists(Candidate) then
+      Exit(Candidate);
+
+    Candidate := TPath.Combine(BaseDir, AScriptName);
+    if TFile.Exists(Candidate) then
+      Exit(Candidate);
+
+    BaseDir := ExcludeTrailingPathDelimiter(ExtractFileDir(BaseDir));
+  end;
 end;
 
 class function TCSVExporter.RunProcessAndWait(const AExe,
@@ -359,6 +275,80 @@ begin
   if not Result then
     AError := 'DuckDB export failed (exit code ' + IntToStr(ExitCode) + '). ' +
       'Ensure Python 3 and the duckdb package are installed (pip install duckdb).';
+end;
+
+class function TCSVExporter.ReadDuckDBMetadataValue(const ASourcePath,
+  AMetadataKey: string; out AValue, AError: string): Boolean;
+var
+  ScriptPath: string;
+  OutputPath: string;
+  ExitCode: Integer;
+  CommandLine: string;
+  Runners: array[0..2] of string;
+  R: string;
+  Launched: Boolean;
+begin
+  Result := False;
+  AValue := '';
+  AError := '';
+
+  if not TFile.Exists(ASourcePath) then
+  begin
+    AError := 'DuckDB source file not found.';
+    Exit;
+  end;
+
+  ScriptPath := ResolveScriptPath('read_duckdb_metadata.py');
+  if ScriptPath = '' then
+  begin
+    AError := 'Bundled metadata helper not found.';
+    Exit;
+  end;
+
+  OutputPath := TPath.GetTempFileName;
+  try
+    Runners[0] := 'py';
+    Runners[1] := 'python3';
+    Runners[2] := 'python';
+
+    Launched := False;
+    ExitCode := -1;
+    for R in Runners do
+    begin
+      if R = 'py' then
+        CommandLine := Format('-3 "%s" --input "%s" --key "%s" --output "%s"',
+          [ScriptPath, ASourcePath, AMetadataKey, OutputPath])
+      else
+        CommandLine := Format('"%s" --input "%s" --key "%s" --output "%s"',
+          [ScriptPath, ASourcePath, AMetadataKey, OutputPath]);
+      try
+        ExitCode := RunProcessAndWait(R, CommandLine);
+        Launched := True;
+        Break;
+      except
+        // Try next runner
+      end;
+    end;
+
+    if not Launched then
+    begin
+      AError := 'Could not launch Python. Ensure Python 3 is installed and on the system PATH.';
+      Exit;
+    end;
+
+    if (ExitCode = 0) and TFile.Exists(OutputPath) then
+    begin
+      AValue := Trim(TFile.ReadAllText(OutputPath, TEncoding.UTF8));
+      Result := AValue <> '';
+      if not Result then
+        AError := 'Requested metadata value was not found in the DuckDB source file.';
+    end
+    else
+      AError := 'DuckDB metadata lookup failed (exit code ' + IntToStr(ExitCode) + ').';
+  finally
+    if TFile.Exists(OutputPath) then
+      TFile.Delete(OutputPath);
+  end;
 end;
 
 end.
