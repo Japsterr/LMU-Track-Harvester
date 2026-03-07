@@ -25,7 +25,33 @@ uses
   CSVExporter, GeminiAPI,
   AddLapForm, ImportTelemetryForm, ResultsXMLImporter;
 
+const
+  WM_STARTUP_RESULTS_IMPORT = WM_APP + 1;
+  WM_STARTUP_TELEMETRY_SCAN = WM_APP + 2;
+
 type
+  TSectorTelemetry = record
+    Name: string;
+    RangeText: string;
+    TimeMs: Int64;
+    AvgSpeedKmh: Double;
+    MinSpeedKmh: Double;
+    AvgThrottlePct: Double;
+    PeakBrakePct: Double;
+    CoastPct: Double;
+    Valid: Boolean;
+  end;
+
+  TSectorTelemetryArray = array[0..2] of TSectorTelemetry;
+
+  TTelemetrySourceSummary = record
+    FilePath: string;
+    FileTime: TDateTime;
+    TrackName: string;
+    CarName: string;
+    DriverName: string;
+  end;
+
   TMainForm = class(TForm)
     PageControl: TPageControl;
     TabLapTimes: TTabSheet;
@@ -60,6 +86,8 @@ type
     PnlTelRight: TPanel;
     GrpSessionInfo: TGroupBox;
     MemoSessionInfo: TMemo;
+    GrpSectorScorecard: TGroupBox;
+    GrpTelemetryVisual: TGroupBox;
     PnlTelActions: TPanel;
     BtnExportCSV: TButton;
     BtnAnalyzeAI: TButton;
@@ -136,6 +164,25 @@ type
     FSourceTelemetryFiles: TArray<string>;
     FCarBadgeImages: TImageList;
     FCarBadgeIndex: TDictionary<string, Integer>;
+    FSectorPanels: array[0..2] of TPanel;
+    FSectorTitleLabels: array[0..2] of TLabel;
+    FSectorRangeLabels: array[0..2] of TLabel;
+    FSectorTimeLabels: array[0..2] of TLabel;
+    FSectorMetricLabels1: array[0..2] of TLabel;
+    FSectorMetricLabels2: array[0..2] of TLabel;
+    FTelemetryMapBox: TPaintBox;
+    FTelemetryChartBox: TPaintBox;
+    FTelemetryVisualHint: TLabel;
+    FTelemetryPreviewData: TTelemetryDataArray;
+    FTelemetryLapData: TTelemetryDataArray;
+    FTelemetryPreviewTrackName: string;
+    FTelemetryPreviewCarName: string;
+    FTelemetryPreviewClassName: string;
+    FActiveSectorIndex: Integer;
+    FHoverLapDistance: Double;
+    FTelemetrySourceSummaries: TArray<TTelemetrySourceSummary>;
+    FTelemetrySourceScanInProgress: Boolean;
+    FResultsImportInProgress: Boolean;
 
     procedure LoadTrackCombo;
     procedure LoadClassCombo;
@@ -153,22 +200,38 @@ type
     procedure RefreshTelemetrySourceInfo;
     procedure RefreshResultsSourceInfo;
     procedure ApplyRacingTheme;
-    procedure ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
+    procedure StartAsyncTelemetrySourceScan(AShowStatus: Boolean);
+    procedure StartAsyncResultsImport(AForceRebuild, AShowStatus: Boolean);
     procedure DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
-    procedure EnsureCarbonBackground(ATab: TTabSheet; const AName: string;
-      AAccentColor: TColor);
     procedure InitializeCarBadges;
+    procedure InitializeSectorScorecard;
+    procedure ResetSectorScorecard;
+    procedure UpdateSectorScorecard;
+    procedure InitializeTelemetryVisuals;
+    procedure RefreshTelemetryVisuals;
+    procedure ConfigureStripedListView(ALV: TListView);
+    procedure SectorPanelClick(Sender: TObject);
+    procedure ListViewAdvancedCustomDrawItem(Sender: TCustomListView;
+      Item: TListItem; State: TCustomDrawState; Stage: TCustomDrawStage;
+      var DefaultDraw: Boolean);
+    procedure TelemetryMapPaint(Sender: TObject);
+    procedure TelemetryChartPaint(Sender: TObject);
+    procedure TelemetryChartMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
+    procedure TelemetryChartMouseLeave(Sender: TObject);
 
-    function DetectPreferredDriverName: string;
-    function DetectPreferredDriverNameFromTelemetry: string;
-    function DetectPreferredDriverNameFromResults: string;
-    function BuildCarbonBitmap(AWidth, AHeight: Integer;
-      AAccentColor: TColor): TBitmap;
+    function LoadTelemetryDataForSelection(out AData: TTelemetryDataArray;
+      out ATrackName, ACarName, AClassName: string): Boolean;
+    function ParseTelemetryCSV(const ACSVData: string): TTelemetryDataArray;
+    function ExtractRepresentativeLap(const AData: TTelemetryDataArray): TTelemetryDataArray;
+    function BuildSectorTelemetry(const AData: TTelemetryDataArray): TSectorTelemetryArray;
     function FormatDurationMs(ADurationMs: Int64): string;
     function GetCarBadgeImageIndex(const ACarName: string): Integer;
     function DisplaySessionType(const ASessionType: string): string;
     function ReadDuckDBMetadataFallback(const AFilePath: string;
       const AKeys: array of string): string;
+    procedure WMStartupTelemetryScan(var Msg: TMessage); message WM_STARTUP_TELEMETRY_SCAN;
+    procedure WMStartupResultsImport(var Msg: TMessage); message WM_STARTUP_RESULTS_IMPORT;
   end;
 
 var
@@ -183,12 +246,24 @@ implementation
 // ---------------------------------------------------------------------------
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  ModelIdx: Integer;
 begin
   FSettings := TAppSettings.Create;
   FDB       := TDatabaseManager.Create;
   FCarBadgeIndex := TDictionary<string, Integer>.Create;
   FCarBadgeImages := TImageList.Create(Self);
   InitializeCarBadges;
+  InitializeSectorScorecard;
+  InitializeTelemetryVisuals;
+  ConfigureStripedListView(LvwTop10);
+  ConfigureStripedListView(LvwFastest);
+  ConfigureStripedListView(LvwSessions);
+
+  FActiveSectorIndex := -1;
+  FHoverLapDistance := -1;
+  FTelemetrySourceScanInProgress := False;
+  FResultsImportInProgress := False;
 
   ApplyRacingTheme;
 
@@ -197,9 +272,8 @@ begin
   RefreshLapTimes;
   RefreshSessions;
 
-  // Restore settings
   EdtAPIKey.Text := FSettings.GeminiAPIKey;
-  var ModelIdx := CboAIModel.Items.IndexOf(FSettings.AIModel);
+  ModelIdx := CboAIModel.Items.IndexOf(FSettings.AIModel);
   if ModelIdx >= 0 then
     CboAIModel.ItemIndex := ModelIdx
   else
@@ -210,15 +284,15 @@ begin
   if FSettings.WindowMaximized then
     WindowState := wsMaximized;
 
+  PnlTelLeft.Width := EnsureRange(Round(ClientWidth * 0.39), 400, 460);
+
   EdtTelemetryFolder.Text := FSettings.TelemetrySourceFolder;
   EdtResultsFolder.Text := FSettings.ResultsSourceFolder;
   EdtPreferredDriver.Text := FSettings.PreferredDriverName;
-  if Trim(EdtPreferredDriver.Text) = '' then
-    EdtPreferredDriver.Text := DetectPreferredDriverName;
   RefreshTelemetrySourceInfo;
   RefreshResultsSourceInfo;
-  ImportResultsFromConfiguredFolder(False);
-  RefreshLapTimes;
+  PostMessage(Handle, WM_STARTUP_TELEMETRY_SCAN, 0, 0);
+  PostMessage(Handle, WM_STARTUP_RESULTS_IMPORT, 0, 0);
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -236,27 +310,28 @@ begin
   FDB.Free;
 end;
 
-// ---------------------------------------------------------------------------
-// Helper methods
-// ---------------------------------------------------------------------------
-
 procedure TMainForm.SetStatus(const AMsg: string);
 begin
   StatusBar.Panels[0].Text := AMsg;
 end;
 
+procedure TMainForm.WMStartupResultsImport(var Msg: TMessage);
+begin
+  StartAsyncResultsImport(False, False);
+end;
+
+procedure TMainForm.WMStartupTelemetryScan(var Msg: TMessage);
+begin
+  StartAsyncTelemetrySourceScan(False);
+end;
+
 procedure TMainForm.ApplyRacingTheme;
-const
-  COLOR_FRAME = $00393633;
-  COLOR_PANEL = $00474440;
-  COLOR_SURFACE = $00595550;
-  COLOR_SURFACE_ALT = $0066615B;
-  COLOR_ACCENT = $00C96A1C;
-  COLOR_HEADER = $00A45717;
-  COLOR_TEXT = $00E7EBEE;
-  COLOR_SUBTLE = $00BFC7CE;
 begin
   Caption := 'LMU Track Harvester - Driver Performance Hub';
+  Font.Name := 'Bahnschrift';
+  Font.Height := -15;
+
+  Color := RGB(255, 244, 230);
 
   BtnAddLap.Caption := '+ Log Lap';
   BtnDeleteLap.Caption := 'Delete Lap';
@@ -265,6 +340,7 @@ begin
   BtnAnalyzeAI.Caption := 'Ask Gemini for Coaching';
   BtnImportTel.Caption := 'Import Telemetry CSV';
   BtnDeleteSession.Caption := 'Delete Saved Session';
+  BtnRescanResults.Caption := 'Rescan / Rebuild Results';
 
   LblSettingsTitle.Caption := 'Driver and AI Control Centre';
   LblSessions.Caption := 'Telemetry Garage';
@@ -278,19 +354,31 @@ begin
   BtnAnalyzeAI.Font.Style := [fsBold];
   BtnImportTel.Font.Style := [fsBold];
   BtnSaveSettings.Font.Style := [fsBold];
+  BtnAddLap.Font.Height := -15;
+  BtnDeleteLap.Font.Height := -15;
+  BtnExportLaps.Font.Height := -15;
+  BtnExportCSV.Font.Height := -15;
+  BtnAnalyzeAI.Font.Height := -15;
+  BtnImportTel.Font.Height := -15;
+  BtnDeleteSession.Font.Height := -15;
+  BtnSaveSettings.Font.Height := -15;
 
-  LvwTop10.GridLines := True;
-  LvwFastest.GridLines := True;
+  CboTrack.Font.Height := -15;
+  CboClass.Font.Height := -15;
+  CboAIModel.Font.Height := -15;
+  EdtAPIKey.Font.Height := -15;
+  EdtTelemetryFolder.Font.Height := -15;
+  EdtResultsFolder.Font.Height := -15;
+  EdtPreferredDriver.Font.Height := -15;
+
   LvwTop10.HideSelection := False;
   LvwFastest.HideSelection := False;
   LvwTop10.SmallImages := FCarBadgeImages;
   LvwFastest.SmallImages := FCarBadgeImages;
-
-  LvwSessions.GridLines := True;
-  LvwSessions.HideSelection := False;
-
   MemoSessionInfo.Font.Name := 'Bahnschrift';
   MemoAIResponse.Font.Name := 'Bahnschrift';
+  MemoSessionInfo.Font.Height := -15;
+  MemoAIResponse.Font.Height := -15;
 
   if TStyleManager.IsCustomStyleActive then
   begin
@@ -301,88 +389,1009 @@ begin
     PnlTelLeft.ParentBackground := True;
     PnlTelRight.ParentBackground := True;
     GrpSessionInfo.ParentBackground := True;
+    GrpSectorScorecard.ParentBackground := True;
+    GrpTelemetryVisual.ParentBackground := True;
     GrpAIResponse.ParentBackground := True;
     PnlTelActions.ParentBackground := True;
     PnlSettings.ParentBackground := True;
     Exit;
   end;
 
-  Color := COLOR_FRAME;
-
-  EnsureCarbonBackground(TabLapTimes, 'ImgLapTimesBackdrop', RGB(232, 105, 24));
-  EnsureCarbonBackground(TabTelemetry, 'ImgTelemetryBackdrop', RGB(230, 76, 26));
-  EnsureCarbonBackground(TabSettings, 'ImgSettingsBackdrop', RGB(255, 146, 46));
-
   PnlLTTop.ParentBackground := False;
-  PnlLTTop.Color := COLOR_PANEL;
+  PnlLTTop.Color := RGB(255, 229, 201);
   PnlLTContent.ParentBackground := False;
-  PnlLTContent.Color := COLOR_FRAME;
-  LblTrack.Font.Color := COLOR_TEXT;
-  LblClass.Font.Color := COLOR_TEXT;
+  PnlLTContent.Color := RGB(255, 247, 237);
+  LblTrack.Font.Color := RGB(111, 50, 13);
+  LblClass.Font.Color := RGB(111, 50, 13);
+  LblTrack.Font.Height := -15;
+  LblClass.Font.Height := -15;
 
-  GrpTop10.Caption := ' Driver Top 10 Pace ';
-  GrpFastest.Caption := ' Fastest Personal Time Per Car ';
   GrpTop10.ParentBackground := False;
   GrpFastest.ParentBackground := False;
-  GrpTop10.Color := COLOR_SURFACE_ALT;
-  GrpFastest.Color := COLOR_SURFACE_ALT;
+  GrpTop10.Color := RGB(255, 239, 221);
+  GrpFastest.Color := RGB(255, 239, 221);
   GrpTop10.Font.Style := [fsBold];
   GrpFastest.Font.Style := [fsBold];
-  GrpTop10.Font.Color := COLOR_TEXT;
-  GrpFastest.Font.Color := COLOR_TEXT;
-  LvwTop10.GridLines := True;
-  LvwFastest.GridLines := True;
-  LvwTop10.Color := COLOR_SURFACE;
-  LvwFastest.Color := COLOR_SURFACE;
-  LvwTop10.Font.Color := COLOR_TEXT;
-  LvwFastest.Font.Color := COLOR_TEXT;
-  LvwTop10.HideSelection := False;
-  LvwFastest.HideSelection := False;
-  LvwTop10.SmallImages := FCarBadgeImages;
-  LvwFastest.SmallImages := FCarBadgeImages;
+  GrpTop10.Font.Color := RGB(111, 50, 13);
+  GrpFastest.Font.Color := RGB(111, 50, 13);
+  GrpTop10.Font.Height := -15;
+  GrpFastest.Font.Height := -15;
+  LvwTop10.Color := RGB(255, 255, 252);
+  LvwFastest.Color := RGB(255, 255, 252);
+  LvwTop10.Font.Color := RGB(61, 45, 31);
+  LvwFastest.Font.Color := RGB(61, 45, 31);
+  LvwTop10.Font.Height := -16;
+  LvwFastest.Font.Height := -16;
 
-  LblSessions.Caption := 'Telemetry Garage';
-  LblSessions.Color := COLOR_HEADER;
-  LblSessions.Font.Color := COLOR_TEXT;
+  LblSessions.Color := RGB(226, 103, 28);
+  LblSessions.Font.Color := clWhite;
+  LblSessions.Font.Height := -15;
   PnlTelLeft.ParentBackground := False;
-  PnlTelLeft.Color := COLOR_FRAME;
+  PnlTelLeft.Color := RGB(255, 244, 230);
   PnlTelRight.ParentBackground := False;
-  PnlTelRight.Color := COLOR_FRAME;
-  LvwSessions.Color := COLOR_SURFACE;
-  LvwSessions.Font.Color := COLOR_TEXT;
-  LvwSessions.GridLines := True;
-  LvwSessions.HideSelection := False;
+  PnlTelRight.Color := RGB(255, 244, 230);
+  LvwSessions.Color := RGB(255, 255, 252);
+  LvwSessions.Font.Color := RGB(61, 45, 31);
+  LvwSessions.Font.Height := -16;
   GrpSessionInfo.ParentBackground := False;
+  GrpSectorScorecard.ParentBackground := False;
+  GrpTelemetryVisual.ParentBackground := False;
   GrpAIResponse.ParentBackground := False;
-  GrpSessionInfo.Color := COLOR_SURFACE_ALT;
-  GrpAIResponse.Color := COLOR_SURFACE_ALT;
+  GrpSessionInfo.Color := RGB(255, 239, 221);
+  GrpSectorScorecard.Color := RGB(255, 239, 221);
+  GrpTelemetryVisual.Color := RGB(255, 239, 221);
+  GrpAIResponse.Color := RGB(255, 239, 221);
   GrpSessionInfo.Font.Style := [fsBold];
+  GrpSectorScorecard.Font.Style := [fsBold];
+  GrpTelemetryVisual.Font.Style := [fsBold];
   GrpAIResponse.Font.Style := [fsBold];
-  GrpSessionInfo.Font.Color := COLOR_TEXT;
-  GrpAIResponse.Font.Color := COLOR_TEXT;
+  GrpSessionInfo.Font.Color := RGB(111, 50, 13);
+  GrpSectorScorecard.Font.Color := RGB(111, 50, 13);
+  GrpTelemetryVisual.Font.Color := RGB(111, 50, 13);
+  GrpAIResponse.Font.Color := RGB(111, 50, 13);
+  GrpSessionInfo.Font.Height := -15;
+  GrpSectorScorecard.Font.Height := -15;
+  GrpTelemetryVisual.Font.Height := -15;
+  GrpAIResponse.Font.Height := -15;
   PnlTelActions.ParentBackground := False;
-  PnlTelActions.Color := COLOR_FRAME;
-  MemoSessionInfo.Color := COLOR_SURFACE;
-  MemoAIResponse.Color := COLOR_SURFACE;
-  MemoSessionInfo.Font.Name := 'Bahnschrift';
-  MemoAIResponse.Font.Name := 'Bahnschrift';
-  MemoSessionInfo.Font.Color := COLOR_TEXT;
-  MemoAIResponse.Font.Color := COLOR_TEXT;
+  PnlTelActions.Color := RGB(255, 244, 230);
+  MemoSessionInfo.Color := RGB(255, 252, 247);
+  MemoAIResponse.Color := RGB(255, 252, 247);
+  MemoSessionInfo.Font.Color := RGB(61, 45, 31);
+  MemoAIResponse.Font.Color := RGB(61, 45, 31);
 
   PnlSettings.ParentBackground := False;
-  PnlSettings.Color := COLOR_SURFACE_ALT;
-  LblSettingsTitle.Font.Color := COLOR_TEXT;
-  LblAPIKey.Font.Color := COLOR_TEXT;
-  LblAPIKeyInfo.Font.Color := COLOR_SUBTLE;
-  LblModel.Font.Color := COLOR_TEXT;
-  LblTelemetrySource.Font.Color := COLOR_TEXT;
-  LblTelemetrySourceInfo.Font.Color := COLOR_SUBTLE;
-  LblResultsSource.Font.Color := COLOR_TEXT;
-  LblResultsSourceInfo.Font.Color := COLOR_SUBTLE;
-  LblPreferredDriver.Font.Color := COLOR_TEXT;
-  LblPreferredDriverInfo.Font.Color := COLOR_SUBTLE;
-  LblTestResult.Font.Color := COLOR_SUBTLE;
-  LblSep1.Color := COLOR_ACCENT;
+  PnlSettings.Color := RGB(255, 239, 221);
+  LblSettingsTitle.Font.Color := RGB(111, 50, 13);
+  LblAPIKey.Font.Color := RGB(111, 50, 13);
+  LblAPIKeyInfo.Font.Color := RGB(157, 88, 45);
+  LblModel.Font.Color := RGB(111, 50, 13);
+  LblTelemetrySource.Font.Color := RGB(111, 50, 13);
+  LblTelemetrySourceInfo.Font.Color := RGB(157, 88, 45);
+  LblResultsSource.Font.Color := RGB(111, 50, 13);
+  LblResultsSourceInfo.Font.Color := RGB(157, 88, 45);
+  LblPreferredDriver.Font.Color := RGB(111, 50, 13);
+  LblPreferredDriverInfo.Font.Color := RGB(157, 88, 45);
+  LblTestResult.Font.Color := RGB(157, 88, 45);
+  LblSep1.Color := RGB(226, 103, 28);
+end;
+
+procedure TMainForm.InitializeSectorScorecard;
+const
+  SectorNames: array[0..2] of string = ('Sector 1', 'Sector 2', 'Sector 3');
+  SectorRanges: array[0..2] of string = ('0% - 33%', '33% - 67%', '67% - 100%');
+  SectorAccents: array[0..2] of TColor = ($002F79D8, $001A936F, $001576B5);
+var
+  I: Integer;
+  PanelWidth: Integer;
+begin
+  PanelWidth := 230;
+  for I := 0 to 2 do
+  begin
+    FSectorPanels[I] := TPanel.Create(GrpSectorScorecard);
+    FSectorPanels[I].Parent := GrpSectorScorecard;
+    FSectorPanels[I].Tag := I;
+    FSectorPanels[I].Cursor := crHandPoint;
+    FSectorPanels[I].OnClick := SectorPanelClick;
+    if I < 2 then
+    begin
+      FSectorPanels[I].Align := alLeft;
+      FSectorPanels[I].Width := PanelWidth;
+    end
+    else
+      FSectorPanels[I].Align := alClient;
+    FSectorPanels[I].BevelOuter := bvNone;
+    FSectorPanels[I].ParentBackground := False;
+    FSectorPanels[I].BorderWidth := 1;
+    FSectorPanels[I].Padding.Left := 10;
+    FSectorPanels[I].Padding.Top := 10;
+    FSectorPanels[I].Padding.Right := 10;
+    FSectorPanels[I].Padding.Bottom := 8;
+
+    FSectorTitleLabels[I] := TLabel.Create(FSectorPanels[I]);
+    FSectorTitleLabels[I].Parent := FSectorPanels[I];
+    FSectorTitleLabels[I].Left := 10;
+    FSectorTitleLabels[I].Top := 8;
+    FSectorTitleLabels[I].Width := PanelWidth - 18;
+    FSectorTitleLabels[I].Height := 24;
+    FSectorTitleLabels[I].AutoSize := False;
+    FSectorTitleLabels[I].Transparent := False;
+    FSectorTitleLabels[I].Color := SectorAccents[I];
+    FSectorTitleLabels[I].Alignment := taCenter;
+    FSectorTitleLabels[I].Layout := tlCenter;
+    FSectorTitleLabels[I].Font.Name := 'Bahnschrift';
+    FSectorTitleLabels[I].Font.Style := [fsBold];
+    FSectorTitleLabels[I].Font.Color := clWhite;
+    FSectorTitleLabels[I].Font.Height := -14;
+    FSectorTitleLabels[I].Caption := SectorNames[I];
+    FSectorTitleLabels[I].Tag := I;
+    FSectorTitleLabels[I].Cursor := crHandPoint;
+    FSectorTitleLabels[I].OnClick := SectorPanelClick;
+    FSectorTitleLabels[I].Anchors := [akLeft, akTop, akRight];
+
+    FSectorRangeLabels[I] := TLabel.Create(FSectorPanels[I]);
+    FSectorRangeLabels[I].Parent := FSectorPanels[I];
+    FSectorRangeLabels[I].Left := 10;
+    FSectorRangeLabels[I].Top := 40;
+    FSectorRangeLabels[I].Font.Name := 'Bahnschrift';
+    FSectorRangeLabels[I].Font.Height := -13;
+    FSectorRangeLabels[I].Caption := SectorRanges[I];
+    FSectorRangeLabels[I].Tag := I;
+    FSectorRangeLabels[I].Cursor := crHandPoint;
+    FSectorRangeLabels[I].OnClick := SectorPanelClick;
+
+    FSectorTimeLabels[I] := TLabel.Create(FSectorPanels[I]);
+    FSectorTimeLabels[I].Parent := FSectorPanels[I];
+    FSectorTimeLabels[I].Left := 10;
+    FSectorTimeLabels[I].Top := 62;
+    FSectorTimeLabels[I].Font.Name := 'Bahnschrift';
+    FSectorTimeLabels[I].Font.Style := [fsBold];
+    FSectorTimeLabels[I].Font.Height := -26;
+    FSectorTimeLabels[I].Caption := '--.--s';
+    FSectorTimeLabels[I].Tag := I;
+    FSectorTimeLabels[I].Cursor := crHandPoint;
+    FSectorTimeLabels[I].OnClick := SectorPanelClick;
+
+    FSectorMetricLabels1[I] := TLabel.Create(FSectorPanels[I]);
+    FSectorMetricLabels1[I].Parent := FSectorPanels[I];
+    FSectorMetricLabels1[I].Left := 10;
+    FSectorMetricLabels1[I].Top := 100;
+    FSectorMetricLabels1[I].Font.Name := 'Bahnschrift';
+    FSectorMetricLabels1[I].Font.Height := -12;
+    FSectorMetricLabels1[I].Caption := 'Avg -- km/h | Min --';
+    FSectorMetricLabels1[I].Tag := I;
+    FSectorMetricLabels1[I].Cursor := crHandPoint;
+    FSectorMetricLabels1[I].OnClick := SectorPanelClick;
+
+    FSectorMetricLabels2[I] := TLabel.Create(FSectorPanels[I]);
+    FSectorMetricLabels2[I].Parent := FSectorPanels[I];
+    FSectorMetricLabels2[I].Left := 10;
+    FSectorMetricLabels2[I].Top := 118;
+    FSectorMetricLabels2[I].Font.Name := 'Bahnschrift';
+    FSectorMetricLabels2[I].Font.Height := -12;
+    FSectorMetricLabels2[I].Caption := 'Throttle -- | Brake -- | Coast --';
+    FSectorMetricLabels2[I].Tag := I;
+    FSectorMetricLabels2[I].Cursor := crHandPoint;
+    FSectorMetricLabels2[I].OnClick := SectorPanelClick;
+  end;
+
+  ResetSectorScorecard;
+end;
+
+procedure TMainForm.InitializeTelemetryVisuals;
+begin
+  if GrpTelemetryVisual = nil then
+  begin
+    GrpTelemetryVisual := TGroupBox.Create(PnlTelRight);
+    GrpTelemetryVisual.Parent := PnlTelRight;
+    GrpTelemetryVisual.Align := alTop;
+    GrpTelemetryVisual.Height := 190;
+    GrpTelemetryVisual.Caption := ' Visual Analysis ';
+  end;
+
+  FTelemetryVisualHint := TLabel.Create(GrpTelemetryVisual);
+  FTelemetryVisualHint.Parent := GrpTelemetryVisual;
+  FTelemetryVisualHint.Align := alTop;
+  FTelemetryVisualHint.Height := 24;
+  FTelemetryVisualHint.AutoSize := False;
+  FTelemetryVisualHint.Layout := tlCenter;
+  FTelemetryVisualHint.Caption := 'Click a sector card to focus the map and telemetry trace.';
+  FTelemetryVisualHint.Font.Name := 'Bahnschrift';
+  FTelemetryVisualHint.Font.Height := -13;
+
+  FTelemetryMapBox := TPaintBox.Create(GrpTelemetryVisual);
+  FTelemetryMapBox.Parent := GrpTelemetryVisual;
+  FTelemetryMapBox.Align := alLeft;
+  FTelemetryMapBox.Width := 176;
+  FTelemetryMapBox.OnPaint := TelemetryMapPaint;
+
+  FTelemetryChartBox := TPaintBox.Create(GrpTelemetryVisual);
+  FTelemetryChartBox.Parent := GrpTelemetryVisual;
+  FTelemetryChartBox.Align := alClient;
+  FTelemetryChartBox.OnPaint := TelemetryChartPaint;
+  FTelemetryChartBox.OnMouseMove := TelemetryChartMouseMove;
+  FTelemetryChartBox.OnMouseLeave := TelemetryChartMouseLeave;
+end;
+
+procedure TMainForm.ResetSectorScorecard;
+var
+  I: Integer;
+begin
+  GrpSectorScorecard.Caption := ' Sector Scorecard ';
+  for I := 0 to 2 do
+  begin
+    FSectorPanels[I].Color := RGB(255, 252, 247);
+    FSectorPanels[I].BevelOuter := bvLowered;
+    FSectorTitleLabels[I].Font.Color := clWhite;
+    FSectorRangeLabels[I].Font.Color := RGB(165, 108, 68);
+    FSectorTimeLabels[I].Font.Color := RGB(71, 48, 33);
+    FSectorMetricLabels1[I].Font.Color := RGB(94, 72, 56);
+    FSectorMetricLabels2[I].Font.Color := RGB(94, 72, 56);
+    FSectorTimeLabels[I].Caption := '--.--s';
+    FSectorMetricLabels1[I].Caption := 'Avg -- km/h | Min --';
+    FSectorMetricLabels2[I].Caption := 'Throttle -- | Brake -- | Coast --';
+  end;
+  FActiveSectorIndex := -1;
+  FHoverLapDistance := -1;
+  SetLength(FTelemetryPreviewData, 0);
+  SetLength(FTelemetryLapData, 0);
+  RefreshTelemetryVisuals;
+end;
+
+function TMainForm.ParseTelemetryCSV(const ACSVData: string): TTelemetryDataArray;
+var
+  Lines: TStringList;
+  I, Count: Integer;
+  Parts: TArray<string>;
+  HeaderParts: TArray<string>;
+  FS: TFormatSettings;
+  LatitudeIndex: Integer;
+  LongitudeIndex: Integer;
+
+  function FindHeaderIndex(const ACandidates: array of string): Integer;
+  var
+    HeaderIndex: Integer;
+    Candidate: string;
+  begin
+    Result := -1;
+    for HeaderIndex := 0 to High(HeaderParts) do
+      for Candidate in ACandidates do
+        if SameText(Trim(HeaderParts[HeaderIndex]), Candidate) then
+          Exit(HeaderIndex);
+  end;
+begin
+  SetLength(Result, 0);
+  Lines := TStringList.Create;
+  try
+    Lines.Text := ACSVData;
+    FS := TFormatSettings.Invariant;
+    if Lines.Count > 0 then
+      HeaderParts := Lines[0].Split([','])
+    else
+      HeaderParts := nil;
+
+    LatitudeIndex := FindHeaderIndex(['GPS_Latitude_deg', 'GPS Latitude']);
+    LongitudeIndex := FindHeaderIndex(['GPS_Longitude_deg', 'GPS Longitude']);
+
+    Count := 0;
+    SetLength(Result, Max(Lines.Count - 1, 0));
+    for I := 1 to Lines.Count - 1 do
+    begin
+      if Trim(Lines[I]) = '' then
+        Continue;
+      Parts := Lines[I].Split([',']);
+      if Length(Parts) < 8 then
+        Continue;
+
+      Result[Count].TimestampMs := StrToInt64Def(Trim(Parts[0]), 0);
+      Result[Count].Speed := StrToFloatDef(Trim(Parts[1]), 0, FS);
+      Result[Count].RPM := StrToFloatDef(Trim(Parts[2]), 0, FS);
+      Result[Count].Gear := StrToIntDef(Trim(Parts[3]), 0);
+      Result[Count].Throttle := StrToFloatDef(Trim(Parts[4]), 0, FS) / 100.0;
+      Result[Count].Brake := StrToFloatDef(Trim(Parts[5]), 0, FS) / 100.0;
+      Result[Count].Steering := StrToFloatDef(Trim(Parts[6]), 0, FS) / 100.0;
+      Result[Count].LapDistance := StrToFloatDef(Trim(Parts[7]), 0, FS);
+      Result[Count].GPSLatitude := NaN;
+      Result[Count].GPSLongitude := NaN;
+      if (LatitudeIndex >= 0) and (LatitudeIndex < Length(Parts)) then
+        Result[Count].GPSLatitude := StrToFloatDef(Trim(Parts[LatitudeIndex]), NaN, FS);
+      if (LongitudeIndex >= 0) and (LongitudeIndex < Length(Parts)) then
+        Result[Count].GPSLongitude := StrToFloatDef(Trim(Parts[LongitudeIndex]), NaN, FS);
+      Inc(Count);
+    end;
+    SetLength(Result, Count);
+  finally
+    Lines.Free;
+  end;
+end;
+
+function TMainForm.LoadTelemetryDataForSelection(out AData: TTelemetryDataArray;
+  out ATrackName, ACarName, AClassName: string): Boolean;
+var
+  SessionID: Integer;
+  SourceFile: string;
+  SourceIndex: Integer;
+  TempCSVPath: string;
+  CSVData: string;
+  ErrorText: string;
+begin
+  Result := False;
+  SetLength(AData, 0);
+  ATrackName := '';
+  ACarName := '';
+  AClassName := '';
+
+  SourceFile := SelectedSourceTelemetryFile;
+  SessionID := SelectedSessionID;
+
+  if SourceFile <> '' then
+  begin
+    SourceIndex := -1;
+    if LvwSessions.Selected <> nil then
+      SourceIndex := LvwSessions.Selected.Index - Length(FSessions);
+
+    if (SourceIndex >= 0) and (SourceIndex <= High(FTelemetrySourceSummaries)) then
+    begin
+      ATrackName := FTelemetrySourceSummaries[SourceIndex].TrackName;
+      ACarName := FTelemetrySourceSummaries[SourceIndex].CarName;
+    end;
+
+    TempCSVPath := TPath.Combine(TPath.GetTempPath,
+      'LMUTrackHarvester_SectorPreview_' + FormatDateTime('yyyymmdd_hhnnsszzz', Now) + '.csv');
+    if not TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, TempCSVPath, ErrorText) then
+      Exit(False);
+    try
+      CSVData := TFile.ReadAllText(TempCSVPath, TEncoding.UTF8);
+      AData := ParseTelemetryCSV(CSVData);
+    finally
+      if TFile.Exists(TempCSVPath) then
+        TFile.Delete(TempCSVPath);
+    end;
+
+    if (ATrackName = '') and (not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', ATrackName, ErrorText)) then
+      ATrackName := ChangeFileExt(ExtractFileName(SourceFile), '');
+    if ACarName = '' then
+      ACarName := ReadDuckDBMetadataFallback(SourceFile,
+        ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
+    if ACarName = '' then
+      ACarName := 'LMU source telemetry';
+    AClassName := 'LMU telemetry source';
+  end
+  else if SessionID <> -1 then
+  begin
+    AData := FDB.GetTelemetryData(SessionID);
+    SelectedSessionInfo(ATrackName, ACarName, AClassName);
+  end;
+
+  Result := Length(AData) > 0;
+end;
+
+function TMainForm.ExtractRepresentativeLap(const AData: TTelemetryDataArray): TTelemetryDataArray;
+var
+  StartIdx, EndIdx, ScanIdx: Integer;
+  CandidateStart, I: Integer;
+  BestDuration, DurationMs: Int64;
+  MinDistance, MaxDistance: Double;
+begin
+  SetLength(Result, 0);
+  if Length(AData) = 0 then
+    Exit;
+
+  StartIdx := 0;
+  EndIdx := High(AData);
+  BestDuration := High(Int64);
+
+  CandidateStart := 0;
+  for I := 1 to High(AData) do
+  begin
+    if (AData[I - 1].LapDistance > 0.85) and (AData[I].LapDistance < 0.15) and
+       ((I - CandidateStart) > 25) then
+    begin
+      MinDistance := 1.0;
+      MaxDistance := 0.0;
+      for ScanIdx := CandidateStart to I - 1 do
+      begin
+        MinDistance := Min(MinDistance, AData[ScanIdx].LapDistance);
+        MaxDistance := Max(MaxDistance, AData[ScanIdx].LapDistance);
+      end;
+      DurationMs := AData[I - 1].TimestampMs - AData[CandidateStart].TimestampMs;
+      if (MinDistance <= 0.05) and (MaxDistance >= 0.95) and (DurationMs > 0) and
+         (DurationMs < BestDuration) then
+      begin
+        BestDuration := DurationMs;
+        StartIdx := CandidateStart;
+        EndIdx := I - 1;
+      end;
+      CandidateStart := I;
+    end;
+  end;
+
+  if BestDuration = High(Int64) then
+  begin
+    MinDistance := 1.0;
+    MaxDistance := 0.0;
+    for I := 0 to High(AData) do
+    begin
+      MinDistance := Min(MinDistance, AData[I].LapDistance);
+      MaxDistance := Max(MaxDistance, AData[I].LapDistance);
+    end;
+    if (MinDistance <= 0.05) and (MaxDistance >= 0.95) then
+    begin
+      StartIdx := 0;
+      EndIdx := High(AData);
+    end
+    else
+      Exit;
+  end;
+
+  SetLength(Result, EndIdx - StartIdx + 1);
+  for I := StartIdx to EndIdx do
+    Result[I - StartIdx] := AData[I];
+end;
+
+function TMainForm.BuildSectorTelemetry(const AData: TTelemetryDataArray): TSectorTelemetryArray;
+const
+  SectorNames: array[0..2] of string = ('Sector 1', 'Sector 2', 'Sector 3');
+  SectorRanges: array[0..2] of string = ('Opening phase', 'Middle phase', 'Final phase');
+  SectorStart: array[0..2] of Double = (0.0, 0.3333, 0.6666);
+  SectorEnd: array[0..2] of Double = (0.3333, 0.6666, 1.0001);
+var
+  LapData: TTelemetryDataArray;
+  I, SectorIndex, SampleCount, CoastCount: Integer;
+  FirstTS, LastTS: Int64;
+  LapDistance: Double;
+  SumSpeed, SumThrottle, PeakBrake, MinSpeed: Double;
+begin
+  for SectorIndex := 0 to 2 do
+  begin
+    Result[SectorIndex].Name := SectorNames[SectorIndex];
+    Result[SectorIndex].RangeText := SectorRanges[SectorIndex];
+    Result[SectorIndex].Valid := False;
+  end;
+
+  if Length(AData) = 0 then
+    Exit;
+
+  LapData := ExtractRepresentativeLap(AData);
+  if Length(LapData) = 0 then
+    Exit;
+
+  for SectorIndex := 0 to 2 do
+  begin
+    FirstTS := -1;
+    LastTS := -1;
+    SumSpeed := 0;
+    SumThrottle := 0;
+    PeakBrake := 0;
+    MinSpeed := 1.0E12;
+    SampleCount := 0;
+    CoastCount := 0;
+
+    for I := 0 to High(LapData) do
+    begin
+      LapDistance := LapData[I].LapDistance;
+      if (LapDistance < SectorStart[SectorIndex]) or (LapDistance >= SectorEnd[SectorIndex]) then
+        Continue;
+
+      if FirstTS < 0 then
+        FirstTS := LapData[I].TimestampMs;
+      LastTS := LapData[I].TimestampMs;
+      SumSpeed := SumSpeed + LapData[I].Speed;
+      SumThrottle := SumThrottle + (LapData[I].Throttle * 100.0);
+      PeakBrake := Max(PeakBrake, LapData[I].Brake * 100.0);
+      MinSpeed := Min(MinSpeed, LapData[I].Speed);
+      if (LapData[I].Throttle < 0.05) and (LapData[I].Brake < 0.05) then
+        Inc(CoastCount);
+      Inc(SampleCount);
+    end;
+
+    if SampleCount > 0 then
+    begin
+      Result[SectorIndex].Valid := True;
+      Result[SectorIndex].TimeMs := Max(LastTS - FirstTS, 0);
+      Result[SectorIndex].AvgSpeedKmh := SumSpeed / SampleCount;
+      Result[SectorIndex].MinSpeedKmh := MinSpeed;
+      Result[SectorIndex].AvgThrottlePct := SumThrottle / SampleCount;
+      Result[SectorIndex].PeakBrakePct := PeakBrake;
+      Result[SectorIndex].CoastPct := (CoastCount / SampleCount) * 100.0;
+    end;
+  end;
+end;
+
+procedure TMainForm.UpdateSectorScorecard;
+var
+  Data: TTelemetryDataArray;
+  Sectors: TSectorTelemetryArray;
+  TrackName: string;
+  CarName: string;
+  ClassName: string;
+  I: Integer;
+begin
+  if not LoadTelemetryDataForSelection(Data, TrackName, CarName, ClassName) then
+  begin
+    ResetSectorScorecard;
+    Exit;
+  end;
+
+  FTelemetryPreviewData := Data;
+  FTelemetryLapData := ExtractRepresentativeLap(Data);
+  FTelemetryPreviewTrackName := TrackName;
+  FTelemetryPreviewCarName := CarName;
+  FTelemetryPreviewClassName := ClassName;
+  if (FActiveSectorIndex < 0) or (FActiveSectorIndex > 2) then
+    FActiveSectorIndex := -1;
+  FHoverLapDistance := -1;
+
+  Sectors := BuildSectorTelemetry(Data);
+  GrpSectorScorecard.Caption := ' Sector Scorecard - ' + TrackName + ' ' + CarName + ' ';
+
+  for I := 0 to 2 do
+  begin
+    if not Sectors[I].Valid then
+    begin
+      FSectorPanels[I].Color := RGB(255, 252, 247);
+      FSectorTimeLabels[I].Caption := '--.--s';
+      FSectorMetricLabels1[I].Caption := 'Avg -- km/h | Min --';
+      FSectorMetricLabels2[I].Caption := 'Throttle -- | Brake -- | Coast --';
+      Continue;
+    end;
+
+    if Sectors[I].CoastPct <= 8.0 then
+    begin
+      FSectorPanels[I].Color := RGB(247, 253, 244);
+      FSectorTitleLabels[I].Color := RGB(26, 147, 111);
+      FSectorTimeLabels[I].Font.Color := RGB(21, 88, 67);
+    end
+    else if Sectors[I].CoastPct <= 15.0 then
+    begin
+      FSectorPanels[I].Color := RGB(255, 249, 239);
+      FSectorTitleLabels[I].Color := RGB(214, 140, 54);
+      FSectorTimeLabels[I].Font.Color := RGB(141, 87, 12);
+    end
+    else
+    begin
+      FSectorPanels[I].Color := RGB(255, 244, 240);
+      FSectorTitleLabels[I].Color := RGB(191, 87, 67);
+      FSectorTimeLabels[I].Font.Color := RGB(140, 56, 42);
+    end;
+
+    FSectorTitleLabels[I].Caption := Sectors[I].Name;
+    FSectorRangeLabels[I].Caption := Sectors[I].RangeText;
+    FSectorTimeLabels[I].Caption := Format('%.2fs', [Sectors[I].TimeMs / 1000.0]);
+    FSectorMetricLabels1[I].Caption := Format('Avg %.0f km/h | Min %.0f',
+      [Sectors[I].AvgSpeedKmh, Sectors[I].MinSpeedKmh]);
+    FSectorMetricLabels2[I].Caption := Format('Throttle %.0f%% | Brake %.0f%% | Coast %.0f%%',
+      [Sectors[I].AvgThrottlePct, Sectors[I].PeakBrakePct, Sectors[I].CoastPct]);
+  end;
+
+  RefreshTelemetryVisuals;
+end;
+
+procedure TMainForm.RefreshTelemetryVisuals;
+const
+  SectorNames: array[0..2] of string = ('Sector 1', 'Sector 2', 'Sector 3');
+var
+  I: Integer;
+begin
+  for I := 0 to 2 do
+  begin
+    FSectorPanels[I].BevelOuter := bvLowered;
+    FSectorPanels[I].BevelWidth := 1;
+    FSectorTitleLabels[I].Font.Style := [fsBold];
+    if (Length(FTelemetryLapData) > 0) and (FActiveSectorIndex = I) then
+    begin
+      FSectorPanels[I].BevelOuter := bvRaised;
+      FSectorTitleLabels[I].Font.Style := [fsBold, fsUnderline];
+    end;
+  end;
+
+  if Assigned(FTelemetryVisualHint) then
+  begin
+    if Length(FTelemetryLapData) = 0 then
+      FTelemetryVisualHint.Caption := 'Select a saved session or LMU source file to render the map and telemetry trace.'
+    else if FActiveSectorIndex >= 0 then
+      FTelemetryVisualHint.Caption := Format('%s focus. Hover the trace to inspect matching track position.',
+        [SectorNames[FActiveSectorIndex]])
+    else
+      FTelemetryVisualHint.Caption := 'Full-lap view. Click a sector card to isolate one part of the lap.';
+  end;
+
+  if Assigned(FTelemetryMapBox) then
+    FTelemetryMapBox.Invalidate;
+  if Assigned(FTelemetryChartBox) then
+    FTelemetryChartBox.Invalidate;
+end;
+
+procedure TMainForm.SectorPanelClick(Sender: TObject);
+var
+  ClickedSector: Integer;
+begin
+  if not (Sender is TControl) then
+    Exit;
+  if Length(FTelemetryLapData) = 0 then
+    Exit;
+
+  ClickedSector := TControl(Sender).Tag;
+  if (ClickedSector < 0) or (ClickedSector > 2) then
+    Exit;
+
+  if FActiveSectorIndex = ClickedSector then
+    FActiveSectorIndex := -1
+  else
+    FActiveSectorIndex := ClickedSector;
+  RefreshTelemetryVisuals;
+end;
+
+procedure TMainForm.TelemetryMapPaint(Sender: TObject);
+const
+  SectorStart: array[0..2] of Double = (0.0, 0.3333, 0.6666);
+  SectorEnd: array[0..2] of Double = (0.3333, 0.6666, 1.0001);
+var
+  Canvas: TCanvas;
+  DrawRect: TRect;
+  I: Integer;
+  Heading, StepSize: Double;
+  RawPoints: array of TPointF;
+  PlotPoints: array of TPoint;
+  CurrentX, CurrentY: Double;
+  MinX, MaxX, MinY, MaxY: Double;
+  ScaleX, ScaleY, Scale: Double;
+  OffsetX, OffsetY: Double;
+  ContentWidth, ContentHeight: Double;
+  DistanceValue: Double;
+  HighlightColor: TColor;
+  MarkerIndex: Integer;
+  UseGPS: Boolean;
+
+  function HasUsableGPS: Boolean;
+  var
+    J: Integer;
+    LatMin, LatMax, LonMin, LonMax: Double;
+    ValidCount: Integer;
+  begin
+    LatMin := 1.0E12;
+    LatMax := -1.0E12;
+    LonMin := 1.0E12;
+    LonMax := -1.0E12;
+    ValidCount := 0;
+    for J := 0 to High(FTelemetryLapData) do
+      if (not IsNan(FTelemetryLapData[J].GPSLatitude)) and
+         (not IsNan(FTelemetryLapData[J].GPSLongitude)) then
+      begin
+        LatMin := Min(LatMin, FTelemetryLapData[J].GPSLatitude);
+        LatMax := Max(LatMax, FTelemetryLapData[J].GPSLatitude);
+        LonMin := Min(LonMin, FTelemetryLapData[J].GPSLongitude);
+        LonMax := Max(LonMax, FTelemetryLapData[J].GPSLongitude);
+        Inc(ValidCount);
+      end;
+
+    Result := (ValidCount >= 8) and
+      ((LatMax - LatMin) > 0.0001) and
+      ((LonMax - LonMin) > 0.0001);
+  end;
+
+  function PointInActiveSector(const ALapDistance: Double): Boolean;
+  begin
+    if FActiveSectorIndex < 0 then
+      Exit(True);
+    Result := (ALapDistance >= SectorStart[FActiveSectorIndex]) and
+      (ALapDistance < SectorEnd[FActiveSectorIndex]);
+  end;
+
+  function FindNearestPointIndex(const ALapDistance: Double): Integer;
+  var
+    J: Integer;
+    BestDelta, CurrentDelta: Double;
+  begin
+    Result := -1;
+    BestDelta := 1.0E12;
+    for J := 0 to High(FTelemetryLapData) do
+    begin
+      CurrentDelta := Abs(FTelemetryLapData[J].LapDistance - ALapDistance);
+      if CurrentDelta < BestDelta then
+      begin
+        BestDelta := CurrentDelta;
+        Result := J;
+      end;
+    end;
+  end;
+
+begin
+  if not Assigned(FTelemetryMapBox) then
+    Exit;
+
+  Canvas := FTelemetryMapBox.Canvas;
+  DrawRect := Rect(0, 0, FTelemetryMapBox.Width, FTelemetryMapBox.Height);
+  Canvas.Brush.Color := RGB(255, 252, 247);
+  Canvas.FillRect(DrawRect);
+
+  Canvas.Brush.Style := bsClear;
+  Canvas.Font.Name := 'Bahnschrift';
+  Canvas.Font.Color := RGB(111, 50, 13);
+  Canvas.Font.Style := [fsBold];
+  Canvas.TextOut(10, 8, 'Track Map');
+
+  if Length(FTelemetryLapData) < 2 then
+  begin
+    Canvas.Font.Style := [];
+    Canvas.Font.Color := RGB(157, 88, 45);
+    Canvas.TextRect(DrawRect, 10, 32, 'No representative lap available yet.');
+    Exit;
+  end;
+
+  SetLength(RawPoints, Length(FTelemetryLapData));
+  CurrentX := 0;
+  CurrentY := 0;
+  Heading := -Pi / 2;
+  MinX := 1.0E12;
+  MaxX := -1.0E12;
+  MinY := 1.0E12;
+  MaxY := -1.0E12;
+  UseGPS := HasUsableGPS;
+
+  for I := 0 to High(FTelemetryLapData) do
+  begin
+    if UseGPS then
+    begin
+      if (not IsNan(FTelemetryLapData[I].GPSLatitude)) and
+         (not IsNan(FTelemetryLapData[I].GPSLongitude)) then
+      begin
+        CurrentX := FTelemetryLapData[I].GPSLongitude;
+        CurrentY := -FTelemetryLapData[I].GPSLatitude;
+      end
+      else if I > 0 then
+      begin
+        CurrentX := RawPoints[I - 1].X;
+        CurrentY := RawPoints[I - 1].Y;
+      end;
+    end
+    else if I > 0 then
+    begin
+      StepSize := 1.3 + Max(FTelemetryLapData[I].Speed / 180.0, 0.3);
+      Heading := Heading + (FTelemetryLapData[I].Steering * 0.16);
+      CurrentX := CurrentX + Cos(Heading) * StepSize;
+      CurrentY := CurrentY + Sin(Heading) * StepSize;
+    end;
+
+    RawPoints[I] := PointF(CurrentX, CurrentY);
+    MinX := Min(MinX, CurrentX);
+    MaxX := Max(MaxX, CurrentX);
+    MinY := Min(MinY, CurrentY);
+    MaxY := Max(MaxY, CurrentY);
+  end;
+
+  DrawRect := Rect(14, 32, FTelemetryMapBox.Width - 14, FTelemetryMapBox.Height - 16);
+  if (DrawRect.Right - DrawRect.Left < 10) or (DrawRect.Bottom - DrawRect.Top < 10) then
+    Exit;
+
+  ScaleX := (DrawRect.Right - DrawRect.Left) / Max(MaxX - MinX, 1.0);
+  ScaleY := (DrawRect.Bottom - DrawRect.Top) / Max(MaxY - MinY, 1.0);
+  Scale := Min(ScaleX, ScaleY);
+  ContentWidth := (MaxX - MinX) * Scale;
+  ContentHeight := (MaxY - MinY) * Scale;
+  OffsetX := DrawRect.Left + ((DrawRect.Right - DrawRect.Left) - ContentWidth) / 2;
+  OffsetY := DrawRect.Top + ((DrawRect.Bottom - DrawRect.Top) - ContentHeight) / 2;
+
+  SetLength(PlotPoints, Length(RawPoints));
+  for I := 0 to High(RawPoints) do
+    PlotPoints[I] := Point(
+      Round(OffsetX + ((RawPoints[I].X - MinX) * Scale)),
+      Round(OffsetY + ((RawPoints[I].Y - MinY) * Scale)));
+
+  Canvas.Pen.Color := RGB(212, 197, 181);
+  Canvas.Pen.Width := 4;
+  Canvas.Polyline(PlotPoints);
+
+  HighlightColor := RGB(226, 103, 28);
+  Canvas.Pen.Width := 5;
+  Canvas.Pen.Color := HighlightColor;
+  for I := 1 to High(PlotPoints) do
+  begin
+    DistanceValue := FTelemetryLapData[I].LapDistance;
+    if PointInActiveSector(DistanceValue) then
+    begin
+      Canvas.MoveTo(PlotPoints[I - 1].X, PlotPoints[I - 1].Y);
+      Canvas.LineTo(PlotPoints[I].X, PlotPoints[I].Y);
+    end;
+  end;
+
+  Canvas.Brush.Style := bsSolid;
+  Canvas.Brush.Color := RGB(61, 45, 31);
+  Canvas.Pen.Color := clWhite;
+  Canvas.Ellipse(PlotPoints[0].X - 4, PlotPoints[0].Y - 4, PlotPoints[0].X + 4, PlotPoints[0].Y + 4);
+
+  if FHoverLapDistance >= 0 then
+  begin
+    MarkerIndex := FindNearestPointIndex(FHoverLapDistance);
+    if MarkerIndex >= 0 then
+    begin
+      Canvas.Brush.Color := RGB(23, 120, 77);
+      Canvas.Pen.Color := clWhite;
+      Canvas.Ellipse(PlotPoints[MarkerIndex].X - 5, PlotPoints[MarkerIndex].Y - 5,
+        PlotPoints[MarkerIndex].X + 5, PlotPoints[MarkerIndex].Y + 5);
+    end;
+  end;
+end;
+
+procedure TMainForm.TelemetryChartPaint(Sender: TObject);
+const
+  SectorStart: array[0..2] of Double = (0.0, 0.3333, 0.6666);
+  SectorEnd: array[0..2] of Double = (0.3333, 0.6666, 1.0001);
+  SectorTint: array[0..2] of TColor = (15400932, 16119285, 15528171);
+var
+  Canvas: TCanvas;
+  ChartRect: TRect;
+  I, BaseLineY: Integer;
+  MaxSpeed, DistanceValue: Double;
+  SpeedPoint, ThrottlePoint, BrakePoint: TPoint;
+  XPos: Integer;
+
+  function DistanceToX(const ALapDistance: Double): Integer;
+  begin
+    Result := ChartRect.Left + Round(EnsureRange(ALapDistance, 0.0, 1.0) * (ChartRect.Width - 1));
+  end;
+
+  function SpeedToY(const ASpeed: Double): Integer;
+  begin
+    Result := ChartRect.Bottom - Round((ASpeed / MaxSpeed) * (ChartRect.Height - 28)) - 18;
+  end;
+
+  function PercentToY(const AValue: Double): Integer;
+  begin
+    Result := ChartRect.Bottom - Round(EnsureRange(AValue, 0.0, 1.0) * (ChartRect.Height - 28)) - 18;
+  end;
+
+begin
+  if not Assigned(FTelemetryChartBox) then
+    Exit;
+
+  Canvas := FTelemetryChartBox.Canvas;
+  Canvas.Brush.Color := RGB(255, 252, 247);
+  Canvas.FillRect(Rect(0, 0, FTelemetryChartBox.Width, FTelemetryChartBox.Height));
+  Canvas.Font.Name := 'Bahnschrift';
+  Canvas.Font.Color := RGB(111, 50, 13);
+  Canvas.Font.Style := [fsBold];
+  Canvas.TextOut(10, 8, 'Telemetry Trace');
+
+  ChartRect := Rect(12, 30, FTelemetryChartBox.Width - 12, FTelemetryChartBox.Height - 24);
+  if (Length(FTelemetryLapData) < 2) or (ChartRect.Width < 40) or (ChartRect.Height < 50) then
+  begin
+    Canvas.Font.Style := [];
+    Canvas.Font.Color := RGB(157, 88, 45);
+    Canvas.TextRect(ChartRect, 10, 34, 'Select telemetry to view speed, throttle, and brake traces.');
+    Exit;
+  end;
+
+  for I := 0 to 2 do
+  begin
+    Canvas.Brush.Color := SectorTint[I];
+    Canvas.FillRect(Rect(DistanceToX(SectorStart[I]), ChartRect.Top,
+      DistanceToX(SectorEnd[I]), ChartRect.Bottom));
+  end;
+
+  if FActiveSectorIndex >= 0 then
+  begin
+    Canvas.Brush.Color := RGB(255, 230, 196);
+    Canvas.FillRect(Rect(DistanceToX(SectorStart[FActiveSectorIndex]), ChartRect.Top,
+      DistanceToX(SectorEnd[FActiveSectorIndex]), ChartRect.Bottom));
+  end;
+
+  Canvas.Pen.Color := RGB(221, 205, 187);
+  Canvas.Brush.Style := bsClear;
+  Canvas.Rectangle(ChartRect);
+  BaseLineY := ChartRect.Bottom - 18;
+  Canvas.MoveTo(ChartRect.Left, BaseLineY);
+  Canvas.LineTo(ChartRect.Right, BaseLineY);
+
+  Canvas.Font.Style := [];
+  Canvas.Font.Color := RGB(157, 88, 45);
+  Canvas.TextOut(ChartRect.Left, ChartRect.Bottom - 16, '0%');
+  Canvas.TextOut(DistanceToX(0.3333) - 18, ChartRect.Bottom - 16, '33%');
+  Canvas.TextOut(DistanceToX(0.6666) - 18, ChartRect.Bottom - 16, '67%');
+  Canvas.TextOut(ChartRect.Right - 26, ChartRect.Bottom - 16, '100%');
+
+  MaxSpeed := 1.0;
+  for I := 0 to High(FTelemetryLapData) do
+    MaxSpeed := Max(MaxSpeed, FTelemetryLapData[I].Speed);
+
+  Canvas.Pen.Width := 2;
+  for I := 1 to High(FTelemetryLapData) do
+  begin
+    DistanceValue := FTelemetryLapData[I - 1].LapDistance;
+    SpeedPoint := Point(DistanceToX(DistanceValue), SpeedToY(FTelemetryLapData[I - 1].Speed));
+    ThrottlePoint := Point(DistanceToX(DistanceValue), PercentToY(FTelemetryLapData[I - 1].Throttle));
+    BrakePoint := Point(DistanceToX(DistanceValue), PercentToY(FTelemetryLapData[I - 1].Brake));
+
+    Canvas.Pen.Color := RGB(226, 103, 28);
+    Canvas.MoveTo(SpeedPoint.X, SpeedPoint.Y);
+    Canvas.LineTo(DistanceToX(FTelemetryLapData[I].LapDistance), SpeedToY(FTelemetryLapData[I].Speed));
+
+    Canvas.Pen.Color := RGB(23, 120, 77);
+    Canvas.MoveTo(ThrottlePoint.X, ThrottlePoint.Y);
+    Canvas.LineTo(DistanceToX(FTelemetryLapData[I].LapDistance), PercentToY(FTelemetryLapData[I].Throttle));
+
+    Canvas.Pen.Color := RGB(173, 42, 42);
+    Canvas.MoveTo(BrakePoint.X, BrakePoint.Y);
+    Canvas.LineTo(DistanceToX(FTelemetryLapData[I].LapDistance), PercentToY(FTelemetryLapData[I].Brake));
+  end;
+
+  Canvas.Font.Color := RGB(111, 50, 13);
+  Canvas.TextOut(ChartRect.Left + 4, ChartRect.Top + 4,
+    Format('%s | %s', [FTelemetryPreviewTrackName, FTelemetryPreviewCarName]));
+  Canvas.Font.Color := RGB(226, 103, 28);
+  Canvas.TextOut(ChartRect.Right - 190, ChartRect.Top + 4, 'Speed');
+  Canvas.Font.Color := RGB(23, 120, 77);
+  Canvas.TextOut(ChartRect.Right - 132, ChartRect.Top + 4, 'Throttle');
+  Canvas.Font.Color := RGB(173, 42, 42);
+  Canvas.TextOut(ChartRect.Right - 58, ChartRect.Top + 4, 'Brake');
+
+  if FHoverLapDistance >= 0 then
+  begin
+    XPos := DistanceToX(FHoverLapDistance);
+    Canvas.Pen.Color := RGB(61, 45, 31);
+    Canvas.Pen.Style := psDash;
+    Canvas.MoveTo(XPos, ChartRect.Top);
+    Canvas.LineTo(XPos, ChartRect.Bottom);
+    Canvas.Pen.Style := psSolid;
+  end;
+end;
+
+procedure TMainForm.TelemetryChartMouseMove(Sender: TObject; Shift: TShiftState; X,
+  Y: Integer);
+var
+  ChartRect: TRect;
+begin
+  if Length(FTelemetryLapData) = 0 then
+    Exit;
+
+  ChartRect := Rect(12, 30, FTelemetryChartBox.Width - 12, FTelemetryChartBox.Height - 24);
+  if PtInRect(ChartRect, Point(X, Y)) then
+    FHoverLapDistance := EnsureRange((X - ChartRect.Left) / Max(ChartRect.Width - 1, 1), 0.0, 1.0)
+  else
+    FHoverLapDistance := -1;
+  RefreshTelemetryVisuals;
+end;
+
+procedure TMainForm.TelemetryChartMouseLeave(Sender: TObject);
+begin
+  if FHoverLapDistance < 0 then
+    Exit;
+  FHoverLapDistance := -1;
+  RefreshTelemetryVisuals;
+end;
+
+procedure TMainForm.ConfigureStripedListView(ALV: TListView);
+begin
+  ALV.ReadOnly := True;
+  ALV.RowSelect := True;
+  ALV.GridLines := True;
+  ALV.OnAdvancedCustomDrawItem := ListViewAdvancedCustomDrawItem;
+end;
+
+procedure TMainForm.ListViewAdvancedCustomDrawItem(Sender: TCustomListView;
+  Item: TListItem; State: TCustomDrawState; Stage: TCustomDrawStage;
+  var DefaultDraw: Boolean);
+begin
+  if Stage <> cdPrePaint then
+    Exit;
+
+  if cdsSelected in State then
+  begin
+    Sender.Canvas.Brush.Color := RGB(255, 189, 122);
+    Sender.Canvas.Font.Color := RGB(74, 36, 9);
+  end
+  else if Odd(Item.Index) then
+  begin
+    Sender.Canvas.Brush.Color := RGB(255, 246, 236);
+    Sender.Canvas.Font.Color := RGB(61, 45, 31);
+  end
+  else
+  begin
+    Sender.Canvas.Brush.Color := RGB(255, 255, 252);
+    Sender.Canvas.Font.Color := RGB(61, 45, 31);
+  end;
+
+  DefaultDraw := True;
 end;
 
 function TMainForm.ReadDuckDBMetadataFallback(const AFilePath: string;
@@ -400,83 +1409,6 @@ begin
         Exit;
     end;
   Result := '';
-end;
-
-function TMainForm.BuildCarbonBitmap(AWidth, AHeight: Integer;
-  AAccentColor: TColor): TBitmap;
-var
-  X, Y: Integer;
-  TileRect: TRect;
-  BaseColor: TColor;
-  WeaveColor: TColor;
-  AccentBand: TRect;
-begin
-  Result := TBitmap.Create;
-  Result.SetSize(AWidth, AHeight);
-  Result.PixelFormat := pf32bit;
-
-  WeaveColor := RGB(86, 84, 80);
-  BaseColor := RGB(72, 69, 64);
-  Result.Canvas.Brush.Color := BaseColor;
-  Result.Canvas.FillRect(Rect(0, 0, AWidth, AHeight));
-
-  for Y := 0 to (AHeight div 12) + 1 do
-    for X := 0 to (AWidth div 12) + 1 do
-    begin
-      TileRect := Rect(X * 12, Y * 12, X * 12 + 10, Y * 12 + 10);
-      if Odd(X + Y) then
-        Result.Canvas.Brush.Color := RGB(82, 79, 74)
-      else
-        Result.Canvas.Brush.Color := WeaveColor;
-      Result.Canvas.FillRect(TileRect);
-
-      if Odd(Y) then
-      begin
-        Result.Canvas.Brush.Color := RGB(43, 43, 43);
-        Result.Canvas.Brush.Color := RGB(108, 103, 96);
-        Result.Canvas.FillRect(Rect(TileRect.Left + 2, TileRect.Top, TileRect.Right - 2, TileRect.Top + 3));
-      end
-      else
-      begin
-        Result.Canvas.Brush.Color := RGB(62, 59, 56);
-        Result.Canvas.FillRect(Rect(TileRect.Left, TileRect.Top + 6, TileRect.Right, TileRect.Top + 9));
-      end;
-    end;
-
-  AccentBand := Rect(0, 0, AWidth, 80);
-  Result.Canvas.Brush.Color := AAccentColor;
-  Result.Canvas.FillRect(Rect(0, 0, AWidth, 2));
-  Result.Canvas.Brush.Color := RGB(95, 76, 60);
-  Result.Canvas.FillRect(AccentBand);
-  Result.Canvas.Pen.Color := AAccentColor;
-  Result.Canvas.MoveTo(0, 38);
-  Result.Canvas.LineTo(AWidth, 62);
-end;
-
-procedure TMainForm.EnsureCarbonBackground(ATab: TTabSheet; const AName: string;
-  AAccentColor: TColor);
-var
-  Img: TImage;
-  Texture: TBitmap;
-begin
-  Img := ATab.FindComponent(AName) as TImage;
-  if Img = nil then
-  begin
-    Img := TImage.Create(ATab);
-    Img.Name := AName;
-    Img.Parent := ATab;
-    Img.Align := alClient;
-    Img.Stretch := True;
-    Img.Proportional := False;
-    Img.SendToBack;
-  end;
-
-  Texture := BuildCarbonBitmap(Max(ATab.Width, 640), Max(ATab.Height, 480), AAccentColor);
-  try
-    Img.Picture.Bitmap.Assign(Texture);
-  finally
-    Texture.Free;
-  end;
 end;
 
 procedure TMainForm.InitializeCarBadges;
@@ -553,83 +1485,12 @@ begin
     Result := 'Session';
 end;
 
-function TMainForm.DetectPreferredDriverNameFromTelemetry: string;
-var
-  Folder: string;
-  Files: TArray<string>;
-  LatestFile: string;
-  LatestTime: TDateTime;
-  FileTime: TDateTime;
-  F: string;
-  ErrorText: string;
-begin
-  Result := '';
-
-  Folder := Trim(EdtTelemetryFolder.Text);
-  if Folder = '' then
-    Folder := Trim(FSettings.TelemetrySourceFolder);
-  if (Folder = '') or (not TDirectory.Exists(Folder)) then
-    Exit;
-
-  Files := TDirectory.GetFiles(Folder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
-  if Length(Files) = 0 then
-    Exit;
-
-  LatestFile := Files[0];
-  LatestTime := TFile.GetLastWriteTime(LatestFile);
-  for F in Files do
-  begin
-    FileTime := TFile.GetLastWriteTime(F);
-    if FileTime > LatestTime then
-    begin
-      LatestTime := FileTime;
-      LatestFile := F;
-    end;
-  end;
-
-  TCSVExporter.ReadDuckDBMetadataValue(LatestFile, 'DriverName', Result, ErrorText);
-  Result := Trim(Result);
-end;
-
-function TMainForm.DetectPreferredDriverNameFromResults: string;
-var
-  Folder: string;
-begin
-  Folder := Trim(EdtResultsFolder.Text);
-  if Folder = '' then
-    Folder := Trim(FSettings.ResultsSourceFolder);
-  Result := Trim(TResultsXMLImporter.DetectDominantDriverName(Folder));
-end;
-
-function TMainForm.DetectPreferredDriverName: string;
-var
-  ResultsDriverName: string;
-  TelemetryDriverName: string;
-begin
-  Result := Trim(EdtPreferredDriver.Text);
-  if Result <> '' then
-    Exit;
-
-  ResultsDriverName := DetectPreferredDriverNameFromResults;
-  TelemetryDriverName := DetectPreferredDriverNameFromTelemetry;
-
-  if ResultsDriverName <> '' then
-    Result := ResultsDriverName
-  else
-    Result := TelemetryDriverName;
-
-  if Result <> '' then
-    EdtPreferredDriver.Text := Result;
-end;
-
 procedure TMainForm.RefreshTelemetrySourceInfo;
 var
   Folder: string;
-  Files: TArray<string>;
-  LatestFile: string;
   LatestTime: TDateTime;
-  FileTime: TDateTime;
-  F: string;
+  LatestFile: string;
+  Summary: TTelemetrySourceSummary;
 begin
   Folder := Trim(EdtTelemetryFolder.Text);
   if Folder = '' then
@@ -644,25 +1505,27 @@ begin
     Exit;
   end;
 
-  Files := TDirectory.GetFiles(Folder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
-  if Length(Files) = 0 then
-    LblTelemetrySourceInfo.Caption := 'No .duckdb files found in telemetry folder.'
+  if FTelemetrySourceScanInProgress then
+  begin
+    LblTelemetrySourceInfo.Caption := 'Scanning LMU telemetry files in the background...';
+    Exit;
+  end;
+
+  if Length(FTelemetrySourceSummaries) = 0 then
+    LblTelemetrySourceInfo.Caption := 'No .duckdb telemetry files found in telemetry folder.'
   else
   begin
     LatestFile := '';
     LatestTime := 0;
-    for F in Files do
-    begin
-      FileTime := TFile.GetLastWriteTime(F);
-      if (LatestFile = '') or (FileTime > LatestTime) then
+    for Summary in FTelemetrySourceSummaries do
+      if (LatestFile = '') or (Summary.FileTime > LatestTime) then
       begin
-        LatestTime := FileTime;
-        LatestFile := F;
+        LatestTime := Summary.FileTime;
+        LatestFile := Summary.FilePath;
       end;
-    end;
 
     LblTelemetrySourceInfo.Caption := Format('%d .duckdb telemetry file(s) detected. Latest: %s',
-      [Length(Files), ExtractFileName(LatestFile)]);
+      [Length(FTelemetrySourceSummaries), ExtractFileName(LatestFile)]);
   end;
 end;
 
@@ -718,57 +1581,316 @@ begin
       LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Importing laps for: %s',
         [Length(Files), ExtractFileName(LatestFile), DriverName])
     else
-      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Auto-detected driver: %s',
-        [Length(Files), ExtractFileName(LatestFile), DetectPreferredDriverNameFromResults]);
+      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Driver will be auto-detected during background scan.',
+        [Length(Files), ExtractFileName(LatestFile)]);
   end;
+
+  if FResultsImportInProgress then
+    LblResultsSourceInfo.Caption := LblResultsSourceInfo.Caption + ' Background import in progress.';
 end;
 
-procedure TMainForm.ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
+procedure TMainForm.StartAsyncTelemetrySourceScan(AShowStatus: Boolean);
 var
-  Folder: string;
-  Summary: TResultsImportSummary;
-  PreferredDriverName: string;
+  SourceFolder: string;
+  DatabasePath: string;
 begin
-  Folder := Trim(EdtResultsFolder.Text);
-  PreferredDriverName := DetectPreferredDriverName;
-  if PreferredDriverName = '' then
+  if FTelemetrySourceScanInProgress then
   begin
-    try
-      FDB.Connection.ExecSQL('DELETE FROM LapTimes WHERE SessionType LIKE ''LMU Results XML%''');
-    except
-      // Leave existing data alone if the cleanup cannot be completed.
-    end;
-
-    if AShowStatus then
-      ShowMessage('Results import skipped because the Preferred Driver Name is empty.' + sLineBreak +
-        'Enter your name as it appears in LMU results, then rescan.' + sLineBreak +
-        'Example: Japie Bosman');
-    SetStatus('LMU results import skipped until Preferred Driver Name is set.');
+    SetStatus('LMU telemetry source scan is already running in the background.');
     Exit;
   end;
 
-  try
-    Summary := TResultsXMLImporter.ImportFolder(FDB, Folder, PreferredDriverName);
-  except
-    on E: Exception do
-    begin
-      if AShowStatus then
-        ShowMessage('Results scan failed: ' + E.Message);
-      Exit;
-    end;
+  SourceFolder := Trim(EdtTelemetryFolder.Text);
+  if SourceFolder = '' then
+    SourceFolder := Trim(FSettings.TelemetrySourceFolder);
+  DatabasePath := FDB.DatabasePath;
+
+  SetLength(FTelemetrySourceSummaries, 0);
+  SetLength(FSourceTelemetryFiles, 0);
+
+  if SourceFolder = '' then
+  begin
+    RefreshTelemetrySourceInfo;
+    RefreshSessions;
+    Exit;
   end;
 
-  if AShowStatus then
-    ShowMessage(Format(
-      'Results scan completed.' + sLineBreak +
-      'Files scanned: %d' + sLineBreak +
-      'Files failed: %d' + sLineBreak +
-      'Laps inserted: %d' + sLineBreak +
-      'Laps skipped: %d',
-      [Summary.FilesScanned, Summary.FilesFailed, Summary.LapsInserted, Summary.LapsSkipped]));
+  FTelemetrySourceScanInProgress := True;
+  RefreshTelemetrySourceInfo;
+  RefreshSessions;
+  SetStatus('Scanning LMU telemetry sources in the background...');
 
-  SetStatus(Format('Results scan complete: %d imported, %d skipped, %d failed.',
-    [Summary.LapsInserted, Summary.LapsSkipped, Summary.FilesFailed]));
+  TThread.CreateAnonymousThread(
+    procedure
+    var
+      Files: TArray<string>;
+      Summaries: TArray<TTelemetrySourceSummary>;
+      CachedItems: TTelemetrySourceCacheArray;
+      SummaryCount: Integer;
+      SourceFile: string;
+      NormalizedFile: string;
+      TrackName: string;
+      CarName: string;
+      DriverName: string;
+      LocalError: string;
+      ErrorText: string;
+      CurrentConfiguredFolder: string;
+      ThreadDB: TDatabaseManager;
+      CacheLookup: TDictionary<string, TTelemetrySourceCacheItem>;
+      SeenFiles: TDictionary<string, Byte>;
+      CachedItem: TTelemetrySourceCacheItem;
+
+      function FileStampText(const AValue: TDateTime): string;
+      begin
+        Result := FormatDateTime('yyyy-mm-dd hh:nn:ss', AValue);
+      end;
+
+      function ReadMetadataWithFallback(const AKeyName, AFallback: string): string;
+      begin
+        LocalError := '';
+        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, AKeyName, Result, LocalError) then
+          Result := AFallback;
+        Result := Trim(Result);
+      end;
+
+      function ReadMetadataFallback(const AKeys: array of string; const AFallback: string): string;
+      var
+        KeyName: string;
+      begin
+        Result := '';
+        for KeyName in AKeys do
+        begin
+          LocalError := '';
+          if TCSVExporter.ReadDuckDBMetadataValue(SourceFile, KeyName, Result, LocalError) then
+          begin
+            Result := Trim(Result);
+            if Result <> '' then
+              Exit;
+          end;
+        end;
+        Result := AFallback;
+      end;
+    begin
+      ErrorText := '';
+      ThreadDB := nil;
+      CacheLookup := nil;
+      SeenFiles := nil;
+      try
+        ThreadDB := TDatabaseManager.Create(DatabasePath);
+        CachedItems := ThreadDB.GetTelemetrySourceCache;
+        CacheLookup := TDictionary<string, TTelemetrySourceCacheItem>.Create;
+        SeenFiles := TDictionary<string, Byte>.Create;
+        for CachedItem in CachedItems do
+          CacheLookup.AddOrSetValue(ExpandFileName(CachedItem.FilePath), CachedItem);
+
+        if TDirectory.Exists(SourceFolder) then
+          Files := TDirectory.GetFiles(SourceFolder, '*.duckdb', TSearchOption.soTopDirectoryOnly)
+        else
+          Files := nil;
+
+        SetLength(Summaries, Length(Files));
+        SummaryCount := 0;
+        for SourceFile in Files do
+        begin
+          NormalizedFile := ExpandFileName(SourceFile);
+          SeenFiles.AddOrSetValue(NormalizedFile, 0);
+          Summaries[SummaryCount].FilePath := SourceFile;
+          Summaries[SummaryCount].FileTime := TFile.GetLastWriteTime(SourceFile);
+
+          if CacheLookup.TryGetValue(NormalizedFile, CachedItem) and
+             SameText(FileStampText(CachedItem.FileModified), FileStampText(Summaries[SummaryCount].FileTime)) then
+          begin
+            TrackName := CachedItem.TrackName;
+            CarName := CachedItem.CarName;
+            DriverName := CachedItem.DriverName;
+          end
+          else
+          begin
+            TrackName := ReadMetadataWithFallback('TrackName', ChangeFileExt(ExtractFileName(SourceFile), ''));
+            CarName := ReadMetadataFallback(
+              ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName'],
+              ChangeFileExt(ExtractFileName(SourceFile), ''));
+            DriverName := ReadMetadataWithFallback('DriverName', 'Driver unknown');
+            ThreadDB.UpsertTelemetrySourceCache(SourceFile, Summaries[SummaryCount].FileTime,
+              TrackName, CarName, DriverName);
+          end;
+
+          Summaries[SummaryCount].TrackName := TrackName;
+          Summaries[SummaryCount].CarName := CarName;
+          Summaries[SummaryCount].DriverName := DriverName;
+          Inc(SummaryCount);
+        end;
+        SetLength(Summaries, SummaryCount);
+
+        for CachedItem in CachedItems do
+          if not SeenFiles.ContainsKey(ExpandFileName(CachedItem.FilePath)) then
+            ThreadDB.DeleteTelemetrySourceCache(CachedItem.FilePath);
+      except
+        on E: Exception do
+          ErrorText := E.Message;
+      end;
+
+      SeenFiles.Free;
+      CacheLookup.Free;
+      ThreadDB.Free;
+
+      TThread.Synchronize(nil,
+        procedure
+        var
+          I: Integer;
+        begin
+          FTelemetrySourceScanInProgress := False;
+          CurrentConfiguredFolder := Trim(EdtTelemetryFolder.Text);
+          if CurrentConfiguredFolder = '' then
+            CurrentConfiguredFolder := Trim(FSettings.TelemetrySourceFolder);
+
+          if not SameText(ExpandFileName(CurrentConfiguredFolder), ExpandFileName(SourceFolder)) then
+            Exit;
+
+          if ErrorText = '' then
+          begin
+            FTelemetrySourceSummaries := Copy(Summaries);
+            SetLength(FSourceTelemetryFiles, Length(FTelemetrySourceSummaries));
+            for I := 0 to High(FTelemetrySourceSummaries) do
+              FSourceTelemetryFiles[I] := FTelemetrySourceSummaries[I].FilePath;
+            SetStatus(Format('Telemetry source scan complete: %d LMU file(s) detected.',
+              [Length(FTelemetrySourceSummaries)]));
+          end
+          else
+          begin
+            SetLength(FTelemetrySourceSummaries, 0);
+            SetLength(FSourceTelemetryFiles, 0);
+            SetStatus('Telemetry source scan failed: ' + ErrorText);
+            if AShowStatus then
+              ShowMessage('Telemetry source scan failed: ' + ErrorText);
+          end;
+
+          RefreshTelemetrySourceInfo;
+          RefreshSessions;
+        end);
+    end).Start;
+end;
+
+procedure TMainForm.StartAsyncResultsImport(AForceRebuild, AShowStatus: Boolean);
+var
+  ResultsFolder: string;
+  PreferredDriverName: string;
+  DatabasePath: string;
+begin
+  if FResultsImportInProgress then
+  begin
+    SetStatus('LMU results import is already running in the background.');
+    Exit;
+  end;
+
+  ResultsFolder := Trim(EdtResultsFolder.Text);
+  if ResultsFolder = '' then
+    Exit;
+
+  PreferredDriverName := Trim(EdtPreferredDriver.Text);
+  DatabasePath := FDB.DatabasePath;
+
+  FResultsImportInProgress := True;
+  BtnRescanResults.Enabled := False;
+  RefreshResultsSourceInfo;
+  SetStatus('Scanning LMU results in the background...');
+
+  TThread.CreateAnonymousThread(
+    procedure
+    var
+      ThreadDB: TDatabaseManager;
+      Summary: TResultsImportSummary;
+      EffectiveDriverName: string;
+      ErrorMessage: string;
+      StatusMessage: string;
+    begin
+      FillChar(Summary, SizeOf(Summary), 0);
+      EffectiveDriverName := PreferredDriverName;
+      ErrorMessage := '';
+      StatusMessage := 'LMU results scan skipped.';
+      ThreadDB := nil;
+      try
+        if (EffectiveDriverName = '') and TDirectory.Exists(ResultsFolder) then
+          EffectiveDriverName := Trim(TResultsXMLImporter.DetectDominantDriverName(ResultsFolder));
+
+        if EffectiveDriverName = '' then
+          StatusMessage := 'LMU results scan skipped until a preferred driver name can be detected.'
+        else
+        begin
+          ThreadDB := TDatabaseManager.Create(DatabasePath);
+          if AForceRebuild then
+          begin
+            ThreadDB.Connection.ExecSQL('DELETE FROM ResultImportFiles');
+            ThreadDB.Connection.ExecSQL(
+              'DELETE FROM LapTimes WHERE SourceType = ''LMU_RESULTS_XML'' ' +
+              '   OR SessionType LIKE ''LMU Results XML%''');
+          end;
+
+          Summary := TResultsXMLImporter.ImportFolder(ThreadDB, ResultsFolder, EffectiveDriverName);
+          if AForceRebuild then
+            StatusMessage := Format('Results rebuild complete: %d imported, %d skipped, %d failed.',
+              [Summary.LapsInserted, Summary.LapsSkipped, Summary.FilesFailed])
+          else
+            StatusMessage := Format('Results scan complete: %d imported, %d skipped, %d failed.',
+              [Summary.LapsInserted, Summary.LapsSkipped, Summary.FilesFailed]);
+        end;
+      except
+        on E: Exception do
+          ErrorMessage := E.Message;
+      end;
+      ThreadDB.Free;
+
+      TThread.Synchronize(nil,
+        procedure
+        begin
+          FResultsImportInProgress := False;
+          BtnRescanResults.Enabled := True;
+
+          if (Trim(EdtPreferredDriver.Text) = '') and (EffectiveDriverName <> '') then
+          begin
+            EdtPreferredDriver.Text := EffectiveDriverName;
+            FSettings.PreferredDriverName := EffectiveDriverName;
+            FSettings.Save;
+          end;
+
+          RefreshResultsSourceInfo;
+          if ErrorMessage <> '' then
+          begin
+            SetStatus('Results import failed: ' + ErrorMessage);
+            if AShowStatus then
+              ShowMessage('Results import failed: ' + ErrorMessage);
+            Exit;
+          end;
+
+          RefreshLapTimes;
+          SetStatus(StatusMessage);
+          if AShowStatus then
+          begin
+            if EffectiveDriverName = '' then
+              ShowMessage(StatusMessage)
+            else if AForceRebuild then
+              ShowMessage(Format(
+                'Clean results rebuild completed.' + sLineBreak +
+                'Driver: %s' + sLineBreak +
+                'Files scanned: %d' + sLineBreak +
+                'Files failed: %d' + sLineBreak +
+                'Laps inserted: %d' + sLineBreak +
+                'Laps skipped: %d',
+                [EffectiveDriverName, Summary.FilesScanned, Summary.FilesFailed,
+                 Summary.LapsInserted, Summary.LapsSkipped]))
+            else
+              ShowMessage(Format(
+                'Results scan completed.' + sLineBreak +
+                'Driver: %s' + sLineBreak +
+                'Files scanned: %d' + sLineBreak +
+                'Files failed: %d' + sLineBreak +
+                'Laps inserted: %d' + sLineBreak +
+                'Laps skipped: %d',
+                [EffectiveDriverName, Summary.FilesScanned, Summary.FilesFailed,
+                 Summary.LapsInserted, Summary.LapsSkipped]));
+          end;
+        end);
+    end).Start;
 end;
 
 procedure TMainForm.LoadTrackCombo;
@@ -1059,20 +2181,17 @@ procedure TMainForm.RefreshSessions;
 var
   I: Integer;
   Item: TListItem;
-  SourceFolder: string;
-  SourceFile: string;
-  TrackName: string;
-  CarName: string;
-  DriverName: string;
-  ErrorText: string;
   TrackLabel: string;
   DetailText: string;
+  SourceSummary: TTelemetrySourceSummary;
 begin
   LvwSessions.Items.BeginUpdate;
   try
     LvwSessions.Items.Clear;
     FSessions := FDB.GetTelemetrySessions;
-    FSourceTelemetryFiles := nil;
+    SetLength(FSourceTelemetryFiles, Length(FTelemetrySourceSummaries));
+    for I := 0 to High(FTelemetrySourceSummaries) do
+      FSourceTelemetryFiles[I] := FTelemetrySourceSummaries[I].FilePath;
 
     for I := 0 to High(FSessions) do
     begin
@@ -1090,30 +2209,24 @@ begin
       Item.SubItems.Add(DetailText);
     end;
 
-    SourceFolder := Trim(EdtTelemetryFolder.Text);
-    if SourceFolder = '' then
-      SourceFolder := Trim(FSettings.TelemetrySourceFolder);
-    if (SourceFolder <> '') and TDirectory.Exists(SourceFolder) then
+    for SourceSummary in FTelemetrySourceSummaries do
     begin
-      FSourceTelemetryFiles :=
-        TDirectory.GetFiles(SourceFolder, '*.duckdb', TSearchOption.soTopDirectoryOnly);
-      for SourceFile in FSourceTelemetryFiles do
-      begin
-        Item := LvwSessions.Items.Add;
-        Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', TFile.GetLastWriteTime(SourceFile));
-        Item.SubItems.Add('LMU');
-        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', TrackName, ErrorText) then
-          TrackName := 'LMU source file';
-        CarName := ReadDuckDBMetadataFallback(SourceFile,
-          ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
-        if CarName = '' then
-          CarName := ExtractFileName(SourceFile);
-        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'DriverName', DriverName, ErrorText) then
-          DriverName := 'Driver unknown';
-        Item.SubItems.Add(TrackName);
-        Item.SubItems.Add(CarName);
-        Item.SubItems.Add('Driver: ' + DriverName);
-      end;
+      Item := LvwSessions.Items.Add;
+      Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', SourceSummary.FileTime);
+      Item.SubItems.Add('LMU');
+      Item.SubItems.Add(SourceSummary.TrackName);
+      Item.SubItems.Add(SourceSummary.CarName);
+      Item.SubItems.Add('Driver: ' + SourceSummary.DriverName);
+    end;
+
+    if FTelemetrySourceScanInProgress then
+    begin
+      Item := LvwSessions.Items.Add;
+      Item.Caption := 'Scanning...';
+      Item.SubItems.Add('LMU');
+      Item.SubItems.Add('Telemetry source scan in progress');
+      Item.SubItems.Add('');
+      Item.SubItems.Add('Background refresh');
     end;
   finally
     LvwSessions.Items.EndUpdate;
@@ -1121,6 +2234,7 @@ begin
 
   MemoSessionInfo.Clear;
   MemoAIResponse.Clear;
+  ResetSectorScorecard;
   StatusBar.Panels[1].Text := Format('%d session(s), %d source file(s)',
     [Length(FSessions), Length(FSourceTelemetryFiles)]);
 end;
@@ -1134,6 +2248,7 @@ begin
   if (not Selected) or (LvwSessions.Selected = nil) then
   begin
     MemoSessionInfo.Clear;
+    ResetSectorScorecard;
     Exit;
   end;
 
@@ -1151,6 +2266,7 @@ begin
       MemoSessionInfo.Lines.Add('');
       MemoSessionInfo.Lines.Add('Use "Export Telemetry CSV" to create a coachable file or "Ask Gemini for Coaching" to analyse this source directly.');
     end;
+    UpdateSectorScorecard;
     Exit;
   end;
 
@@ -1165,6 +2281,7 @@ begin
   MemoSessionInfo.Lines.Add(Format('Length  : %s', [FormatDurationMs(S.DurationMs)]));
   if S.Notes <> '' then
     MemoSessionInfo.Lines.Add(Format('Notes   : %s', [S.Notes]));
+  UpdateSectorScorecard;
 end;
 
 procedure TMainForm.BtnImportTelClick(Sender: TObject);
@@ -1426,10 +2543,10 @@ begin
   FSettings.Save;
   RefreshTelemetrySourceInfo;
   RefreshResultsSourceInfo;
-  ImportResultsFromConfiguredFolder(False);
   RefreshLapTimes;
-  RefreshSessions;
-  SetStatus('Settings saved.');
+  StartAsyncTelemetrySourceScan(False);
+  StartAsyncResultsImport(False, False);
+  SetStatus('Settings saved. Background results scan started.');
   ShowMessage('Settings saved successfully.');
 end;
 
@@ -1495,15 +2612,13 @@ begin
     EdtTelemetryFolder.Text := SelectedDir;
     FSettings.TelemetrySourceFolder := SelectedDir;
     FSettings.Save;
-    RefreshTelemetrySourceInfo;
-    RefreshSessions;
+    StartAsyncTelemetrySourceScan(False);
   end;
 end;
 
 procedure TMainForm.BtnRescanTelemetryClick(Sender: TObject);
 begin
-  RefreshTelemetrySourceInfo;
-  RefreshSessions;
+  StartAsyncTelemetrySourceScan(True);
 end;
 
 procedure TMainForm.BtnBrowseResultsFolderClick(Sender: TObject);
@@ -1517,16 +2632,26 @@ begin
     FSettings.ResultsSourceFolder := SelectedDir;
     FSettings.Save;
     RefreshResultsSourceInfo;
-    ImportResultsFromConfiguredFolder(False);
-    RefreshLapTimes;
+    StartAsyncResultsImport(False, False);
   end;
 end;
 
 procedure TMainForm.BtnRescanResultsClick(Sender: TObject);
 begin
   RefreshResultsSourceInfo;
-  ImportResultsFromConfiguredFolder(True);
-  RefreshLapTimes;
+  case MessageDlg(
+    'Choose the LMU results refresh mode:' + sLineBreak +
+    'Yes = clean rebuild of imported LMU XML laps' + sLineBreak +
+    'No = incremental rescan only' + sLineBreak +
+    'Cancel = do nothing',
+    mtConfirmation, [mbYes, mbNo, mbCancel], 0) of
+    mrYes:
+      StartAsyncResultsImport(True, True);
+    mrNo:
+      StartAsyncResultsImport(False, True);
+  else
+    Exit;
+  end;
 end;
 
 procedure TMainForm.DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
@@ -1542,6 +2667,8 @@ var
   CarName: string;
   DriverName: string;
   ErrorText: string;
+  SourceSummary: TTelemetrySourceSummary;
+  HasSummary: Boolean;
 begin
   if not TFile.Exists(AFilePath) then
   begin
@@ -1551,15 +2678,31 @@ begin
 
   if SameText(ExtractFileExt(AFilePath), '.duckdb') then
   begin
+    HasSummary := False;
+    for SourceSummary in FTelemetrySourceSummaries do
+      if SameText(SourceSummary.FilePath, AFilePath) then
+      begin
+        TrackName := Trim(SourceSummary.TrackName);
+        CarName := Trim(SourceSummary.CarName);
+        DriverName := Trim(SourceSummary.DriverName);
+        HasSummary := True;
+        Break;
+      end;
+
     ALines.Add('LMU telemetry source file selected:');
     ALines.Add('This is a DuckDB telemetry database, not the app''s SQLite database.');
-    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'TrackName', TrackName, ErrorText) then
+    if (not HasSummary) and TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'TrackName', TrackName, ErrorText) then
       ALines.Add('Track   : ' + TrackName);
-    CarName := ReadDuckDBMetadataFallback(AFilePath,
-      ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
+    if TrackName <> '' then
+      ALines.Add('Track   : ' + TrackName);
+    if not HasSummary then
+      CarName := ReadDuckDBMetadataFallback(AFilePath,
+        ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
     if CarName <> '' then
       ALines.Add('Car     : ' + CarName);
-    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'DriverName', DriverName, ErrorText) then
+    if (not HasSummary) and TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'DriverName', DriverName, ErrorText) then
+      ;
+    if DriverName <> '' then
       ALines.Add('Driver  : ' + DriverName);
     ALines.Add('The app can export this source straight to CSV and can send that CSV to Gemini for coaching.');
     Exit;

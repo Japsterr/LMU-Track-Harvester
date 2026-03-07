@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Export an LMU DuckDB telemetry file to a canonical CSV.
 
-The output schema matches the app's telemetry CSV format so the file is useful
-for external AI analysis and future import workflows.
+The first eight columns match the app's legacy telemetry CSV format so existing
+imports and local sector analysis continue to work. Additional optional columns
+are appended when the LMU source file provides richer channels.
 """
 
 from __future__ import annotations
@@ -20,16 +21,52 @@ except ModuleNotFoundError:
     sys.exit(3)
 
 
-CHANNEL_MAP = {
-    "TimestampMs": "GPS Time",
-    "Speed_kmh": "Ground Speed",
-    "RPM": "Engine RPM",
-    "Gear": "Gear",
-    "Throttle_pct": "Throttle Pos",
-    "Brake_pct": "Brake Pos",
-    "Steering_pct": "Steering Pos",
-    "LapDistance_pct": "Lap Dist",
+BASE_CHANNEL_MAP = {
+    "TimestampMs": ("GPS Time",),
+    "Speed_kmh": ("Ground Speed",),
+    "RPM": ("Engine RPM",),
+    "Gear": ("Gear",),
+    "Throttle_pct": ("Throttle Pos",),
+    "Brake_pct": ("Brake Pos",),
+    "Steering_pct": ("Steering Pos",),
+    "LapDistance_pct": ("Lap Dist",),
 }
+
+EXTRA_SINGLE_CHANNELS = [
+    ("GPS_Latitude_deg", ("GPS Latitude",), None),
+    ("GPS_Longitude_deg", ("GPS Longitude",), None),
+    ("GForceLat_g", ("G Force Lat",), None),
+    ("GForceLong_g", ("G Force Long",), None),
+    ("GForceVert_g", ("G Force Vert",), None),
+    ("FuelLevel", ("Fuel Level",), None),
+]
+
+EXTRA_MULTI_CHANNELS = [
+    ("BrakeTemp_FL_C", ("Brakes Temp",), "value1", None),
+    ("BrakeTemp_FR_C", ("Brakes Temp",), "value2", None),
+    ("BrakeTemp_RL_C", ("Brakes Temp",), "value3", None),
+    ("BrakeTemp_RR_C", ("Brakes Temp",), "value4", None),
+    ("TyreTempL_FL_C", ("TyresTempLeft",), "value1", None),
+    ("TyreTempL_FR_C", ("TyresTempLeft",), "value2", None),
+    ("TyreTempL_RL_C", ("TyresTempLeft",), "value3", None),
+    ("TyreTempL_RR_C", ("TyresTempLeft",), "value4", None),
+    ("TyreTempC_FL_C", ("TyresTempCentre",), "value1", None),
+    ("TyreTempC_FR_C", ("TyresTempCentre",), "value2", None),
+    ("TyreTempC_RL_C", ("TyresTempCentre",), "value3", None),
+    ("TyreTempC_RR_C", ("TyresTempCentre",), "value4", None),
+    ("TyreTempR_FL_C", ("TyresTempRight",), "value1", None),
+    ("TyreTempR_FR_C", ("TyresTempRight",), "value2", None),
+    ("TyreTempR_RL_C", ("TyresTempRight",), "value3", None),
+    ("TyreTempR_RR_C", ("TyresTempRight",), "value4", None),
+    ("TyrePressure_FL", ("TyresPressure",), "value1", None),
+    ("TyrePressure_FR", ("TyresPressure",), "value2", None),
+    ("TyrePressure_RL", ("TyresPressure",), "value3", None),
+    ("TyrePressure_RR", ("TyresPressure",), "value4", None),
+    ("TyreWear_FL_pct", ("Tyres Wear", "TyresWear"), "value1", "percent"),
+    ("TyreWear_FR_pct", ("Tyres Wear", "TyresWear"), "value2", "percent"),
+    ("TyreWear_RL_pct", ("Tyres Wear", "TyresWear"), "value3", "percent"),
+    ("TyreWear_RR_pct", ("Tyres Wear", "TyresWear"), "value4", "percent"),
+]
 
 
 def parse_args() -> argparse.Namespace:
@@ -47,6 +84,17 @@ def get_tables(con: duckdb.DuckDBPyConnection) -> set[str]:
     return {row[0] for row in con.execute("SHOW TABLES").fetchall()}
 
 
+def find_table_name(tables: set[str], *candidates: str) -> str | None:
+    lookup = {table.lower(): table for table in tables}
+    for candidate in candidates:
+        if candidate in tables:
+            return candidate
+        actual = lookup.get(candidate.lower())
+        if actual:
+            return actual
+    return None
+
+
 def get_channel_frequency(con: duckdb.DuckDBPyConnection, channel_name: str, default: int) -> int:
     row = con.execute(
         "SELECT frequency FROM channelsList WHERE channelName = ?",
@@ -57,17 +105,19 @@ def get_channel_frequency(con: duckdb.DuckDBPyConnection, channel_name: str, def
     return int(row[0])
 
 
-def read_value_series(con: duckdb.DuckDBPyConnection, table_name: str) -> list[float | int]:
+def read_table_series(con: duckdb.DuckDBPyConnection, table_name: str) -> dict[str, list[float | int]]:
     description = con.execute(f"DESCRIBE {quote_ident(table_name)}").fetchall()
     columns = [row[0] for row in description]
     if not columns:
-        return []
+        return {}
 
-    select_column = "value" if "value" in columns else columns[-1]
     rows = con.execute(
-        f"SELECT {quote_ident(select_column)} FROM {quote_ident(table_name)}"
+        f"SELECT {', '.join(quote_ident(column) for column in columns)} FROM {quote_ident(table_name)}"
     ).fetchall()
-    return [row[0] for row in rows]
+    return {
+        column: [row[index] for row in rows]
+        for index, column in enumerate(columns)
+    }
 
 
 def resample(values: list[float | int], src_freq: int, base_count: int, base_freq: int) -> list[float | int | str]:
@@ -122,6 +172,16 @@ def normalize_lap_distance(values: list[float | int | str]) -> list[float | str]
     return result
 
 
+def normalize_passthrough(values: list[float | int | str]) -> list[float | int | str]:
+    result: list[float | int | str] = []
+    for value in values:
+        if value == "" or value is None:
+            result.append("")
+        else:
+            result.append(round(float(value), 6))
+    return result
+
+
 def build_timestamp_ms(gps_time_values: list[float | int], base_count: int) -> list[int]:
     if not gps_time_values:
         return list(range(base_count))
@@ -139,22 +199,48 @@ def export_duckdb(input_path: Path, output_path: Path) -> int:
             print("No exportable tables found.", file=sys.stderr)
             return 2
 
-        gps_time_values = read_value_series(con, CHANNEL_MAP["TimestampMs"]) if CHANNEL_MAP["TimestampMs"] in tables else []
-        base_freq = get_channel_frequency(con, CHANNEL_MAP["TimestampMs"], 100)
+        resolved_base = {
+            output_name: find_table_name(tables, *aliases)
+            for output_name, aliases in BASE_CHANNEL_MAP.items()
+        }
+        series_cache: dict[str, dict[str, list[float | int]]] = {}
+
+        gps_table = resolved_base["TimestampMs"]
+        gps_time_values = []
+        if gps_table:
+            series_cache[gps_table] = read_table_series(con, gps_table)
+            gps_time_values = series_cache[gps_table].get("value", [])
+
+        base_freq = get_channel_frequency(con, gps_table, 100) if gps_table else 100
         base_count = len(gps_time_values)
 
-        channel_series: dict[str, list[float | int]] = {}
-        for output_name, table_name in CHANNEL_MAP.items():
-            if table_name not in tables:
-                channel_series[output_name] = []
-                continue
+        def ensure_series(table_name: str | None) -> dict[str, list[float | int]]:
+            if not table_name:
+                return {}
+            if table_name not in series_cache:
+                series_cache[table_name] = read_table_series(con, table_name)
+            return series_cache[table_name]
 
-            values = read_value_series(con, table_name)
-            channel_series[output_name] = values
-            if output_name != "TimestampMs":
-                src_freq = max(get_channel_frequency(con, table_name, base_freq), 1)
-                estimated_count = int(math.ceil(len(values) * (base_freq / float(src_freq))))
-                base_count = max(base_count, estimated_count)
+        def update_base_count(table_name: str | None) -> None:
+            nonlocal base_count
+            if not table_name:
+                return
+            table_series = ensure_series(table_name)
+            if not table_series:
+                return
+            longest_series = max((len(values) for values in table_series.values()), default=0)
+            src_freq = max(get_channel_frequency(con, table_name, base_freq), 1)
+            estimated_count = int(math.ceil(longest_series * (base_freq / float(src_freq))))
+            base_count = max(base_count, estimated_count)
+
+        for table_name in resolved_base.values():
+            update_base_count(table_name)
+
+        for _, aliases, _ in EXTRA_SINGLE_CHANNELS:
+            update_base_count(find_table_name(tables, *aliases))
+
+        for _, aliases, _, _ in EXTRA_MULTI_CHANNELS:
+            update_base_count(find_table_name(tables, *aliases))
 
         if base_count <= 0:
             print("No telemetry samples found in mapped channels.", file=sys.stderr)
@@ -165,37 +251,66 @@ def export_duckdb(input_path: Path, output_path: Path) -> int:
             base_count,
         )
 
-        speed = resample(channel_series.get("Speed_kmh", []), get_channel_frequency(con, CHANNEL_MAP["Speed_kmh"], base_freq), base_count, base_freq)
-        rpm = resample(channel_series.get("RPM", []), get_channel_frequency(con, CHANNEL_MAP["RPM"], base_freq), base_count, base_freq)
-        gear = resample(channel_series.get("Gear", []), get_channel_frequency(con, CHANNEL_MAP["Gear"], base_freq), base_count, base_freq)
-        throttle = normalize_percent_series(
-            resample(channel_series.get("Throttle_pct", []), get_channel_frequency(con, CHANNEL_MAP["Throttle_pct"], base_freq), base_count, base_freq)
-        )
-        brake = normalize_percent_series(
-            resample(channel_series.get("Brake_pct", []), get_channel_frequency(con, CHANNEL_MAP["Brake_pct"], base_freq), base_count, base_freq)
-        )
-        steering = normalize_percent_series(
-            resample(channel_series.get("Steering_pct", []), get_channel_frequency(con, CHANNEL_MAP["Steering_pct"], base_freq), base_count, base_freq)
-        )
-        lap_dist = normalize_lap_distance(
-            resample(channel_series.get("LapDistance_pct", []), get_channel_frequency(con, CHANNEL_MAP["LapDistance_pct"], base_freq), base_count, base_freq)
-        )
+        def resample_column(table_name: str | None, column_name: str | None = None) -> list[float | int | str]:
+            if not table_name:
+                return [""] * base_count
+            table_series = ensure_series(table_name)
+            if not table_series:
+                return [""] * base_count
+            resolved_column = column_name
+            if resolved_column is None:
+                if "value" in table_series:
+                    resolved_column = "value"
+                else:
+                    resolved_column = next(iter(table_series), None)
+            if not resolved_column or resolved_column not in table_series:
+                return [""] * base_count
+            return resample(
+                table_series[resolved_column],
+                get_channel_frequency(con, table_name, base_freq),
+                base_count,
+                base_freq,
+            )
+
+        speed = resample_column(resolved_base["Speed_kmh"])
+        rpm = resample_column(resolved_base["RPM"])
+        gear = resample_column(resolved_base["Gear"])
+        throttle = normalize_percent_series(resample_column(resolved_base["Throttle_pct"]))
+        brake = normalize_percent_series(resample_column(resolved_base["Brake_pct"]))
+        steering = normalize_percent_series(resample_column(resolved_base["Steering_pct"]))
+        lap_dist = normalize_lap_distance(resample_column(resolved_base["LapDistance_pct"]))
+
+        extra_series: list[tuple[str, list[float | int | str]]] = []
+        for header, aliases, _ in EXTRA_SINGLE_CHANNELS:
+            table_name = find_table_name(tables, *aliases)
+            extra_series.append((header, normalize_passthrough(resample_column(table_name))))
+
+        for header, aliases, column_name, mode in EXTRA_MULTI_CHANNELS:
+            table_name = find_table_name(tables, *aliases)
+            values = resample_column(table_name, column_name)
+            if mode == "percent":
+                values = normalize_percent_series(values)
+            else:
+                values = normalize_passthrough(values)
+            extra_series.append((header, values))
+
+        headers = [
+            "TimestampMs",
+            "Speed_kmh",
+            "RPM",
+            "Gear",
+            "Throttle_pct",
+            "Brake_pct",
+            "Steering_pct",
+            "LapDistance_pct",
+        ] + [header for header, _ in extra_series]
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         with output_path.open("w", newline="", encoding="utf-8") as handle:
             writer = csv.writer(handle)
-            writer.writerow([
-                "TimestampMs",
-                "Speed_kmh",
-                "RPM",
-                "Gear",
-                "Throttle_pct",
-                "Brake_pct",
-                "Steering_pct",
-                "LapDistance_pct",
-            ])
+            writer.writerow(headers)
             for index in range(base_count):
-                writer.writerow([
+                row = [
                     timestamps[index],
                     "" if speed[index] == "" else round(float(speed[index]), 3),
                     "" if rpm[index] == "" else round(float(rpm[index]), 3),
@@ -204,7 +319,10 @@ def export_duckdb(input_path: Path, output_path: Path) -> int:
                     brake[index],
                     steering[index],
                     lap_dist[index],
-                ])
+                ]
+                for _, values in extra_series:
+                    row.append(values[index])
+                writer.writerow(row)
         return 0
     finally:
         con.close()

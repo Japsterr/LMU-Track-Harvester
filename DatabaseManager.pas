@@ -95,6 +95,10 @@ type
                                  const ANotes: string;
                                  ASessionDate: TDateTime): Integer;
     function DeleteTelemetrySession(AID: Integer): Boolean;
+    function GetTelemetrySourceCache: TTelemetrySourceCacheArray;
+    procedure UpsertTelemetrySourceCache(const AFilePath: string;
+      AFileModified: TDateTime; const ATrackName, ACarName, ADriverName: string);
+    procedure DeleteTelemetrySourceCache(const AFilePath: string);
 
     // -----------------------------------------------------------------------
     // Telemetry data points
@@ -387,6 +391,16 @@ begin
     '  Notes       TEXT,' +
     '  FOREIGN KEY (TrackID) REFERENCES Tracks(ID),' +
     '  FOREIGN KEY (CarID)   REFERENCES Cars(ID)' +
+    ')');
+
+  FConnection.ExecSQL(
+    'CREATE TABLE IF NOT EXISTS TelemetrySourceCache (' +
+    '  FilePath      TEXT PRIMARY KEY,' +
+    '  FileModified  TEXT NOT NULL,' +
+    '  TrackName     TEXT,' +
+    '  CarName       TEXT,' +
+    '  DriverName    TEXT,' +
+    '  LastIndexedAt TEXT NOT NULL' +
     ')');
 
   FConnection.ExecSQL(
@@ -920,6 +934,95 @@ begin
     Result := False;
   end;
   Q.Free;
+end;
+
+function TDatabaseManager.GetTelemetrySourceCache: TTelemetrySourceCacheArray;
+var
+  Q: TFDQuery;
+  Count: Integer;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text :=
+      'SELECT FilePath, FileModified, TrackName, CarName, DriverName, LastIndexedAt ' +
+      'FROM TelemetrySourceCache ' +
+      'ORDER BY FileModified DESC, FilePath';
+    Q.Open;
+
+    SetLength(Result, 0);
+    Count := 0;
+    while not Q.Eof do
+    begin
+      SetLength(Result, Count + 1);
+      Result[Count].FilePath := Q.FieldByName('FilePath').AsString;
+      Result[Count].FileModified := FieldToDateTime(Q.FieldByName('FileModified'));
+      Result[Count].TrackName := Q.FieldByName('TrackName').AsString;
+      Result[Count].CarName := Q.FieldByName('CarName').AsString;
+      Result[Count].DriverName := Q.FieldByName('DriverName').AsString;
+      Result[Count].LastIndexedAt := FieldToDateTime(Q.FieldByName('LastIndexedAt'));
+      Inc(Count);
+      Q.Next;
+    end;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure TDatabaseManager.UpsertTelemetrySourceCache(const AFilePath: string;
+  AFileModified: TDateTime; const ATrackName, ACarName, ADriverName: string);
+var
+  Q: TFDQuery;
+  IndexedAtText: string;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    IndexedAtText := DateTimeToDBText(Now);
+    Q.SQL.Text :=
+      'UPDATE TelemetrySourceCache SET ' +
+      '  FileModified = :FileModified, ' +
+      '  TrackName = :TrackName, ' +
+      '  CarName = :CarName, ' +
+      '  DriverName = :DriverName, ' +
+      '  LastIndexedAt = :LastIndexedAt ' +
+      'WHERE FilePath = :FilePath';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('FileModified').AsString := DateTimeToDBText(AFileModified);
+    Q.ParamByName('TrackName').AsString := ATrackName;
+    Q.ParamByName('CarName').AsString := ACarName;
+    Q.ParamByName('DriverName').AsString := ADriverName;
+    Q.ParamByName('LastIndexedAt').AsString := IndexedAtText;
+    Q.ExecSQL;
+
+    if Q.RowsAffected = 0 then
+    begin
+      Q.SQL.Text :=
+        'INSERT INTO TelemetrySourceCache (' +
+        '  FilePath, FileModified, TrackName, CarName, DriverName, LastIndexedAt' +
+        ') VALUES (' +
+        '  :FilePath, :FileModified, :TrackName, :CarName, :DriverName, :LastIndexedAt' +
+        ')';
+      Q.ExecSQL;
+    end;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure TDatabaseManager.DeleteTelemetrySourceCache(const AFilePath: string);
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text := 'DELETE FROM TelemetrySourceCache WHERE FilePath = :FilePath';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ExecSQL;
+  finally
+    Q.Free;
+  end;
 end;
 
 // ---------------------------------------------------------------------------

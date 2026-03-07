@@ -204,12 +204,19 @@ const
     'Analyse the telemetry data provided and give detailed, actionable ' +
     'coaching feedback. Structure your response with these sections:' + #13#10 +
     '1. Overall Summary' + #13#10 +
-    '2. Braking Analysis – braking points, pressure, and release' + #13#10 +
-    '3. Throttle Application – trail-braking, rotation, and exit drive' + #13#10 +
-    '4. Gear Selection – any missed or suboptimal gear changes' + #13#10 +
-    '5. Steering Inputs – smoothness, corrections, and scrub' + #13#10 +
-    '6. Key Areas to Improve – top 3 actionable takeaways' + #13#10 +
-    'Be specific and reference the lap distance values where relevant.';
+    '2. Track Breakdown Map' + #13#10 +
+    '3. Braking Analysis – braking points, pressure, and release' + #13#10 +
+    '4. Throttle Application – trail-braking, rotation, and exit drive' + #13#10 +
+    '5. Gear Selection – any missed or suboptimal gear changes' + #13#10 +
+    '6. Steering Inputs – smoothness, corrections, and scrub' + #13#10 +
+    '7. Focus Corners – top 3 corners or sections to attack next' + #13#10 +
+    'For each focus corner or section, include:' + #13#10 +
+    '- sector or lap-distance range' + #13#10 +
+    '- corner name if known, otherwise a plain-language label' + #13#10 +
+    '- where it is on track in simple map language such as first heavy stop, uphill blind right, final long sweeper' + #13#10 +
+    '- what the telemetry suggests is wrong' + #13#10 +
+    '- one concrete driving goal' + #13#10 +
+    'If the track corner names are not obvious from telemetry alone, do not invent official names. Use sector plus lap-distance ranges and a simple description instead. Be specific and reference lap-distance values where relevant.';
 var
   UserText: string;
 begin

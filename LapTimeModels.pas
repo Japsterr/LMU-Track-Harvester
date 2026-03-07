@@ -66,6 +66,17 @@ type
     Brake: Double;        // 0.0–1.0
     Steering: Double;     // -1.0–1.0
     LapDistance: Double;  // 0.0–1.0 (fraction of full lap)
+    GPSLatitude: Double;  // decimal degrees when available, NaN otherwise
+    GPSLongitude: Double; // decimal degrees when available, NaN otherwise
+  end;
+
+  TTelemetrySourceCacheItem = record
+    FilePath: string;
+    FileModified: TDateTime;
+    TrackName: string;
+    CarName: string;
+    DriverName: string;
+    LastIndexedAt: TDateTime;
   end;
 
   TTrackArray            = array of TTrack;
@@ -74,6 +85,7 @@ type
   TLapTimeArray          = array of TLapTime;
   TTelemetrySessionArray = array of TTelemetrySession;
   TTelemetryDataArray    = array of TTelemetryDataPoint;
+  TTelemetrySourceCacheArray = array of TTelemetrySourceCacheItem;
 
 { Convert milliseconds to M:SS.mmm string. }
 function FormatLapTime(LapTimeMs: Int64): string;

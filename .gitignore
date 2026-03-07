@@ -34,3 +34,16 @@ __recovery/
 # User-specific settings
 *.suo
 *.user
+
+# Local app data and personal LMU source folders
+data.db
+settings.ini
+Results/
+Telemetry/
+
+# Generated packaging and helper output
+dist/
+download/
+build-temp/
+scripts/__pycache__/
+*.pyc

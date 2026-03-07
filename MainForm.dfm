@@ -265,7 +265,7 @@ object MainForm: TMainForm
     object TabTelemetry: TTabSheet
       Caption = 'Telemetry'
       object SplitterTel: TSplitter
-        Left = 700
+        Left = 432
         Top = 0
         Width = 6
         Height = 669
@@ -273,7 +273,7 @@ object MainForm: TMainForm
       object PnlTelLeft: TPanel
         Left = 0
         Top = 0
-        Width = 700
+        Width = 432
         Height = 669
         Align = alLeft
         BevelOuter = bvNone
@@ -281,7 +281,7 @@ object MainForm: TMainForm
         object LblSessions: TLabel
           Left = 0
           Top = 0
-          Width = 700
+          Width = 432
           Height = 22
           Align = alTop
           Alignment = taCenter
@@ -300,29 +300,29 @@ object MainForm: TMainForm
         object LvwSessions: TListView
           Left = 0
           Top = 22
-          Width = 700
+          Width = 432
           Height = 607
           Align = alClient
           Columns = <
             item
               Caption = 'When'
-              Width = 118
+              Width = 112
             end
             item
               Caption = 'Source'
-              Width = 64
+              Width = 58
             end
             item
               Caption = 'Track'
-              Width = 190
+              Width = 160
             end
             item
               Caption = 'Car'
-              Width = 180
+              Width = 150
             end
             item
               Caption = 'Detail'
-              Width = 210
+              Width = 168
             end>
           Color = 2170910
           GridLines = False
@@ -335,7 +335,7 @@ object MainForm: TMainForm
         object PnlTelLeftButtons: TPanel
           Left = 0
           Top = 629
-          Width = 700
+          Width = 432
           Height = 40
           Align = alBottom
           BevelOuter = bvNone
@@ -343,7 +343,7 @@ object MainForm: TMainForm
           object BtnImportTel: TButton
             Left = 4
             Top = 6
-            Width = 342
+            Width = 208
             Height = 28
             Caption = 'Import Telemetry (CSV)'
             Font.Charset = DEFAULT_CHARSET
@@ -356,9 +356,9 @@ object MainForm: TMainForm
             OnClick = BtnImportTelClick
           end
           object BtnDeleteSession: TButton
-            Left = 352
+            Left = 220
             Top = 6
-            Width = 342
+            Width = 208
             Height = 28
             Caption = 'Delete Saved Session'
             Font.Charset = DEFAULT_CHARSET
@@ -373,9 +373,9 @@ object MainForm: TMainForm
         end
       end
       object PnlTelRight: TPanel
-        Left = 706
+        Left = 438
         Top = 0
-        Width = 436
+        Width = 704
         Height = 669
         Align = alClient
         BevelOuter = bvNone
@@ -383,7 +383,7 @@ object MainForm: TMainForm
         object GrpSessionInfo: TGroupBox
           Left = 0
           Top = 0
-          Width = 756
+          Width = 704
           Height = 90
           Align = alTop
           Caption = ' Telemetry Deck '
@@ -399,7 +399,7 @@ object MainForm: TMainForm
           object MemoSessionInfo: TMemo
             Left = 2
             Top = 20
-            Width = 752
+            Width = 700
             Height = 68
             Align = alClient
             BorderStyle = bsNone
@@ -409,14 +409,48 @@ object MainForm: TMainForm
             TabOrder = 0
           end
         end
-        object PnlTelActions: TPanel
+        object GrpSectorScorecard: TGroupBox
           Left = 0
           Top = 90
-          Width = 756
+          Width = 704
+          Height = 148
+          Align = alTop
+          Caption = ' Sector Scorecard '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 1
+        end
+        object GrpTelemetryVisual: TGroupBox
+          Left = 0
+          Top = 238
+          Width = 704
+          Height = 190
+          Align = alTop
+          Caption = ' Visual Analysis '
+          Color = 15002865
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Bahnschrift'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 2
+        end
+        object PnlTelActions: TPanel
+          Left = 0
+          Top = 428
+          Width = 704
           Height = 44
           Align = alTop
           BevelOuter = bvNone
-          TabOrder = 1
+          TabOrder = 3
           object BtnExportCSV: TButton
             Left = 4
             Top = 8
@@ -459,9 +493,9 @@ object MainForm: TMainForm
         end
         object GrpAIResponse: TGroupBox
           Left = 0
-          Top = 134
-          Width = 756
-          Height = 535
+          Top = 472
+          Width = 704
+          Height = 197
           Align = alClient
           Caption = ' Coaching Wall '
           Color = 15002865
@@ -472,11 +506,11 @@ object MainForm: TMainForm
           Font.Style = [fsBold]
           ParentBackground = False
           ParentFont = False
-          TabOrder = 2
+          TabOrder = 4
           object MemoAIResponse: TMemo
             Left = 2
             Top = 20
-            Width = 752
+            Width = 700
             Height = 513
             Align = alClient
             BorderStyle = bsNone

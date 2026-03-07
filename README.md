@@ -1,145 +1,176 @@
 # LMU Track Harvester
 
-A **Delphi VCL desktop application** for tracking personal lap times and
-analysing telemetry in the racing simulation game
-[Le Mans Ultimate](https://www.le-mans-ultimate.com/).
+LMU Track Harvester is a desktop companion for Le Mans Ultimate built around a simple outcome: make your lap history and telemetry useful enough that you can actually improve from it.
 
----
+It gives you one place to track your best laps, review LMU results, organize telemetry, export clean coaching-ready CSV files, and send a session to Gemini for driving feedback.
 
-## Features
+## Quick Download Guide
 
-### 🏁 Lap Times
-* Select any **track / circuit** and **car class** (Hypercar, LMP2, LMGT3)
-* View your **Top 10 personal-best laps** for that combination
-* View the **fastest recorded lap per individual car** in a class
-* **Add** lap times manually (track, car, time, date, session type)
-* **Delete** lap times
-* **Export** lap time tables to CSV
+If you are sharing this project with testers, point them to the release downloads:
 
-### 📊 Telemetry
-* **Import** telemetry sessions from CSV files
-* Manage a library of saved sessions (track, car, date, data-point count)
-* **Export** any session back to CSV for use in external tools or AI models
-* **Analyse with Gemini AI** — send the telemetry CSV directly to Google
-  Gemini inside the app and receive structured coaching feedback:
-  * Braking analysis
-  * Throttle application
-  * Gear selection
-  * Steering inputs
-  * Top 3 areas to improve
+* `LMUTrackHarvester-Installer.exe` for the simplest install-style setup
+* `LMUTrackHarvester-Portable.zip` for users who want the files directly
 
-### ⚙️ Settings
-* Store your **Google Gemini API key** (saved locally in `settings.ini`)
-* Choose the AI model (`gemini-1.5-flash`, `gemini-1.5-pro`,
-  `gemini-2.0-flash`, etc.)
-* Configure the **LMU telemetry source folder** (auto-defaults to
-  `SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Telemetry`)
-  so telemetry import browsing opens in the correct location and `.duckdb`
-  source files are discoverable in the Telemetry list
-* Configure the **LMU results source folder** (auto-defaults to
-  `SteamLibrary\steamapps\common\Le Mans Ultimate\UserData\Log\Results`)
-  so `.xml` results files are scanned and new lap records are imported into
-  the local database for display in Lap Times grids
-* One-click **Test Connection** button to verify your API key works
-* Link to get a free API key at [aistudio.google.com](https://aistudio.google.com/app/apikey)
+For most people, the installer is the easiest option.
 
----
+## What Testers Should Expect
 
-## Pre-seeded data
+The app itself runs without Python being installed.
 
-On first run the app seeds the SQLite database with:
+If the release includes a bundled portable Python runtime, LMU source `.duckdb` telemetry helpers also work out of the box, including:
 
-**Tracks** – all circuits on the 2024 WEC calendar (Le Mans, Monza, Spa,
-Fuji, Bahrain, Portimão, Sebring, Road Atlanta, Lusail, Interlagos, Imola,
-Yas Marina, Barcelona, Lédenon)
+* reading track, car, and driver metadata from LMU telemetry files
+* exporting LMU source telemetry directly to CSV for coaching
 
-**Car classes** – Hypercar · LMP2 · LMGT3
+If a release does not include bundled Python, the main app still works, but those LMU `.duckdb` helper features will need Python plus `duckdb` on the tester machine.
 
-**Cars** – all manufacturers competing in each class (Ferrari, Toyota,
-Porsche, Cadillac, BMW, Peugeot, Alpine, Lamborghini, Isotta Fraschini,
-ORECA, Aston Martin, Ford, McLaren, Corvette, Lexus, Mercedes-AMG, etc.)
+## Why Drivers Use It
 
----
+Most LMU data ends up spread across result files, telemetry folders, spreadsheets, and ad hoc exports. LMU Track Harvester brings those pieces together into one workflow:
 
-## Requirements
+1. Track your own best laps by track, class, and car.
+2. Bring LMU result files into a clean personal pace library.
+3. Browse telemetry sessions and LMU source telemetry files without digging through folders.
+4. Export a structured CSV that is ready for AI coaching or manual analysis.
+5. Review visual summaries inside the app before you ever leave it.
 
-| Component | Version |
-|-----------|---------|
-| Embarcadero Delphi | 10.4 Sydney or later (tested with Delphi 11 Alexandria) |
-| FireDAC | Included with Delphi (SQLite driver) |
-| System.Net.HttpClient | Included with Delphi 10.3+ |
+For many drivers, the biggest value is very direct: you can see your best lap times clearly, then export telemetry to get advice on how to improve them.
 
-No third-party libraries or NuGet/npm packages are required.
+## Main Features
 
----
+### Best lap tracking
 
-## Building
+The lap-time section is the core performance notebook.
 
-1. Open **`LMUTrackHarvester.dproj`** in the Delphi IDE.
-2. Ensure the **FireDAC SQLite** driver is installed (it ships with Delphi by default).
-3. Press **F9** (Run) or **Shift+F9** (Compile) to build.
+You can:
 
-The compiled executable will be placed in `Win32\Debug\` or `Win32\Release\`
-depending on the active build configuration.
+* see your best laps by track and class
+* view a personal top-10 pace board
+* see the fastest lap you have recorded for each car in a class
+* add manual lap entries when you want to keep offline or historical records
+* delete unwanted entries
+* export lap tables to CSV
 
-### First-time setup
+This makes it easy to answer the two questions most drivers care about: what is my best lap here, and which car has given me my best result?
 
-No database or configuration file is needed before running – both are created
-automatically in `%DOCUMENTS%\LMUTrackHarvester\` on first launch.
+### LMU results import
 
----
+The app scans LMU results XML files and imports laps for the chosen driver only, so your pace library stays focused on your own running instead of everyone from a server session.
 
-## Telemetry CSV Format
+It also tracks imported files so normal rescans do not need to rebuild everything from scratch.
 
-When importing telemetry data the CSV file must have this header row followed
-by data rows:
+### Telemetry garage
 
-```
-TimestampMs,Speed_kmh,RPM,Gear,Throttle_pct,Brake_pct,Steering_pct,LapDistance_pct
-```
+The telemetry section is built as a working garage, not just a raw file browser.
 
-| Column | Description |
-|--------|-------------|
-| `TimestampMs` | Milliseconds since session start |
-| `Speed_kmh` | Vehicle speed in km/h |
-| `RPM` | Engine RPM |
-| `Gear` | Current gear (0 = neutral) |
-| `Throttle_pct` | Throttle input 0–100 |
-| `Brake_pct` | Brake input 0–100 |
-| `Steering_pct` | Steering angle –100 (full left) to +100 (full right) |
-| `LapDistance_pct` | Fraction of lap completed 0.0–1.0 |
+You can:
 
-The app also exports data in exactly this format, so sessions can be
-round-tripped or shared.
+* import telemetry CSV sessions
+* browse saved telemetry sessions inside the app
+* browse LMU `.duckdb` source telemetry files directly
+* keep telemetry grouped with track, car, driver, and timing context
+* rescan LMU telemetry sources with metadata caching so the app does not keep doing the old slow full reads
 
----
+### Visual session review
 
-## Data Storage
+Before exporting anything, the app already gives you a quick in-app review layer:
 
-All data is stored in a local SQLite database (default location):
+* sector scorecards
+* a track map preview
+* telemetry traces
+* session detail notes
 
-```
-%DOCUMENTS%\LMUTrackHarvester\data.db
-```
+That means you can spot rough trends immediately, then decide whether a deeper export or AI pass is worth doing.
 
-If the Documents folder is unavailable/unwritable, database creation falls back to another user-writable location.
+### CSV export for coaching
 
-Settings are stored in (default location):
+One of the strongest workflows in the app is the clean export path.
 
-```
-%DOCUMENTS%\LMUTrackHarvester\settings.ini
-```
+With a selected telemetry session or LMU source file, you can export a CSV that is ready to:
 
-If the Documents folder is unavailable/unwritable, settings storage falls back to another user-writable location.
+* inspect in Excel or another data tool
+* share with another driver or coach
+* feed into an AI coaching workflow
 
-Your Gemini API key is **never** transmitted anywhere except to
-`generativelanguage.googleapis.com` when you click *Analyse with Gemini AI*.
+The export is designed to make the jump from raw telemetry to usable feedback as short as possible.
 
----
+### Gemini coaching
 
-## Planned Features
+Once telemetry is selected, the app can send it to Gemini and ask for structured coaching feedback.
 
-* [ ] In-game overlay / network display (later phase)
-* [ ] Live telemetry capture via the rFactor 2 / LMU shared-memory API
-* [ ] Session comparison (overlay two telemetry sessions on a chart)
-* [ ] Custom track / car management UI
+The intent is practical guidance, not generic commentary. Typical feedback focuses on:
+
+* braking behavior
+* throttle use
+* steering inputs
+* gear choices
+* likely time-loss areas or focus corners
+
+That gives you a fast loop from session to advice to next stint.
+
+## Typical Workflow
+
+1. Run a session in LMU.
+2. Let LMU Track Harvester pick up your result files and telemetry sources.
+3. Review your best lap times and session summaries.
+4. Export telemetry CSV for a chosen lap or session.
+5. Use Gemini or another analysis flow to get concrete improvement advice.
+
+This is the part of the app that tends to matter most in practice: your best laps are visible, and your telemetry is easy to export for coaching.
+
+## For Testers
+
+Releases are built for two common tester paths:
+
+* `download\LMUTrackHarvester-Installer.exe` for the simplest setup
+* `download\LMUTrackHarvester-Portable.zip` for a direct portable package
+
+### What works even without Python
+
+If no bundled portable Python runtime is included, testers can still use the app for:
+
+* viewing stored lap data
+* importing LMU results XML files
+* working with already imported telemetry CSV sessions
+* browsing the app UI and its local database features
+
+### What bundled Python unlocks
+
+Direct LMU source telemetry helper features rely on the bundled Python scripts in the `scripts` folder.
+
+Those features include:
+
+* reading LMU `.duckdb` metadata such as track, car, and driver
+* exporting LMU `.duckdb` telemetry directly to coaching-ready CSV
+
+For those features to work on tester machines that do not have Python installed, place a portable runtime in one of these folders before building downloads:
+
+* `python\python.exe`
+* `runtime\python\python.exe`
+
+Then run `build_downloads.ps1`.
+
+When a portable runtime is present, the installer and zip include it automatically. When it is not present, the build still succeeds, but LMU DuckDB helper features will still depend on Python plus `duckdb` being available on the tester machine.
+
+## Release Packaging
+
+The release scripts now package the current main build and tell you whether bundled Python was detected.
+
+* `bundle_release.ps1` creates the staged portable release in `dist\`
+* `build_downloads.ps1` creates the GitHub-ready downloads in `download\`
+
+If a bundled runtime is found, the scripts report that the LMU DuckDB helper flow is portable. If not, they emit a warning so the limitation is obvious at build time instead of being discovered by testers later.
+
+## What Makes It Valuable
+
+LMU Track Harvester is most useful when you treat it as a practical improvement tool, not just a data viewer.
+
+It helps by giving you one place to:
+
+* keep your best lap history
+* review LMU results cleanly
+* organize telemetry sessions
+* export a clean CSV for coaching
+* turn telemetry into feedback you can act on
+
+For a driver trying to get faster with less friction, that is the point of the app.

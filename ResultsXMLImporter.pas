@@ -5,7 +5,7 @@ interface
 uses
   System.SysUtils, System.Classes, System.IOUtils, System.StrUtils, System.DateUtils,
   System.Generics.Collections, System.Variants,
-  Xml.XMLIntf, Xml.XMLDoc,
+  Xml.XMLIntf, Xml.XMLDoc, Xml.XMLDom, Xml.omnixmldom,
   FireDAC.Comp.Client,
   FireDAC.Stan.Param,
   DatabaseManager, LapTimeModels;
@@ -42,6 +42,20 @@ type
 const
   CResultImportSourceType = 'LMU_RESULTS_XML';
   CResultImportVersion = 2;
+
+function CreatePortableXmlDocument: IXMLDocument;
+var
+  DOMVendor: TDOMVendor;
+  XMLDocument: TXMLDocument;
+begin
+  XMLDocument := TXMLDocument.Create(nil);
+  DOMVendor := GetDOMVendor(sOmniXmlVendor);
+  if not Assigned(DOMVendor) then
+    raise Exception.Create('Portable XML DOM vendor is not available.');
+  XMLDocument.DOMVendor := DOMVendor;
+  XMLDocument.Options := [doNodeAutoCreate, doNodeAutoIndent];
+  Result := XMLDocument;
+end;
 
 procedure AddLapCandidate(const ATrackHint, ACarHint, ASessionType: string;
   ALapTimeMs: Int64; ALapDate: TDateTime; const ASourceFile,
@@ -993,8 +1007,7 @@ begin
     Candidates := TList<TLapCandidate>.Create;
     try
       try
-        XmlDoc := TXMLDocument.Create(nil);
-        XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
+        XmlDoc := CreatePortableXmlDocument;
         XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
         XmlText := StripDoctypeDeclaration(XmlText);
         XmlDoc.LoadFromXML(XmlText);
@@ -1078,8 +1091,7 @@ begin
       NamesInFile := TDictionary<string, string>.Create;
       try
         try
-          XmlDoc := TXMLDocument.Create(nil);
-          XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
+          XmlDoc := CreatePortableXmlDocument;
           XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
           XmlText := StripDoctypeDeclaration(XmlText);
           XmlDoc.LoadFromXML(XmlText);

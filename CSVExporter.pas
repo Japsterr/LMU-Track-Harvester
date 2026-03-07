@@ -42,6 +42,7 @@ type
   private
     { Locates a bundled script by name; returns '' if not found. }
     class function ResolveScriptPath(const AScriptName: string): string;
+    class function GetPythonRunners: TArray<string>;
 
     { Runs an external process and returns its exit code.
       Raises an exception if the process cannot be launched. }
@@ -181,6 +182,47 @@ begin
   end;
 end;
 
+class function TCSVExporter.GetPythonRunners: TArray<string>;
+var
+  BaseDir: string;
+  Count: Integer;
+  I: Integer;
+
+  procedure AddRunner(const ARunner: string);
+  var
+    Existing: string;
+  begin
+    if ARunner = '' then
+      Exit;
+
+    for Existing in Result do
+      if SameText(Existing, ARunner) then
+        Exit;
+
+    SetLength(Result, Count + 1);
+    Result[Count] := ARunner;
+    Inc(Count);
+  end;
+
+begin
+  SetLength(Result, 0);
+  Count := 0;
+  BaseDir := ExcludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+
+  for I := 0 to 5 do
+  begin
+    AddRunner(TPath.Combine(TPath.Combine(BaseDir, 'python'), 'python.exe'));
+    AddRunner(TPath.Combine(TPath.Combine(BaseDir, 'runtime'), 'python.exe'));
+    AddRunner(TPath.Combine(TPath.Combine(TPath.Combine(BaseDir, 'runtime'), 'python'), 'python.exe'));
+    AddRunner(TPath.Combine(TPath.Combine(BaseDir, 'scripts'), 'python.exe'));
+    BaseDir := ExcludeTrailingPathDelimiter(ExtractFileDir(BaseDir));
+  end;
+
+  AddRunner('py');
+  AddRunner('python3');
+  AddRunner('python');
+end;
+
 class function TCSVExporter.RunProcessAndWait(const AExe,
   AParams: string): Integer;
 var
@@ -220,7 +262,6 @@ var
   ScriptPath: string;
   ExitCode: Integer;
   CommandLine: string;
-  Runners: array[0..2] of string;
   R: string;
   Launched: Boolean;
 begin
@@ -241,19 +282,14 @@ begin
     Exit;
   end;
 
-  // Try the Python Launcher for Windows first, then plain python3/python
-  Runners[0] := 'py';
-  Runners[1] := 'python3';
-  Runners[2] := 'python';
-
   Launched := False;
   ExitCode := -1;
-  for R in Runners do
+  for R in GetPythonRunners do
   begin
-    CommandLine := Format('-3 "%s" --input "%s" --output "%s"',
-      [ScriptPath, ASourcePath, AFilePath]);
-    // The '-3' flag is only valid for the 'py' launcher; omit it for python/python3
-    if R <> 'py' then
+    if SameText(R, 'py') then
+      CommandLine := Format('-3 "%s" --input "%s" --output "%s"',
+        [ScriptPath, ASourcePath, AFilePath])
+    else
       CommandLine := Format('"%s" --input "%s" --output "%s"',
         [ScriptPath, ASourcePath, AFilePath]);
     try
@@ -267,7 +303,7 @@ begin
 
   if not Launched then
   begin
-    AError := 'Could not launch Python. Ensure Python 3 is installed and on the system PATH.';
+    AError := 'Could not launch Python. Bundle python\\python.exe with the app or install Python 3 with duckdb available on PATH.';
     Exit;
   end;
 
@@ -284,7 +320,6 @@ var
   OutputPath: string;
   ExitCode: Integer;
   CommandLine: string;
-  Runners: array[0..2] of string;
   R: string;
   Launched: Boolean;
 begin
@@ -307,15 +342,11 @@ begin
 
   OutputPath := TPath.GetTempFileName;
   try
-    Runners[0] := 'py';
-    Runners[1] := 'python3';
-    Runners[2] := 'python';
-
     Launched := False;
     ExitCode := -1;
-    for R in Runners do
+    for R in GetPythonRunners do
     begin
-      if R = 'py' then
+      if SameText(R, 'py') then
         CommandLine := Format('-3 "%s" --input "%s" --key "%s" --output "%s"',
           [ScriptPath, ASourcePath, AMetadataKey, OutputPath])
       else
@@ -332,7 +363,7 @@ begin
 
     if not Launched then
     begin
-      AError := 'Could not launch Python. Ensure Python 3 is installed and on the system PATH.';
+      AError := 'Could not launch Python. Bundle python\\python.exe with the app or install Python 3 with duckdb available on PATH.';
       Exit;
     end;
 
