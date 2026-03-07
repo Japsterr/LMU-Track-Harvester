@@ -8,10 +8,12 @@ It gives you one place to track your best laps, review LMU results, organize tel
 
 If you are sharing this project with testers, point them to the release downloads:
 
-* `LMUTrackHarvester-Installer.exe` for the simplest install-style setup
-* `LMUTrackHarvester-Portable.zip` for users who want the files directly
+* [Download the installer (LMUTrackHarvester-Installer.exe)](https://github.com/Japsterr/LMU-Track-Harvester/raw/main/download/LMUTrackHarvester-Installer.exe) for the simplest install-style setup
+* [Download the portable zip (LMUTrackHarvester-Portable.zip)](https://github.com/Japsterr/LMU-Track-Harvester/raw/main/download/LMUTrackHarvester-Portable.zip) for users who want the files directly
 
 For most people, the installer is the easiest option.
+
+If someone is browsing the repository and clicking the files inside the `download` folder does not start a download, use the direct links above instead.
 
 ## What Testers Should Expect
 
