@@ -7,6 +7,7 @@ uses
   System.Generics.Collections, System.Variants,
   Xml.XMLIntf, Xml.XMLDoc,
   FireDAC.Comp.Client,
+  FireDAC.Stan.Param,
   DatabaseManager, LapTimeModels;
 
 type
@@ -19,6 +20,7 @@ type
 
   TResultsXMLImporter = class
   public
+    class function DetectDominantDriverName(const AFolder: string): string;
     class function ImportFolder(ADB: TDatabaseManager;
       const AFolder: string; const APreferredDriverName: string = ''): TResultsImportSummary;
   end;
@@ -32,10 +34,18 @@ type
     SessionType: string;
     LapTimeMs: Int64;
     LapDate: TDateTime;
+    SourceFile: string;
+    SourceDriver: string;
+    SourceRowKey: string;
   end;
 
+const
+  CResultImportSourceType = 'LMU_RESULTS_XML';
+  CResultImportVersion = 2;
+
 procedure AddLapCandidate(const ATrackHint, ACarHint, ASessionType: string;
-  ALapTimeMs: Int64; ALapDate: TDateTime; ACandidates: TList<TLapCandidate>);
+  ALapTimeMs: Int64; ALapDate: TDateTime; const ASourceFile,
+  ASourceDriver, ASourceRowKey: string; ACandidates: TList<TLapCandidate>);
 var
   LapCandidate: TLapCandidate;
 begin
@@ -47,6 +57,9 @@ begin
   LapCandidate.SessionType := ASessionType;
   LapCandidate.LapTimeMs := ALapTimeMs;
   LapCandidate.LapDate := ALapDate;
+  LapCandidate.SourceFile := ASourceFile;
+  LapCandidate.SourceDriver := ASourceDriver;
+  LapCandidate.SourceRowKey := ASourceRowKey;
   ACandidates.Add(LapCandidate);
 end;
 
@@ -88,6 +101,45 @@ begin
   for C in Normalized do
     if CharInSet(C, ['a'..'z', '0'..'9']) then
       Result := Result + C;
+end;
+
+function NormalizeDriverIdentityKey(const S: string): string;
+var
+  DriverName: string;
+  HashPos: Integer;
+begin
+  DriverName := Trim(S);
+  HashPos := Pos('#', DriverName);
+  if HashPos > 0 then
+    DriverName := Trim(Copy(DriverName, 1, HashPos - 1));
+
+  Result := NormalizeKey(DriverName);
+end;
+
+function ReadNodeValue(const ANode: IXMLNode;
+  const ANameFragments: array of string): string; forward;
+
+procedure CollectDriverNames(const ANode: IXMLNode;
+  ANames: TDictionary<string, string>);
+var
+  NameValue: string;
+  NameKey: string;
+  I: Integer;
+begin
+  if ANode = nil then
+    Exit;
+
+  if NormalizeKey(ANode.NodeName) = 'driver' then
+  begin
+    NameValue := Trim(ReadNodeValue(ANode, ['name']));
+    NameKey := NormalizeDriverIdentityKey(NameValue);
+    if (NameKey <> '') and (ANames <> nil) and (not ANames.ContainsKey(NameKey)) then
+      ANames.Add(NameKey, NameValue);
+  end;
+
+  if Assigned(ANode.ChildNodes) then
+    for I := 0 to ANode.ChildNodes.Count - 1 do
+      CollectDriverNames(ANode.ChildNodes[I], ANames);
 end;
 
 function SimplifyTrackKey(const S: string): string;
@@ -446,7 +498,7 @@ end;
 
 procedure CollectPlayerDriverLaps(const ADriverNode: IXMLNode;
   const ATrackHint, ASessionTypeHint: string; const ADefaultDate: TDateTime;
-  ACandidates: TList<TLapCandidate>);
+  const ASourceFile, ADriverName: string; ACandidates: TList<TLapCandidate>);
 var
   Child: IXMLNode;
   I: Integer;
@@ -454,6 +506,9 @@ var
   SessionType: string;
   LapMs: Int64;
   NodeName: string;
+  LapNumber: string;
+  SourceRowKey: string;
+  DriverKey: string;
 begin
   if ADriverNode = nil then
     Exit;
@@ -468,10 +523,12 @@ begin
   if SessionType = '' then
   begin
     if Assigned(ADriverNode.ParentNode) then
-    SessionType := NormalizeImportedSessionType(ADriverNode.ParentNode.NodeName)
+      SessionType := NormalizeImportedSessionType(ADriverNode.ParentNode.NodeName)
     else
       SessionType := NormalizeImportedSessionType('');
   end;
+
+  DriverKey := NormalizeDriverIdentityKey(ADriverName);
 
   for I := 0 to ADriverNode.ChildNodes.Count - 1 do
   begin
@@ -480,10 +537,16 @@ begin
       Continue;
 
     NodeName := NormalizeKey(Child.NodeName);
-    if (NodeName = 'lap') or IsLapTimeLikeName(Child.NodeName) then
+    if NodeName = 'lap' then
     begin
       LapMs := ParseLapTimeMs(SafeNodeText(Child));
-      AddLapCandidate(ATrackHint, CarHint, SessionType, LapMs, ADefaultDate, ACandidates);
+      LapNumber := ReadNodeValue(Child, ['num']);
+      if LapNumber = '' then
+        LapNumber := IntToStr(I + 1);
+      SourceRowKey := DriverKey + '|' + ASourceFile + '|' + NormalizeKey(SessionType) +
+        '|lap|' + LapNumber + '|' + IntToStr(LapMs);
+      AddLapCandidate(ATrackHint, CarHint, SessionType, LapMs, ADefaultDate,
+        ASourceFile, DriverKey, SourceRowKey, ACandidates);
     end;
   end;
 end;
@@ -499,26 +562,25 @@ begin
   if (ANode = nil) or (NormalizeKey(ANode.NodeName) <> 'driver') then
     Exit;
 
-  PreferredKey := NormalizeKey(APreferredDriverName);
+  PreferredKey := NormalizeDriverIdentityKey(APreferredDriverName);
   if PreferredKey = '' then
     Exit;
 
   DriverName := ReadNodeValue(ANode, ['name']);
-  DriverKey := NormalizeKey(DriverName);
-  Result := (DriverKey <> '') and
-    ((DriverKey = PreferredKey) or (Pos(PreferredKey, DriverKey) > 0) or
-     (Pos(DriverKey, PreferredKey) > 0));
+  DriverKey := NormalizeDriverIdentityKey(DriverName);
+  Result := (DriverKey <> '') and (DriverKey = PreferredKey);
 end;
 
 function CollectPreferredDriverLapCandidates(const ARoot: IXMLNode;
   const APreferredDriverName: string; const ADefaultDate: TDateTime;
   ACandidates: TList<TLapCandidate>; const ACurrentTrack: string = '';
-  const ACurrentSession: string = ''): Boolean;
+  const ACurrentSession: string = ''; const ASourceFile: string = ''): Boolean;
 var
   Child: IXMLNode;
   TrackHint: string;
   SessionType: string;
   I: Integer;
+  DriverName: string;
 begin
   Result := False;
   if ARoot = nil then
@@ -542,7 +604,9 @@ begin
 
   if IsPreferredDriverNode(ARoot, APreferredDriverName) then
   begin
-    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate, ACandidates);
+    DriverName := ReadNodeValue(ARoot, ['name']);
+    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate,
+      ASourceFile, DriverName, ACandidates);
     Exit(True);
   end;
 
@@ -551,7 +615,7 @@ begin
     begin
       Child := ARoot.ChildNodes[I];
       if CollectPreferredDriverLapCandidates(Child, APreferredDriverName,
-           ADefaultDate, ACandidates, TrackHint, SessionType) then
+           ADefaultDate, ACandidates, TrackHint, SessionType, ASourceFile) then
         Result := True;
     end;
 end;
@@ -587,7 +651,8 @@ begin
 
   if IsPlayerDriverNode(ARoot) then
   begin
-    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate, ACandidates);
+    CollectPlayerDriverLaps(ARoot, TrackHint, SessionType, ADefaultDate,
+      '', ReadNodeValue(ARoot, ['name']), ACandidates);
     Exit(True);
   end;
 
@@ -636,7 +701,8 @@ begin
   if IsLapTimeLikeName(AttrName) then
   begin
     LapMs := ParseLapTimeMs(NodeText);
-    AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate, ACandidates);
+    AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate,
+      '', '', '', ACandidates);
   end;
 
   if Assigned(ANode.AttributeNodes) then
@@ -647,7 +713,8 @@ begin
       if IsLapTimeLikeName(AttrName) then
       begin
         LapMs := ParseLapTimeMs(SafeVariantToString(Attr.NodeValue));
-        AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate, ACandidates);
+        AddLapCandidate(TrackCtx, CarCtx, SessionCtx, LapMs, ADefaultDate,
+          '', '', '', ACandidates);
       end;
     end;
 
@@ -755,6 +822,126 @@ begin
   end;
 end;
 
+function DBDateTimeText(const AValue: TDateTime): string;
+begin
+  Result := FormatDateTime('yyyy-mm-dd hh:nn:ss', AValue);
+end;
+
+function HasTrackedImports(const ADB: TDatabaseManager): Boolean;
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := ADB.Connection;
+    Q.SQL.Text := 'SELECT 1 FROM ResultImportFiles LIMIT 1';
+    Q.Open;
+    Result := not Q.Eof;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure PurgeLegacyImportedRows(const ADB: TDatabaseManager);
+begin
+  ADB.Connection.ExecSQL(
+    'DELETE FROM LapTimes WHERE SourceType = ''LMU_RESULTS_XML'' ' +
+    '   OR SessionType LIKE ''LMU Results XML%''');
+  ADB.Connection.ExecSQL('DELETE FROM ResultImportFiles');
+end;
+
+procedure PurgeRowsForOtherDrivers(const ADB: TDatabaseManager;
+  const APreferredDriverKey: string);
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := ADB.Connection;
+    Q.SQL.Text :=
+      'DELETE FROM LapTimes WHERE SourceType = :SourceType AND ifnull(SourceDriver, '''') <> :DriverKey';
+    Q.ParamByName('SourceType').AsString := CResultImportSourceType;
+    Q.ParamByName('DriverKey').AsString := APreferredDriverKey;
+    Q.ExecSQL;
+
+    Q.SQL.Text := 'DELETE FROM ResultImportFiles WHERE DriverName <> :DriverKey';
+    Q.ParamByName('DriverKey').AsString := APreferredDriverKey;
+    Q.ExecSQL;
+  finally
+    Q.Free;
+  end;
+end;
+
+function IsFileImportCurrent(const ADB: TDatabaseManager; const AFilePath,
+  ADriverKey, AFileModifiedText: string): Boolean;
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := ADB.Connection;
+    Q.SQL.Text :=
+      'SELECT 1 FROM ResultImportFiles ' +
+      'WHERE FilePath = :FilePath AND DriverName = :DriverName ' +
+      '  AND FileModified = :FileModified AND ImportVersion = :ImportVersion';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('DriverName').AsString := ADriverKey;
+    Q.ParamByName('FileModified').AsString := AFileModifiedText;
+    Q.ParamByName('ImportVersion').AsInteger := CResultImportVersion;
+    Q.Open;
+    Result := not Q.Eof;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure DeleteImportedRowsForFile(const ADB: TDatabaseManager;
+  const AFilePath, ADriverKey: string);
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := ADB.Connection;
+    Q.SQL.Text :=
+      'DELETE FROM LapTimes WHERE SourceType = :SourceType AND SourceFile = :FilePath AND SourceDriver = :DriverName';
+    Q.ParamByName('SourceType').AsString := CResultImportSourceType;
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('DriverName').AsString := ADriverKey;
+    Q.ExecSQL;
+
+    Q.SQL.Text := 'DELETE FROM ResultImportFiles WHERE FilePath = :FilePath AND DriverName = :DriverName';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('DriverName').AsString := ADriverKey;
+    Q.ExecSQL;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure MarkFileImported(const ADB: TDatabaseManager; const AFilePath,
+  ADriverKey, AFileModifiedText: string);
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := ADB.Connection;
+    Q.SQL.Text :=
+      'INSERT OR REPLACE INTO ResultImportFiles ' +
+      '  (FilePath, DriverName, FileModified, ImportVersion, LastImportedAt) ' +
+      'VALUES (:FilePath, :DriverName, :FileModified, :ImportVersion, :LastImportedAt)';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('DriverName').AsString := ADriverKey;
+    Q.ParamByName('FileModified').AsString := AFileModifiedText;
+    Q.ParamByName('ImportVersion').AsInteger := CResultImportVersion;
+    Q.ParamByName('LastImportedAt').AsString := DBDateTimeText(Now);
+    Q.ExecSQL;
+  finally
+    Q.Free;
+  end;
+end;
+
 class function TResultsXMLImporter.ImportFolder(ADB: TDatabaseManager;
   const AFolder: string; const APreferredDriverName: string = ''): TResultsImportSummary;
 var
@@ -768,6 +955,9 @@ var
   SessionType: string;
   XmlText: string;
   UsedPlayerOnlyImport: Boolean;
+  PreferredDriverKey: string;
+  FileModifiedText: string;
+  SourceFilePath: string;
 begin
   Result.FilesScanned := 0;
   Result.FilesFailed := 0;
@@ -777,13 +967,29 @@ begin
   if (AFolder = '') or (not TDirectory.Exists(AFolder)) then
     Exit;
 
+  if Trim(APreferredDriverName) = '' then
+    Exit;
+
+  PreferredDriverKey := NormalizeDriverIdentityKey(APreferredDriverName);
+  if PreferredDriverKey = '' then
+    Exit;
+
   Files := TDirectory.GetFiles(AFolder, '*.xml', TSearchOption.soTopDirectoryOnly);
-  if Length(Files) > 0 then
-    ADB.Connection.ExecSQL('DELETE FROM LapTimes WHERE SessionType LIKE ''LMU Results XML%''');
+  if (Length(Files) > 0) and (not HasTrackedImports(ADB)) then
+    PurgeLegacyImportedRows(ADB);
+
+  PurgeRowsForOtherDrivers(ADB, PreferredDriverKey);
 
   for FilePath in Files do
   begin
     Inc(Result.FilesScanned);
+    SourceFilePath := ExpandFileName(FilePath);
+    FileModifiedText := DBDateTimeText(TFile.GetLastWriteTime(FilePath));
+    if IsFileImportCurrent(ADB, SourceFilePath, PreferredDriverKey, FileModifiedText) then
+      Continue;
+
+    DeleteImportedRowsForFile(ADB, SourceFilePath, PreferredDriverKey);
+
     Candidates := TList<TLapCandidate>.Create;
     try
       try
@@ -797,57 +1003,124 @@ begin
         if not TryParseDateFromFilename(TPath.GetFileName(FilePath), LapDate) then
           LapDate := TFile.GetLastWriteTime(FilePath);
 
-        UsedPlayerOnlyImport := False;
-        if Trim(APreferredDriverName) <> '' then
-          UsedPlayerOnlyImport := CollectPreferredDriverLapCandidates(
-            XmlDoc.DocumentElement, APreferredDriverName, LapDate, Candidates)
-        else
-          UsedPlayerOnlyImport := CollectPlayerLapCandidates(XmlDoc.DocumentElement, LapDate, Candidates);
+        UsedPlayerOnlyImport := CollectPreferredDriverLapCandidates(
+          XmlDoc.DocumentElement, APreferredDriverName, LapDate, Candidates,
+          '', '', SourceFilePath);
 
-        if not UsedPlayerOnlyImport then
-        begin
-          if Trim(APreferredDriverName) <> '' then
-            Continue;
-
-          WalkNodeForLaps(XmlDoc.DocumentElement,
-            TPath.GetFileNameWithoutExtension(FilePath), '', 'LMU Results XML', LapDate, Candidates);
-        end;
-
-        for Candidate in Candidates do
-        begin
-          if (Candidate.LapTimeMs < 30000) or (Candidate.LapTimeMs > 1200000) then
+        if UsedPlayerOnlyImport then
+          for Candidate in Candidates do
           begin
-            Inc(Result.LapsSkipped);
-            Continue;
+            if (Candidate.LapTimeMs < 30000) or (Candidate.LapTimeMs > 1200000) then
+            begin
+              Inc(Result.LapsSkipped);
+              Continue;
+            end;
+
+            TrackID := FindBestTrackID(ADB, Candidate.TrackHint);
+            CarID := FindBestCarID(ADB, Candidate.CarHint);
+            if (TrackID <= 0) or (CarID <= 0) then
+            begin
+              Inc(Result.LapsSkipped);
+              Continue;
+            end;
+
+            SessionType := Trim(Candidate.SessionType);
+            if SessionType = '' then
+              SessionType := 'LMU Results XML - Session';
+
+            if LapAlreadyExists(ADB, TrackID, CarID, Candidate.LapTimeMs, Candidate.LapDate, SessionType) then
+            begin
+              Inc(Result.LapsSkipped);
+              Continue;
+            end;
+
+            ADB.AddLapTime(TrackID, CarID, Candidate.LapTimeMs, SessionType,
+              Candidate.LapDate, CResultImportSourceType, Candidate.SourceFile,
+              Candidate.SourceDriver, Candidate.SourceRowKey);
+            Inc(Result.LapsInserted);
           end;
 
-          TrackID := FindBestTrackID(ADB, Candidate.TrackHint);
-          CarID := FindBestCarID(ADB, Candidate.CarHint);
-          if (TrackID <= 0) or (CarID <= 0) then
-          begin
-            Inc(Result.LapsSkipped);
-            Continue;
-          end;
-
-          SessionType := Trim(Candidate.SessionType);
-          if SessionType = '' then
-            SessionType := 'LMU Results XML - Session';
-
-          if LapAlreadyExists(ADB, TrackID, CarID, Candidate.LapTimeMs, Candidate.LapDate, SessionType) then
-          begin
-            Inc(Result.LapsSkipped);
-            Continue;
-          end;
-
-          ADB.AddLapTime(TrackID, CarID, Candidate.LapTimeMs, SessionType, Candidate.LapDate);
-          Inc(Result.LapsInserted);
-        end;
+        MarkFileImported(ADB, SourceFilePath, PreferredDriverKey, FileModifiedText);
       except
         Inc(Result.FilesFailed);
       end;
     finally
       Candidates.Free;
     end;
+  end;
+end;
+
+class function TResultsXMLImporter.DetectDominantDriverName(const AFolder: string): string;
+var
+  Files: TArray<string>;
+  FilePath: string;
+  XmlDoc: IXMLDocument;
+  XmlText: string;
+  NamesInFile: TDictionary<string, string>;
+  DriverCounts: TDictionary<string, Integer>;
+  DriverDisplayNames: TDictionary<string, string>;
+  Pair: TPair<string, string>;
+  CountValue: Integer;
+  BestKey: string;
+  BestCount: Integer;
+  CountPair: TPair<string, Integer>;
+begin
+  Result := '';
+  if (AFolder = '') or (not TDirectory.Exists(AFolder)) then
+    Exit;
+
+  DriverCounts := TDictionary<string, Integer>.Create;
+  DriverDisplayNames := TDictionary<string, string>.Create;
+  try
+    Files := TDirectory.GetFiles(AFolder, '*.xml', TSearchOption.soTopDirectoryOnly);
+    for FilePath in Files do
+    begin
+      NamesInFile := TDictionary<string, string>.Create;
+      try
+        try
+          XmlDoc := TXMLDocument.Create(nil);
+          XmlDoc.Options := [doNodeAutoCreate, doNodeAutoIndent];
+          XmlText := TFile.ReadAllText(FilePath, TEncoding.UTF8);
+          XmlText := StripDoctypeDeclaration(XmlText);
+          XmlDoc.LoadFromXML(XmlText);
+          XmlDoc.Active := True;
+
+          CollectDriverNames(XmlDoc.DocumentElement, NamesInFile);
+          for Pair in NamesInFile do
+          begin
+            if DriverCounts.TryGetValue(Pair.Key, CountValue) then
+              DriverCounts.AddOrSetValue(Pair.Key, CountValue + 1)
+            else
+              DriverCounts.Add(Pair.Key, 1);
+
+            if not DriverDisplayNames.ContainsKey(Pair.Key) then
+              DriverDisplayNames.Add(Pair.Key, Pair.Value);
+          end;
+        except
+          on Exception do
+            Continue;
+        end;
+      finally
+        NamesInFile.Free;
+      end;
+    end;
+
+    BestKey := '';
+    BestCount := 0;
+    for CountPair in DriverCounts do
+      if (CountPair.Value > BestCount) or
+         ((CountPair.Value = BestCount) and (BestKey <> '') and
+          (DriverDisplayNames[CountPair.Key] < DriverDisplayNames[BestKey])) then
+      begin
+        BestKey := CountPair.Key;
+        BestCount := CountPair.Value;
+      end;
+
+    if (BestKey <> '') and DriverDisplayNames.ContainsKey(BestKey) then
+      Result := DriverDisplayNames[BestKey];
+  finally
+    DriverDisplayNames.Free;
+    DriverCounts.Free;
   end;
 end;
 

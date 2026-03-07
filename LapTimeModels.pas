@@ -51,6 +51,8 @@ type
     SessionDate: TDateTime;
     Notes: string;
     DataPointCount: Integer;
+    DurationMs: Int64;
+    EstimatedLaps: Integer;
   end;
 
   TTelemetryDataPoint = record
@@ -135,7 +137,8 @@ begin
   Minutes := LapTimeMs div 60000;
   Seconds := (LapTimeMs mod 60000) div 1000;
   Millis  := LapTimeMs mod 1000;
-  Result  := Format('%d:%02d.%03d', [Minutes, Seconds, Millis]);
+  Result  := IntToStr(Minutes) + ':' + FormatFloat('00', Seconds) + '.' +
+    FormatFloat('000', Millis);
 end;
 
 function ParseLapTime(const S: string): Int64;

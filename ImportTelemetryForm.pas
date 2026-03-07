@@ -150,6 +150,10 @@ begin
   AValidRows := 0;
   ADurationMs := 0;
   ALapSpan := 0;
+  FirstTimestamp := 0;
+  LastTimestamp := 0;
+  MinLapDistance := 0;
+  MaxLapDistance := 0;
   InvariantFS := TFormatSettings.Invariant;
 
   if not TFile.Exists(AFilePath) then

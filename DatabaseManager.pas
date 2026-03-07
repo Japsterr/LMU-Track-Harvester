@@ -1,7 +1,8 @@
 unit DatabaseManager;
 
 { SQLite data-access layer using FireDAC.
-  All database objects are stored in %DOCUMENTS%\LMUTrackHarvester\data.db
+  Database storage defaults to data.db next to the executable so the active
+  file is easy to inspect and stays aligned with the running build.
 
   Schema
   ------
@@ -43,9 +44,11 @@ type
     FDatabasePath: string;
 
     procedure CreateSchema;
+    procedure EnsureColumnExists(const ATableName, AColumnName, AColumnDefinition: string);
     procedure SeedReferenceData;
     procedure NormalizeReferenceData;
     function LastInsertID: Integer;
+    function EstimateTelemetrySessionLapCount(ASessionID: Integer): Integer;
   public
     constructor Create(const ADatabasePath: string = '');
     destructor Destroy; override;
@@ -77,7 +80,11 @@ type
     function GetFastestLapPerCar(ATrackID, AClassID: Integer): TLapTimeArray;
     function AddLapTime(ATrackID, ACarID: Integer; ALapTimeMs: Int64;
                         const ASessionType: string;
-                        ALapDate: TDateTime): Integer;
+                        ALapDate: TDateTime;
+                        const ASourceType: string = '';
+                        const ASourceFile: string = '';
+                        const ASourceDriver: string = '';
+                        const ASourceRowKey: string = ''): Integer;
     function DeleteLapTime(AID: Integer): Boolean;
 
     // -----------------------------------------------------------------------
@@ -156,23 +163,42 @@ end;
 constructor TDatabaseManager.Create(const ADatabasePath: string = '');
 var
   AppDir: string;
-  function EnsureDir(const APath: string): Boolean;
+  function EnsureWritableDir(const APath: string): Boolean;
+  var
+    ProbeFile: string;
+    ProbeGuid: string;
   begin
     Result := (APath <> '') and (DirectoryExists(APath) or ForceDirectories(APath));
+    if not Result then
+      Exit;
+
+    ProbeGuid := GUIDToString(TGUID.NewGuid).Replace('{', '').Replace('}', '');
+    ProbeFile := TPath.Combine(APath, '.__lth_dbprobe_' + ProbeGuid + '.tmp');
+    try
+      TFile.WriteAllText(ProbeFile, 'ok');
+      try
+        TFile.Delete(ProbeFile);
+      except
+        // Ignore cleanup failures for the writability probe.
+      end;
+      Result := True;
+    except
+      Result := False;
+    end;
   end;
 begin
   inherited Create;
 
   if ADatabasePath = '' then
   begin
-    AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
-    if not EnsureDir(AppDir) then
+    AppDir := ExcludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
+    if not EnsureWritableDir(AppDir) then
     begin
-      AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
-      if not EnsureDir(AppDir) then
+      AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
+      if not EnsureWritableDir(AppDir) then
       begin
-        AppDir := TPath.Combine(ExtractFilePath(ParamStr(0)), 'LMUTrackHarvester');
-        if not EnsureDir(AppDir) then
+        AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
+        if not EnsureWritableDir(AppDir) then
           raise Exception.CreateFmt(
             'Unable to create application data directory after trying fallback locations. Last attempt: %s',
             [AppDir]
@@ -184,7 +210,7 @@ begin
   else
   begin
     AppDir := ExtractFileDir(ADatabasePath);
-    if (AppDir <> '') and (not EnsureDir(AppDir)) then
+    if (AppDir <> '') and (not EnsureWritableDir(AppDir)) then
       raise Exception.CreateFmt('Unable to create database directory: %s', [AppDir]);
     FDatabasePath := ADatabasePath;
   end;
@@ -232,6 +258,72 @@ begin
   end;
 end;
 
+procedure TDatabaseManager.EnsureColumnExists(const ATableName, AColumnName,
+  AColumnDefinition: string);
+var
+  Q: TFDQuery;
+  ColumnName: string;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text := 'PRAGMA table_info(' + ATableName + ')';
+    Q.Open;
+    while not Q.Eof do
+    begin
+      ColumnName := Trim(Q.FieldByName('name').AsString);
+      if SameText(ColumnName, AColumnName) then
+        Exit;
+      Q.Next;
+    end;
+    Q.Close;
+
+    FConnection.ExecSQL(Format('ALTER TABLE %s ADD COLUMN %s %s',
+      [ATableName, AColumnName, AColumnDefinition]));
+  finally
+    Q.Free;
+  end;
+end;
+
+function TDatabaseManager.EstimateTelemetrySessionLapCount(ASessionID: Integer): Integer;
+var
+  Q: TFDQuery;
+  PreviousLapDistance: Double;
+  CurrentLapDistance: Double;
+  HasData: Boolean;
+begin
+  Result := 0;
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text :=
+      'SELECT LapDistance FROM TelemetryData ' +
+      'WHERE SessionID = :SessionID ' +
+      'ORDER BY TimestampMs';
+    Q.ParamByName('SessionID').AsInteger := ASessionID;
+    Q.Open;
+
+    HasData := False;
+    PreviousLapDistance := 0;
+    while not Q.Eof do
+    begin
+      CurrentLapDistance := Q.Fields[0].AsFloat;
+      if not HasData then
+      begin
+        HasData := True;
+        Result := 1;
+      end
+      else if (PreviousLapDistance > 0.75) and (CurrentLapDistance < 0.25) then
+        Inc(Result);
+
+      PreviousLapDistance := CurrentLapDistance;
+      Q.Next;
+    end;
+  finally
+    Q.Free;
+  end;
+end;
+
 procedure TDatabaseManager.CreateSchema;
 begin
   FConnection.ExecSQL(
@@ -263,8 +355,27 @@ begin
     '  LapTimeMs   INTEGER NOT NULL,' +
     '  LapDate     TEXT    NOT NULL,' +
     '  SessionType TEXT,' +
+    '  SourceType  TEXT,' +
+    '  SourceFile  TEXT,' +
+    '  SourceDriver TEXT,' +
+    '  SourceRowKey TEXT,' +
     '  FOREIGN KEY (TrackID) REFERENCES Tracks(ID),' +
     '  FOREIGN KEY (CarID)   REFERENCES Cars(ID)' +
+    ')');
+
+  EnsureColumnExists('LapTimes', 'SourceType', 'TEXT');
+  EnsureColumnExists('LapTimes', 'SourceFile', 'TEXT');
+  EnsureColumnExists('LapTimes', 'SourceDriver', 'TEXT');
+  EnsureColumnExists('LapTimes', 'SourceRowKey', 'TEXT');
+
+  FConnection.ExecSQL(
+    'CREATE TABLE IF NOT EXISTS ResultImportFiles (' +
+    '  FilePath       TEXT NOT NULL,' +
+    '  DriverName     TEXT NOT NULL,' +
+    '  FileModified   TEXT NOT NULL,' +
+    '  ImportVersion  INTEGER NOT NULL,' +
+    '  LastImportedAt TEXT NOT NULL,' +
+    '  PRIMARY KEY (FilePath, DriverName)' +
     ')');
 
   FConnection.ExecSQL(
@@ -297,6 +408,12 @@ begin
   FConnection.ExecSQL(
     'CREATE INDEX IF NOT EXISTS idx_laptimes_track_car ' +
     'ON LapTimes (TrackID, CarID)');
+
+  FConnection.ExecSQL(
+    'CREATE UNIQUE INDEX IF NOT EXISTS idx_laptimes_source_unique ' +
+    'ON LapTimes (SourceType, SourceRowKey) ' +
+    'WHERE SourceType IS NOT NULL AND SourceRowKey IS NOT NULL ' +
+    '  AND SourceType <> '''' AND SourceRowKey <> ''''');
 
   // Index for telemetry data lookups
   FConnection.ExecSQL(
@@ -620,15 +737,22 @@ begin
     Q.Connection := FConnection;
     Q.SQL.Text :=
       'SELECT lt.CarID, c.Name AS CarName, c.ClassID, cc.Name AS ClassName,' +
-      '       MIN(lt.LapTimeMs) AS LapTimeMs, lt.LapDate, lt.SessionType,' +
+      '       lt.LapTimeMs, lt.LapDate, lt.SessionType,' +
       '       lt.ID, lt.TrackID, t.Name AS TrackName, t.Layout AS TrackLayout ' +
       'FROM LapTimes lt ' +
       'JOIN Tracks t     ON t.ID  = lt.TrackID ' +
       'JOIN Cars c       ON c.ID  = lt.CarID ' +
       'LEFT JOIN CarClasses cc ON cc.ID = c.ClassID ' +
+      'JOIN (' +
+      '  SELECT lt2.CarID, MIN(lt2.LapTimeMs) AS MinLapTime ' +
+      '  FROM LapTimes lt2 ' +
+      '  JOIN Cars c2 ON c2.ID = lt2.CarID ' +
+      '  WHERE lt2.TrackID = :TrackID AND c2.ClassID = :ClassID ' +
+      '  GROUP BY lt2.CarID' +
+      ') best ON best.CarID = lt.CarID AND best.MinLapTime = lt.LapTimeMs ' +
       'WHERE lt.TrackID = :TrackID AND c.ClassID = :ClassID ' +
       'GROUP BY lt.CarID ' +
-      'ORDER BY LapTimeMs ASC';
+      'ORDER BY lt.LapTimeMs ASC';
     Q.ParamByName('TrackID').AsInteger := ATrackID;
     Q.ParamByName('ClassID').AsInteger := AClassID;
     Q.Open;
@@ -658,7 +782,9 @@ begin
 end;
 
 function TDatabaseManager.AddLapTime(ATrackID, ACarID: Integer; ALapTimeMs: Int64;
-  const ASessionType: string; ALapDate: TDateTime): Integer;
+  const ASessionType: string; ALapDate: TDateTime;
+  const ASourceType: string = ''; const ASourceFile: string = '';
+  const ASourceDriver: string = ''; const ASourceRowKey: string = ''): Integer;
 var
   Q: TFDQuery;
 begin
@@ -666,13 +792,20 @@ begin
   try
     Q.Connection := FConnection;
     Q.SQL.Text :=
-      'INSERT INTO LapTimes (TrackID, CarID, LapTimeMs, LapDate, SessionType) ' +
-      'VALUES (:TrackID, :CarID, :LapTimeMs, :LapDate, :SessionType)';
+      'INSERT INTO LapTimes (' +
+      '  TrackID, CarID, LapTimeMs, LapDate, SessionType, SourceType, SourceFile, SourceDriver, SourceRowKey' +
+      ') VALUES (' +
+      '  :TrackID, :CarID, :LapTimeMs, :LapDate, :SessionType, :SourceType, :SourceFile, :SourceDriver, :SourceRowKey' +
+      ')';
     Q.ParamByName('TrackID').AsInteger     := ATrackID;
     Q.ParamByName('CarID').AsInteger       := ACarID;
     Q.ParamByName('LapTimeMs').AsLargeInt  := ALapTimeMs;
     Q.ParamByName('LapDate').AsString      := DateTimeToDBText(ALapDate);
     Q.ParamByName('SessionType').AsString  := ASessionType;
+    Q.ParamByName('SourceType').AsString   := ASourceType;
+    Q.ParamByName('SourceFile').AsString   := ASourceFile;
+    Q.ParamByName('SourceDriver').AsString := ASourceDriver;
+    Q.ParamByName('SourceRowKey').AsString := ASourceRowKey;
     Q.ExecSQL;
     Result := LastInsertID;
   finally
@@ -713,7 +846,10 @@ begin
       'SELECT ts.ID, ts.TrackID, t.Name AS TrackName, t.Layout AS TrackLayout,' +
       '       ts.CarID, c.Name AS CarName, ts.SessionDate, ts.Notes,' +
       '       (SELECT COUNT(*) FROM TelemetryData td WHERE td.SessionID = ts.ID)' +
-      '         AS DataPointCount ' +
+      '         AS DataPointCount,' +
+      '       COALESCE((SELECT MAX(td.TimestampMs) - MIN(td.TimestampMs) ' +
+      '                 FROM TelemetryData td WHERE td.SessionID = ts.ID), 0)' +
+      '         AS DurationMs ' +
       'FROM TelemetrySessions ts ' +
       'LEFT JOIN Tracks t ON t.ID = ts.TrackID ' +
       'LEFT JOIN Cars   c ON c.ID = ts.CarID ' +
@@ -734,6 +870,8 @@ begin
       Result[Count].SessionDate    := FieldToDateTime(Q.FieldByName('SessionDate'));
       Result[Count].Notes          := Q.FieldByName('Notes').AsString;
       Result[Count].DataPointCount := Q.FieldByName('DataPointCount').AsInteger;
+      Result[Count].DurationMs     := Q.FieldByName('DurationMs').AsLargeInt;
+      Result[Count].EstimatedLaps  := EstimateTelemetrySessionLapCount(Result[Count].ID);
       Inc(Count);
       Q.Next;
     end;

@@ -1,8 +1,8 @@
 unit AppSettings;
 
 { Manages persistent application settings stored in an INI file.
-  Preferred location is Documents\LMUTrackHarvester\, with writable
-  fallback locations if Documents is unavailable. }
+  Preferred location is the executable directory so the settings stay visible
+  next to the built application, with writable fallback locations if needed. }
 
 interface
 
@@ -78,13 +78,13 @@ var
   end;
 begin
   inherited;
-  AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
+  AppDir := ExcludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)));
   if not EnsureWritableDir(AppDir) then
   begin
-    AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
+    AppDir := TPath.Combine(TPath.GetDocumentsPath, 'LMUTrackHarvester');
     if not EnsureWritableDir(AppDir) then
     begin
-      AppDir := TPath.Combine(ExtractFilePath(ParamStr(0)), 'LMUTrackHarvester');
+      AppDir := TPath.Combine(TPath.GetHomePath, 'LMUTrackHarvester');
       if not EnsureWritableDir(AppDir) then
         raise Exception.CreateFmt(
           'Unable to create writable settings directory after trying fallback locations. Last attempt: %s',

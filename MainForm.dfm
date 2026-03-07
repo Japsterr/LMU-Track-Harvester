@@ -150,19 +150,21 @@ object MainForm: TMainForm
         TabOrder = 1
         ExplicitHeight = 611
         object SplitterLT: TSplitter
-          Left = 565
+          Left = 0
           Top = 0
-          Width = 6
-          Height = 611
+          Width = 1142
+          Height = 8
+          Cursor = crVSplit
+          Align = alTop
         end
         object GrpTop10: TGroupBox
           Left = 0
           Top = 0
-          Width = 548
-          Height = 611
-          Align = alLeft
+          Width = 1142
+          Height = 286
+          Align = alTop
           Caption = ' Driver Top 10 Pace '
-          Color = 15002865
+          Color = 2821923
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -174,31 +176,31 @@ object MainForm: TMainForm
           object LvwTop10: TListView
             Left = 2
             Top = 20
-            Width = 544
-            Height = 589
+            Width = 1138
+            Height = 264
             Align = alClient
             Columns = <
               item
                 Caption = '#'
-                Width = 30
+                Width = 40
               end
               item
                 Caption = 'Car'
-                Width = 210
+                Width = 250
               end
               item
                 Caption = 'Lap Time'
-                Width = 95
-              end
-              item
-                Caption = 'Date'
                 Width = 110
               end
               item
+                Caption = 'Date'
+                Width = 130
+              end
+              item
                 Caption = 'Session'
-                Width = 90
+                Width = 560
               end>
-            Color = 15921906
+            Color = 2170910
             GridLines = False
             ReadOnly = True
             RowSelect = True
@@ -208,13 +210,13 @@ object MainForm: TMainForm
           end
         end
         object GrpFastest: TGroupBox
-          Left = 554
-          Top = 0
-          Width = 588
-          Height = 611
+          Left = 0
+          Top = 294
+          Width = 1142
+          Height = 317
           Align = alClient
-          Caption = ' Best Personal Lap Per Car '
-          Color = 15002865
+          Caption = ' Fastest Personal Time Per Car '
+          Color = 2821923
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -226,31 +228,31 @@ object MainForm: TMainForm
           object LvwFastest: TListView
             Left = 2
             Top = 20
-            Width = 584
-            Height = 589
+            Width = 1138
+            Height = 295
             Align = alClient
             Columns = <
               item
                 Caption = '#'
-                Width = 30
+                Width = 40
               end
               item
                 Caption = 'Car'
-                Width = 220
+                Width = 250
               end
               item
                 Caption = 'Best Lap'
-                Width = 95
-              end
-              item
-                Caption = 'Date'
                 Width = 110
               end
               item
+                Caption = 'Date'
+                Width = 130
+              end
+              item
                 Caption = 'Session'
-                Width = 90
+                Width = 560
               end>
-            Color = 15921906
+            Color = 2170910
             GridLines = False
             ReadOnly = True
             RowSelect = True
@@ -263,7 +265,7 @@ object MainForm: TMainForm
     object TabTelemetry: TTabSheet
       Caption = 'Telemetry'
       object SplitterTel: TSplitter
-        Left = 380
+        Left = 700
         Top = 0
         Width = 6
         Height = 669
@@ -271,7 +273,7 @@ object MainForm: TMainForm
       object PnlTelLeft: TPanel
         Left = 0
         Top = 0
-        Width = 380
+        Width = 700
         Height = 669
         Align = alLeft
         BevelOuter = bvNone
@@ -279,7 +281,7 @@ object MainForm: TMainForm
         object LblSessions: TLabel
           Left = 0
           Top = 0
-          Width = 380
+          Width = 700
           Height = 22
           Align = alTop
           Alignment = taCenter
@@ -298,23 +300,31 @@ object MainForm: TMainForm
         object LvwSessions: TListView
           Left = 0
           Top = 22
-          Width = 380
+          Width = 700
           Height = 607
           Align = alClient
           Columns = <
             item
               Caption = 'When'
-              Width = 120
+              Width = 118
             end
             item
-              Caption = 'Track / Type'
-              Width = 130
+              Caption = 'Source'
+              Width = 64
             end
             item
-              Caption = 'Car / File'
-              Width = 120
+              Caption = 'Track'
+              Width = 190
+            end
+            item
+              Caption = 'Car'
+              Width = 180
+            end
+            item
+              Caption = 'Detail'
+              Width = 210
             end>
-          Color = 15921906
+          Color = 2170910
           GridLines = False
           ReadOnly = True
           RowSelect = True
@@ -325,7 +335,7 @@ object MainForm: TMainForm
         object PnlTelLeftButtons: TPanel
           Left = 0
           Top = 629
-          Width = 380
+          Width = 700
           Height = 40
           Align = alBottom
           BevelOuter = bvNone
@@ -333,7 +343,7 @@ object MainForm: TMainForm
           object BtnImportTel: TButton
             Left = 4
             Top = 6
-            Width = 180
+            Width = 342
             Height = 28
             Caption = 'Import Telemetry (CSV)'
             Font.Charset = DEFAULT_CHARSET
@@ -346,9 +356,9 @@ object MainForm: TMainForm
             OnClick = BtnImportTelClick
           end
           object BtnDeleteSession: TButton
-            Left = 192
+            Left = 352
             Top = 6
-            Width = 180
+            Width = 342
             Height = 28
             Caption = 'Delete Saved Session'
             Font.Charset = DEFAULT_CHARSET
@@ -363,9 +373,9 @@ object MainForm: TMainForm
         end
       end
       object PnlTelRight: TPanel
-        Left = 386
+        Left = 706
         Top = 0
-        Width = 756
+        Width = 436
         Height = 669
         Align = alClient
         BevelOuter = bvNone

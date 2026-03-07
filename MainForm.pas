@@ -12,11 +12,13 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, Winapi.ShellAPI,
-  System.SysUtils, System.Classes, System.IOUtils,
+  System.SysUtils, System.Classes, System.IOUtils, System.Types, System.Math,
+  System.UITypes,
+  System.Generics.Collections,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls,
   Vcl.FileCtrl,
-  Vcl.Graphics,
+  Vcl.Graphics, Vcl.ImgList,
   Vcl.Themes,
   FireDAC.Comp.Client,
   DatabaseManager, LapTimeModels, AppSettings,
@@ -132,6 +134,8 @@ type
     FClasses: TCarClassArray;
     FSessions: TTelemetrySessionArray;
     FSourceTelemetryFiles: TArray<string>;
+    FCarBadgeImages: TImageList;
+    FCarBadgeIndex: TDictionary<string, Integer>;
 
     procedure LoadTrackCombo;
     procedure LoadClassCombo;
@@ -151,8 +155,20 @@ type
     procedure ApplyRacingTheme;
     procedure ImportResultsFromConfiguredFolder(AShowStatus: Boolean);
     procedure DescribeTelemetrySourceFile(const AFilePath: string; ALines: TStrings);
+    procedure EnsureCarbonBackground(ATab: TTabSheet; const AName: string;
+      AAccentColor: TColor);
+    procedure InitializeCarBadges;
 
     function DetectPreferredDriverName: string;
+    function DetectPreferredDriverNameFromTelemetry: string;
+    function DetectPreferredDriverNameFromResults: string;
+    function BuildCarbonBitmap(AWidth, AHeight: Integer;
+      AAccentColor: TColor): TBitmap;
+    function FormatDurationMs(ADurationMs: Int64): string;
+    function GetCarBadgeImageIndex(const ACarName: string): Integer;
+    function DisplaySessionType(const ASessionType: string): string;
+    function ReadDuckDBMetadataFallback(const AFilePath: string;
+      const AKeys: array of string): string;
   end;
 
 var
@@ -170,6 +186,9 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   FSettings := TAppSettings.Create;
   FDB       := TDatabaseManager.Create;
+  FCarBadgeIndex := TDictionary<string, Integer>.Create;
+  FCarBadgeImages := TImageList.Create(Self);
+  InitializeCarBadges;
 
   ApplyRacingTheme;
 
@@ -212,6 +231,7 @@ begin
     FSettings.AIModel := CboAIModel.Items[CboAIModel.ItemIndex];
   FSettings.WindowMaximized := (WindowState = wsMaximized);
   FSettings.Save;
+  FCarBadgeIndex.Free;
   FSettings.Free;
   FDB.Free;
 end;
@@ -227,69 +247,16 @@ end;
 
 procedure TMainForm.ApplyRacingTheme;
 const
-  COLOR_FRAME = $00140F0B;
-  COLOR_PANEL = $00211A16;
-  COLOR_SURFACE = $00F2F5F7;
-  COLOR_SURFACE_ALT = $00E5ECF1;
-  COLOR_ACCENT = $000066CC;
-  COLOR_HEADER = $001F4A9D;
+  COLOR_FRAME = $00393633;
+  COLOR_PANEL = $00474440;
+  COLOR_SURFACE = $00595550;
+  COLOR_SURFACE_ALT = $0066615B;
+  COLOR_ACCENT = $00C96A1C;
+  COLOR_HEADER = $00A45717;
+  COLOR_TEXT = $00E7EBEE;
+  COLOR_SUBTLE = $00BFC7CE;
 begin
   Caption := 'LMU Track Harvester - Driver Performance Hub';
-  Color := COLOR_FRAME;
-
-  PageControl.ParentBackground := False;
-  PageControl.Color := COLOR_FRAME;
-
-  PnlLTTop.ParentBackground := False;
-  PnlLTTop.Color := COLOR_PANEL;
-  PnlLTContent.ParentBackground := False;
-  PnlLTContent.Color := COLOR_FRAME;
-  LblTrack.Font.Color := clWhite;
-  LblClass.Font.Color := clWhite;
-
-  GrpTop10.Caption := ' Driver Top 10 Pace ';
-  GrpFastest.Caption := ' Best Personal Lap Per Car ';
-  GrpTop10.ParentBackground := False;
-  GrpFastest.ParentBackground := False;
-  GrpTop10.Color := COLOR_SURFACE_ALT;
-  GrpFastest.Color := COLOR_SURFACE_ALT;
-  GrpTop10.Font.Style := [fsBold];
-  GrpFastest.Font.Style := [fsBold];
-  LvwTop10.GridLines := False;
-  LvwFastest.GridLines := False;
-  LvwTop10.Color := COLOR_SURFACE;
-  LvwFastest.Color := COLOR_SURFACE;
-
-  LblSessions.Caption := 'Telemetry Garage';
-  LblSessions.Color := COLOR_HEADER;
-  LblSessions.Font.Color := clWhite;
-  PnlTelLeft.ParentBackground := False;
-  PnlTelLeft.Color := COLOR_FRAME;
-  PnlTelRight.ParentBackground := False;
-  PnlTelRight.Color := COLOR_FRAME;
-  GrpSessionInfo.ParentBackground := False;
-  GrpAIResponse.ParentBackground := False;
-  GrpSessionInfo.Color := COLOR_SURFACE_ALT;
-  GrpAIResponse.Color := COLOR_SURFACE_ALT;
-  GrpSessionInfo.Font.Style := [fsBold];
-  GrpAIResponse.Font.Style := [fsBold];
-  PnlTelActions.ParentBackground := False;
-  PnlTelActions.Color := COLOR_FRAME;
-  MemoSessionInfo.Color := COLOR_SURFACE;
-  MemoAIResponse.Color := COLOR_SURFACE;
-  MemoSessionInfo.Font.Name := 'Bahnschrift';
-  MemoAIResponse.Font.Name := 'Bahnschrift';
-
-  PnlSettings.ParentBackground := False;
-  PnlSettings.Color := COLOR_SURFACE;
-
-  BtnAddLap.Font.Style := [fsBold];
-  BtnDeleteLap.Font.Style := [fsBold];
-  BtnExportLaps.Font.Style := [fsBold];
-  BtnExportCSV.Font.Style := [fsBold];
-  BtnAnalyzeAI.Font.Style := [fsBold];
-  BtnImportTel.Font.Style := [fsBold];
-  BtnSaveSettings.Font.Style := [fsBold];
 
   BtnAddLap.Caption := '+ Log Lap';
   BtnDeleteLap.Caption := 'Delete Lap';
@@ -300,10 +267,293 @@ begin
   BtnDeleteSession.Caption := 'Delete Saved Session';
 
   LblSettingsTitle.Caption := 'Driver and AI Control Centre';
+  LblSessions.Caption := 'Telemetry Garage';
+  GrpTop10.Caption := ' Driver Top 10 Pace ';
+  GrpFastest.Caption := ' Fastest Personal Time Per Car ';
+
+  BtnAddLap.Font.Style := [fsBold];
+  BtnDeleteLap.Font.Style := [fsBold];
+  BtnExportLaps.Font.Style := [fsBold];
+  BtnExportCSV.Font.Style := [fsBold];
+  BtnAnalyzeAI.Font.Style := [fsBold];
+  BtnImportTel.Font.Style := [fsBold];
+  BtnSaveSettings.Font.Style := [fsBold];
+
+  LvwTop10.GridLines := True;
+  LvwFastest.GridLines := True;
+  LvwTop10.HideSelection := False;
+  LvwFastest.HideSelection := False;
+  LvwTop10.SmallImages := FCarBadgeImages;
+  LvwFastest.SmallImages := FCarBadgeImages;
+
+  LvwSessions.GridLines := True;
+  LvwSessions.HideSelection := False;
+
+  MemoSessionInfo.Font.Name := 'Bahnschrift';
+  MemoAIResponse.Font.Name := 'Bahnschrift';
+
+  if TStyleManager.IsCustomStyleActive then
+  begin
+    PnlLTTop.ParentBackground := True;
+    PnlLTContent.ParentBackground := True;
+    GrpTop10.ParentBackground := True;
+    GrpFastest.ParentBackground := True;
+    PnlTelLeft.ParentBackground := True;
+    PnlTelRight.ParentBackground := True;
+    GrpSessionInfo.ParentBackground := True;
+    GrpAIResponse.ParentBackground := True;
+    PnlTelActions.ParentBackground := True;
+    PnlSettings.ParentBackground := True;
+    Exit;
+  end;
+
+  Color := COLOR_FRAME;
+
+  EnsureCarbonBackground(TabLapTimes, 'ImgLapTimesBackdrop', RGB(232, 105, 24));
+  EnsureCarbonBackground(TabTelemetry, 'ImgTelemetryBackdrop', RGB(230, 76, 26));
+  EnsureCarbonBackground(TabSettings, 'ImgSettingsBackdrop', RGB(255, 146, 46));
+
+  PnlLTTop.ParentBackground := False;
+  PnlLTTop.Color := COLOR_PANEL;
+  PnlLTContent.ParentBackground := False;
+  PnlLTContent.Color := COLOR_FRAME;
+  LblTrack.Font.Color := COLOR_TEXT;
+  LblClass.Font.Color := COLOR_TEXT;
+
+  GrpTop10.Caption := ' Driver Top 10 Pace ';
+  GrpFastest.Caption := ' Fastest Personal Time Per Car ';
+  GrpTop10.ParentBackground := False;
+  GrpFastest.ParentBackground := False;
+  GrpTop10.Color := COLOR_SURFACE_ALT;
+  GrpFastest.Color := COLOR_SURFACE_ALT;
+  GrpTop10.Font.Style := [fsBold];
+  GrpFastest.Font.Style := [fsBold];
+  GrpTop10.Font.Color := COLOR_TEXT;
+  GrpFastest.Font.Color := COLOR_TEXT;
+  LvwTop10.GridLines := True;
+  LvwFastest.GridLines := True;
+  LvwTop10.Color := COLOR_SURFACE;
+  LvwFastest.Color := COLOR_SURFACE;
+  LvwTop10.Font.Color := COLOR_TEXT;
+  LvwFastest.Font.Color := COLOR_TEXT;
+  LvwTop10.HideSelection := False;
+  LvwFastest.HideSelection := False;
+  LvwTop10.SmallImages := FCarBadgeImages;
+  LvwFastest.SmallImages := FCarBadgeImages;
+
+  LblSessions.Caption := 'Telemetry Garage';
+  LblSessions.Color := COLOR_HEADER;
+  LblSessions.Font.Color := COLOR_TEXT;
+  PnlTelLeft.ParentBackground := False;
+  PnlTelLeft.Color := COLOR_FRAME;
+  PnlTelRight.ParentBackground := False;
+  PnlTelRight.Color := COLOR_FRAME;
+  LvwSessions.Color := COLOR_SURFACE;
+  LvwSessions.Font.Color := COLOR_TEXT;
+  LvwSessions.GridLines := True;
+  LvwSessions.HideSelection := False;
+  GrpSessionInfo.ParentBackground := False;
+  GrpAIResponse.ParentBackground := False;
+  GrpSessionInfo.Color := COLOR_SURFACE_ALT;
+  GrpAIResponse.Color := COLOR_SURFACE_ALT;
+  GrpSessionInfo.Font.Style := [fsBold];
+  GrpAIResponse.Font.Style := [fsBold];
+  GrpSessionInfo.Font.Color := COLOR_TEXT;
+  GrpAIResponse.Font.Color := COLOR_TEXT;
+  PnlTelActions.ParentBackground := False;
+  PnlTelActions.Color := COLOR_FRAME;
+  MemoSessionInfo.Color := COLOR_SURFACE;
+  MemoAIResponse.Color := COLOR_SURFACE;
+  MemoSessionInfo.Font.Name := 'Bahnschrift';
+  MemoAIResponse.Font.Name := 'Bahnschrift';
+  MemoSessionInfo.Font.Color := COLOR_TEXT;
+  MemoAIResponse.Font.Color := COLOR_TEXT;
+
+  PnlSettings.ParentBackground := False;
+  PnlSettings.Color := COLOR_SURFACE_ALT;
+  LblSettingsTitle.Font.Color := COLOR_TEXT;
+  LblAPIKey.Font.Color := COLOR_TEXT;
+  LblAPIKeyInfo.Font.Color := COLOR_SUBTLE;
+  LblModel.Font.Color := COLOR_TEXT;
+  LblTelemetrySource.Font.Color := COLOR_TEXT;
+  LblTelemetrySourceInfo.Font.Color := COLOR_SUBTLE;
+  LblResultsSource.Font.Color := COLOR_TEXT;
+  LblResultsSourceInfo.Font.Color := COLOR_SUBTLE;
+  LblPreferredDriver.Font.Color := COLOR_TEXT;
+  LblPreferredDriverInfo.Font.Color := COLOR_SUBTLE;
+  LblTestResult.Font.Color := COLOR_SUBTLE;
   LblSep1.Color := COLOR_ACCENT;
 end;
 
-function TMainForm.DetectPreferredDriverName: string;
+function TMainForm.ReadDuckDBMetadataFallback(const AFilePath: string;
+  const AKeys: array of string): string;
+var
+  KeyName: string;
+  ErrorText: string;
+begin
+  Result := '';
+  for KeyName in AKeys do
+    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, KeyName, Result, ErrorText) then
+    begin
+      Result := Trim(Result);
+      if Result <> '' then
+        Exit;
+    end;
+  Result := '';
+end;
+
+function TMainForm.BuildCarbonBitmap(AWidth, AHeight: Integer;
+  AAccentColor: TColor): TBitmap;
+var
+  X, Y: Integer;
+  TileRect: TRect;
+  BaseColor: TColor;
+  WeaveColor: TColor;
+  AccentBand: TRect;
+begin
+  Result := TBitmap.Create;
+  Result.SetSize(AWidth, AHeight);
+  Result.PixelFormat := pf32bit;
+
+  WeaveColor := RGB(86, 84, 80);
+  BaseColor := RGB(72, 69, 64);
+  Result.Canvas.Brush.Color := BaseColor;
+  Result.Canvas.FillRect(Rect(0, 0, AWidth, AHeight));
+
+  for Y := 0 to (AHeight div 12) + 1 do
+    for X := 0 to (AWidth div 12) + 1 do
+    begin
+      TileRect := Rect(X * 12, Y * 12, X * 12 + 10, Y * 12 + 10);
+      if Odd(X + Y) then
+        Result.Canvas.Brush.Color := RGB(82, 79, 74)
+      else
+        Result.Canvas.Brush.Color := WeaveColor;
+      Result.Canvas.FillRect(TileRect);
+
+      if Odd(Y) then
+      begin
+        Result.Canvas.Brush.Color := RGB(43, 43, 43);
+        Result.Canvas.Brush.Color := RGB(108, 103, 96);
+        Result.Canvas.FillRect(Rect(TileRect.Left + 2, TileRect.Top, TileRect.Right - 2, TileRect.Top + 3));
+      end
+      else
+      begin
+        Result.Canvas.Brush.Color := RGB(62, 59, 56);
+        Result.Canvas.FillRect(Rect(TileRect.Left, TileRect.Top + 6, TileRect.Right, TileRect.Top + 9));
+      end;
+    end;
+
+  AccentBand := Rect(0, 0, AWidth, 80);
+  Result.Canvas.Brush.Color := AAccentColor;
+  Result.Canvas.FillRect(Rect(0, 0, AWidth, 2));
+  Result.Canvas.Brush.Color := RGB(95, 76, 60);
+  Result.Canvas.FillRect(AccentBand);
+  Result.Canvas.Pen.Color := AAccentColor;
+  Result.Canvas.MoveTo(0, 38);
+  Result.Canvas.LineTo(AWidth, 62);
+end;
+
+procedure TMainForm.EnsureCarbonBackground(ATab: TTabSheet; const AName: string;
+  AAccentColor: TColor);
+var
+  Img: TImage;
+  Texture: TBitmap;
+begin
+  Img := ATab.FindComponent(AName) as TImage;
+  if Img = nil then
+  begin
+    Img := TImage.Create(ATab);
+    Img.Name := AName;
+    Img.Parent := ATab;
+    Img.Align := alClient;
+    Img.Stretch := True;
+    Img.Proportional := False;
+    Img.SendToBack;
+  end;
+
+  Texture := BuildCarbonBitmap(Max(ATab.Width, 640), Max(ATab.Height, 480), AAccentColor);
+  try
+    Img.Picture.Bitmap.Assign(Texture);
+  finally
+    Texture.Free;
+  end;
+end;
+
+procedure TMainForm.InitializeCarBadges;
+begin
+  FCarBadgeImages.Width := 28;
+  FCarBadgeImages.Height := 18;
+  FCarBadgeImages.ColorDepth := cd32Bit;
+  FCarBadgeImages.Masked := False;
+end;
+
+function TMainForm.GetCarBadgeImageIndex(const ACarName: string): Integer;
+var
+  BadgeKey: string;
+  BadgeBitmap: TBitmap;
+  AccentColor: TColor;
+  Words: TArray<string>;
+  BadgeText: string;
+  BadgeRect: TRect;
+begin
+  BadgeKey := UpperCase(Trim(ACarName));
+  if BadgeKey = '' then
+    BadgeKey := 'CAR';
+
+  if FCarBadgeIndex.TryGetValue(BadgeKey, Result) then
+    Exit;
+
+  BadgeBitmap := TBitmap.Create;
+  try
+    BadgeBitmap.SetSize(28, 18);
+    BadgeBitmap.PixelFormat := pf32bit;
+    AccentColor := RGB(70 + (Length(BadgeKey) * 9) mod 120,
+      70 + (Length(BadgeKey) * 5) mod 120,
+      120 + (Length(BadgeKey) * 13) mod 100);
+    BadgeBitmap.Canvas.Brush.Color := AccentColor;
+    BadgeBitmap.Canvas.Pen.Color := RGB(235, 235, 235);
+    BadgeBitmap.Canvas.RoundRect(Rect(0, 0, 28, 18), 6, 6);
+
+    Words := BadgeKey.Split([' ']);
+    BadgeText := Copy(BadgeKey, 1, 2);
+    if Length(Words) >= 2 then
+      BadgeText := Copy(Words[0], 1, 1) + Copy(Words[High(Words)], 1, 1);
+
+    BadgeBitmap.Canvas.Brush.Style := bsClear;
+    BadgeBitmap.Canvas.Font.Name := 'Bahnschrift';
+    BadgeBitmap.Canvas.Font.Style := [fsBold];
+    BadgeBitmap.Canvas.Font.Color := clWhite;
+    BadgeBitmap.Canvas.Font.Size := 8;
+    BadgeRect := Rect(0, 0, 28, 18);
+    DrawText(BadgeBitmap.Canvas.Handle, PChar(BadgeText), Length(BadgeText),
+      BadgeRect, DT_CENTER or DT_VCENTER or DT_SINGLELINE);
+
+    Result := FCarBadgeImages.Add(BadgeBitmap, nil);
+    FCarBadgeIndex.Add(BadgeKey, Result);
+  finally
+    BadgeBitmap.Free;
+  end;
+end;
+
+function TMainForm.FormatDurationMs(ADurationMs: Int64): string;
+var
+  TotalSeconds: Int64;
+begin
+  if ADurationMs <= 0 then
+    Exit('--:--');
+
+  TotalSeconds := ADurationMs div 1000;
+  Result := Format('%d:%2.2d', [TotalSeconds div 60, TotalSeconds mod 60]);
+end;
+
+function TMainForm.DisplaySessionType(const ASessionType: string): string;
+begin
+  Result := Trim(StringReplace(ASessionType, 'LMU Results XML - ', '', [rfIgnoreCase]));
+  if Result = '' then
+    Result := 'Session';
+end;
+
+function TMainForm.DetectPreferredDriverNameFromTelemetry: string;
 var
   Folder: string;
   Files: TArray<string>;
@@ -313,10 +563,6 @@ var
   F: string;
   ErrorText: string;
 begin
-  Result := Trim(EdtPreferredDriver.Text);
-  if Result <> '' then
-    Exit;
-
   Result := '';
 
   Folder := Trim(EdtTelemetryFolder.Text);
@@ -343,6 +589,35 @@ begin
 
   TCSVExporter.ReadDuckDBMetadataValue(LatestFile, 'DriverName', Result, ErrorText);
   Result := Trim(Result);
+end;
+
+function TMainForm.DetectPreferredDriverNameFromResults: string;
+var
+  Folder: string;
+begin
+  Folder := Trim(EdtResultsFolder.Text);
+  if Folder = '' then
+    Folder := Trim(FSettings.ResultsSourceFolder);
+  Result := Trim(TResultsXMLImporter.DetectDominantDriverName(Folder));
+end;
+
+function TMainForm.DetectPreferredDriverName: string;
+var
+  ResultsDriverName: string;
+  TelemetryDriverName: string;
+begin
+  Result := Trim(EdtPreferredDriver.Text);
+  if Result <> '' then
+    Exit;
+
+  ResultsDriverName := DetectPreferredDriverNameFromResults;
+  TelemetryDriverName := DetectPreferredDriverNameFromTelemetry;
+
+  if ResultsDriverName <> '' then
+    Result := ResultsDriverName
+  else
+    Result := TelemetryDriverName;
+
   if Result <> '' then
     EdtPreferredDriver.Text := Result;
 end;
@@ -443,8 +718,8 @@ begin
       LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Importing laps for: %s',
         [Length(Files), ExtractFileName(LatestFile), DriverName])
     else
-      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Set Preferred Driver Name before rescanning.',
-        [Length(Files), ExtractFileName(LatestFile)]);
+      LblResultsSourceInfo.Caption := Format('%d .xml result file(s) detected. Latest: %s. Auto-detected driver: %s',
+        [Length(Files), ExtractFileName(LatestFile), DetectPreferredDriverNameFromResults]);
   end;
 end;
 
@@ -492,8 +767,8 @@ begin
       'Laps skipped: %d',
       [Summary.FilesScanned, Summary.FilesFailed, Summary.LapsInserted, Summary.LapsSkipped]));
 
-  if Summary.LapsInserted > 0 then
-    SetStatus(Format('Imported %d lap record(s) from LMU results XML.', [Summary.LapsInserted]));
+  SetStatus(Format('Results scan complete: %d imported, %d skipped, %d failed.',
+    [Summary.LapsInserted, Summary.LapsSkipped, Summary.FilesFailed]));
 end;
 
 procedure TMainForm.LoadTrackCombo;
@@ -636,9 +911,10 @@ begin
   PopulateLapListView(LvwTop10,   Top10);
   PopulateLapListView(LvwFastest, Fastest);
 
-  // Update group-box captions with counts
   GrpTop10.Caption   := Format(' Your Top 10 (%d logged) ', [Length(Top10)]);
   GrpFastest.Caption := Format(' Your Best By Car (%d cars) ', [Length(Fastest)]);
+  SetStatus(Format('%d ranked laps and %d car-best laps loaded for %s / %s',
+    [Length(Top10), Length(Fastest), CboTrack.Text, CboClass.Text]));
 end;
 
 procedure TMainForm.PopulateLapListView(ALV: TListView;
@@ -654,20 +930,16 @@ begin
     begin
       Item := ALV.Items.Add;
       Item.Caption := IntToStr(I + 1);
+      Item.ImageIndex := GetCarBadgeImageIndex(ALaps[I].CarName);
       Item.SubItems.Add(ALaps[I].CarName);
       Item.SubItems.Add(FormatLapTime(ALaps[I].LapTimeMs));
       Item.SubItems.Add(FormatDateTime('yyyy-MM-dd', ALaps[I].LapDate));
-      Item.SubItems.Add(ALaps[I].SessionType);
+      Item.SubItems.Add(DisplaySessionType(ALaps[I].SessionType));
       Item.Data := Pointer(ALaps[I].ID);  // Store DB ID
     end;
   finally
     ALV.Items.EndUpdate;
   end;
-
-  SetStatus(Format('%d laps loaded for %s / %s',
-    [Length(ALaps),
-     CboTrack.Text,
-     CboClass.Text]));
 end;
 
 procedure TMainForm.LvwTop10SelectItem(Sender: TObject; Item: TListItem;
@@ -791,7 +1063,10 @@ var
   SourceFile: string;
   TrackName: string;
   CarName: string;
+  DriverName: string;
   ErrorText: string;
+  TrackLabel: string;
+  DetailText: string;
 begin
   LvwSessions.Items.BeginUpdate;
   try
@@ -803,8 +1078,16 @@ begin
     begin
       Item := LvwSessions.Items.Add;
       Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', FSessions[I].SessionDate);
-      Item.SubItems.Add(FSessions[I].TrackName);
+      Item.SubItems.Add('Saved');
+      TrackLabel := FSessions[I].TrackName;
+      if FSessions[I].TrackLayout <> '' then
+        TrackLabel := TrackLabel + ' - ' + FSessions[I].TrackLayout;
+      Item.SubItems.Add(TrackLabel);
       Item.SubItems.Add(FSessions[I].CarName);
+      DetailText := Format('%d laps | %d pts | %s',
+        [FSessions[I].EstimatedLaps, FSessions[I].DataPointCount,
+         FormatDurationMs(FSessions[I].DurationMs)]);
+      Item.SubItems.Add(DetailText);
     end;
 
     SourceFolder := Trim(EdtTelemetryFolder.Text);
@@ -818,12 +1101,18 @@ begin
       begin
         Item := LvwSessions.Items.Add;
         Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', TFile.GetLastWriteTime(SourceFile));
+        Item.SubItems.Add('LMU');
         if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', TrackName, ErrorText) then
           TrackName := 'LMU source file';
-        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'CarName', CarName, ErrorText) then
+        CarName := ReadDuckDBMetadataFallback(SourceFile,
+          ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
+        if CarName = '' then
           CarName := ExtractFileName(SourceFile);
+        if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'DriverName', DriverName, ErrorText) then
+          DriverName := 'Driver unknown';
         Item.SubItems.Add(TrackName);
         Item.SubItems.Add(CarName);
+        Item.SubItems.Add('Driver: ' + DriverName);
       end;
     end;
   finally
@@ -872,6 +1161,8 @@ begin
   MemoSessionInfo.Lines.Add(Format('Date    : %s',
     [FormatDateTime('dddd d mmmm yyyy  HH:nn:ss', S.SessionDate)]));
   MemoSessionInfo.Lines.Add(Format('Points  : %d data points', [S.DataPointCount]));
+  MemoSessionInfo.Lines.Add(Format('Laps    : %d estimated lap(s)', [S.EstimatedLaps]));
+  MemoSessionInfo.Lines.Add(Format('Length  : %s', [FormatDurationMs(S.DurationMs)]));
   if S.Notes <> '' then
     MemoSessionInfo.Lines.Add(Format('Notes   : %s', [S.Notes]));
 end;
@@ -1053,7 +1344,9 @@ begin
 
     if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', TrackName, ErrorText) then
       TrackName := ChangeFileExt(ExtractFileName(SourceFile), '');
-    if not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'CarName', CarName, ErrorText) then
+    CarName := ReadDuckDBMetadataFallback(SourceFile,
+      ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
+    if CarName = '' then
       CarName := 'LMU source telemetry';
     ClassName := 'LMU telemetry source';
   end
@@ -1262,7 +1555,9 @@ begin
     ALines.Add('This is a DuckDB telemetry database, not the app''s SQLite database.');
     if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'TrackName', TrackName, ErrorText) then
       ALines.Add('Track   : ' + TrackName);
-    if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'CarName', CarName, ErrorText) then
+    CarName := ReadDuckDBMetadataFallback(AFilePath,
+      ['CarType', 'VehicleName', 'VehName', 'CarModel', 'CarName']);
+    if CarName <> '' then
       ALines.Add('Car     : ' + CarName);
     if TCSVExporter.ReadDuckDBMetadataValue(AFilePath, 'DriverName', DriverName, ErrorText) then
       ALines.Add('Driver  : ' + DriverName);
