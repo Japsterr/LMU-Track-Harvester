@@ -19,12 +19,12 @@ If someone is browsing the repository and clicking the files inside the `downloa
 
 The app itself runs without Python being installed.
 
-If the release includes a bundled portable Python runtime, LMU source `.duckdb` telemetry helpers also work out of the box, including:
+LMU source `.duckdb` telemetry helpers are now handled natively through a bundled `duckdb.dll`, including:
 
 * reading track, car, and driver metadata from LMU telemetry files
 * exporting LMU source telemetry directly to CSV for coaching
 
-If a release does not include bundled Python, the main app still works, but those LMU `.duckdb` helper features will need Python plus `duckdb` on the tester machine.
+Because the official DuckDB Windows library is 64-bit, these source-telemetry features require the Win64 build of LMU Track Harvester.
 
 ## Why Drivers Use It
 
@@ -127,41 +127,60 @@ Releases are built for two common tester paths:
 * `download\LMUTrackHarvester-Installer.exe` for the simplest setup
 * `download\LMUTrackHarvester-Portable.zip` for a direct portable package
 
-### What works even without Python
+### What works out of the box
 
-If no bundled portable Python runtime is included, testers can still use the app for:
+With `duckdb.dll` bundled beside the Win64 executable, testers can use the full app including:
+
+* viewing stored lap data
+* importing LMU results XML files
+* working with already imported telemetry CSV sessions
+* browsing LMU `.duckdb` source files directly
+* exporting LMU `.duckdb` telemetry to coaching-ready CSV
+* browsing the app UI and its local database features
+
+### What still works without `duckdb.dll`
+
+If `duckdb.dll` is missing, the rest of the app still works for:
 
 * viewing stored lap data
 * importing LMU results XML files
 * working with already imported telemetry CSV sessions
 * browsing the app UI and its local database features
 
-### What bundled Python unlocks
+### What `duckdb.dll` unlocks
 
-Direct LMU source telemetry helper features rely on the bundled Python scripts in the `scripts` folder.
+Direct LMU source telemetry helper features rely on the bundled `duckdb.dll` runtime.
 
 Those features include:
 
 * reading LMU `.duckdb` metadata such as track, car, and driver
 * exporting LMU `.duckdb` telemetry directly to coaching-ready CSV
 
-For those features to work on tester machines that do not have Python installed, place a portable runtime in one of these folders before building downloads:
-
-* `python\python.exe`
-* `runtime\python\python.exe`
+For those features to work on tester machines, include `duckdb.dll` beside the Win64 executable in the installer or portable zip.
 
 Then run `build_downloads.ps1`.
 
-When a portable runtime is present, the installer and zip include it automatically. When it is not present, the build still succeeds, but LMU DuckDB helper features will still depend on Python plus `duckdb` being available on the tester machine.
+When `duckdb.dll` is present, LMU DuckDB helper features work without Python. When it is not present, the build still succeeds, but `.duckdb` source browsing and export will report that the DuckDB runtime is missing.
 
 ## Release Packaging
 
-The release scripts now package the current main build and tell you whether bundled Python was detected.
+The release scripts package the current main build. Make sure the Win64 executable and `duckdb.dll` are included together in the staged output.
 
 * `bundle_release.ps1` creates the staged portable release in `dist\`
 * `build_downloads.ps1` creates the GitHub-ready downloads in `download\`
 
-If a bundled runtime is found, the scripts report that the LMU DuckDB helper flow is portable. If not, they emit a warning so the limitation is obvious at build time instead of being discovered by testers later.
+If you want a branded EXE and installer icon, place a Windows icon file at `branding\app-icon.ico` before running the build scripts. The scripts will regenerate `LMUTrackHarvester.res` automatically for scripted builds and use the same icon for the installer EXE.
+
+Unsigned portable and installer builds can still be flagged by antivirus or SmartScreen even when they are clean. The release scripts now support optional code signing through `signtool.exe` and a certificate configured with these environment variables:
+
+* `SIGNTOOL_PATH`
+* `CODESIGN_CERT_THUMBPRINT` or `CODESIGN_PFX_PATH`
+* `CODESIGN_PFX_PASSWORD` when using a PFX file
+* `CODESIGN_TIMESTAMP_URL` if you want a non-default timestamp service
+
+Use `build_downloads.ps1 -Sign` for real release artifacts when a trusted certificate is available.
+
+If `duckdb.dll` is missing from the release staging area, testers will lose native LMU DuckDB browsing/export even though the main app still launches.
 
 ## What Makes It Valuable
 

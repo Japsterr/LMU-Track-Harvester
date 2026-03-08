@@ -99,3 +99,19 @@ both files so the Delphi IDE correctly tracks it as part of the project.
 | `LMUTrackHarvester.dpr` | Add `ResultsXMLImporter` to uses clause |
 | `LMUTrackHarvester.dproj` | Add `ResultsXMLImporter` DCCReference |
 | `CHANGES.md` | This file |
+
+### Fix 5 - Win64-native release packaging, branding hook, and signing support
+
+**Files changed:** `bundle_release.ps1`, `build_downloads.ps1`, `build_release.cmd`, `build_debug.cmd`, `build_release_alt.cmd`, `packaging_common.ps1`, `prepare_branding.ps1`, `branding/README.md`, `branding/icon-generation-prompt.txt`, `README.md`
+
+**Problem:**
+The release scripts still assumed the old Win32 plus Python packaging flow even after the app moved to native DuckDB through `duckdb.dll` and the project default moved to Win64. That meant release artifacts could be built from the wrong platform, omit `duckdb.dll`, keep stale Python messaging, and provide no structured path for a proper EXE icon or optional code signing.
+
+**Fix:**
+
+1. Changed the packaging scripts to target `Win64` only and bundle `duckdb.dll` from the repository root.
+2. Removed stale portable-Python packaging logic and messaging from the release/download flow.
+3. Added `prepare_branding.ps1` plus `branding\app-icon.ico` conventions so scripted builds can regenerate `LMUTrackHarvester.res` and apply a real app icon before compile.
+4. Added optional signing support in the packaging scripts using `signtool.exe` and environment-driven certificate configuration.
+5. Updated the installer build so it reuses the same branding icon when `branding\app-icon.ico` exists.
+6. Documented the icon asset brief, generation prompt, and signing usage for releases.

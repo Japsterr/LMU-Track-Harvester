@@ -52,6 +52,15 @@ type
     DriverName: string;
   end;
 
+  TTelemetryListEntryKind = (tleSession, tleSource, tleScanStatus);
+
+  TTelemetryListEntry = record
+    Kind: TTelemetryListEntryKind;
+    SortTime: TDateTime;
+    SessionIndex: Integer;
+    SourceIndex: Integer;
+  end;
+
   TMainForm = class(TForm)
     PageControl: TPageControl;
     TabLapTimes: TTabSheet;
@@ -178,9 +187,11 @@ type
     FTelemetryPreviewTrackName: string;
     FTelemetryPreviewCarName: string;
     FTelemetryPreviewClassName: string;
+    FTelemetryPreviewIssue: string;
     FActiveSectorIndex: Integer;
     FHoverLapDistance: Double;
     FTelemetrySourceSummaries: TArray<TTelemetrySourceSummary>;
+    FRefreshingTelemetryList: Boolean;
     FTelemetrySourceScanInProgress: Boolean;
     FResultsImportInProgress: Boolean;
 
@@ -195,8 +206,14 @@ type
     function SelectedSessionID: Integer;
     function SelectedSourceTelemetryFile: string;
     function SelectedSessionInfo(out ATrackName, ACarName, AClassName: string): Boolean;
+    function TryGetTelemetryEntryFromItem(AItem: TListItem;
+      out AEntry: TTelemetryListEntry): Boolean;
+    function TryGetSelectedTelemetryEntry(out AEntry: TTelemetryListEntry): Boolean;
 
     procedure SetStatus(const AMsg: string);
+    procedure ScrollMemoToTop(AMemo: TMemo);
+    function EncodeTelemetryItemData(const AKind: TTelemetryListEntryKind;
+      AIndex: Integer): Pointer;
     procedure RefreshTelemetrySourceInfo;
     procedure RefreshResultsSourceInfo;
     procedure ApplyRacingTheme;
@@ -221,7 +238,7 @@ type
     procedure TelemetryChartMouseLeave(Sender: TObject);
 
     function LoadTelemetryDataForSelection(out AData: TTelemetryDataArray;
-      out ATrackName, ACarName, AClassName: string): Boolean;
+      out ATrackName, ACarName, AClassName, AIssue: string): Boolean;
     function ParseTelemetryCSV(const ACSVData: string): TTelemetryDataArray;
     function ExtractRepresentativeLap(const AData: TTelemetryDataArray): TTelemetryDataArray;
     function BuildSectorTelemetry(const AData: TTelemetryDataArray): TSectorTelemetryArray;
@@ -313,6 +330,22 @@ end;
 procedure TMainForm.SetStatus(const AMsg: string);
 begin
   StatusBar.Panels[0].Text := AMsg;
+end;
+
+procedure TMainForm.ScrollMemoToTop(AMemo: TMemo);
+begin
+  if AMemo = nil then
+    Exit;
+
+  AMemo.SelStart := 0;
+  AMemo.SelLength := 0;
+  AMemo.Perform(EM_SCROLLCARET, 0, 0);
+end;
+
+function TMainForm.EncodeTelemetryItemData(const AKind: TTelemetryListEntryKind;
+  AIndex: Integer): Pointer;
+begin
+  Result := Pointer(NativeInt(((AIndex shl 2) or Ord(AKind)) + 1));
 end;
 
 procedure TMainForm.WMStartupResultsImport(var Msg: TMessage);
@@ -615,15 +648,26 @@ end;
 
 procedure TMainForm.ResetSectorScorecard;
 var
+  SectorNames: array[0..2] of string;
+  SectorRanges: array[0..2] of string;
   I: Integer;
 begin
+  SectorNames[0] := 'Sector 1';
+  SectorNames[1] := 'Sector 2';
+  SectorNames[2] := 'Sector 3';
+  SectorRanges[0] := '0% - 33%';
+  SectorRanges[1] := '33% - 66%';
+  SectorRanges[2] := '66% - 100%';
+
   GrpSectorScorecard.Caption := ' Sector Scorecard ';
   for I := 0 to 2 do
   begin
     FSectorPanels[I].Color := RGB(255, 252, 247);
     FSectorPanels[I].BevelOuter := bvLowered;
     FSectorTitleLabels[I].Font.Color := clWhite;
+    FSectorTitleLabels[I].Caption := SectorNames[I];
     FSectorRangeLabels[I].Font.Color := RGB(165, 108, 68);
+    FSectorRangeLabels[I].Caption := SectorRanges[I];
     FSectorTimeLabels[I].Font.Color := RGB(71, 48, 33);
     FSectorMetricLabels1[I].Font.Color := RGB(94, 72, 56);
     FSectorMetricLabels2[I].Font.Color := RGB(94, 72, 56);
@@ -635,6 +679,10 @@ begin
   FHoverLapDistance := -1;
   SetLength(FTelemetryPreviewData, 0);
   SetLength(FTelemetryLapData, 0);
+  FTelemetryPreviewTrackName := '';
+  FTelemetryPreviewCarName := '';
+  FTelemetryPreviewClassName := '';
+  FTelemetryPreviewIssue := '';
   RefreshTelemetryVisuals;
 end;
 
@@ -706,46 +754,45 @@ begin
 end;
 
 function TMainForm.LoadTelemetryDataForSelection(out AData: TTelemetryDataArray;
-  out ATrackName, ACarName, AClassName: string): Boolean;
+  out ATrackName, ACarName, AClassName, AIssue: string): Boolean;
 var
   SessionID: Integer;
   SourceFile: string;
-  SourceIndex: Integer;
-  TempCSVPath: string;
+  Entry: TTelemetryListEntry;
   CSVData: string;
   ErrorText: string;
 begin
-  Result := False;
   SetLength(AData, 0);
   ATrackName := '';
   ACarName := '';
   AClassName := '';
+  AIssue := '';
 
   SourceFile := SelectedSourceTelemetryFile;
   SessionID := SelectedSessionID;
 
   if SourceFile <> '' then
   begin
-    SourceIndex := -1;
-    if LvwSessions.Selected <> nil then
-      SourceIndex := LvwSessions.Selected.Index - Length(FSessions);
-
-    if (SourceIndex >= 0) and (SourceIndex <= High(FTelemetrySourceSummaries)) then
+    if TryGetSelectedTelemetryEntry(Entry) and (Entry.Kind = tleSource) and
+       (Entry.SourceIndex >= 0) and (Entry.SourceIndex <= High(FTelemetrySourceSummaries)) then
     begin
-      ATrackName := FTelemetrySourceSummaries[SourceIndex].TrackName;
-      ACarName := FTelemetrySourceSummaries[SourceIndex].CarName;
+      ATrackName := FTelemetrySourceSummaries[Entry.SourceIndex].TrackName;
+      ACarName := FTelemetrySourceSummaries[Entry.SourceIndex].CarName;
     end;
 
-    TempCSVPath := TPath.Combine(TPath.GetTempPath,
-      'LMUTrackHarvester_SectorPreview_' + FormatDateTime('yyyymmdd_hhnnsszzz', Now) + '.csv');
-    if not TCSVExporter.ExportDuckDBSourceToCSV(SourceFile, TempCSVPath, ErrorText) then
+    if not TCSVExporter.LoadDuckDBPreviewCSV(SourceFile, CSVData, ErrorText) then
+    begin
+      if Trim(ErrorText) <> '' then
+        AIssue := ErrorText
+      else
+        AIssue := 'LMU source preview export failed.';
       Exit(False);
-    try
-      CSVData := TFile.ReadAllText(TempCSVPath, TEncoding.UTF8);
-      AData := ParseTelemetryCSV(CSVData);
-    finally
-      if TFile.Exists(TempCSVPath) then
-        TFile.Delete(TempCSVPath);
+    end;
+    AData := ParseTelemetryCSV(CSVData);
+    if Length(AData) = 0 then
+    begin
+      AIssue := 'No telemetry samples were available in the exported LMU source preview.';
+      Exit(False);
     end;
 
     if (ATrackName = '') and (not TCSVExporter.ReadDuckDBMetadataValue(SourceFile, 'TrackName', ATrackName, ErrorText)) then
@@ -761,9 +808,16 @@ begin
   begin
     AData := FDB.GetTelemetryData(SessionID);
     SelectedSessionInfo(ATrackName, ACarName, AClassName);
+    if Length(AData) = 0 then
+    begin
+      AIssue := 'No telemetry samples were found for this saved session.';
+      Exit(False);
+    end;
   end;
 
   Result := Length(AData) > 0;
+  if not Result and (AIssue = '') then
+    AIssue := 'No telemetry samples were found for this selection.';
 end;
 
 function TMainForm.ExtractRepresentativeLap(const AData: TTelemetryDataArray): TTelemetryDataArray;
@@ -905,11 +959,22 @@ var
   TrackName: string;
   CarName: string;
   ClassName: string;
+  Issue: string;
   I: Integer;
 begin
-  if not LoadTelemetryDataForSelection(Data, TrackName, CarName, ClassName) then
+  if not LoadTelemetryDataForSelection(Data, TrackName, CarName, ClassName, Issue) then
   begin
     ResetSectorScorecard;
+    FTelemetryPreviewIssue := Issue;
+    GrpSectorScorecard.Caption := ' Sector Scorecard - Preview unavailable ';
+    for I := 0 to 2 do
+    begin
+      FSectorTitleLabels[I].Caption := 'No data';
+      FSectorRangeLabels[I].Caption := 'LMU source preview';
+      FSectorTimeLabels[I].Caption := '--';
+      FSectorMetricLabels1[I].Caption := Issue;
+      FSectorMetricLabels2[I].Caption := 'Install or configure the telemetry export helper, then rescan.';
+    end;
     Exit;
   end;
 
@@ -918,6 +983,7 @@ begin
   FTelemetryPreviewTrackName := TrackName;
   FTelemetryPreviewCarName := CarName;
   FTelemetryPreviewClassName := ClassName;
+  FTelemetryPreviewIssue := '';
   if (FActiveSectorIndex < 0) or (FActiveSectorIndex > 2) then
     FActiveSectorIndex := -1;
   FHoverLapDistance := -1;
@@ -971,6 +1037,7 @@ procedure TMainForm.RefreshTelemetryVisuals;
 const
   SectorNames: array[0..2] of string = ('Sector 1', 'Sector 2', 'Sector 3');
 var
+  HintText: string;
   I: Integer;
 begin
   for I := 0 to 2 do
@@ -988,7 +1055,13 @@ begin
   if Assigned(FTelemetryVisualHint) then
   begin
     if Length(FTelemetryLapData) = 0 then
-      FTelemetryVisualHint.Caption := 'Select a saved session or LMU source file to render the map and telemetry trace.'
+    begin
+      if Trim(FTelemetryPreviewIssue) <> '' then
+        HintText := 'Visual analysis unavailable: ' + FTelemetryPreviewIssue
+      else
+        HintText := 'Select a saved session or LMU source file to render the map and telemetry trace.';
+      FTelemetryVisualHint.Caption := HintText;
+    end
     else if FActiveSectorIndex >= 0 then
       FTelemetryVisualHint.Caption := Format('%s focus. Hover the trace to inspect matching track position.',
         [SectorNames[FActiveSectorIndex]])
@@ -1115,7 +1188,10 @@ begin
   begin
     Canvas.Font.Style := [];
     Canvas.Font.Color := RGB(157, 88, 45);
-    Canvas.TextRect(DrawRect, 10, 32, 'No representative lap available yet.');
+    if Trim(FTelemetryPreviewIssue) <> '' then
+      Canvas.TextRect(DrawRect, 10, 32, 'Map unavailable: ' + FTelemetryPreviewIssue)
+    else
+      Canvas.TextRect(DrawRect, 10, 32, 'No representative lap available yet.');
     Exit;
   end;
 
@@ -1258,7 +1334,10 @@ begin
   begin
     Canvas.Font.Style := [];
     Canvas.Font.Color := RGB(157, 88, 45);
-    Canvas.TextRect(ChartRect, 10, 34, 'Select telemetry to view speed, throttle, and brake traces.');
+    if Trim(FTelemetryPreviewIssue) <> '' then
+      Canvas.TextRect(ChartRect, 10, 34, 'Trace unavailable: ' + FTelemetryPreviewIssue)
+    else
+      Canvas.TextRect(ChartRect, 10, 34, 'Select telemetry to view speed, throttle, and brake traces.');
     Exit;
   end;
 
@@ -1944,39 +2023,86 @@ begin
 end;
 
 function TMainForm.SelectedSessionID: Integer;
+var
+  Entry: TTelemetryListEntry;
 begin
-  if (LvwSessions.Selected <> nil) and
-     (LvwSessions.Selected.Index <= High(FSessions)) then
-    Result := FSessions[LvwSessions.Selected.Index].ID
-  else
-    Result := -1;
+  Result := -1;
+  if not TryGetSelectedTelemetryEntry(Entry) then
+    Exit;
+
+  if (Entry.Kind = tleSession) and
+     (Entry.SessionIndex >= 0) and (Entry.SessionIndex <= High(FSessions)) then
+    Result := FSessions[Entry.SessionIndex].ID;
 end;
 
 function TMainForm.SelectedSourceTelemetryFile: string;
 var
-  Idx: Integer;
+  Entry: TTelemetryListEntry;
 begin
   Result := '';
-  if LvwSessions.Selected = nil then
+  if not TryGetSelectedTelemetryEntry(Entry) then
     Exit;
 
-  Idx := LvwSessions.Selected.Index - Length(FSessions);
-  if (Idx >= 0) and (Idx <= High(FSourceTelemetryFiles)) then
-    Result := FSourceTelemetryFiles[Idx];
+  if (Entry.Kind = tleSource) and
+     (Entry.SourceIndex >= 0) and (Entry.SourceIndex <= High(FSourceTelemetryFiles)) then
+    Result := FSourceTelemetryFiles[Entry.SourceIndex];
+end;
+
+function TMainForm.TryGetTelemetryEntryFromItem(AItem: TListItem;
+  out AEntry: TTelemetryListEntry): Boolean;
+var
+  Encoded: NativeInt;
+begin
+  Result := False;
+  if AItem = nil then
+    Exit;
+
+  Encoded := NativeInt(AItem.Data);
+  if Encoded = 0 then
+    Exit;
+
+  Dec(Encoded);
+  AEntry.Kind := TTelemetryListEntryKind(Encoded and 3);
+  AEntry.SortTime := 0;
+  AEntry.SessionIndex := -1;
+  AEntry.SourceIndex := -1;
+
+  case AEntry.Kind of
+    tleSession:
+      AEntry.SessionIndex := Encoded shr 2;
+    tleSource:
+      AEntry.SourceIndex := Encoded shr 2;
+  else
+    Exit;
+  end;
+
+  Result := True;
+end;
+
+function TMainForm.TryGetSelectedTelemetryEntry(out AEntry: TTelemetryListEntry): Boolean;
+begin
+  if FRefreshingTelemetryList then
+    Exit(False);
+
+  Result := TryGetTelemetryEntryFromItem(LvwSessions.Selected, AEntry);
 end;
 
 function TMainForm.SelectedSessionInfo(out ATrackName, ACarName,
   AClassName: string): Boolean;
 var
+  Entry: TTelemetryListEntry;
   Idx: Integer;
   Cars: TCarArray;
 begin
   Result := False;
-  if LvwSessions.Selected = nil then
+  if not TryGetSelectedTelemetryEntry(Entry) then
     Exit;
 
-  Idx := LvwSessions.Selected.Index;
-  if Idx > High(FSessions) then
+  if Entry.Kind <> tleSession then
+    Exit;
+
+  Idx := Entry.SessionIndex;
+  if (Idx < 0) or (Idx > High(FSessions)) then
     Exit;
 
   ATrackName := FSessions[Idx].TrackName;
@@ -2180,11 +2306,16 @@ end;
 procedure TMainForm.RefreshSessions;
 var
   I: Integer;
+  J: Integer;
   Item: TListItem;
   TrackLabel: string;
   DetailText: string;
   SourceSummary: TTelemetrySourceSummary;
+  Entries: TArray<TTelemetryListEntry>;
+  Entry: TTelemetryListEntry;
+  TempEntry: TTelemetryListEntry;
 begin
+  FRefreshingTelemetryList := True;
   LvwSessions.Items.BeginUpdate;
   try
     LvwSessions.Items.Clear;
@@ -2193,43 +2324,81 @@ begin
     for I := 0 to High(FTelemetrySourceSummaries) do
       FSourceTelemetryFiles[I] := FTelemetrySourceSummaries[I].FilePath;
 
+    SetLength(Entries, Length(FSessions) + Length(FTelemetrySourceSummaries));
+    J := 0;
     for I := 0 to High(FSessions) do
     begin
-      Item := LvwSessions.Items.Add;
-      Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', FSessions[I].SessionDate);
-      Item.SubItems.Add('Saved');
-      TrackLabel := FSessions[I].TrackName;
-      if FSessions[I].TrackLayout <> '' then
-        TrackLabel := TrackLabel + ' - ' + FSessions[I].TrackLayout;
-      Item.SubItems.Add(TrackLabel);
-      Item.SubItems.Add(FSessions[I].CarName);
-      DetailText := Format('%d laps | %d pts | %s',
-        [FSessions[I].EstimatedLaps, FSessions[I].DataPointCount,
-         FormatDurationMs(FSessions[I].DurationMs)]);
-      Item.SubItems.Add(DetailText);
+      Entries[J].Kind := tleSession;
+      Entries[J].SortTime := FSessions[I].SessionDate;
+      Entries[J].SessionIndex := I;
+      Entries[J].SourceIndex := -1;
+      Inc(J);
     end;
 
-    for SourceSummary in FTelemetrySourceSummaries do
+    for I := 0 to High(FTelemetrySourceSummaries) do
+    begin
+      Entries[J].Kind := tleSource;
+      Entries[J].SortTime := FTelemetrySourceSummaries[I].FileTime;
+      Entries[J].SessionIndex := -1;
+      Entries[J].SourceIndex := I;
+      Inc(J);
+    end;
+
+    for I := 1 to High(Entries) do
+    begin
+      TempEntry := Entries[I];
+      J := I - 1;
+      while (J >= 0) and (Entries[J].SortTime < TempEntry.SortTime) do
+      begin
+        Entries[J + 1] := Entries[J];
+        Dec(J);
+      end;
+      Entries[J + 1] := TempEntry;
+    end;
+
+    for Entry in Entries do
     begin
       Item := LvwSessions.Items.Add;
-      Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', SourceSummary.FileTime);
-      Item.SubItems.Add('LMU');
-      Item.SubItems.Add(SourceSummary.TrackName);
-      Item.SubItems.Add(SourceSummary.CarName);
-      Item.SubItems.Add('Driver: ' + SourceSummary.DriverName);
+      case Entry.Kind of
+        tleSession:
+          begin
+            Item.Data := EncodeTelemetryItemData(tleSession, Entry.SessionIndex);
+            Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', FSessions[Entry.SessionIndex].SessionDate);
+            TrackLabel := FSessions[Entry.SessionIndex].TrackName;
+            if FSessions[Entry.SessionIndex].TrackLayout <> '' then
+              TrackLabel := TrackLabel + ' - ' + FSessions[Entry.SessionIndex].TrackLayout;
+            Item.SubItems.Add(TrackLabel);
+            Item.SubItems.Add(FSessions[Entry.SessionIndex].CarName);
+            DetailText := Format('%d laps | %d pts | %s',
+              [FSessions[Entry.SessionIndex].EstimatedLaps,
+               FSessions[Entry.SessionIndex].DataPointCount,
+               FormatDurationMs(FSessions[Entry.SessionIndex].DurationMs)]);
+            Item.SubItems.Add(DetailText);
+          end;
+        tleSource:
+          begin
+            Item.Data := EncodeTelemetryItemData(tleSource, Entry.SourceIndex);
+            SourceSummary := FTelemetrySourceSummaries[Entry.SourceIndex];
+            Item.Caption := FormatDateTime('yyyy-MM-dd HH:nn', SourceSummary.FileTime);
+            Item.SubItems.Add(SourceSummary.TrackName);
+            Item.SubItems.Add(SourceSummary.CarName);
+            Item.SubItems.Add('Driver: ' + SourceSummary.DriverName);
+          end;
+      end;
     end;
 
     if FTelemetrySourceScanInProgress then
     begin
       Item := LvwSessions.Items.Add;
+      Item.Data := nil;
       Item.Caption := 'Scanning...';
-      Item.SubItems.Add('LMU');
       Item.SubItems.Add('Telemetry source scan in progress');
       Item.SubItems.Add('');
       Item.SubItems.Add('Background refresh');
     end;
   finally
     LvwSessions.Items.EndUpdate;
+    FRefreshingTelemetryList := False;
   end;
 
   MemoSessionInfo.Clear;
@@ -2242,35 +2411,48 @@ end;
 procedure TMainForm.LvwSessionsSelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 var
-  Idx: Integer;
+  Entry: TTelemetryListEntry;
   S: TTelemetrySession;
 begin
-  if (not Selected) or (LvwSessions.Selected = nil) then
+  if FRefreshingTelemetryList then
+    Exit;
+
+  if (not Selected) or (Item = nil) then
   begin
     MemoSessionInfo.Clear;
     ResetSectorScorecard;
     Exit;
   end;
 
-  Idx := LvwSessions.Selected.Index;
-  if Idx > High(FSessions) then
+  if not TryGetTelemetryEntryFromItem(Item, Entry) then
   begin
-    Idx := Idx - Length(FSessions);
     MemoSessionInfo.Lines.Clear;
-    if (Idx >= 0) and (Idx <= High(FSourceTelemetryFiles)) then
+    ResetSectorScorecard;
+    Exit;
+  end;
+
+  if Entry.Kind = tleSource then
+  begin
+    MemoSessionInfo.Lines.Clear;
+    if (Entry.SourceIndex >= 0) and (Entry.SourceIndex <= High(FSourceTelemetryFiles)) then
     begin
-      MemoSessionInfo.Lines.Add('LMU telemetry source file selected:');
-      MemoSessionInfo.Lines.Add(FSourceTelemetryFiles[Idx]);
-      MemoSessionInfo.Lines.Add('');
-      DescribeTelemetrySourceFile(FSourceTelemetryFiles[Idx], MemoSessionInfo.Lines);
+      DescribeTelemetrySourceFile(FSourceTelemetryFiles[Entry.SourceIndex], MemoSessionInfo.Lines);
       MemoSessionInfo.Lines.Add('');
       MemoSessionInfo.Lines.Add('Use "Export Telemetry CSV" to create a coachable file or "Ask Gemini for Coaching" to analyse this source directly.');
     end;
+    ScrollMemoToTop(MemoSessionInfo);
     UpdateSectorScorecard;
     Exit;
   end;
 
-  S := FSessions[Idx];
+  if (Entry.Kind <> tleSession) or (Entry.SessionIndex < 0) or (Entry.SessionIndex > High(FSessions)) then
+  begin
+    MemoSessionInfo.Clear;
+    ResetSectorScorecard;
+    Exit;
+  end;
+
+  S := FSessions[Entry.SessionIndex];
   MemoSessionInfo.Lines.Clear;
   MemoSessionInfo.Lines.Add(Format('Track   : %s  %s', [S.TrackName, S.TrackLayout]));
   MemoSessionInfo.Lines.Add(Format('Car     : %s', [S.CarName]));
@@ -2281,6 +2463,7 @@ begin
   MemoSessionInfo.Lines.Add(Format('Length  : %s', [FormatDurationMs(S.DurationMs)]));
   if S.Notes <> '' then
     MemoSessionInfo.Lines.Add(Format('Notes   : %s', [S.Notes]));
+  ScrollMemoToTop(MemoSessionInfo);
   UpdateSectorScorecard;
 end;
 

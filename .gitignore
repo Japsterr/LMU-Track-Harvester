@@ -18,6 +18,7 @@ __recovery/
 *.exe
 *.map
 *.drc
+*.rsm
 
 # IDE project backup
 *.~dproj
@@ -46,6 +47,7 @@ dist/
 build-temp/
 scripts/__pycache__/
 *.pyc
+branding/app-icon.rc
 
 # Keep published download artifacts tracked
 !download/

@@ -2,13 +2,22 @@ param(
   [ValidateSet('Debug', 'Release')]
   [string]$Configuration = 'Release',
 
-  [ValidateSet('Win32')]
-  [string]$Platform = 'Win32'
+  [ValidateSet('Win64')]
+  [string]$Platform = 'Win64',
+
+  [switch]$Sign,
+  [string]$SignToolPath = $env:SIGNTOOL_PATH,
+  [string]$CertificateThumbprint = $env:CODESIGN_CERT_THUMBPRINT,
+  [string]$CertificatePath = $env:CODESIGN_PFX_PATH,
+  [string]$CertificatePassword = $env:CODESIGN_PFX_PASSWORD,
+  [string]$TimestampUrl = $(if ($env:CODESIGN_TIMESTAMP_URL) { $env:CODESIGN_TIMESTAMP_URL } else { 'http://timestamp.digicert.com' })
 )
 
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
+. (Join-Path $root 'packaging_common.ps1')
+
 $distDir = Join-Path $root 'dist'
 $downloadDir = Join-Path $root 'download'
 $stageDir = Join-Path $distDir "LMUTrackHarvester-$Platform-$Configuration"
@@ -19,19 +28,9 @@ $installerSource = Join-Path $installerWorkDir 'InstallerStub.cs'
 $installerExe = Join-Path $downloadDir 'LMUTrackHarvester-Installer.exe'
 $downloadZip = Join-Path $downloadDir 'LMUTrackHarvester-Portable.zip'
 $cscPath = Join-Path $env:WINDIR 'Microsoft.NET\Framework\v4.0.30319\csc.exe'
-$bundledPythonPath = $null
+$iconPath = Resolve-BrandingIconPath -Root $root
 
-foreach ($candidatePath in @(
-  (Join-Path $root 'python'),
-  (Join-Path $root 'runtime\python')
-)) {
-  if (Test-Path (Join-Path $candidatePath 'python.exe')) {
-    $bundledPythonPath = $candidatePath
-    break
-  }
-}
-
-& (Join-Path $root 'bundle_release.ps1') -Configuration $Configuration -Platform $Platform
+& (Join-Path $root 'bundle_release.ps1') -Configuration $Configuration -Platform $Platform -Sign:$Sign -SignToolPath $SignToolPath -CertificateThumbprint $CertificateThumbprint -CertificatePath $CertificatePath -CertificatePassword $CertificatePassword -TimestampUrl $TimestampUrl
 
 if (-not (Test-Path $stageDir)) {
   throw "Stage directory not found: $stageDir"
@@ -137,21 +136,26 @@ $cscArgs = @(
   $installerSource
 )
 
+if ($iconPath) {
+  $cscArgs += "/win32icon:$iconPath"
+}
+
 & $cscPath @cscArgs | Out-Null
 
 if (-not (Test-Path $installerExe)) {
   throw "Installer was not created: $installerExe"
 }
 
+Invoke-CodeSigning -Files @($installerExe) -Sign:$Sign -SignToolPath $SignToolPath -CertificateThumbprint $CertificateThumbprint -CertificatePath $CertificatePath -CertificatePassword $CertificatePassword -TimestampUrl $TimestampUrl
+
 Copy-Item $portableZip $downloadZip -Force
 
 Write-Host "Download artifacts created:"
 Write-Host "  Installer: $installerExe"
 Write-Host "  Portable : $downloadZip"
-if ($bundledPythonPath) {
-  Write-Host "  Python   : bundled from $bundledPythonPath"
-  Write-Host "  Support  : LMU DuckDB export and metadata helpers are portable for testers without Python installed."
-} else {
-  Write-Warning "No portable Python runtime was bundled."
-  Write-Warning "The installer and zip will run the app, but LMU DuckDB helper features still need Python plus duckdb on the tester machine."
+if (Test-Path (Join-Path $stageDir 'duckdb.dll')) {
+  Write-Host '  DuckDB   : bundled natively via duckdb.dll'
+}
+if (-not $Sign) {
+  Write-Warning 'Unsigned EXEs and installers are the main remaining antivirus risk. Use -Sign with a trusted code-signing certificate for release builds.'
 }

@@ -2,18 +2,26 @@ param(
   [ValidateSet('Debug', 'Release')]
   [string]$Configuration = 'Release',
 
-  [ValidateSet('Win32')]
-  [string]$Platform = 'Win32',
+  [ValidateSet('Win64')]
+  [string]$Platform = 'Win64',
 
-  [string]$OutputZip
+  [string]$OutputZip,
+
+  [switch]$Sign,
+  [string]$SignToolPath = $env:SIGNTOOL_PATH,
+  [string]$CertificateThumbprint = $env:CODESIGN_CERT_THUMBPRINT,
+  [string]$CertificatePath = $env:CODESIGN_PFX_PATH,
+  [string]$CertificatePassword = $env:CODESIGN_PFX_PASSWORD,
+  [string]$TimestampUrl = $(if ($env:CODESIGN_TIMESTAMP_URL) { $env:CODESIGN_TIMESTAMP_URL } else { 'http://timestamp.digicert.com' })
 )
 
 $ErrorActionPreference = 'Stop'
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
+. (Join-Path $root 'packaging_common.ps1')
+
 $buildDir = Join-Path $root "$Platform\$Configuration"
 $exePath = Join-Path $buildDir 'LMUTrackHarvester.exe'
-$bundledPythonPath = $null
 
 if (-not (Test-Path $exePath)) {
   $exePath = Join-Path $root 'LMUTrackHarvester.exe'
@@ -52,46 +60,22 @@ if ($buildDir -eq $root) {
   Copy-Item (Join-Path $buildDir '*') $stageDir -Recurse -Force
 }
 
-$scriptsSource = Join-Path $root 'scripts'
-$scriptsTarget = Join-Path $stageDir 'scripts'
-New-Item -ItemType Directory -Path $scriptsTarget -Force | Out-Null
-Get-ChildItem $scriptsSource -Force | Where-Object { $_.Name -ne '__pycache__' } | ForEach-Object {
-  Copy-Item $_.FullName $scriptsTarget -Recurse -Force
+$duckdbDllPath = Join-Path $root 'duckdb.dll'
+if (Test-Path $duckdbDllPath) {
+  Copy-Item $duckdbDllPath $stageDir -Force
+} else {
+  Write-Warning 'duckdb.dll was not found in the repository root. LMU source .duckdb browsing and export will be unavailable in this build.'
 }
 
 Copy-Item (Join-Path $root 'README.md') $stageDir -Force
 
-$portablePythonPaths = @(
-  (Join-Path $root 'python'),
-  (Join-Path $root 'runtime\python')
-)
-
-foreach ($portablePythonPath in $portablePythonPaths) {
-  $pythonExe = Join-Path $portablePythonPath 'python.exe'
-  if (Test-Path $pythonExe) {
-    if (-not $bundledPythonPath) {
-      $bundledPythonPath = $portablePythonPath
-    }
-
-    $targetFolder = if ((Split-Path $portablePythonPath -Leaf) -ieq 'python') {
-      Join-Path $stageDir 'python'
-    } else {
-      Join-Path $stageDir 'runtime\python'
-    }
-
-    New-Item -ItemType Directory -Path (Split-Path $targetFolder -Parent) -Force | Out-Null
-    Copy-Item $portablePythonPath $targetFolder -Recurse -Force
-  }
-}
+Invoke-CodeSigning -Files @(Join-Path $stageDir 'LMUTrackHarvester.exe') -Sign:$Sign -SignToolPath $SignToolPath -CertificateThumbprint $CertificateThumbprint -CertificatePath $CertificatePath -CertificatePassword $CertificatePassword -TimestampUrl $TimestampUrl
 
 New-Item -ItemType Directory -Path $distDir -Force | Out-Null
 Compress-Archive -Path (Join-Path $stageDir '*') -DestinationPath $OutputZip -CompressionLevel Optimal
 
 Write-Host "Portable bundle created: $OutputZip"
-if ($bundledPythonPath) {
-  Write-Host "Portable Python bundled from: $bundledPythonPath"
-  Write-Host "LMU DuckDB helper scripts will work on tester machines without a separate Python install."
-} else {
-  Write-Warning "No bundled portable Python runtime was found under 'python\' or 'runtime\python\'."
-  Write-Warning "The app bundle is still usable, but LMU DuckDB helper features will require Python plus duckdb on the tester machine."
+if (Test-Path $duckdbDllPath) {
+  Write-Host 'DuckDB runtime bundled: duckdb.dll'
+  Write-Host 'LMU source .duckdb metadata and CSV export will work without Python.'
 }

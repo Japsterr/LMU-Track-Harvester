@@ -1,0 +1,26 @@
+Create a Windows desktop application icon for "LMU Track Harvester".
+
+Style goals:
+- motorsport telemetry, lap analysis, race engineering
+- clean, premium, technical, performance-focused
+- strong silhouette that remains readable at very small sizes
+- modern but not game-like or cartoonish
+
+Visual ingredients to explore:
+- a racing line through an apex
+- a simplified track map integrated with a telemetry waveform
+- timing delta or speed trace motifs
+- subtle reference to data capture or analysis
+
+Constraints:
+- square composition
+- transparent background
+- no text, no letters, no numbers
+- no detailed car illustration
+- avoid clutter and fine detail
+- high contrast, limited palette
+- should still read clearly at 16 px and 32 px
+
+Output requirements:
+- master artwork at 1024x1024 PNG
+- exportable to multi-size Windows ICO containing 16, 20, 24, 32, 40, 48, 64, 128, and 256 px sizes

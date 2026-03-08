@@ -4,7 +4,7 @@
         <MainSource>LMUTrackHarvester.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <FrameworkType>VCL</FrameworkType>
         <ProjectVersion>20.3</ProjectVersion>
         <AppType>Application</AppType>
@@ -96,6 +96,7 @@
         <DCCReference Include="LapTimeModels.pas"/>
         <DCCReference Include="AppSettings.pas"/>
         <DCCReference Include="CSVExporter.pas"/>
+        <DCCReference Include="DuckDBNative.pas"/>
         <DCCReference Include="GeminiAPI.pas"/>
         <DCCReference Include="ResultsXMLImporter.pas"/>
         <BuildConfiguration Include="Base">
@@ -120,7 +121,7 @@
                 </Target>
                 <Platforms>
                     <Platform value="Win32">True</Platform>
-                    <Platform value="Win64">False</Platform>
+                    <Platform value="Win64">True</Platform>
                 </Platforms>
                 <Source>
                     <Source Name="MainSource">LMUTrackHarvester.dpr</Source>

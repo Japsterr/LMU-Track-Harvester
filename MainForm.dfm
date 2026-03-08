@@ -306,23 +306,19 @@ object MainForm: TMainForm
           Columns = <
             item
               Caption = 'When'
-              Width = 112
-            end
-            item
-              Caption = 'Source'
-              Width = 58
+              Width = 136
             end
             item
               Caption = 'Track'
-              Width = 160
+              Width = 180
             end
             item
               Caption = 'Car'
-              Width = 150
+              Width = 146
             end
             item
               Caption = 'Detail'
-              Width = 168
+              Width = 188
             end>
           Color = 2170910
           GridLines = False
@@ -413,7 +409,7 @@ object MainForm: TMainForm
           Left = 0
           Top = 90
           Width = 704
-          Height = 148
+          Height = 164
           Align = alTop
           Caption = ' Sector Scorecard '
           Color = 15002865
@@ -428,7 +424,7 @@ object MainForm: TMainForm
         end
         object GrpTelemetryVisual: TGroupBox
           Left = 0
-          Top = 238
+          Top = 254
           Width = 704
           Height = 190
           Align = alTop
@@ -445,7 +441,7 @@ object MainForm: TMainForm
         end
         object PnlTelActions: TPanel
           Left = 0
-          Top = 428
+          Top = 444
           Width = 704
           Height = 44
           Align = alTop
@@ -493,7 +489,7 @@ object MainForm: TMainForm
         end
         object GrpAIResponse: TGroupBox
           Left = 0
-          Top = 472
+          Top = 488
           Width = 704
           Height = 197
           Align = alClient
