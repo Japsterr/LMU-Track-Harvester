@@ -115,3 +115,19 @@ The release scripts still assumed the old Win32 plus Python packaging flow even 
 4. Added optional signing support in the packaging scripts using `signtool.exe` and environment-driven certificate configuration.
 5. Updated the installer build so it reuses the same branding icon when `branding\app-icon.ico` exists.
 6. Documented the icon asset brief, generation prompt, and signing usage for releases.
+
+### Fix 6 - Correct LMU source telemetry lap shaping and cache preview rows in SQLite
+
+**Files changed:** `DuckDBNative.pas`, `CSVExporter.pas`, `DatabaseManager.pas`, `MainForm.pas`
+
+**Problem:**
+LMU `.duckdb` source previews were being shaped with a broken assumption: channels were aligned using frequency metadata rather than a shared timeline, and `Lap Dist` was treated like a session-wide 0..1 fraction instead of a per-lap distance channel. That produced obviously wrong sector times, broken representative-lap detection, poor track-map output, and repeated source preview regeneration on every selection.
+
+**Fix:**
+
+1. Switched the preview/export shaping logic to use `GPS Time` as the canonical timeline when available.
+2. Changed continuous channel resampling to align against that shared time-base by row count instead of relying on LMU per-channel frequency metadata for visual preview alignment.
+3. Normalized `Lap Dist` by detecting real raw lap resets and scaling each lap segment independently, which restored realistic lap durations and sector timing.
+4. Included GPS latitude/longitude in source previews so the track map can render from real coordinates instead of the steering-based fallback path.
+5. Added a shared telemetry CSV parser in `CSVExporter.pas`.
+6. Added `TelemetrySourcePreviewData` in SQLite and wired source selection to reuse cached normalized preview rows when the source file timestamp has not changed.

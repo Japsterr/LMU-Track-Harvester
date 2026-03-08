@@ -687,70 +687,8 @@ begin
 end;
 
 function TMainForm.ParseTelemetryCSV(const ACSVData: string): TTelemetryDataArray;
-var
-  Lines: TStringList;
-  I, Count: Integer;
-  Parts: TArray<string>;
-  HeaderParts: TArray<string>;
-  FS: TFormatSettings;
-  LatitudeIndex: Integer;
-  LongitudeIndex: Integer;
-
-  function FindHeaderIndex(const ACandidates: array of string): Integer;
-  var
-    HeaderIndex: Integer;
-    Candidate: string;
-  begin
-    Result := -1;
-    for HeaderIndex := 0 to High(HeaderParts) do
-      for Candidate in ACandidates do
-        if SameText(Trim(HeaderParts[HeaderIndex]), Candidate) then
-          Exit(HeaderIndex);
-  end;
 begin
-  SetLength(Result, 0);
-  Lines := TStringList.Create;
-  try
-    Lines.Text := ACSVData;
-    FS := TFormatSettings.Invariant;
-    if Lines.Count > 0 then
-      HeaderParts := Lines[0].Split([','])
-    else
-      HeaderParts := nil;
-
-    LatitudeIndex := FindHeaderIndex(['GPS_Latitude_deg', 'GPS Latitude']);
-    LongitudeIndex := FindHeaderIndex(['GPS_Longitude_deg', 'GPS Longitude']);
-
-    Count := 0;
-    SetLength(Result, Max(Lines.Count - 1, 0));
-    for I := 1 to Lines.Count - 1 do
-    begin
-      if Trim(Lines[I]) = '' then
-        Continue;
-      Parts := Lines[I].Split([',']);
-      if Length(Parts) < 8 then
-        Continue;
-
-      Result[Count].TimestampMs := StrToInt64Def(Trim(Parts[0]), 0);
-      Result[Count].Speed := StrToFloatDef(Trim(Parts[1]), 0, FS);
-      Result[Count].RPM := StrToFloatDef(Trim(Parts[2]), 0, FS);
-      Result[Count].Gear := StrToIntDef(Trim(Parts[3]), 0);
-      Result[Count].Throttle := StrToFloatDef(Trim(Parts[4]), 0, FS) / 100.0;
-      Result[Count].Brake := StrToFloatDef(Trim(Parts[5]), 0, FS) / 100.0;
-      Result[Count].Steering := StrToFloatDef(Trim(Parts[6]), 0, FS) / 100.0;
-      Result[Count].LapDistance := StrToFloatDef(Trim(Parts[7]), 0, FS);
-      Result[Count].GPSLatitude := NaN;
-      Result[Count].GPSLongitude := NaN;
-      if (LatitudeIndex >= 0) and (LatitudeIndex < Length(Parts)) then
-        Result[Count].GPSLatitude := StrToFloatDef(Trim(Parts[LatitudeIndex]), NaN, FS);
-      if (LongitudeIndex >= 0) and (LongitudeIndex < Length(Parts)) then
-        Result[Count].GPSLongitude := StrToFloatDef(Trim(Parts[LongitudeIndex]), NaN, FS);
-      Inc(Count);
-    end;
-    SetLength(Result, Count);
-  finally
-    Lines.Free;
-  end;
+  Result := TCSVExporter.ParseTelemetryCSVData(ACSVData);
 end;
 
 function TMainForm.LoadTelemetryDataForSelection(out AData: TTelemetryDataArray;
@@ -761,12 +699,14 @@ var
   Entry: TTelemetryListEntry;
   CSVData: string;
   ErrorText: string;
+  SourceModified: TDateTime;
 begin
   SetLength(AData, 0);
   ATrackName := '';
   ACarName := '';
   AClassName := '';
   AIssue := '';
+  SourceModified := 0;
 
   SourceFile := SelectedSourceTelemetryFile;
   SessionID := SelectedSessionID;
@@ -778,17 +718,27 @@ begin
     begin
       ATrackName := FTelemetrySourceSummaries[Entry.SourceIndex].TrackName;
       ACarName := FTelemetrySourceSummaries[Entry.SourceIndex].CarName;
+      SourceModified := FTelemetrySourceSummaries[Entry.SourceIndex].FileTime;
     end;
 
-    if not TCSVExporter.LoadDuckDBPreviewCSV(SourceFile, CSVData, ErrorText) then
+    if SourceModified > 0 then
+      AData := FDB.GetTelemetrySourcePreviewData(SourceFile, SourceModified);
+
+    if Length(AData) = 0 then
     begin
-      if Trim(ErrorText) <> '' then
-        AIssue := ErrorText
-      else
-        AIssue := 'LMU source preview export failed.';
-      Exit(False);
+      if not TCSVExporter.LoadDuckDBPreviewCSV(SourceFile, CSVData, ErrorText) then
+      begin
+        if Trim(ErrorText) <> '' then
+          AIssue := ErrorText
+        else
+          AIssue := 'LMU source preview export failed.';
+        Exit(False);
+      end;
+      AData := ParseTelemetryCSV(CSVData);
+      if (Length(AData) > 0) and (SourceModified > 0) then
+        FDB.ReplaceTelemetrySourcePreviewData(SourceFile, SourceModified, AData);
     end;
-    AData := ParseTelemetryCSV(CSVData);
+
     if Length(AData) = 0 then
     begin
       AIssue := 'No telemetry samples were available in the exported LMU source preview.';
@@ -892,9 +842,54 @@ const
 var
   LapData: TTelemetryDataArray;
   I, SectorIndex, SampleCount, CoastCount: Integer;
-  FirstTS, LastTS: Int64;
+  StartTS, EndTS: Int64;
   LapDistance: Double;
   SumSpeed, SumThrottle, PeakBrake, MinSpeed: Double;
+  function InterpolateTimestampAtDistance(const ATargetDistance: Double;
+    out ATimestampMs: Int64): Boolean;
+  var
+    PrevDistance: Double;
+    CurrDistance: Double;
+    PrevTime: Double;
+    CurrTime: Double;
+    Ratio: Double;
+    J: Integer;
+  begin
+    Result := False;
+    if Length(LapData) = 0 then
+      Exit;
+
+    if ATargetDistance <= LapData[0].LapDistance then
+    begin
+      ATimestampMs := LapData[0].TimestampMs;
+      Exit(True);
+    end;
+
+    for J := 1 to High(LapData) do
+    begin
+      PrevDistance := LapData[J - 1].LapDistance;
+      CurrDistance := LapData[J].LapDistance;
+      if CurrDistance < PrevDistance then
+        Continue;
+      if (ATargetDistance < PrevDistance) or (ATargetDistance > CurrDistance) then
+        Continue;
+
+      PrevTime := LapData[J - 1].TimestampMs;
+      CurrTime := LapData[J].TimestampMs;
+      if SameValue(CurrDistance, PrevDistance, 1.0E-9) then
+        Ratio := 0.0
+      else
+        Ratio := (ATargetDistance - PrevDistance) / (CurrDistance - PrevDistance);
+      ATimestampMs := Round(PrevTime + ((CurrTime - PrevTime) * Ratio));
+      Exit(True);
+    end;
+
+    if ATargetDistance >= LapData[High(LapData)].LapDistance then
+    begin
+      ATimestampMs := LapData[High(LapData)].TimestampMs;
+      Exit(True);
+    end;
+  end;
 begin
   for SectorIndex := 0 to 2 do
   begin
@@ -912,8 +907,8 @@ begin
 
   for SectorIndex := 0 to 2 do
   begin
-    FirstTS := -1;
-    LastTS := -1;
+    StartTS := -1;
+    EndTS := -1;
     SumSpeed := 0;
     SumThrottle := 0;
     PeakBrake := 0;
@@ -921,15 +916,15 @@ begin
     SampleCount := 0;
     CoastCount := 0;
 
+    InterpolateTimestampAtDistance(SectorStart[SectorIndex], StartTS);
+    InterpolateTimestampAtDistance(Min(SectorEnd[SectorIndex], 1.0), EndTS);
+
     for I := 0 to High(LapData) do
     begin
       LapDistance := LapData[I].LapDistance;
       if (LapDistance < SectorStart[SectorIndex]) or (LapDistance >= SectorEnd[SectorIndex]) then
         Continue;
 
-      if FirstTS < 0 then
-        FirstTS := LapData[I].TimestampMs;
-      LastTS := LapData[I].TimestampMs;
       SumSpeed := SumSpeed + LapData[I].Speed;
       SumThrottle := SumThrottle + (LapData[I].Throttle * 100.0);
       PeakBrake := Max(PeakBrake, LapData[I].Brake * 100.0);
@@ -939,15 +934,26 @@ begin
       Inc(SampleCount);
     end;
 
-    if SampleCount > 0 then
+      if (StartTS >= 0) and (EndTS >= StartTS) then
     begin
       Result[SectorIndex].Valid := True;
-      Result[SectorIndex].TimeMs := Max(LastTS - FirstTS, 0);
-      Result[SectorIndex].AvgSpeedKmh := SumSpeed / SampleCount;
-      Result[SectorIndex].MinSpeedKmh := MinSpeed;
-      Result[SectorIndex].AvgThrottlePct := SumThrottle / SampleCount;
-      Result[SectorIndex].PeakBrakePct := PeakBrake;
-      Result[SectorIndex].CoastPct := (CoastCount / SampleCount) * 100.0;
+        Result[SectorIndex].TimeMs := Max(EndTS - StartTS, 0);
+        if SampleCount > 0 then
+        begin
+          Result[SectorIndex].AvgSpeedKmh := SumSpeed / SampleCount;
+          Result[SectorIndex].MinSpeedKmh := MinSpeed;
+          Result[SectorIndex].AvgThrottlePct := SumThrottle / SampleCount;
+          Result[SectorIndex].PeakBrakePct := PeakBrake;
+          Result[SectorIndex].CoastPct := (CoastCount / SampleCount) * 100.0;
+        end
+        else
+        begin
+          Result[SectorIndex].AvgSpeedKmh := 0;
+          Result[SectorIndex].MinSpeedKmh := 0;
+          Result[SectorIndex].AvgThrottlePct := 0;
+          Result[SectorIndex].PeakBrakePct := 0;
+          Result[SectorIndex].CoastPct := 0;
+        end;
     end;
   end;
 end;

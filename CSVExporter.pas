@@ -11,12 +11,15 @@ unit CSVExporter;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.IOUtils,
+  System.SysUtils, System.Classes, System.IOUtils, System.Math,
   LapTimeModels, DatabaseManager, DuckDBNative;
 
 type
   TCSVExporter = class
   public
+    { Parse canonical telemetry CSV text into telemetry data points. }
+    class function ParseTelemetryCSVData(const ACSVData: string): TTelemetryDataArray;
+
     { Export all telemetry data points for a session to a CSV file. }
     class function ExportTelemetrySession(ADB: TDatabaseManager;
                                           ASessionID: Integer;
@@ -47,6 +50,74 @@ type
   end;
 
 implementation
+
+class function TCSVExporter.ParseTelemetryCSVData(
+  const ACSVData: string): TTelemetryDataArray;
+var
+  Lines: TStringList;
+  I, Count: Integer;
+  Parts: TArray<string>;
+  HeaderParts: TArray<string>;
+  FS: TFormatSettings;
+  LatitudeIndex: Integer;
+  LongitudeIndex: Integer;
+
+  function FindHeaderIndex(const ACandidates: array of string): Integer;
+  var
+    HeaderIndex: Integer;
+    Candidate: string;
+  begin
+    Result := -1;
+    for HeaderIndex := 0 to High(HeaderParts) do
+      for Candidate in ACandidates do
+        if SameText(Trim(HeaderParts[HeaderIndex]), Candidate) then
+          Exit(HeaderIndex);
+  end;
+begin
+  SetLength(Result, 0);
+  Lines := TStringList.Create;
+  try
+    Lines.Text := ACSVData;
+    FS := TFormatSettings.Invariant;
+    if Lines.Count > 0 then
+      HeaderParts := Lines[0].Split([','])
+    else
+      HeaderParts := nil;
+
+    LatitudeIndex := FindHeaderIndex(['GPS_Latitude_deg', 'GPS Latitude']);
+    LongitudeIndex := FindHeaderIndex(['GPS_Longitude_deg', 'GPS Longitude']);
+
+    Count := 0;
+    SetLength(Result, Max(Lines.Count - 1, 0));
+    for I := 1 to Lines.Count - 1 do
+    begin
+      if Trim(Lines[I]) = '' then
+        Continue;
+      Parts := Lines[I].Split([',']);
+      if Length(Parts) < 8 then
+        Continue;
+
+      Result[Count].TimestampMs := StrToInt64Def(Trim(Parts[0]), 0);
+      Result[Count].Speed := StrToFloatDef(Trim(Parts[1]), 0, FS);
+      Result[Count].RPM := StrToFloatDef(Trim(Parts[2]), 0, FS);
+      Result[Count].Gear := StrToIntDef(Trim(Parts[3]), 0);
+      Result[Count].Throttle := StrToFloatDef(Trim(Parts[4]), 0, FS) / 100.0;
+      Result[Count].Brake := StrToFloatDef(Trim(Parts[5]), 0, FS) / 100.0;
+      Result[Count].Steering := StrToFloatDef(Trim(Parts[6]), 0, FS) / 100.0;
+      Result[Count].LapDistance := StrToFloatDef(Trim(Parts[7]), 0, FS);
+      Result[Count].GPSLatitude := NaN;
+      Result[Count].GPSLongitude := NaN;
+      if (LatitudeIndex >= 0) and (LatitudeIndex < Length(Parts)) then
+        Result[Count].GPSLatitude := StrToFloatDef(Trim(Parts[LatitudeIndex]), NaN, FS);
+      if (LongitudeIndex >= 0) and (LongitudeIndex < Length(Parts)) then
+        Result[Count].GPSLongitude := StrToFloatDef(Trim(Parts[LongitudeIndex]), NaN, FS);
+      Inc(Count);
+    end;
+    SetLength(Result, Count);
+  finally
+    Lines.Free;
+  end;
+end;
 
 class function TCSVExporter.TelemetrySessionToCSV(ADB: TDatabaseManager;
   ASessionID: Integer): string;

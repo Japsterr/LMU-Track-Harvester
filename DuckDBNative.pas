@@ -285,6 +285,39 @@ begin
   end;
 end;
 
+function ResampleSeriesByCount(const AValues: TStringArray;
+  ABaseCount: Integer): TStringArray;
+var
+  Ratio: Double;
+  Index: Integer;
+  SourceIndex: Integer;
+begin
+  if ABaseCount <= 0 then
+    Exit(nil);
+
+  SetLength(Result, ABaseCount);
+  if Length(AValues) = 0 then
+    Exit;
+
+  if Length(AValues) = ABaseCount then
+  begin
+    for Index := 0 to ABaseCount - 1 do
+      Result[Index] := AValues[Index];
+    Exit;
+  end;
+
+  Ratio := Length(AValues) / ABaseCount;
+  for Index := 0 to ABaseCount - 1 do
+  begin
+    SourceIndex := Floor(Index * Ratio);
+    if SourceIndex < 0 then
+      SourceIndex := 0;
+    if SourceIndex >= Length(AValues) then
+      SourceIndex := Length(AValues) - 1;
+    Result[Index] := AValues[SourceIndex];
+  end;
+end;
+
 function NormalizePercentSeries(const AValues: TStringArray): TStringArray;
 var
   Value: string;
@@ -311,28 +344,345 @@ begin
       Result[Index] := '';
 end;
 
-function NormalizeLapDistance(const AValues: TStringArray): TStringArray;
+function BuildClampedUnitSeries(const AValues: TStringArray): TStringArray;
 var
   Parsed: Double;
-  LapMax: Double;
   Index: Integer;
-  Normalized: Double;
 begin
   SetLength(Result, Length(AValues));
-  LapMax := 0.0;
   for Index := 0 to High(AValues) do
-    if TryParseInvariantFloat(AValues[Index], Parsed) and (Parsed >= 0.0) then
-      LapMax := Max(LapMax, Parsed);
+    if TryParseInvariantFloat(AValues[Index], Parsed) then
+      Result[Index] := FloatToInvariant(RoundTo(EnsureRange(Parsed, 0.0, 1.0), -6), '0.######')
+    else
+      Result[Index] := '';
+end;
 
-  if LapMax <= 0.0 then
-    Exit;
-
+function BuildFractionalLapSeries(const AValues: TStringArray): TStringArray;
+var
+  Parsed: Double;
+  Normalized: Double;
+  Index: Integer;
+begin
+  SetLength(Result, Length(AValues));
   for Index := 0 to High(AValues) do
   begin
     if not TryParseInvariantFloat(AValues[Index], Parsed) then
       Continue;
-    Normalized := EnsureRange(Parsed / LapMax, 0.0, 1.0);
-    Result[Index] := FloatToInvariant(RoundTo(Normalized, -6), '0.######');
+
+    if Parsed < 0.0 then
+      Parsed := 0.0;
+    Normalized := Parsed - Floor(Parsed);
+    if SameValue(Normalized, 0.0, 1.0E-6) and (Parsed > 0.0) then
+      Normalized := 1.0;
+    Result[Index] := FloatToInvariant(RoundTo(EnsureRange(Normalized, 0.0, 1.0), -6), '0.######');
+  end;
+end;
+
+function BuildModuloPercentLapSeries(const AValues: TStringArray): TStringArray;
+var
+  Parsed: Double;
+  Normalized: Double;
+  Index: Integer;
+begin
+  SetLength(Result, Length(AValues));
+  for Index := 0 to High(AValues) do
+  begin
+    if not TryParseInvariantFloat(AValues[Index], Parsed) then
+      Continue;
+
+    if Parsed < 0.0 then
+      Parsed := 0.0;
+    Normalized := Frac(Parsed / 100.0);
+    if SameValue(Normalized, 0.0, 1.0E-6) and (Parsed > 0.0) then
+      Normalized := 1.0;
+    Result[Index] := FloatToInvariant(RoundTo(EnsureRange(Normalized, 0.0, 1.0), -6), '0.######');
+  end;
+end;
+
+function TryBuildSegmentNormalizedLapSeries(const AValues: TStringArray;
+  out ANormalized: TStringArray): Boolean;
+type
+  TSegmentInfo = record
+    StartIndex: Integer;
+    EndIndex: Integer;
+    MaxValue: Double;
+  end;
+var
+  ParsedValues: TArray<Double>;
+  ValidValues: TArray<Boolean>;
+  Segments: TArray<TSegmentInfo>;
+  SegmentStart: Integer;
+  SegmentMax: Double;
+  PreviousValue: Double;
+  Parsed: Double;
+  Index: Integer;
+  SegmentCount: Integer;
+  CurrentSegment: Integer;
+  function IsLapReset(APrevious, ACurrent, ACurrentSegmentMax: Double): Boolean;
+  begin
+    Result := False;
+    if (APrevious <= 0.0) or (ACurrent < 0.0) then
+      Exit;
+
+    Result :=
+      ((APrevious >= Max(1.0, ACurrentSegmentMax * 0.50)) and (ACurrent <= (APrevious * 0.35))) or
+      ((APrevious - ACurrent) >= Max(5.0, ACurrentSegmentMax * 0.40));
+  end;
+  procedure AddSegment(AStartIndex, AEndIndex: Integer; AMaxValue: Double);
+  begin
+    if (AStartIndex < 0) or (AEndIndex < AStartIndex) then
+      Exit;
+    SetLength(Segments, SegmentCount + 1);
+    Segments[SegmentCount].StartIndex := AStartIndex;
+    Segments[SegmentCount].EndIndex := AEndIndex;
+    Segments[SegmentCount].MaxValue := AMaxValue;
+    Inc(SegmentCount);
+  end;
+begin
+  Result := False;
+  SetLength(ANormalized, Length(AValues));
+  SetLength(ParsedValues, Length(AValues));
+  SetLength(ValidValues, Length(AValues));
+  SegmentStart := -1;
+  SegmentMax := 0.0;
+  PreviousValue := 0.0;
+  SegmentCount := 0;
+
+  for Index := 0 to High(AValues) do
+  begin
+    if TryParseInvariantFloat(AValues[Index], Parsed) and (Parsed >= 0.0) then
+    begin
+      ParsedValues[Index] := Parsed;
+      ValidValues[Index] := True;
+    end
+    else
+      ValidValues[Index] := False;
+  end;
+
+  for Index := 0 to High(AValues) do
+  begin
+    if not ValidValues[Index] then
+      Continue;
+
+    if SegmentStart < 0 then
+    begin
+      SegmentStart := Index;
+      SegmentMax := ParsedValues[Index];
+      PreviousValue := ParsedValues[Index];
+      Continue;
+    end;
+
+    if IsLapReset(PreviousValue, ParsedValues[Index], SegmentMax) then
+    begin
+      AddSegment(SegmentStart, Index - 1, SegmentMax);
+      SegmentStart := Index;
+      SegmentMax := ParsedValues[Index];
+    end
+    else
+      SegmentMax := Max(SegmentMax, ParsedValues[Index]);
+
+    PreviousValue := ParsedValues[Index];
+  end;
+
+  if SegmentStart >= 0 then
+    AddSegment(SegmentStart, High(AValues), SegmentMax);
+
+  if SegmentCount = 0 then
+    Exit(False);
+
+  if (SegmentCount = 1) and (Segments[0].MaxValue > 1.05) and (Segments[0].MaxValue > 100.5) then
+    Exit(False);
+
+  for CurrentSegment := 0 to High(Segments) do
+  begin
+    if Segments[CurrentSegment].MaxValue <= 0.0 then
+      Continue;
+
+    for Index := Segments[CurrentSegment].StartIndex to Segments[CurrentSegment].EndIndex do
+    begin
+      if not ValidValues[Index] then
+        Continue;
+
+      if Segments[CurrentSegment].MaxValue <= 1.05 then
+        ANormalized[Index] := FloatToInvariant(RoundTo(EnsureRange(ParsedValues[Index], 0.0, 1.0), -6), '0.######')
+      else if Segments[CurrentSegment].MaxValue <= 100.5 then
+        ANormalized[Index] := FloatToInvariant(RoundTo(EnsureRange(ParsedValues[Index] / 100.0, 0.0, 1.0), -6), '0.######')
+      else
+        ANormalized[Index] := FloatToInvariant(RoundTo(EnsureRange(ParsedValues[Index] / Segments[CurrentSegment].MaxValue, 0.0, 1.0), -6), '0.######');
+    end;
+  end;
+
+  Result := True;
+end;
+
+function ScoreLapDistanceCandidate(const AValues: TStringArray;
+  const ATimestamps: TArray<Int64>): Integer;
+var
+  Parsed: Double;
+  MinValue: Double;
+  MaxValue: Double;
+  PreviousValue: Double;
+  Coverage: Double;
+  Wraps: Integer;
+  InvalidCount: Integer;
+  Index: Integer;
+  HasPrevious: Boolean;
+  PreviousWrapTimestamp: Int64;
+  WrapTimestamp: Int64;
+  BestLapDurationMs: Int64;
+  TotalLapDurationMs: Int64;
+  AvgLapDurationMs: Double;
+begin
+  MinValue := 1.0E12;
+  MaxValue := -1.0E12;
+  PreviousValue := 0.0;
+  Wraps := 0;
+  InvalidCount := 0;
+  HasPrevious := False;
+  PreviousWrapTimestamp := -1;
+  BestLapDurationMs := High(Int64);
+  TotalLapDurationMs := 0;
+
+  for Index := 0 to High(AValues) do
+  begin
+    if not TryParseInvariantFloat(AValues[Index], Parsed) then
+    begin
+      Inc(InvalidCount);
+      Continue;
+    end;
+
+    if (Parsed < -0.05) or (Parsed > 1.05) then
+    begin
+      Inc(InvalidCount);
+      Continue;
+    end;
+
+    MinValue := Min(MinValue, Parsed);
+    MaxValue := Max(MaxValue, Parsed);
+
+    if (Index <= High(ATimestamps)) and (ATimestamps[Index] >= 0) then
+      WrapTimestamp := ATimestamps[Index]
+    else
+      WrapTimestamp := Index;
+
+    if HasPrevious and (PreviousValue > 0.85) and (Parsed < 0.15) then
+    begin
+      Inc(Wraps);
+      if PreviousWrapTimestamp >= 0 then
+      begin
+        BestLapDurationMs := Min(BestLapDurationMs, WrapTimestamp - PreviousWrapTimestamp);
+        Inc(TotalLapDurationMs, WrapTimestamp - PreviousWrapTimestamp);
+      end;
+      PreviousWrapTimestamp := WrapTimestamp;
+    end
+    else if PreviousWrapTimestamp < 0 then
+      PreviousWrapTimestamp := WrapTimestamp;
+
+    PreviousValue := Parsed;
+    HasPrevious := True;
+  end;
+
+  if not HasPrevious then
+    Exit(-1000);
+
+  Coverage := MaxValue - MinValue;
+  Result := Round(Coverage * 100.0) - (InvalidCount * 3);
+  if Coverage >= 0.80 then
+    Inc(Result, 100)
+  else if Coverage >= 0.50 then
+    Inc(Result, 40);
+
+  if Wraps > 0 then
+  begin
+    AvgLapDurationMs := TotalLapDurationMs / Wraps;
+    if (AvgLapDurationMs >= 40000.0) and (AvgLapDurationMs <= 240000.0) then
+      Inc(Result, 200)
+    else if (AvgLapDurationMs < 15000.0) or (AvgLapDurationMs > 400000.0) then
+      Dec(Result, 250)
+    else
+      Dec(Result, 40);
+
+    if (BestLapDurationMs >= 40000) and (BestLapDurationMs <= 240000) then
+      Inc(Result, 120)
+    else if BestLapDurationMs < 15000 then
+      Dec(Result, 200);
+
+    Inc(Result, 200 + (Wraps * 20));
+  end;
+end;
+
+function NormalizeLapDistance(const AValues: TStringArray;
+  const ATimestamps: TArray<Int64>): TStringArray;
+var
+  Parsed: Double;
+  MinValue: Double;
+  MaxValue: Double;
+  ParsedCount: Integer;
+  AboveOneCount: Integer;
+  Index: Integer;
+  PreservedCandidate: TStringArray;
+  FractionalCandidate: TStringArray;
+  PercentCandidate: TStringArray;
+  BestScore: Integer;
+  CandidateScore: Integer;
+begin
+  SetLength(Result, Length(AValues));
+  MinValue := 1.0E12;
+  MaxValue := -1.0E12;
+  ParsedCount := 0;
+  AboveOneCount := 0;
+
+  for Index := 0 to High(AValues) do
+    if TryParseInvariantFloat(AValues[Index], Parsed) and (Parsed >= 0.0) then
+    begin
+      Inc(ParsedCount);
+      MinValue := Min(MinValue, Parsed);
+      MaxValue := Max(MaxValue, Parsed);
+      if Parsed > 1.05 then
+        Inc(AboveOneCount);
+    end;
+
+  if ParsedCount = 0 then
+    Exit;
+
+  if TryBuildSegmentNormalizedLapSeries(AValues, Result) then
+    Exit;
+
+  if (MinValue >= -0.05) and (MaxValue <= 1.05) then
+    Exit(BuildClampedUnitSeries(AValues));
+
+  if (MinValue >= -0.05) and (MaxValue <= 100.5) and (AboveOneCount > (ParsedCount div 4)) then
+  begin
+    PercentCandidate := BuildModuloPercentLapSeries(AValues);
+    CandidateScore := ScoreLapDistanceCandidate(PercentCandidate, ATimestamps);
+    if CandidateScore >= 80 then
+      Exit(PercentCandidate);
+  end;
+
+  PreservedCandidate := BuildClampedUnitSeries(AValues);
+  BestScore := ScoreLapDistanceCandidate(PreservedCandidate, ATimestamps);
+  Result := PreservedCandidate;
+
+  if AboveOneCount > 0 then
+  begin
+    FractionalCandidate := BuildFractionalLapSeries(AValues);
+    CandidateScore := ScoreLapDistanceCandidate(FractionalCandidate, ATimestamps);
+    if CandidateScore > BestScore then
+    begin
+      Result := FractionalCandidate;
+      BestScore := CandidateScore;
+    end;
+
+    if MaxValue > 20.0 then
+    begin
+      PercentCandidate := BuildModuloPercentLapSeries(AValues);
+      CandidateScore := ScoreLapDistanceCandidate(PercentCandidate, ATimestamps);
+      if CandidateScore > BestScore then
+      begin
+        Result := PercentCandidate;
+        BestScore := CandidateScore;
+      end;
+    end;
   end;
 end;
 
@@ -349,25 +699,73 @@ begin
       Result[Index] := '';
 end;
 
-function BuildTimestampMs(const AGPSTimes: TStringArray; ABaseCount: Integer): TArray<Int64>;
+function BuildSampleClockTimestamps(ABaseCount, ABaseFreq,
+  ASourceSampleCount: Integer): TArray<Int64>;
+var
+  Index: Integer;
+  IntervalMs: Double;
+  SampleScale: Double;
+begin
+  SetLength(Result, ABaseCount);
+  if (ABaseCount > 0) and (ASourceSampleCount > ABaseCount) then
+    SampleScale := ASourceSampleCount / ABaseCount
+  else
+    SampleScale := 1.0;
+  IntervalMs := (1000.0 / Max(ABaseFreq, 1)) * SampleScale;
+  for Index := 0 to ABaseCount - 1 do
+    Result[Index] := Round(Index * IntervalMs);
+end;
+
+function BuildTimestampMs(const AGPSTimes: TStringArray; ABaseCount,
+  ABaseFreq, ASourceSampleCount: Integer): TArray<Int64>;
 var
   StartTime: Double;
   Parsed: Double;
+  PreviousTime: Double;
+  DerivedTimestamps: TArray<Int64>;
+  ExpectedDurationMs: Double;
+  SourceDurationMs: Double;
+  UseSourceTime: Boolean;
   Index: Integer;
 begin
-  SetLength(Result, ABaseCount);
-  if (Length(AGPSTimes) = 0) or (not TryParseInvariantFloat(AGPSTimes[0], StartTime)) then
+  DerivedTimestamps := BuildSampleClockTimestamps(ABaseCount, ABaseFreq, ASourceSampleCount);
+  if (Length(AGPSTimes) < ABaseCount) or (Length(AGPSTimes) = 0) or
+     (not TryParseInvariantFloat(AGPSTimes[0], StartTime)) then
+    Exit(DerivedTimestamps);
+
+  UseSourceTime := True;
+  PreviousTime := StartTime;
+  for Index := 1 to ABaseCount - 1 do
   begin
-    for Index := 0 to ABaseCount - 1 do
-      Result[Index] := Index;
-    Exit;
+    if not TryParseInvariantFloat(AGPSTimes[Index], Parsed) then
+    begin
+      UseSourceTime := False;
+      Break;
+    end;
+    if Parsed < PreviousTime then
+    begin
+      UseSourceTime := False;
+      Break;
+    end;
+    PreviousTime := Parsed;
   end;
 
+  if not UseSourceTime then
+    Exit(DerivedTimestamps);
+
+  SourceDurationMs := (PreviousTime - StartTime) * 1000.0;
+  ExpectedDurationMs := DerivedTimestamps[High(DerivedTimestamps)];
+  if (SourceDurationMs <= 0.0) or
+     ((ExpectedDurationMs > 0.0) and (SourceDurationMs < (ExpectedDurationMs * 0.25))) then
+    Exit(DerivedTimestamps);
+
+  SetLength(Result, ABaseCount);
+
   for Index := 0 to ABaseCount - 1 do
-    if (Index < Length(AGPSTimes)) and TryParseInvariantFloat(AGPSTimes[Index], Parsed) then
+    if TryParseInvariantFloat(AGPSTimes[Index], Parsed) then
       Result[Index] := Round((Parsed - StartTime) * 1000.0)
     else
-      Result[Index] := Index;
+      Result[Index] := DerivedTimestamps[Index];
 end;
 
 function GetSeriesLongestLength(ATableSeries: TTableSeries): Integer;
@@ -866,6 +1264,8 @@ var
   CurrentSeries: TTableSeries;
   ColumnValues: TStringArray;
   OutputCount: Integer;
+  ForcePreviewGPS: Boolean;
+  HasTimeBase: Boolean;
   function EnsureSeries(const ATableName: string): TTableSeries;
   begin
     Result := nil;
@@ -919,8 +1319,11 @@ var
       ColumnValues := BaseColumnValues(ATableName);
       if Length(ColumnValues) = 0 then
         Exit(nil);
-      Result := ResampleSeries(ColumnValues,
-        Session.TryGetChannelFrequency(AChannelName, BaseFreq), OutputCount, BaseFreq);
+      if HasTimeBase then
+        Result := ResampleSeriesByCount(ColumnValues, OutputCount)
+      else
+        Result := ResampleSeries(ColumnValues,
+          Session.TryGetChannelFrequency(AChannelName, BaseFreq), OutputCount, BaseFreq);
       Exit;
     end;
 
@@ -944,8 +1347,11 @@ var
     if not CurrentSeries.GetColumn(SelectedColumn, ColumnValues) then
       Exit(nil);
 
-    Result := ResampleSeries(ColumnValues,
-      Session.TryGetChannelFrequency(AChannelName, BaseFreq), OutputCount, BaseFreq);
+    if HasTimeBase then
+      Result := ResampleSeriesByCount(ColumnValues, OutputCount)
+    else
+      Result := ResampleSeries(ColumnValues,
+        Session.TryGetChannelFrequency(AChannelName, BaseFreq), OutputCount, BaseFreq);
   end;
 
   procedure AppendSeries(const AHeader: string; const AValues: TStringArray);
@@ -983,6 +1389,8 @@ begin
   Result := False;
   ACSVData := '';
   AError := '';
+  ForcePreviewGPS := not AIncludeExtraChannels;
+  HasTimeBase := False;
 
   if not TFile.Exists(ASourcePath) then
   begin
@@ -1025,19 +1433,23 @@ begin
         begin
           BaseFreq := Session.TryGetChannelFrequency(BASE_CHANNEL_ALIASES[0], BASE_FREQ_FALLBACK);
           BaseCount := Length(GPSTimeValues);
+          HasTimeBase := True;
         end;
       end;
 
-      for I := 0 to BASE_CHANNEL_COUNT do
-        UpdateBaseCount(ResolvedBaseTables[I], BASE_CHANNEL_ALIASES[I]);
-      if AIncludeExtraChannels then
+      if not HasTimeBase then
       begin
-        for ExtraSingle in EXTRA_SINGLE_CHANNELS do
-          UpdateBaseCount(FindTableName(Tables, ExtraSingle.Alias1, ExtraSingle.Alias2), ExtraSingle.Alias1);
-        for ExtraMulti in EXTRA_MULTI_CHANNELS do
-          UpdateBaseCount(FindTableName(Tables, ExtraMulti.Alias1, ExtraMulti.Alias2), ExtraMulti.Alias1);
-        for ExtraMulti in EXTRA_MULTI_CHANNELS_2 do
-          UpdateBaseCount(FindTableName(Tables, ExtraMulti.Alias1, ExtraMulti.Alias2), ExtraMulti.Alias1);
+        for I := 0 to BASE_CHANNEL_COUNT do
+          UpdateBaseCount(ResolvedBaseTables[I], BASE_CHANNEL_ALIASES[I]);
+        if AIncludeExtraChannels then
+        begin
+          for ExtraSingle in EXTRA_SINGLE_CHANNELS do
+            UpdateBaseCount(FindTableName(Tables, ExtraSingle.Alias1, ExtraSingle.Alias2), ExtraSingle.Alias1);
+          for ExtraMulti in EXTRA_MULTI_CHANNELS do
+            UpdateBaseCount(FindTableName(Tables, ExtraMulti.Alias1, ExtraMulti.Alias2), ExtraMulti.Alias1);
+          for ExtraMulti in EXTRA_MULTI_CHANNELS_2 do
+            UpdateBaseCount(FindTableName(Tables, ExtraMulti.Alias1, ExtraMulti.Alias2), ExtraMulti.Alias1);
+        end;
       end;
 
       if BaseCount <= 0 then
@@ -1054,17 +1466,27 @@ begin
         ResampledGPS := LimitSeriesSampleCount(GPSTimeValues, OutputCount)
       else
         ResampledGPS := ResampleColumn(GPSTable, BASE_CHANNEL_ALIASES[0]);
-      Timestamps := BuildTimestampMs(ResampledGPS, OutputCount);
+      Timestamps := BuildTimestampMs(ResampledGPS, OutputCount, BaseFreq, BaseCount);
       SpeedSeries := NormalizePassthrough(ResampleColumn(ResolvedBaseTables[1], BASE_CHANNEL_ALIASES[1]));
       RPMSeries := NormalizePassthrough(ResampleColumn(ResolvedBaseTables[2], BASE_CHANNEL_ALIASES[2]));
       GearSeries := ResampleColumn(ResolvedBaseTables[3], BASE_CHANNEL_ALIASES[3]);
       ThrottleSeries := NormalizePercentSeries(ResampleColumn(ResolvedBaseTables[4], BASE_CHANNEL_ALIASES[4]));
       BrakeSeries := NormalizePercentSeries(ResampleColumn(ResolvedBaseTables[5], BASE_CHANNEL_ALIASES[5]));
       SteeringSeries := NormalizePercentSeries(ResampleColumn(ResolvedBaseTables[6], BASE_CHANNEL_ALIASES[6]));
-      LapDistanceSeries := NormalizeLapDistance(ResampleColumn(ResolvedBaseTables[7], BASE_CHANNEL_ALIASES[7]));
+      LapDistanceSeries := NormalizeLapDistance(ResampleColumn(ResolvedBaseTables[7], BASE_CHANNEL_ALIASES[7]), Timestamps);
 
       for I := 0 to BASE_CHANNEL_COUNT do
         HeaderList.Add(BASE_CHANNEL_NAMES[I]);
+
+      if ForcePreviewGPS then
+      begin
+        for I := 0 to 1 do
+        begin
+          TableName := FindTableName(Tables, EXTRA_SINGLE_CHANNELS[I].Alias1, EXTRA_SINGLE_CHANNELS[I].Alias2);
+          AppendSeries(EXTRA_SINGLE_CHANNELS[I].Header,
+            NormalizePassthrough(ResampleColumn(TableName, EXTRA_SINGLE_CHANNELS[I].Alias1)));
+        end;
+      end;
 
       if AIncludeExtraChannels then
       begin

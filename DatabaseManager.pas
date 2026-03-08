@@ -17,7 +17,7 @@ unit DatabaseManager;
 interface
 
 uses
-  System.SysUtils, System.Classes, System.IOUtils, Data.DB,
+  System.SysUtils, System.Classes, System.IOUtils, System.Math, Data.DB,
   FireDAC.Comp.Client,
   FireDAC.Stan.ExprFuncs,
   FireDAC.Stan.Intf,
@@ -99,6 +99,11 @@ type
     procedure UpsertTelemetrySourceCache(const AFilePath: string;
       AFileModified: TDateTime; const ATrackName, ACarName, ADriverName: string);
     procedure DeleteTelemetrySourceCache(const AFilePath: string);
+    function GetTelemetrySourcePreviewData(const AFilePath: string;
+      AFileModified: TDateTime): TTelemetryDataArray;
+    procedure ReplaceTelemetrySourcePreviewData(const AFilePath: string;
+      AFileModified: TDateTime; const AData: TTelemetryDataArray);
+    procedure DeleteTelemetrySourcePreviewData(const AFilePath: string);
 
     // -----------------------------------------------------------------------
     // Telemetry data points
@@ -116,6 +121,9 @@ type
   end;
 
 implementation
+
+const
+  TELEMETRY_SOURCE_PREVIEW_CACHE_VERSION = 2;
 
 function DateTimeToDBText(const AValue: TDateTime): string;
 begin
@@ -404,6 +412,27 @@ begin
     ')');
 
   FConnection.ExecSQL(
+    'CREATE TABLE IF NOT EXISTS TelemetrySourcePreviewData (' +
+    '  FilePath      TEXT NOT NULL,' +
+    '  FileModified  TEXT NOT NULL,' +
+    '  PreviewVersion INTEGER NOT NULL DEFAULT 1,' +
+    '  RowIndex      INTEGER NOT NULL,' +
+    '  TimestampMs   INTEGER NOT NULL,' +
+    '  Speed         REAL,' +
+    '  RPM           REAL,' +
+    '  Gear          INTEGER,' +
+    '  Throttle      REAL,' +
+    '  Brake         REAL,' +
+    '  Steering      REAL,' +
+    '  LapDistance   REAL,' +
+    '  GPSLatitude   REAL,' +
+    '  GPSLongitude  REAL,' +
+    '  PRIMARY KEY (FilePath, RowIndex)' +
+    ')');
+
+  EnsureColumnExists('TelemetrySourcePreviewData', 'PreviewVersion', 'INTEGER NOT NULL DEFAULT 1');
+
+  FConnection.ExecSQL(
     'CREATE TABLE IF NOT EXISTS TelemetryData (' +
     '  ID          INTEGER PRIMARY KEY AUTOINCREMENT,' +
     '  SessionID   INTEGER NOT NULL,' +
@@ -433,6 +462,10 @@ begin
   FConnection.ExecSQL(
     'CREATE INDEX IF NOT EXISTS idx_teldata_session ' +
     'ON TelemetryData (SessionID, TimestampMs)');
+
+  FConnection.ExecSQL(
+    'CREATE INDEX IF NOT EXISTS idx_sourcepreview_lookup ' +
+    'ON TelemetrySourcePreviewData (FilePath, FileModified, RowIndex)');
 end;
 
 procedure TDatabaseManager.SeedReferenceData;
@@ -1014,10 +1047,137 @@ procedure TDatabaseManager.DeleteTelemetrySourceCache(const AFilePath: string);
 var
   Q: TFDQuery;
 begin
+  DeleteTelemetrySourcePreviewData(AFilePath);
   Q := TFDQuery.Create(nil);
   try
     Q.Connection := FConnection;
     Q.SQL.Text := 'DELETE FROM TelemetrySourceCache WHERE FilePath = :FilePath';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ExecSQL;
+  finally
+    Q.Free;
+  end;
+end;
+
+function TDatabaseManager.GetTelemetrySourcePreviewData(const AFilePath: string;
+  AFileModified: TDateTime): TTelemetryDataArray;
+var
+  Q: TFDQuery;
+  Count: Integer;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text :=
+      'SELECT RowIndex, TimestampMs, Speed, RPM, Gear, Throttle, Brake, Steering, ' +
+      '       LapDistance, GPSLatitude, GPSLongitude ' +
+      'FROM TelemetrySourcePreviewData ' +
+      'WHERE FilePath = :FilePath AND FileModified = :FileModified ' +
+      '  AND PreviewVersion = :PreviewVersion ' +
+      'ORDER BY RowIndex ASC';
+    Q.ParamByName('FilePath').AsString := AFilePath;
+    Q.ParamByName('FileModified').AsString := DateTimeToDBText(AFileModified);
+    Q.ParamByName('PreviewVersion').AsInteger := TELEMETRY_SOURCE_PREVIEW_CACHE_VERSION;
+    Q.Open;
+
+    SetLength(Result, 0);
+    Count := 0;
+    while not Q.Eof do
+    begin
+      SetLength(Result, Count + 1);
+      Result[Count].TimestampMs := Q.FieldByName('TimestampMs').AsLargeInt;
+      Result[Count].Speed := Q.FieldByName('Speed').AsFloat;
+      Result[Count].RPM := Q.FieldByName('RPM').AsFloat;
+      Result[Count].Gear := Q.FieldByName('Gear').AsInteger;
+      Result[Count].Throttle := Q.FieldByName('Throttle').AsFloat;
+      Result[Count].Brake := Q.FieldByName('Brake').AsFloat;
+      Result[Count].Steering := Q.FieldByName('Steering').AsFloat;
+      Result[Count].LapDistance := Q.FieldByName('LapDistance').AsFloat;
+      if Q.FieldByName('GPSLatitude').IsNull then
+        Result[Count].GPSLatitude := NaN
+      else
+        Result[Count].GPSLatitude := Q.FieldByName('GPSLatitude').AsFloat;
+      if Q.FieldByName('GPSLongitude').IsNull then
+        Result[Count].GPSLongitude := NaN
+      else
+        Result[Count].GPSLongitude := Q.FieldByName('GPSLongitude').AsFloat;
+      Inc(Count);
+      Q.Next;
+    end;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure TDatabaseManager.ReplaceTelemetrySourcePreviewData(const AFilePath: string;
+  AFileModified: TDateTime; const AData: TTelemetryDataArray);
+var
+  Q: TFDQuery;
+  I: Integer;
+  FileModifiedText: string;
+begin
+  FileModifiedText := DateTimeToDBText(AFileModified);
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    FConnection.StartTransaction;
+    try
+      Q.SQL.Text := 'DELETE FROM TelemetrySourcePreviewData WHERE FilePath = :FilePath';
+      Q.ParamByName('FilePath').AsString := AFilePath;
+      Q.ExecSQL;
+
+      Q.SQL.Text :=
+        'INSERT INTO TelemetrySourcePreviewData (' +
+        '  FilePath, FileModified, PreviewVersion, RowIndex, TimestampMs, Speed, RPM, Gear, ' +
+        '  Throttle, Brake, Steering, LapDistance, GPSLatitude, GPSLongitude' +
+        ') VALUES (' +
+        '  :FilePath, :FileModified, :PreviewVersion, :RowIndex, :TimestampMs, :Speed, :RPM, :Gear, ' +
+        '  :Throttle, :Brake, :Steering, :LapDistance, :GPSLatitude, :GPSLongitude' +
+        ')';
+
+      for I := 0 to High(AData) do
+      begin
+        Q.ParamByName('FilePath').AsString := AFilePath;
+        Q.ParamByName('FileModified').AsString := FileModifiedText;
+        Q.ParamByName('PreviewVersion').AsInteger := TELEMETRY_SOURCE_PREVIEW_CACHE_VERSION;
+        Q.ParamByName('RowIndex').AsInteger := I;
+        Q.ParamByName('TimestampMs').AsLargeInt := AData[I].TimestampMs;
+        Q.ParamByName('Speed').AsFloat := AData[I].Speed;
+        Q.ParamByName('RPM').AsFloat := AData[I].RPM;
+        Q.ParamByName('Gear').AsInteger := AData[I].Gear;
+        Q.ParamByName('Throttle').AsFloat := AData[I].Throttle;
+        Q.ParamByName('Brake').AsFloat := AData[I].Brake;
+        Q.ParamByName('Steering').AsFloat := AData[I].Steering;
+        Q.ParamByName('LapDistance').AsFloat := AData[I].LapDistance;
+        if IsNan(AData[I].GPSLatitude) then
+          Q.ParamByName('GPSLatitude').Clear
+        else
+          Q.ParamByName('GPSLatitude').AsFloat := AData[I].GPSLatitude;
+        if IsNan(AData[I].GPSLongitude) then
+          Q.ParamByName('GPSLongitude').Clear
+        else
+          Q.ParamByName('GPSLongitude').AsFloat := AData[I].GPSLongitude;
+        Q.ExecSQL;
+      end;
+
+      FConnection.Commit;
+    except
+      FConnection.Rollback;
+      raise;
+    end;
+  finally
+    Q.Free;
+  end;
+end;
+
+procedure TDatabaseManager.DeleteTelemetrySourcePreviewData(const AFilePath: string);
+var
+  Q: TFDQuery;
+begin
+  Q := TFDQuery.Create(nil);
+  try
+    Q.Connection := FConnection;
+    Q.SQL.Text := 'DELETE FROM TelemetrySourcePreviewData WHERE FilePath = :FilePath';
     Q.ParamByName('FilePath').AsString := AFilePath;
     Q.ExecSQL;
   finally
