@@ -43,6 +43,7 @@ type
     { Locates a bundled script by name; returns '' if not found. }
     class function ResolveScriptPath(const AScriptName: string): string;
     class function GetPythonRunners: TArray<string>;
+    class function CanLaunchExecutable(const AExe: string): Boolean;
 
     { Runs an external process and returns its exit code.
       Raises an exception if the process cannot be launched. }
@@ -223,6 +224,19 @@ begin
   AddRunner('python');
 end;
 
+class function TCSVExporter.CanLaunchExecutable(const AExe: string): Boolean;
+var
+  Buffer: array[0..MAX_PATH] of Char;
+begin
+  if AExe = '' then
+    Exit(False);
+
+  if TPath.IsPathRooted(AExe) or (Pos(PathDelim, AExe) > 0) or (Pos(DriveDelim, AExe) > 0) then
+    Exit(TFile.Exists(AExe));
+
+  Result := SearchPath(nil, PChar(AExe), nil, Length(Buffer), Buffer, nil) > 0;
+end;
+
 class function TCSVExporter.RunProcessAndWait(const AExe,
   AParams: string): Integer;
 var
@@ -286,6 +300,9 @@ begin
   ExitCode := -1;
   for R in GetPythonRunners do
   begin
+    if not CanLaunchExecutable(R) then
+      Continue;
+
     if SameText(R, 'py') then
       CommandLine := Format('-3 "%s" --input "%s" --output "%s"',
         [ScriptPath, ASourcePath, AFilePath])
@@ -346,6 +363,9 @@ begin
     ExitCode := -1;
     for R in GetPythonRunners do
     begin
+      if not CanLaunchExecutable(R) then
+        Continue;
+
       if SameText(R, 'py') then
         CommandLine := Format('-3 "%s" --input "%s" --key "%s" --output "%s"',
           [ScriptPath, ASourcePath, AMetadataKey, OutputPath])
